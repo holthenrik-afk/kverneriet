@@ -469,3 +469,6 @@ html{scroll-behavior:smooth}
 .photo--inline{margin-top:var(--space-6);aspect-ratio:3/2}
 .post-card h2 a{border:0;color:inherit}
 .faq-inline{margin-top:var(--space-8)}
+
+.post-featured h2 a{border:0;color:inherit}
+.post-featured h2 a:hover{color:var(--teal-900)}

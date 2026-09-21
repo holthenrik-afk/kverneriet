@@ -15,6 +15,7 @@ export const siteSettings = defineType({
     {name: 'packages', title: 'Selskap og pakker'},
     {name: 'story', title: 'Om Kverneriet'},
     {name: 'allergens', title: 'Allergener'},
+    {name: 'blog', title: 'Blogg'},
   ],
   fields: [
     defineField({name: 'name', title: 'Navn', type: 'string', initialValue: 'Kverneriet', group: 'contact'}),
@@ -41,6 +42,8 @@ export const siteSettings = defineType({
     defineField({name: 'aboutTitle', title: 'Tittel på om-seksjonen (forsiden)', type: 'localizedString', group: 'story'}),
     defineField({name: 'about1', title: 'Om Kverneriet – avsnitt 1', type: 'localizedText', group: 'story'}),
     defineField({name: 'about2', title: 'Om Kverneriet – avsnitt 2', type: 'localizedText', group: 'story'}),
+    defineField({name: 'blogTitle', title: 'Tittel på bloggsiden', type: 'localizedString', group: 'blog'}),
+    defineField({name: 'blogIntro', title: 'Innledning på bloggsiden', type: 'localizedText', group: 'blog'}),
     defineField({
       name: 'allergenKey',
       title: 'Allergen-nøkkel (koder brukt i menyene)',

@@ -110,7 +110,7 @@ def main():
 
     # --- site-copy.json + blog.json
     sc = kv.site_copy()
-    for k in ('brandStory', 'aboutTitle', 'about1', 'about2'):
+    for k in ('brandStory', 'aboutTitle', 'about1', 'about2', 'blogTitle', 'blogIntro'):
         if settings.get(k) and settings[k].get('no'): sc[k] = settings[k]
     sc['faqExtra'] = faqs
     json.dump(sc, open('content/site-copy.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
