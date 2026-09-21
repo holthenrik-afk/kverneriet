@@ -68,10 +68,9 @@ def patch_index():
     for v in V['venues']:
         s = re.sub(r'(<a class="venue-panel" href="%s">.*?<span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> )[^<]*(</span>)' % re.escape(kv.url(v['slug'])),
                    lambda m: m.group(1) + e(f'{v["address"]["street"]}, {v["city"]} · {v["tagline"].split(" - ")[-1]}') + m.group(2), s, count=1, flags=re.S)
-    # Om-seksjon før «Slik jobber vi», FAQ før gavekort
+    # Om-seksjon rett etter «Kverneriet i media» (rekkefølge bestemt av Henrik 21.09.2026), FAQ før gavekort
     s = re.sub(r'  <!-- Om Kverneriet -->\n  <section class="section" id="om">.*?\n  </section>\n\n', '', s, count=1, flags=re.S)
-    s = s.replace('  <section class="section">\n    <div class="wrap">\n      <header class="sec-head">\n        <div class="sec-head__rule"></div>\n        <span class="kv-eyebrow" data-i18n="home.craftEyebrow">',
-                  about_section() + '  <section class="section">\n    <div class="wrap">\n      <header class="sec-head">\n        <div class="sec-head__rule"></div>\n        <span class="kv-eyebrow" data-i18n="home.craftEyebrow">', 1)
+    s = re.sub(r'(  <section class="section section--flush-top" id="media">.*?\n  </section>\n\n)', lambda m: m.group(1) + about_section(), s, count=1, flags=re.S)
     s = re.sub(r'  <section class="section[^"]*" id="faq">.*?\n  </section>\n', '', s, count=1, flags=re.S)
     s = s.replace('\n</main>', '\n' + faq.section(faq.general_faq()) + '</main>', 1)
     s = s.replace('<html lang="no">', '<html lang="nb">')
