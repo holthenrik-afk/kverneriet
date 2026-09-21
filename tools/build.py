@@ -25,27 +25,20 @@ def about_section():
     rng = faq.burger_range('majorstua') or (239, 289); fries = faq.fries_from() or 84; pk0 = ORG['packages']['items'][0]['price']
     G.add('home.about2', f'Burgerne koster fra {rng[0]} til {rng[1]} kr og fries fra {fries} kr. Bord for inntil 8 personer (7 i Tønsberg) booker du online med bekreftelse med en gang; større grupper sender forespørsel og velger matpakke fra {pk0} kr per person. Alle restaurantene har drop-in-bord og take-away du henter selv, og Majorstua og Solli leverer hjem med Wolt og Foodora.',
           f'Burgers cost NOK {rng[0]}–{rng[1]} and fries from NOK {fries}. Tables for up to 8 (7 in Tønsberg) are booked online with instant confirmation; larger groups send a request and choose a food package from NOK {pk0} per person. All three restaurants keep walk-in tables and do pick-up take-away, and Majorstua and Solli deliver with Wolt and Foodora.')
-    return f'''  <!-- Om Kverneriet -->
-  <section class="section" id="om">
-    <div class="wrap grid-2 grid-2--start">
-      <div>
+    # Om-teksten ligger som innledning i restaurant-seksjonen (Henrik ville slå de to sammen, 21.09.2026)
+    return f'''      <!-- om:start -->
+      <div class="grid-2 grid-2--start">
         <header class="sec-head">
           <div class="sec-head__rule"></div>
           <span class="kv-eyebrow" data-i18n="home.aboutEyebrow">Om Kverneriet</span>
           <h2 class="display-2" data-i18n="home.aboutTitle">Burgersjappa fra Tønsberg som ble tre restauranter</h2>
         </header>
-        <p class="lede" style="margin-top:var(--space-5)" data-i18n="home.about1">{e(G._D['no']['home.about1'])}</p>
-        <p style="margin-top:var(--space-4)" data-i18n="home.about2">{e(G._D['no']['home.about2'])}</p>
+        <div>
+          <p class="lede" data-i18n="home.about1">{e(G._D['no']['home.about1'])}</p>
+          <p style="margin-top:var(--space-4);color:var(--text-muted)" data-i18n="home.about2">{e(G._D['no']['home.about2'])}</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="kv-eyebrow" style="margin-bottom:var(--space-3)" data-i18n="home.restTitle">Restaurantene</div>
-        {''.join(f'<div class="upgrade-row"><span class="upgrade-row__glyph" aria-hidden="true">➼</span><span class="upgrade-row__body"><span class="upgrade-row__name"><a href="{kv.url(v["slug"])}">{e(v["fullName"])}</a></span><span class="upgrade-row__note">{e(v["address"]["street"])}, {v["address"]["postalCode"]} {e(v["address"]["city"])} · <a href="tel:{ORG["telephone"]}">{ORG["telephoneDisplay"]}</a></span></span></div>' for v in V['venues'])}
-        <p class="caption" style="margin-top:var(--space-4)"><span data-i18n="home.hoursNote">Åpningstider, meny og booking på hver restaurantside.</span></p>
-      </div>
-    </div>
-  </section>
-
-'''
+      <!-- om:end -->'''
 
 def add_gen_script(s):
     return re.sub(r'(<script src="/content/i18n\.js[^"]*" defer></script>\n)(?!<script src="/content/i18n-gen\.js)', r'\1<script src="/content/i18n-gen.js" defer></script>\n', s, count=1)
@@ -60,17 +53,14 @@ def patch_index():
     G.add('home.hoursNote', 'Åpningstider, meny og booking på hver restaurantside.', 'Opening hours, menu and booking on each restaurant page.')
     if 'home.heroSub' not in s:
         s = re.sub(r'<h1( lang="en")?>Flipping kick-ass burgers</h1>\n', '<h1 lang="en">Flipping kick-ass burgers</h1>\n    <p class="hero-home__sub" data-i18n="home.heroSub">Burgerrestaurant på Majorstua og Solli plass i Oslo, og i Tønsberg – siden 2013.</p>\n', 1)
-    # Photo band: LCP-kandidat → fetchpriority
-    s = s.replace('alt="Trippelkokte fries fra Kverneriet" loading="eager">', 'alt="Trippelkokte fries fra Kverneriet" loading="eager" fetchpriority="high" decoding="async">')
     # Triptych: riktige alt-tekster og stedslinjer fra venues.json
     s = s.replace('alt="Kyllingburger fra Kverneriet Majorstua"', 'alt="Blå bar og grønne fløyelsbenker på Kverneriet Majorstua"')
     s = s.replace('alt="Uteserveringen på bryggekanten i Tønsberg"', 'alt="Bryggeterrassen til Kverneriet Tønsberg med kanalen bak"')
     for v in V['venues']:
         s = re.sub(r'(<a class="venue-panel" href="%s">.*?<span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> )[^<]*(</span>)' % re.escape(kv.url(v['slug'])),
                    lambda m: m.group(1) + e(f'{v["address"]["street"]}, {v["city"]} · {v["tagline"].split(" - ")[-1]}') + m.group(2), s, count=1, flags=re.S)
-    # Om-seksjon rett etter «Kverneriet i media» (rekkefølge bestemt av Henrik 21.09.2026), FAQ før gavekort
-    s = re.sub(r'  <!-- Om Kverneriet -->\n  <section class="section" id="om">.*?\n  </section>\n\n', '', s, count=1, flags=re.S)
-    s = re.sub(r'(  <section class="section section--flush-top" id="media">.*?\n  </section>\n\n)', lambda m: m.group(1) + about_section(), s, count=1, flags=re.S)
+    # Om-teksten inn i restaurant-seksjonen (#om), FAQ før gavekort
+    s = re.sub(r'      <!-- om:start -->.*?<!-- om:end -->', lambda m: about_section(), s, count=1, flags=re.S)
     s = re.sub(r'  <section class="section[^"]*" id="faq">.*?\n  </section>\n', '', s, count=1, flags=re.S)
     s = s.replace('\n</main>', '\n' + faq.section(faq.general_faq()) + '</main>', 1)
     s = s.replace('<html lang="no">', '<html lang="nb">')
