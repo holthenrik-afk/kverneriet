@@ -31,7 +31,8 @@ def block(text, style='normal', list_item=None):
 def convert(md):
     out = []; para = []
     def flush():
-        if para: out.append(block(' '.join(para))); para.clear()
+        # to mellomrom på slutten av en linje = linjeskift (markdown), ellers slås linjene sammen
+        if para: out.append(block(''.join(t + ('\n' if br else ' ') for t, br in para).strip())); para.clear()
     for raw in md.splitlines():
         line = raw.rstrip()
         if not line.strip(): flush(); continue
@@ -44,6 +45,6 @@ def convert(md):
         m = re.match(r'^\s*\d+[.)]\s+(.*)', line)
         if m: flush(); out.append(block(m.group(1), 'normal', 'number')); continue
         if line.startswith('|'): continue  # tabeller støttes ikke i Portable Text – skribentene skal bruke lister
-        para.append(line.strip())
+        para.append((line.strip(), raw.endswith('  ')))
     flush()
     return out
