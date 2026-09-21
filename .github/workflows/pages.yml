@@ -20,11 +20,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - id: pages
+        uses: actions/configure-pages@v5
       - name: Samle filene som skal ut
         run: |
           mkdir -p /tmp/site
           rsync -a --exclude tools --exclude README.md --exclude .github --exclude .gitignore --exclude _redirects ./ /tmp/site/
-      - uses: actions/configure-pages@v5
+      # På <bruker>.github.io/<repo>/ må rot-relative lenker få undermappen foran seg.
+      # Med eget domene (kverneriet.com) er base_path tom og ingenting endres.
+      - name: Tilpass lenker til base_path
+        run: python3 tools/rebase.py "${{ steps.pages.outputs.base_path }}" /tmp/site
       - uses: actions/upload-pages-artifact@v3
         with:
           path: /tmp/site

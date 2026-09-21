@@ -34,7 +34,7 @@ Repoet er klart for GitHub Pages: `.nojekyll` (ingen Jekyll-behandling), `CNAME`
    git push -u origin main
    ```
 2. I repoet: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Workflowen kjører ved neste push (eller «Run workflow»).
-3. Siden bruker rot-relative stier (`/assets/…`), så den må ligge på roten av et domene: enten det egendefinerte domenet under, eller et repo som heter `<bruker>.github.io`. Ikke som `<bruker>.github.io/kverneriet-site/`.
+3. Siden bruker rot-relative stier (`/assets/…`). Workflowen kjører `tools/rebase.py` med `base_path` fra `actions/configure-pages`, så den virker både som forhåndsvisning på `<bruker>.github.io/kverneriet/` og på roten av kverneriet.com når domenet er satt.
 4. **Domene:** i **Settings → Pages → Custom domain** skriv `kverneriet.com`. Hos domeneleverandøren: fire A-poster for `kverneriet.com` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, og en CNAME for `www` → `<bruker>.github.io`. Huk av «Enforce HTTPS» når DNS har slått gjennom.
 5. Etter lansering: meld inn `https://kverneriet.com/sitemap.xml` i Search Console og test en restaurantside på search.google.com/test/rich-results.
 
