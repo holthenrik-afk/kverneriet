@@ -423,7 +423,7 @@ html{scroll-behavior:smooth}
 .terning--generic .terning__die{filter:none}
 
 /* «Sett i»-stripe under heroen */
-.seen-in{margin-top:var(--space-8)}
+.seen-in{margin-top:var(--space-7)}
 .seen-in__logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--space-5) var(--space-7);margin-top:var(--space-5)}
 .seen-in .press-logo{background-color:var(--ink-500);opacity:.8;height:22px}
 .seen-in .press-logo--dn{width:120px}.seen-in .press-logo--nettavisen{width:96px}.seen-in .press-logo--tb{width:100px}.seen-in .press-logo--meravoslo{height:28px;width:54px}

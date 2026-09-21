@@ -124,8 +124,9 @@ def proof():
 if __name__ == '__main__':
     s = open('index.html', encoding='utf-8').read()
     # Logostripe rett etter tillitsraden
-    s, n = re.subn(r'    <div class="(?:trust|proof)">.*?\n    </div>\n(?:    <div class="seen-in">.*?</div>\n)?', lambda m: proof() + '\n' + seen_in() + '\n', s, count=1, flags=re.S)
-    if n != 1: raise SystemExit('trust/proof row not found')
+    # Tillitsraden (beviskortene) er tatt bort etter ønske fra Henrik 21.09.2026 – bare «Omtalt i»-stripen står igjen under CTA-ene
+    s, n = re.subn(r'(?:    <div class="(?:trust|proof)">.*?\n    </div>\n)?    <div class="seen-in">.*?</div>\n', lambda m: seen_in() + '\n', s, count=1, flags=re.S)
+    if n != 1: raise SystemExit('seen-in strip not found')
     # Media-seksjonen erstatter presse-seksjonen på forsiden (kortene dekker det samme og mer)
     s, n = re.subn(r'  <section class="section[^"]*" id="(?:presse|media)">.*?\n  </section>\n', lambda m: section(MEDIA), s, count=1, flags=re.S)
     if n != 1: raise SystemExit('press/media section not found')
