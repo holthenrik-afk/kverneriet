@@ -11,8 +11,93 @@
   "sec_eyebrow": "Burgerlunsj i Oslo og Tønsberg",
   "h2": "En skikkelig lunsj, ikke en rask matbit",
   "body": [
-   "På <a href=\"/majorstua/\">Majorstua</a> åpner kjøkkenet kl. 11 tirsdag til fredag, på <a href=\"/solli/\">Solli</a> kl. 11.30. Da får du de samme burgerne som om kvelden: 150 gram kjøtt vi kverner selv, ferske brød og fries som har tatt tre dager å lage. Har du en times pause, rekker du både en burger og en milkshake.",
-   "I <a href=\"/tonsberg/\">Tønsberg</a> serverer vi lunsj torsdag til søndag fra kl. 12, med en bredere meny enn i Oslo – Banana Bread & Ice Cream, Buffalo Cabbage, Chimichurri Burrata, Crispy Chicken & Whipped Feta, Duck Confit Salad, Oh My Thai og Tex-Mex Beef Salad i tillegg til burgerne. Sitter dere flere fra samme kontor, booker dere bord, så står det klart når dere kommer."
+   {
+    "_key": "b0",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "c0",
+      "_type": "span",
+      "marks": [],
+      "text": "På "
+     },
+     {
+      "_key": "c1",
+      "_type": "span",
+      "marks": [
+       "l1"
+      ],
+      "text": "Majorstua"
+     },
+     {
+      "_key": "c2",
+      "_type": "span",
+      "marks": [],
+      "text": " åpner kjøkkenet kl. 11 tirsdag til fredag, på "
+     },
+     {
+      "_key": "c3",
+      "_type": "span",
+      "marks": [
+       "l3"
+      ],
+      "text": "Solli"
+     },
+     {
+      "_key": "c4",
+      "_type": "span",
+      "marks": [],
+      "text": " kl. 11.30. Da får du de samme burgerne som om kvelden: 150 gram kjøtt vi kverner selv, ferske brød og fries som har tatt tre dager å lage. Har du en times pause, rekker du både en burger og en milkshake."
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l1",
+      "_type": "link",
+      "href": "/majorstua/"
+     },
+     {
+      "_key": "l3",
+      "_type": "link",
+      "href": "/solli/"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b1",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "c0",
+      "_type": "span",
+      "marks": [],
+      "text": "I "
+     },
+     {
+      "_key": "c1",
+      "_type": "span",
+      "marks": [
+       "l1"
+      ],
+      "text": "Tønsberg"
+     },
+     {
+      "_key": "c2",
+      "_type": "span",
+      "marks": [],
+      "text": " serverer vi lunsj torsdag til søndag fra kl. 12, med en bredere meny enn i Oslo – Banana Bread & Ice Cream, Buffalo Cabbage, Chimichurri Burrata, Crispy Chicken & Whipped Feta, Duck Confit Salad, Oh My Thai og Tex-Mex Beef Salad i tillegg til burgerne. Sitter dere flere fra samme kontor, booker dere bord, så står det klart når dere kommer."
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l1",
+      "_type": "link",
+      "href": "/tonsberg/"
+     }
+    ],
+    "style": "normal"
+   }
   ],
   "facts_title": "Lunsj og kjøkkentider",
   "facts": [
@@ -65,7 +150,7 @@
   ],
   "seoTitle": "Burgerlunsj på Majorstuen, Solli og i Tønsberg – Kverneriet",
   "seoDescription": "Lunsj med burger: kjøkkenet åpner 11 på Majorstua, 11.30 på Solli og 12 tor–søn i Tønsberg. Kjøtt vi kverner selv, fries som tar tre dager. Book bord.",
-  "img": "/assets/img/tonsberg-about.jpg"
+  "img": "https://cdn.sanity.io/images/u0hod2sg/production/6c08d4be13c6c634743b0c10ecb96d9cec44346e-1400x2100.jpg"
  },
  {
   "slug": "julebord",
@@ -78,8 +163,92 @@
   "sec_eyebrow": "Grupper over 8 (7 i Tønsberg) · fra 429 kr",
   "h2": "Et julebord folk faktisk gleder seg til",
   "body": [
-   "Ikke alle vil ha pinnekjøtt fire ganger i desember. Hos oss får gjengen din burgere av kjøtt vi kverner selv, fries som tar tre dager og milkshakes – på <a href=\"/majorstua/\">Majorstua</a>, <a href=\"/solli/\">Solli</a> eller i <a href=\"/tonsberg/\">Tønsberg</a>, i et lokale med bar som holder åpent til 23 tirsdag–lørdag.",
-   "Bordet velger én matpakke for hele gjengen: Burger Package (429 kr), Dinner Package (579 kr), Full Package (779 kr). Send oss en forespørsel med antall, dato og ønsket tidspunkt, så kommer vi tilbake med et forslag til bord og meny. Julebordene fyller opp tidlig, så jo før du booker, jo bedre."
+   {
+    "_key": "b0",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "c0",
+      "_type": "span",
+      "marks": [],
+      "text": "Ikke alle vil ha pinnekjøtt fire ganger i desember. Hos oss får gjengen din burgere av kjøtt vi kverner selv, fries som tar tre dager og milkshakes – på "
+     },
+     {
+      "_key": "c1",
+      "_type": "span",
+      "marks": [
+       "l1"
+      ],
+      "text": "Majorstua"
+     },
+     {
+      "_key": "c2",
+      "_type": "span",
+      "marks": [],
+      "text": ", "
+     },
+     {
+      "_key": "c3",
+      "_type": "span",
+      "marks": [
+       "l3"
+      ],
+      "text": "Solli"
+     },
+     {
+      "_key": "c4",
+      "_type": "span",
+      "marks": [],
+      "text": " eller i "
+     },
+     {
+      "_key": "c5",
+      "_type": "span",
+      "marks": [
+       "l5"
+      ],
+      "text": "Tønsberg"
+     },
+     {
+      "_key": "c6",
+      "_type": "span",
+      "marks": [],
+      "text": ", i et lokale med bar som holder åpent til 23 tirsdag–lørdag."
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l1",
+      "_type": "link",
+      "href": "/majorstua/"
+     },
+     {
+      "_key": "l3",
+      "_type": "link",
+      "href": "/solli/"
+     },
+     {
+      "_key": "l5",
+      "_type": "link",
+      "href": "/tonsberg/"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b1",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "c0",
+      "_type": "span",
+      "marks": [],
+      "text": "Bordet velger én matpakke for hele gjengen: Burger Package (429 kr), Dinner Package (579 kr), Full Package (779 kr). Send oss en forespørsel med antall, dato og ønsket tidspunkt, så kommer vi tilbake med et forslag til bord og meny. Julebordene fyller opp tidlig, så jo før du booker, jo bedre."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   }
   ],
   "facts_title": "Slik fungerer det",
   "facts": [
@@ -133,7 +302,7 @@
   ],
   "seoTitle": "Julebord med burgere i Oslo og Tønsberg – Kverneriet",
   "seoDescription": "Julebord uten ribbe: matpakker fra 429 kr per person for grupper over 8 (7 i Tønsberg) på Majorstua, Solli og i Tønsberg. Send forespørsel til oss.",
-  "img": "/assets/img/solli-hero.jpg"
+  "img": "https://cdn.sanity.io/images/u0hod2sg/production/0d00eff70ee25ad5e4f69e7373f6e86735d6ac67-2000x1336.jpg"
  },
  {
   "slug": "selskap",
@@ -146,8 +315,92 @@
   "sec_eyebrow": "Grupper over 8 personer (7 i Tønsberg)",
   "h2": "Samle gjengen rundt et langbord",
   "body": [
-   "Vi tar imot selskap på alle tre restaurantene: <a href=\"/majorstua/\">Kverneriet Majorstua</a> og <a href=\"/solli/\">Kverneriet Solli</a> i Oslo, og <a href=\"/tonsberg/\">Kverneriet Tønsberg</a>. Bursdag, avslutning, vennegjeng som ikke har sett hverandre på lenge, eller et team som fortjener noe bedre enn kantina – burgere av kjøtt vi kverner selv passer alle.",
-   "Grupper over 8 (7 i Tønsberg) velger én matpakke for hele bordet, så maten kommer samlet og raskt. Fyll ut forespørselen med antall, dato og tidsrom, så finner vi plass. Skal dere ha barn med, har vi egen barnemeny til 169 kr for gjester under 12."
+   {
+    "_key": "b0",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "c0",
+      "_type": "span",
+      "marks": [],
+      "text": "Vi tar imot selskap på alle tre restaurantene: "
+     },
+     {
+      "_key": "c1",
+      "_type": "span",
+      "marks": [
+       "l1"
+      ],
+      "text": "Kverneriet Majorstua"
+     },
+     {
+      "_key": "c2",
+      "_type": "span",
+      "marks": [],
+      "text": " og "
+     },
+     {
+      "_key": "c3",
+      "_type": "span",
+      "marks": [
+       "l3"
+      ],
+      "text": "Kverneriet Solli"
+     },
+     {
+      "_key": "c4",
+      "_type": "span",
+      "marks": [],
+      "text": " i Oslo, og "
+     },
+     {
+      "_key": "c5",
+      "_type": "span",
+      "marks": [
+       "l5"
+      ],
+      "text": "Kverneriet Tønsberg"
+     },
+     {
+      "_key": "c6",
+      "_type": "span",
+      "marks": [],
+      "text": ". Bursdag, avslutning, vennegjeng som ikke har sett hverandre på lenge, eller et team som fortjener noe bedre enn kantina – burgere av kjøtt vi kverner selv passer alle."
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l1",
+      "_type": "link",
+      "href": "/majorstua/"
+     },
+     {
+      "_key": "l3",
+      "_type": "link",
+      "href": "/solli/"
+     },
+     {
+      "_key": "l5",
+      "_type": "link",
+      "href": "/tonsberg/"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b1",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "c0",
+      "_type": "span",
+      "marks": [],
+      "text": "Grupper over 8 (7 i Tønsberg) velger én matpakke for hele bordet, så maten kommer samlet og raskt. Fyll ut forespørselen med antall, dato og tidsrom, så finner vi plass. Skal dere ha barn med, har vi egen barnemeny til 169 kr for gjester under 12."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   }
   ],
   "facts_title": "Godt å vite",
   "facts": [
@@ -205,7 +458,7 @@
   ],
   "seoTitle": "Selskap og gruppebooking – burger i Oslo og Tønsberg",
   "seoDescription": "Bursdag, firmafest eller vennegjeng? Grupper over 8 (7 i Tønsberg) velger matpakke fra 429 kr på Majorstua, Solli eller i Tønsberg. Send forespørsel.",
-  "img": "/assets/img/tonsberg-hero.jpg"
+  "img": "https://cdn.sanity.io/images/u0hod2sg/production/f0a99c94d4b98962eeb2bdbc78ac1e248027a31e-2000x2994.jpg"
  },
  {
   "slug": "late-night",
@@ -236,8 +489,93 @@
   "sec_eyebrow": "Majorstua · Solli · Tønsberg",
   "h2": "Åpent sent: kjøkkenet til 22, baren til 23",
   "body": [
-   "Etter kino, etter kampen, etter en lang dag på jobb. Kjøkkenet på <a href=\"/majorstua/\">Majorstua</a> og <a href=\"/solli/\">Solli</a> serverer hele menyen til kl. 22 fra tirsdag til lørdag (21 søndag og mandag), og baren holder åpent en time til. Vi har mange drop-in-bord, så du trenger ikke booke for å spise sent i Oslo.",
-   "Nattmat på Kverneriet betyr burger av kjøtt vi kverner selv, fries som tar tre dager, og en milkshake med 4 cl matchende sprit – eller en øl fra tappen og en cocktail fra baren. I <a href=\"/tonsberg/\">Tønsberg</a> holder kjøkkenet åpent til 22 tirsdag–lørdag og baren til 23."
+   {
+    "_key": "b0",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "c0",
+      "_type": "span",
+      "marks": [],
+      "text": "Etter kino, etter kampen, etter en lang dag på jobb. Kjøkkenet på "
+     },
+     {
+      "_key": "c1",
+      "_type": "span",
+      "marks": [
+       "l1"
+      ],
+      "text": "Majorstua"
+     },
+     {
+      "_key": "c2",
+      "_type": "span",
+      "marks": [],
+      "text": " og "
+     },
+     {
+      "_key": "c3",
+      "_type": "span",
+      "marks": [
+       "l3"
+      ],
+      "text": "Solli"
+     },
+     {
+      "_key": "c4",
+      "_type": "span",
+      "marks": [],
+      "text": " serverer hele menyen til kl. 22 fra tirsdag til lørdag (21 søndag og mandag), og baren holder åpent en time til. Vi har mange drop-in-bord, så du trenger ikke booke for å spise sent i Oslo."
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l1",
+      "_type": "link",
+      "href": "/majorstua/"
+     },
+     {
+      "_key": "l3",
+      "_type": "link",
+      "href": "/solli/"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b1",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "c0",
+      "_type": "span",
+      "marks": [],
+      "text": "Nattmat på Kverneriet betyr burger av kjøtt vi kverner selv, fries som tar tre dager, og en milkshake med 4 cl matchende sprit – eller en øl fra tappen og en cocktail fra baren. I "
+     },
+     {
+      "_key": "c1",
+      "_type": "span",
+      "marks": [
+       "l1"
+      ],
+      "text": "Tønsberg"
+     },
+     {
+      "_key": "c2",
+      "_type": "span",
+      "marks": [],
+      "text": " holder kjøkkenet åpent til 22 tirsdag–lørdag og baren til 23."
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l1",
+      "_type": "link",
+      "href": "/tonsberg/"
+     }
+    ],
+    "style": "normal"
+   }
   ],
   "facts_title": "Sene åpningstider",
   "facts": [
@@ -294,6 +632,6 @@
   ],
   "seoTitle": "Late night burger i Oslo – kjøkken til 22 | Kverneriet",
   "seoDescription": "Spise sent i Oslo? Kjøkkenet på Majorstua og Solli serverer burgere til 22, baren holder åpent til 23 tir–lør. Milkshake med sprit, øl fra tappen. Drop-in.",
-  "img": "/assets/img/ln-hero.jpg"
+  "img": "https://cdn.sanity.io/images/u0hod2sg/production/28b41d48b45671881998741503d43c235374103d-2000x2994.jpg"
  }
 ]

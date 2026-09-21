@@ -8,8 +8,10 @@
   "rating": "6/6",
   "quote": "Burgerne fra Kverneriet er så nære man kommer en perfekt.",
   "venue": "solli",
-  "photo": "/assets/img/ta-press-burger.jpg",
-  "alt": "Burger fra Kverneriet holdt opp mot lyset"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/cd894c3862f38d0d59324487375e6f4ee29148bb-1400x2096.jpg",
+  "alt": "Burger fra Kverneriet holdt opp mot lyset",
+  "featured": true,
+  "isoDate": "2020-04-23"
  },
  {
   "key": "fa_2026",
@@ -20,8 +22,10 @@
   "rating": "5/6",
   "quote": "Kverneriet bør spille en av hovedrollene på Oslos burgerscene. Nesten toppklasse.",
   "venue": "majorstua",
-  "photo": "/assets/img/majorstua-about.jpg",
-  "alt": "Spisesalen på Kverneriet Majorstua"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/c6e2bf7ed4b48618115bceeb90fb5d65332ff306-1600x1068.jpg",
+  "alt": "Spisesalen på Kverneriet Majorstua",
+  "featured": true,
+  "isoDate": "2026-02-21"
  },
  {
   "key": "db_2023",
@@ -32,8 +36,10 @@
   "rating": "",
   "quote": "Kverneriet har toppet de fleste av våre tidligere burgertester, og det skjønner vi godt.",
   "venue": "solli",
-  "photo": "/assets/img/solli-hero.jpg",
-  "alt": "Spisesalen på Kverneriet Solli"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/0d00eff70ee25ad5e4f69e7373f6e86735d6ac67-2000x1336.jpg",
+  "alt": "Spisesalen på Kverneriet Solli",
+  "featured": true,
+  "isoDate": "2023-02-16"
  },
  {
   "key": "vg_2016",
@@ -44,8 +50,10 @@
   "rating": "5/6",
   "quote": "Kverneriet på Majorstuen har Oslos beste burger.",
   "venue": "majorstua",
-  "photo": "/assets/img/trio-majorstua.jpg",
-  "alt": "Kverneriet Majorstua"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/fb500a18a5f6d7e20d0fd8f361c768af037438ed-1400x2086.jpg",
+  "alt": "Kverneriet Majorstua",
+  "featured": true,
+  "isoDate": "2016-01-07"
  },
  {
   "key": "dn_2017",
@@ -56,8 +64,10 @@
   "rating": "21/25",
   "quote": "Dette er en av de beste burgerne jeg har smakt her i byen.",
   "venue": "solli",
-  "photo": "/assets/img/meny-solli.jpg",
-  "alt": "Burger på marmorbord, Kverneriet Solli"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/44e341209fe40b5e675433a067e82ff4a083a496-1400x935.jpg",
+  "alt": "Burger på marmorbord, Kverneriet Solli",
+  "featured": true,
+  "isoDate": "2017-10-24"
  },
  {
   "key": "fa_2020",
@@ -68,8 +78,10 @@
   "rating": "6/6",
   "quote": "Her har de gjort alt riktig. Brødet er luftig og kjøttet er virkelig godt.",
   "venue": "solli",
-  "photo": "/assets/img/ta-press-boxes.jpg",
-  "alt": "Take-away-esker fra Kverneriet"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/4d3fe1c8346f2bc71feeaf7f043bbb325b054ea1-1040x780.jpg",
+  "alt": "Take-away-esker fra Kverneriet",
+  "featured": true,
+  "isoDate": "2020-04-19"
  },
  {
   "key": "vg_2017",
@@ -80,8 +92,10 @@
   "rating": "5/6",
   "quote": "Kverneriet på Solli plass byr på vellaget tohåndsmat i fine omgivelser.",
   "venue": "solli",
-  "photo": "/assets/img/solli-about.jpg",
-  "alt": "Uteserveringen ved Solli plass"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/7fbc988c02fe1ae9e0ad5c207ebe2760091e93f7-1400x935.jpg",
+  "alt": "Uteserveringen ved Solli plass",
+  "featured": true,
+  "isoDate": "2017-11-16"
  },
  {
   "key": "ap_2015",
@@ -92,8 +106,10 @@
   "rating": "",
   "quote": "Majorstuen har fått et nytt, godt vannhull med nydelig håndmat.",
   "venue": "majorstua",
-  "photo": "/assets/img/g-burger.jpg",
-  "alt": "Burger på tallerken"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/96a5a1dee40576c794a7a19634c2b2734b3abe1f-1400x2096.jpg",
+  "alt": "Burger på tallerken",
+  "featured": true,
+  "isoDate": "2015-06-01"
  },
  {
   "key": "mao_2018",
@@ -104,8 +120,10 @@
   "rating": "6/6",
   "quote": "Vi kan på det varmeste anbefale å prøve Umami-burgeren, for det er ikke mange bedre hamburgere i Oslo mener vi!",
   "venue": "solli",
-  "photo": "/assets/img/craft-grind.jpg",
-  "alt": "Nykvernede patties på fjøl"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/5c6c574127528aeb0e4e2ff95d879b4c2a019693-1400x935.jpg",
+  "alt": "Nykvernede patties på fjøl",
+  "featured": true,
+  "isoDate": "2018-07-22"
  },
  {
   "key": "tb_2024",
@@ -116,8 +134,10 @@
   "rating": "5/6",
   "quote": "Kverneriet har noe for alle.",
   "venue": "tonsberg",
-  "photo": "/assets/img/tonsberg-about.jpg",
-  "alt": "Lunsjbord på Kverneriet Tønsberg"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/6c08d4be13c6c634743b0c10ecb96d9cec44346e-1400x2100.jpg",
+  "alt": "Lunsjbord på Kverneriet Tønsberg",
+  "featured": true,
+  "isoDate": "2024-07-06"
  },
  {
   "key": "ap_2020",
@@ -128,8 +148,10 @@
   "rating": "4/6",
   "quote": "Servicen er på alerten fra det øyeblikket vi kommer inn døren til vi har fått bestilt, samt gjennom hele måltidet.",
   "venue": "majorstua",
-  "photo": "/assets/img/majorstua-hero.jpg",
-  "alt": "Kverneriet Majorstua"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/8dbaed607f0d8d92a340eff15da1f59d4099dcfc-2200x1476.jpg",
+  "alt": "Kverneriet Majorstua",
+  "featured": true,
+  "isoDate": "2020-07-28"
  },
  {
   "key": "fa_2026b",
@@ -140,8 +162,10 @@
   "rating": "",
   "quote": "Fortsetter å levere ordentlig gode burgere år etter år.",
   "venue": "generelt",
-  "photo": "/assets/img/g-fries-truffle.jpg",
-  "alt": "Trøffelfries"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/73d5d7242b94ffbe339097eaa8a40db504c6ca5f-1200x801.jpg",
+  "alt": "Trøffelfries",
+  "featured": true,
+  "isoDate": "2026-01-31"
  },
  {
   "key": "na_2020",
@@ -152,8 +176,10 @@
   "rating": "",
   "quote": "Rett ved finner du Oslos beste burger på Kverneriet.",
   "venue": "majorstua",
-  "photo": "/assets/img/g-softserve-oreo.jpg",
-  "alt": "Soft serve med Oreo"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/1327a25f19e07d5b9aecd75fe76b03d0a3525bb2-1200x801.jpg",
+  "alt": "Soft serve med Oreo",
+  "featured": true,
+  "isoDate": "2020-04-19"
  },
  {
   "key": "ap_2023",
@@ -164,8 +190,10 @@
   "rating": "",
   "quote": "Steder som […] Kverneriet […] fortsetter å levere varene, år etter år.",
   "venue": "generelt",
-  "photo": "/assets/img/craft-fries.jpg",
-  "alt": "Fries med trøffel og parmesan"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/ff3d7812d55fade2ccb147a5ce63cbc23c8bc745-1400x935.jpg",
+  "alt": "Fries med trøffel og parmesan",
+  "featured": true,
+  "isoDate": "2023-12-05"
  },
  {
   "key": "db_2017",
@@ -176,8 +204,10 @@
   "rating": "",
   "quote": "Mørt og saftig kjøtt og delikat tilbehør.",
   "venue": "solli",
-  "photo": "/assets/img/ln-burger.jpg",
-  "alt": "Burger i hendene ved bordet"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/5a9a673143e7b35ea67f4811c4cea73877005041-1200x1796.jpg",
+  "alt": "Burger i hendene ved bordet",
+  "featured": true,
+  "isoDate": "2017-09-13"
  },
  {
   "key": "db_2016",
@@ -188,8 +218,10 @@
   "rating": "",
   "quote": "Kjøttet i Umami-burgeren var grovkvernet, veldig saftig og full av spennende smaker.",
   "venue": "majorstua",
-  "photo": "/assets/img/g-patties.jpg",
-  "alt": "Patties med blåmuggost"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/c982e10d38fda1ed882143e9fb883132e21388af-1200x801.jpg",
+  "alt": "Patties med blåmuggost",
+  "featured": true,
+  "isoDate": "2016-03-11"
  },
  {
   "key": "tb_2020",
@@ -200,8 +232,10 @@
   "rating": "",
   "quote": "TBs restaurantanmeldere mener Kverneriet er mer enn burgere: ren nytelse.",
   "venue": "tonsberg",
-  "photo": "/assets/img/tonsberg-hero.jpg",
-  "alt": "Kverneriet Tønsberg på Kaldnes, ved kanalen"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/f0a99c94d4b98962eeb2bdbc78ac1e248027a31e-2000x2994.jpg",
+  "alt": "Kverneriet Tønsberg på Kaldnes, ved kanalen",
+  "featured": true,
+  "isoDate": "2020-03-13"
  },
  {
   "key": "op_2021",
@@ -212,8 +246,10 @@
   "rating": "",
   "quote": "Folket har talt – dette er Tønsbergs beste restaurant: – En bekreftelse på at vi er på rett vei.",
   "venue": "tonsberg",
-  "photo": "/assets/img/trio-tonsberg.jpg",
-  "alt": "Uteserveringen i Tønsberg"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/1cce75c0f4965469f45d9a3b70ade88d6126d75d-1400x2096.jpg",
+  "alt": "Uteserveringen i Tønsberg",
+  "featured": true,
+  "isoDate": "2021-07-21"
  },
  {
   "key": "fa_2024",
@@ -224,8 +260,10 @@
   "rating": "",
   "quote": "Er det sentrums beste sted for å kombinere business og burger? Ja.",
   "venue": "solli",
-  "photo": "/assets/img/solli-hero.jpg",
-  "alt": "Spisesalen på Kverneriet Solli"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/0d00eff70ee25ad5e4f69e7373f6e86735d6ac67-2000x1336.jpg",
+  "alt": "Spisesalen på Kverneriet Solli",
+  "featured": true,
+  "isoDate": "2024-03-22"
  },
  {
   "key": "fa_2025",
@@ -236,8 +274,10 @@
   "rating": "",
   "quote": "Kverneriet har servert bankers burgere i luksussegmentet i en årrekke. Dette er noe helt annet enn den jevne gatekjøkkenburgeren.",
   "venue": "generelt",
-  "photo": "/assets/img/ta-band.jpg",
-  "alt": "Innpakket take-away-burger"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/6de1c0d60609465d2895c123baa2ab1609e92c24-1400x2096.jpg",
+  "alt": "Innpakket take-away-burger",
+  "featured": true,
+  "isoDate": "2025-09-21"
  },
  {
   "key": "dn_2016",
@@ -248,7 +288,9 @@
   "rating": "21/25",
   "quote": "Har man lyst på burger til lunsj, er Kverneriet absolutt et godt valg.",
   "venue": "majorstua",
-  "photo": "/assets/img/g-burger.jpg",
-  "alt": "Burger på tallerken"
+  "photo": "https://cdn.sanity.io/images/u0hod2sg/production/96a5a1dee40576c794a7a19634c2b2734b3abe1f-1400x2096.jpg",
+  "alt": "Burger på tallerken",
+  "featured": true,
+  "isoDate": "2016-10-25"
  }
 ]

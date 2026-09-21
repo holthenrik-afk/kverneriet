@@ -40,13 +40,32 @@ Repoet er klart for GitHub Pages: `.nojekyll` (ingen Jekyll-behandling), `CNAME`
 
 Bygg alltid lokalt før push (`python3 tools/build.py`) – Actions bygger ikke, den kopierer bare. Filer over 100 MB avvises av GitHub; de største her er PDF-ene på ~4 MB.
 
+## Sanity (kunden redigerer selv)
+
+Innholdet redigeres i **https://kverneriet.sanity.studio** (Sanity-prosjekt `u0hod2sg`, datasett `production`, kildekode i `studio-kverneriet/`). Typene er på norsk: Restauranter, Menyer, Blogg, Presseomtaler, Spørsmål og svar, Landingssider og Innstillinger.
+
+Slik henger det sammen:
+
+1. Redaktøren trykker **Publish** i Studio.
+2. `tools/fetch_sanity.py` henter innholdet (offentlig lesetilgang, ingen nøkkel) og skriver `content/venues.json`, `content/menus.js`, `content/press.json`, `content/landing.json`, `content/site-copy.json` og `content/blog.json`.
+3. `tools/build.py` bygger sidene som før. Bilder lastet opp i Sanity serveres fra Sanitys CDN med `srcset` (`?w=…&auto=format`), lokale bilder går gjennom `tools/images.py` som før.
+4. GitHub Actions kjører 2–3 ved push, hver time (`schedule`), manuelt, og ved webhook fra Sanity (`repository_dispatch`, type `sanity-publish`).
+
+**Webhook (valgfritt, gir oppdatering innen et par minutter i stedet for innen en time):** i sanity.io/manage → API → Webhooks: URL `https://api.github.com/repos/holthenrik-afk/kverneriet/dispatches`, metode POST, header `Authorization: Bearer <GitHub-token med repo-tilgang>` og `Accept: application/vnd.github+json`, body `{"event_type":"sanity-publish"}`, trigger på create/update/delete.
+
+**Gi kunden tilgang:** sanity.io/manage → prosjektet → Members → inviter e-post med rollen Editor. De logger inn på kverneriet.sanity.studio med Google eller e-post.
+
+**Lokalt:** `cd studio-kverneriet && npm run dev` åpner Studio på localhost:3333. `npx sanity deploy` publiserer ny Studio-versjon (etter endringer i `schemaTypes/`). Første innlasting av dagens innhold ble gjort med `tools/sanity_seed.py` + `sanity dataset import` (21.09.2026); scriptet kan kjøres igjen med `--replace` for å nullstille.
+
+**Bloggen:** innlegg av typen «Blogginnlegg» bygges til `/blogg/` og `/blogg/<slug>/` med BlogPosting-markup. Lenken «Blogg» i meny og footer vises først når det finnes minst ett publisert innlegg.
+
 ## Innholdslaget («CMS»)
 
-- **`content/venues.json`** – én kilde for restaurantfakta: adresse, telefon, e-post, geo, kart-lenker, Facebook, Zenchef-id, kjøkken- og bartider, lunsjtider, bestillingskanaler, PDF-menyer, matpakker og priser. Brukes av restaurantsidene, footeren (NAP på alle sider), landingssidene, FAQ, JSON-LD og llms.txt. Hentet fra kverneriet.com 16.09.2026.
-- **`content/menus.js`** – menyene for alle tre restaurantene, importert ordrett fra `kverneriet.com/<restaurant>/menu/` av `tools/import-menus.py` (kjør `python3 tools/import-menus.py` for å hente på nytt, deretter `tools/build.py`). Allergen-nøkkelen leses fra kjøkkenets egne koder (SN = sennep, SY = soya, S = sulfitt, SD = skalldyr osv.).
+- **`content/venues.json`** – skrives av `fetch_sanity.py` (rediger i Sanity, ikke her). Én kilde for restaurantfakta: adresse, telefon, e-post, geo, kart-lenker, Facebook, Zenchef-id, kjøkken- og bartider, lunsjtider, bestillingskanaler, PDF-menyer, matpakker og priser. Brukes av restaurantsidene, footeren (NAP på alle sider), landingssidene, FAQ, JSON-LD og llms.txt. Hentet fra kverneriet.com 16.09.2026.
+- **`content/menus.js`** – menyene, skrives av `fetch_sanity.py` fra Sanity (opprinnelig importert ordrett fra kverneriet.com med `tools/import-menus.py`). Allergen-nøkkelen leses fra kjøkkenets egne koder (SN = sennep, SY = soya, S = sulfitt, SD = skalldyr osv.).
 - **`content/i18n.js`** – håndskrevne UI-tekster (no + en). **`content/i18n-gen.js`** genereres av bygget (om-tekster, FAQ, åpningstider, skjema-tekster) – ikke rediger den.
 - **`tools/pages.py`** – titler, meta-beskrivelser og delingsbilde per side (tittel ≤ 60, beskrivelse ≤ 155 tegn, sjekkes ved bygging).
-- **`tools/media.py`** – de 21 kuraterte presseomtalene (kort, logostripe og Review/NewsArticle i JSON-LD kommer fra samme liste).
+- **`content/press.json`** – presseomtalene (fra Sanity); `tools/media.py` lager kort, logostripe og Review/NewsArticle i JSON-LD fra samme liste. `content/landing.json` og `content/site-copy.json` – tekstene på landingssidene og forsiden, også fra Sanity.
 
 ## Booking
 

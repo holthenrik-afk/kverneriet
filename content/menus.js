@@ -1,6 +1,4 @@
-// Kverneriet — innholdslaget. Dette er filen et CMS ville publisert.
-// Generert av tools/import-menus.py fra kverneriet.com/<restaurant>/menu/ — rediger der (eller her) og kjør
-// python3 tools/import-menus.py && python3 tools/build.py
+// Generert av tools/fetch_sanity.py – rediger menyene i Sanity, ikke her.
 window.KV_CONTENT={
   "allergenKey": {
     "E": "Egg",
@@ -31,11 +29,11 @@ window.KV_CONTENT={
       "zenchef": "385239",
       "menu": {
         "updated": "2026-09-16",
-        "source": "kverneriet.com/majorstua/menu/ (importert ordrett)",
-        "photo": "/assets/img/g-burger.jpg",
+        "source": "Sanity",
+        "photo": "https://cdn.sanity.io/images/u0hod2sg/production/96a5a1dee40576c794a7a19634c2b2734b3abe1f-1400x2096.jpg",
         "photoLabel": "Crispy chicken-burger på tallerken, Kverneriet Majorstua",
-        "drinksPdf": "/static-pdf/drinks/Kverneriet_MJS_Beverage_26-Aug.pdf",
-        "kidsPdf": "/static-pdf/kverneriet_kids_menu.pdf",
+        "drinksPdf": "https://cdn.sanity.io/files/u0hod2sg/production/98ed319f87cc02d7f454ddfc480f11d7c3bfa493.pdf",
+        "kidsPdf": "https://cdn.sanity.io/files/u0hod2sg/production/c8b5ef18512ef5115ebd02d46ff4fabc45ed4423.pdf",
         "sections": [
           {
             "id": "starters",
@@ -169,6 +167,7 @@ window.KV_CONTENT={
             "id": "burgers",
             "label": "Burgers",
             "title": "Burgers",
+            "intro": "We put our heart and soul into all elements in our burgers. We grind all meat ourselves from high quality beef and serve our burgers medium plus to well done. All burgers are served with 150 g beef patty if not otherwise stated.",
             "items": [
               {
                 "name": "Into The Wild",
@@ -262,7 +261,6 @@ window.KV_CONTENT={
                 ]
               }
             ],
-            "intro": "We put our heart and soul into all elements in our burgers. We grind all meat ourselves from high quality beef and serve our burgers medium plus to well done. All burgers are served with 150 g beef patty if not otherwise stated.",
             "upgradesTitle": "Upgrades & Extras",
             "upgrades": [
               {
@@ -272,10 +270,10 @@ window.KV_CONTENT={
               },
               {
                 "name": "Change to Veggie Patty",
+                "delta": "free",
                 "allergens": [
                   "H"
-                ],
-                "delta": "free"
+                ]
               },
               {
                 "name": "Gluten-Free Bun",
@@ -312,6 +310,7 @@ window.KV_CONTENT={
             "id": "fries",
             "label": "Fries",
             "title": "Fries",
+            "intro": "Our handmade, triple cooked fries take 3 days to prepare - and we believe that you can taste all of that hard work. They are naturally gluten free.",
             "items": [
               {
                 "name": "American Fries",
@@ -319,16 +318,15 @@ window.KV_CONTENT={
                 "description": "Thin-cut and crispy — our classic American style fries."
               }
             ],
-            "intro": "Our handmade, triple cooked fries take 3 days to prepare - and we believe that you can taste all of that hard work. They are naturally gluten free.",
             "upgradesTitle": "Give me an upgrade",
             "upgrades": [
               {
                 "name": "Parmesan & Parsley",
+                "delta": "+39.-",
                 "allergens": [
                   "E",
                   "M"
-                ],
-                "delta": "+39.-"
+                ]
               },
               {
                 "name": "Truffle & Parsley",
@@ -337,80 +335,80 @@ window.KV_CONTENT={
               {
                 "name": "Fully Loaded",
                 "note": "Cheese sauce, pico de gallo, pickled onions, jalapeños, and smoky pulled beef barbacoa.",
+                "delta": "+89.-",
                 "allergens": [
                   "M",
                   "S",
                   "H",
                   "SL",
                   "SN"
-                ],
-                "delta": "+89.-"
+                ]
               }
             ],
             "dipsTitle": "Dips",
             "dips": [
               {
                 "name": "Aioli",
+                "delta": "29.-",
                 "allergens": [
                   "E"
-                ],
-                "delta": "29.-"
+                ]
               },
               {
                 "name": "Burgler",
+                "delta": "35.-",
                 "allergens": [
                   "E",
                   "SN",
                   "SL"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Béarnaise Mayo",
+                "delta": "35.-",
                 "allergens": [
                   "SY",
                   "SL",
                   "F",
                   "H"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "BBQ Sauce",
+                "delta": "35.-",
                 "allergens": [
                   "SY",
                   "SL",
                   "F",
                   "H"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Chili Mayo",
+                "delta": "35.-",
                 "allergens": [
                   "E",
                   "SN",
                   "SY",
                   "H"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Vegan Chili Mayo",
+                "delta": "35.-",
                 "allergens": [
                   "SN",
                   "SY",
                   "H"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Herbs & Parmesan",
+                "delta": "35.-",
                 "allergens": [
                   "E",
                   "M"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Hot Sauce",
@@ -418,22 +416,22 @@ window.KV_CONTENT={
               },
               {
                 "name": "Blue Cheese",
+                "delta": "35.-",
                 "allergens": [
                   "E",
                   "M"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Truffle Mayo",
+                "delta": "39.-",
                 "allergens": [
                   "E",
                   "H",
                   "SY",
                   "SN",
                   "SV"
-                ],
-                "delta": "39.-"
+                ]
               }
             ]
           },
@@ -499,31 +497,31 @@ window.KV_CONTENT={
               {
                 "name": "Blueberry Cheesecate",
                 "note": "Whipped vanilla cheesecake, rich blueberry compote, and finished with a buttery biscuit crumble.",
+                "delta": "+49.-",
                 "allergens": [
                   "M",
                   "H"
-                ],
-                "delta": "+49.-"
+                ]
               },
               {
                 "name": "Chocolate Deluxe",
                 "note": "Warm rich chocolate fudge sauce, toasted hazelnuts and crushed Oreos.",
+                "delta": "+49.-",
                 "allergens": [
                   "M",
                   "H",
                   "N"
-                ],
-                "delta": "+49.-"
+                ]
               },
               {
                 "name": "OREO Crumbs",
                 "note": "A handful of crumbled Oreo cookies loaded on top of your soft serve deluxe. For kids of all ages.",
+                "delta": "+29.-",
                 "allergens": [
                   "M",
                   "H",
                   "SY"
-                ],
-                "delta": "+29.-"
+                ]
               }
             ]
           },
@@ -531,6 +529,7 @@ window.KV_CONTENT={
             "id": "milkshakes",
             "label": "Milkshakes",
             "title": "Milkshakes",
+            "intro": "Our Milkshakes are made exclusivly with Jersey cattle dairy from Jerseymeieriet - the Rolls-Royce of Milk!",
             "items": [
               {
                 "name": "Oreo",
@@ -561,8 +560,7 @@ window.KV_CONTENT={
                 "price": "+80.-",
                 "description": "+4cl matching spirit"
               }
-            ],
-            "intro": "Our Milkshakes are made exclusivly with Jersey cattle dairy from Jerseymeieriet - the Rolls-Royce of Milk!"
+            ]
           },
           {
             "id": "kids",
@@ -603,15 +601,14 @@ window.KV_CONTENT={
                 "price": "89.-"
               }
             ],
-            "pdf": "/static-pdf/kverneriet_kids_menu.pdf",
             "upgradesTitle": "Build your own",
             "upgrades": [
               {
                 "name": "Cheese",
+                "delta": "",
                 "allergens": [
                   "M"
-                ],
-                "delta": ""
+                ]
               },
               {
                 "name": "Tomato",
@@ -669,11 +666,11 @@ window.KV_CONTENT={
       "zenchef": "385260",
       "menu": {
         "updated": "2026-09-16",
-        "source": "kverneriet.com/solli/menu/ (importert ordrett)",
-        "photo": "/assets/img/meny-solli.jpg",
+        "source": "Sanity",
+        "photo": "https://cdn.sanity.io/images/u0hod2sg/production/44e341209fe40b5e675433a067e82ff4a083a496-1400x935.jpg",
         "photoLabel": "Burger på marmorbord, Kverneriet Solli",
-        "drinksPdf": "/static-pdf/drinks/Kverneriet_SOL_Beverage_26-June.pdf",
-        "kidsPdf": "/static-pdf/kverneriet_kids_menu.pdf",
+        "drinksPdf": "https://cdn.sanity.io/files/u0hod2sg/production/459b7ee8182ff6ce68a1fb74ea7657c5795dde84.pdf",
+        "kidsPdf": "https://cdn.sanity.io/files/u0hod2sg/production/c8b5ef18512ef5115ebd02d46ff4fabc45ed4423.pdf",
         "sections": [
           {
             "id": "starters",
@@ -791,6 +788,7 @@ window.KV_CONTENT={
             "id": "burgers",
             "label": "Burgers",
             "title": "Burgers",
+            "intro": "We put our heart and soul into all elements in our burgers. We grind all meat ourselves from high quality beef and serve our burgers medium plus to well done. All burgers are served with 150 g beef patty if not otherwise stated.",
             "items": [
               {
                 "name": "Into The Wild",
@@ -884,7 +882,6 @@ window.KV_CONTENT={
                 ]
               }
             ],
-            "intro": "We put our heart and soul into all elements in our burgers. We grind all meat ourselves from high quality beef and serve our burgers medium plus to well done. All burgers are served with 150 g beef patty if not otherwise stated.",
             "upgradesTitle": "Upgrades & Extras",
             "upgrades": [
               {
@@ -894,10 +891,10 @@ window.KV_CONTENT={
               },
               {
                 "name": "Change to Veggie Patty",
+                "delta": "free",
                 "allergens": [
                   "H"
-                ],
-                "delta": "free"
+                ]
               },
               {
                 "name": "Gluten-Free Bun",
@@ -934,6 +931,7 @@ window.KV_CONTENT={
             "id": "fries",
             "label": "Fries",
             "title": "Fries",
+            "intro": "Our handmade, triple cooked fries take 3 days to prepare - and we believe that you can taste all of that hard work. They are naturally gluten free.",
             "items": [
               {
                 "name": "American Fries",
@@ -941,16 +939,15 @@ window.KV_CONTENT={
                 "description": "Thin-cut and crispy — our classic American style fries."
               }
             ],
-            "intro": "Our handmade, triple cooked fries take 3 days to prepare - and we believe that you can taste all of that hard work. They are naturally gluten free.",
             "upgradesTitle": "Give me an upgrade",
             "upgrades": [
               {
                 "name": "Parmesan & Parsley",
+                "delta": "+39.-",
                 "allergens": [
                   "E",
                   "M"
-                ],
-                "delta": "+39.-"
+                ]
               },
               {
                 "name": "Truffle & Parsley",
@@ -961,85 +958,85 @@ window.KV_CONTENT={
             "dips": [
               {
                 "name": "Aioli",
+                "delta": "29.-",
                 "allergens": [
                   "E"
-                ],
-                "delta": "29.-"
+                ]
               },
               {
                 "name": "Burgler",
+                "delta": "35.-",
                 "allergens": [
                   "E",
                   "SN",
                   "SL"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Béarnaise Mayo",
+                "delta": "35.-",
                 "allergens": [
                   "SY",
                   "SL",
                   "F",
                   "H"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "BBQ Sauce",
+                "delta": "35.-",
                 "allergens": [
                   "SY",
                   "SL",
                   "F",
                   "H"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Chili Mayo",
+                "delta": "35.-",
                 "allergens": [
                   "E",
                   "SN",
                   "SY",
                   "H"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Vegan Chili Mayo",
+                "delta": "35.-",
                 "allergens": [
                   "SN",
                   "SY",
                   "H"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Herbs & Parmesan",
+                "delta": "35.-",
                 "allergens": [
                   "E",
                   "M"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Blue Cheese",
+                "delta": "35.-",
                 "allergens": [
                   "E",
                   "M"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Truffle Mayo",
+                "delta": "39.-",
                 "allergens": [
                   "E",
                   "H",
                   "SY",
                   "SN",
                   "SV"
-                ],
-                "delta": "39.-"
+                ]
               }
             ]
           },
@@ -1105,34 +1102,34 @@ window.KV_CONTENT={
               {
                 "name": "Lemon and Crumble",
                 "note": "Tangy lemon curd layered with a buttery, crunchy crumble, finished with sweet, zesty candied lemons on top.",
+                "delta": "+49.-",
                 "allergens": [
                   "M",
                   "H",
                   "E"
-                ],
-                "delta": "+49.-"
+                ]
               },
               {
                 "name": "Choco-nuts",
                 "note": "Warm chocolate sauce and hazelnut crumble.",
+                "delta": "+49.-",
                 "allergens": [
                   "M",
                   "H",
                   "E",
                   "N",
                   "SY"
-                ],
-                "delta": "+49.-"
+                ]
               },
               {
                 "name": "OREO Crumbs",
                 "note": "A handful of crumbled Oreo cookies loaded on top of your soft serve deluxe. For kids of all ages.",
+                "delta": "+29.-",
                 "allergens": [
                   "M",
                   "H",
                   "SY"
-                ],
-                "delta": "+29.-"
+                ]
               }
             ]
           },
@@ -1140,6 +1137,7 @@ window.KV_CONTENT={
             "id": "milkshakes",
             "label": "Milkshakes",
             "title": "Milkshakes",
+            "intro": "Our Milkshakes are made exclusivly with Jersey cattle dairy from Jerseymeieriet - the Rolls-Royce of Milk!",
             "items": [
               {
                 "name": "Oreo",
@@ -1170,8 +1168,7 @@ window.KV_CONTENT={
                 "price": "+80.-",
                 "description": "+4cl matching spirit"
               }
-            ],
-            "intro": "Our Milkshakes are made exclusivly with Jersey cattle dairy from Jerseymeieriet - the Rolls-Royce of Milk!"
+            ]
           }
         ]
       }
@@ -1187,11 +1184,11 @@ window.KV_CONTENT={
       "zenchef": "385236",
       "menu": {
         "updated": "2026-09-16",
-        "source": "kverneriet.com/tonsberg/menu/ (importert ordrett)",
-        "photo": "/assets/img/meny-tonsberg.jpg",
+        "source": "Sanity",
+        "photo": "https://cdn.sanity.io/images/u0hod2sg/production/a0da856890dd482848bd2a9bef1a2a74ee1bb17e-1400x2096.jpg",
         "photoLabel": "Burger med crispy kylling, Kverneriet Tønsberg",
-        "drinksPdf": "/static-pdf/drinks/Kverneriet_TBG_Beverage_26-June.pdf",
-        "kidsPdf": "/static-pdf/kverneriet_kids_menu.pdf",
+        "drinksPdf": "https://cdn.sanity.io/files/u0hod2sg/production/bbdf9ee8526afd4d85b562f735c24c594983b796.pdf",
+        "kidsPdf": "https://cdn.sanity.io/files/u0hod2sg/production/c8b5ef18512ef5115ebd02d46ff4fabc45ed4423.pdf",
         "sections": [
           {
             "id": "starters",
@@ -1368,6 +1365,7 @@ window.KV_CONTENT={
             "id": "burgers",
             "label": "Burgers",
             "title": "Burgers",
+            "intro": "We put our heart and soul into all elements in our burgers. We grind all meat ourselves from high quality beef and serve our burgers medium plus to well done. All burgers are served with 150 g beef patty if not otherwise stated.",
             "items": [
               {
                 "name": "Into The Wild",
@@ -1463,7 +1461,6 @@ window.KV_CONTENT={
                 ]
               }
             ],
-            "intro": "We put our heart and soul into all elements in our burgers. We grind all meat ourselves from high quality beef and serve our burgers medium plus to well done. All burgers are served with 150 g beef patty if not otherwise stated.",
             "upgradesTitle": "Upgrades & Extras",
             "upgrades": [
               {
@@ -1473,10 +1470,10 @@ window.KV_CONTENT={
               },
               {
                 "name": "Change to Veggie Patty",
+                "delta": "free",
                 "allergens": [
                   "H"
-                ],
-                "delta": "free"
+                ]
               },
               {
                 "name": "Gluten-Free Bun",
@@ -1513,6 +1510,7 @@ window.KV_CONTENT={
             "id": "fries",
             "label": "Fries",
             "title": "Fries",
+            "intro": "Our handmade, triple cooked fries take 3 days to prepare - and we believe that you can taste all of that hard work. They are naturally gluten free.",
             "items": [
               {
                 "name": "American Fries",
@@ -1520,16 +1518,15 @@ window.KV_CONTENT={
                 "description": "Thin-cut and crispy — our classic American style fries."
               }
             ],
-            "intro": "Our handmade, triple cooked fries take 3 days to prepare - and we believe that you can taste all of that hard work. They are naturally gluten free.",
             "upgradesTitle": "Give me an upgrade",
             "upgrades": [
               {
                 "name": "Parmesan & Parsley",
+                "delta": "+39.-",
                 "allergens": [
                   "E",
                   "M"
-                ],
-                "delta": "+39.-"
+                ]
               },
               {
                 "name": "Truffle & Parsley",
@@ -1538,77 +1535,77 @@ window.KV_CONTENT={
               {
                 "name": "Fully Loaded",
                 "note": "Cheese sauce, pico de gallo, pickled onions, jalapeños, and smoky pulled beef barbacoa.",
+                "delta": "+89.-",
                 "allergens": [
                   "M",
                   "S",
                   "H",
                   "SL",
                   "SN"
-                ],
-                "delta": "+89.-"
+                ]
               }
             ],
             "dipsTitle": "Dips",
             "dips": [
               {
                 "name": "Aioli",
+                "delta": "29.-",
                 "allergens": [
                   "E"
-                ],
-                "delta": "29.-"
+                ]
               },
               {
                 "name": "Estragon Mayo",
+                "delta": "35.-",
                 "allergens": [
                   "E"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Chili Mayo",
+                "delta": "35.-",
                 "allergens": [
                   "E",
                   "SN",
                   "SY",
                   "H"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Vegan Chili Mayo",
+                "delta": "35.-",
                 "allergens": [
                   "SN",
                   "SY",
                   "H"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Herbs & Parmesan",
+                "delta": "35.-",
                 "allergens": [
                   "E",
                   "M"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Blue Cheese",
+                "delta": "35.-",
                 "allergens": [
                   "E",
                   "M"
-                ],
-                "delta": "35.-"
+                ]
               },
               {
                 "name": "Truffle Mayo",
+                "delta": "39.-",
                 "allergens": [
                   "E",
                   "H",
                   "SY",
                   "SN",
                   "SV"
-                ],
-                "delta": "39.-"
+                ]
               }
             ]
           },
@@ -1685,35 +1682,35 @@ window.KV_CONTENT={
               {
                 "name": "Pistachio Twist",
                 "note": "Handcrafted pistachio cream with vibrant raspberry sauce, crunchy krokan and a hidden chocolate surprise.",
+                "delta": "+49.-",
                 "allergens": [
                   "M",
                   "N",
                   "MA",
                   "PN"
-                ],
-                "delta": "+49.-"
+                ]
               },
               {
                 "name": "Choco-nuts",
                 "note": "Warm chocolate sauce and hazelnut crumble.",
+                "delta": "+49.-",
                 "allergens": [
                   "M",
                   "H",
                   "E",
                   "N",
                   "SY"
-                ],
-                "delta": "+49.-"
+                ]
               },
               {
                 "name": "OREO Crumbs",
                 "note": "A handful of crumbled Oreo cookies loaded on top of your soft serve deluxe. For kids of all ages.",
+                "delta": "+29.-",
                 "allergens": [
                   "M",
                   "H",
                   "SY"
-                ],
-                "delta": "+29.-"
+                ]
               }
             ]
           },
@@ -1721,6 +1718,7 @@ window.KV_CONTENT={
             "id": "milkshakes",
             "label": "Milkshakes",
             "title": "Milkshakes",
+            "intro": "Our Milkshakes are made exclusivly with Jersey cattle dairy from Jerseymeieriet - the Rolls-Royce of Milk!",
             "items": [
               {
                 "name": "Oreo",
@@ -1751,8 +1749,7 @@ window.KV_CONTENT={
                 "price": "+80.-",
                 "description": "+4cl matching spirit"
               }
-            ],
-            "intro": "Our Milkshakes are made exclusivly with Jersey cattle dairy from Jerseymeieriet - the Rolls-Royce of Milk!"
+            ]
           },
           {
             "id": "kids",
@@ -1793,15 +1790,14 @@ window.KV_CONTENT={
                 "price": "89.-"
               }
             ],
-            "pdf": "/static-pdf/kverneriet_kids_menu.pdf",
             "upgradesTitle": "Build your own",
             "upgrades": [
               {
                 "name": "Cheese",
+                "delta": "",
                 "allergens": [
                   "M"
-                ],
-                "delta": ""
+                ]
               },
               {
                 "name": "Tomato",

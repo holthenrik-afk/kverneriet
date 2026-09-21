@@ -1,5 +1,5 @@
 {
-  "_comment": "Kverneriet — restaurantfakta (NAP, åpningstider, geo, kanaler). Én kilde for HTML-tekst, JSON-LD, footer og landingssider. Hentet fra kverneriet.com 16.09.2026. Rediger her og kjør `python3 tools/build.py`.",
+  "_comment": "Generert av tools/fetch_sanity.py 2026-09-21 – rediger i Sanity, ikke her.",
   "org": {
     "name": "Kverneriet",
     "legalName": "Kverneriet AS",
@@ -55,17 +55,17 @@
       "since": "2015",
       "tagline": "Majorstua, Oslo - flipping kick-ass burgers since 2015",
       "address": {
-        "street": "Kirkeveien 64B",
+        "city": "Oslo",
         "postalCode": "0366",
-        "city": "Oslo"
+        "street": "Kirkeveien 64B"
       },
       "geo": {
         "lat": 59.929192,
         "lng": 10.714806
       },
       "maps": {
-        "google": "https://g.page/kvernerietmajorstua?share",
-        "apple": "https://maps.apple.com/?address=Kirkeveien%2064,%200364%20Oslo,%20Norge&auid=4899923583137773310&ll=59.929192,10.714806&q=Kverneriet"
+        "apple": "https://maps.apple.com/?address=Kirkeveien%2064,%200364%20Oslo,%20Norge&auid=4899923583137773310&ll=59.929192,10.714806&q=Kverneriet",
+        "google": "https://g.page/kvernerietmajorstua?share"
       },
       "facebook": "https://www.facebook.com/kvernerietmajorstua/",
       "email": "book.major@kverneriet.com",
@@ -137,66 +137,85 @@
         "foodora": "https://www.foodora.no/restaurant/tkiq/kverneriet-majorstuen"
       },
       "menuPdf": {
-        "drinks": "/static-pdf/drinks/Kverneriet_MJS_Beverage_26-Aug.pdf",
-        "kids": "/static-pdf/kverneriet_kids_menu.pdf"
+        "drinks": "https://cdn.sanity.io/files/u0hod2sg/production/98ed319f87cc02d7f454ddfc480f11d7c3bfa493.pdf",
+        "kids": "https://cdn.sanity.io/files/u0hod2sg/production/c8b5ef18512ef5115ebd02d46ff4fabc45ed4423.pdf"
       },
       "copy": {
         "heroSub": {
-          "no": "Burgerrestaurant i Kirkeveien 64B på Majorstuen, Oslo – siden 2015.",
-          "en": "Burger restaurant at Kirkeveien 64B, Majorstuen, Oslo – since 2015."
+          "en": "Burger restaurant at Kirkeveien 64B, Majorstuen, Oslo – since 2015.",
+          "no": "Burgerrestaurant i Kirkeveien 64B på Majorstuen, Oslo – siden 2015."
         },
         "slogan": "Flipping kick-ass burgers",
-        "heroAlt": "Spisesalen på Kverneriet Majorstua med grønne fløyelsbenker, blå bar og Aperol-plakater",
         "about1": {
-          "no": "Kverneriet Majorstua åpnet i 2015 i Kirkeveien 64B, tre minutter fra Majorstuen T-bane. Her har vi flippet håndlagde burgere siden: 150 gram kjøtt vi kverner selv av storfe i toppklasse, ferske brød og fries som tar tre dager å lage. Menyen har vokst sammen med gjestene – hot wings, ribs, salater, soft serve på Jersey-melk og milkshakes – men burgeren er fortsatt hjertet.",
-          "en": "Kverneriet Majorstua opened in 2015 at Kirkeveien 64B, three minutes from Majorstuen metro. We have been flipping handmade burgers here ever since: 150 grams of beef we grind ourselves from top-grade cattle, fresh buns and fries that take three days to make. The menu has grown with our guests – hot wings, ribs, salads, Jersey-milk soft serve and milkshakes – but the burger is still the heart of it."
+          "en": "Kverneriet Majorstua opened in 2015 at Kirkeveien 64B, three minutes from Majorstuen metro. We have been flipping handmade burgers here ever since: 150 grams of beef we grind ourselves from top-grade cattle, fresh buns and fries that take three days to make. The menu has grown with our guests – hot wings, ribs, salads, Jersey-milk soft serve and milkshakes – but the burger is still the heart of it.",
+          "no": "Kverneriet Majorstua åpnet i 2015 i Kirkeveien 64B, tre minutter fra Majorstuen T-bane. Her har vi flippet håndlagde burgere siden: 150 gram kjøtt vi kverner selv av storfe i toppklasse, ferske brød og fries som tar tre dager å lage. Menyen har vokst sammen med gjestene – hot wings, ribs, salater, soft serve på Jersey-melk og milkshakes – men burgeren er fortsatt hjertet."
         },
         "about2": {
-          "no": "Lokalet har grønne fløyelsbenker, blå bar og plass til både en rask lunsj tirsdag–fredag fra 11 og lange kvelder: kjøkkenet serverer til 22, og baren holder åpent til 23 tirsdag–lørdag. Finansavisen ga oss 5 av 6 i 2026 og mener Kverneriet «bør spille en av hovedrollene på Oslos burgerscene».",
-          "en": "The room has green velvet booths, a blue bar and space for both a quick lunch Tuesday–Friday from 11 and long evenings: the kitchen serves until 22.00 and the bar stays open until 23.00 Tuesday–Saturday. Finansavisen gave us 5 out of 6 in 2026 and thinks Kverneriet “should play one of the lead roles on Oslo’s burger scene”."
+          "en": "The room has green velvet booths, a blue bar and space for both a quick lunch Tuesday–Friday from 11 and long evenings: the kitchen serves until 22.00 and the bar stays open until 23.00 Tuesday–Saturday. Finansavisen gave us 5 out of 6 in 2026 and thinks Kverneriet “should play one of the lead roles on Oslo’s burger scene”.",
+          "no": "Lokalet har grønne fløyelsbenker, blå bar og plass til både en rask lunsj tirsdag–fredag fra 11 og lange kvelder: kjøkkenet serverer til 22, og baren holder åpent til 23 tirsdag–lørdag. Finansavisen ga oss 5 av 6 i 2026 og mener Kverneriet «bør spille en av hovedrollene på Oslos burgerscene»."
+        },
+        "heroImg": {
+          "alt": "Spisesalen på Kverneriet Majorstua med grønne fløyelsbenker, blå bar og Aperol-plakater",
+          "h": 1476,
+          "url": "https://cdn.sanity.io/images/u0hod2sg/production/8dbaed607f0d8d92a340eff15da1f59d4099dcfc-2200x1476.jpg",
+          "w": 2200
         },
         "aboutImg": {
-          "url": "/assets/img/majorstua-about.jpg",
-          "alt": "Bord, benker og plakater i spisesalen på Kverneriet Majorstua"
+          "alt": "Bord, benker og plakater i spisesalen på Kverneriet Majorstua",
+          "h": 1068,
+          "url": "https://cdn.sanity.io/images/u0hod2sg/production/c6e2bf7ed4b48618115bceeb90fb5d65332ff306-1600x1068.jpg",
+          "w": 1600
         },
         "gallery": [
           {
-            "url": "/assets/img/trio-majorstua.jpg",
-            "alt": "Blå bar og fløyelsbenker på Kverneriet Majorstua"
+            "alt": "Blå bar og fløyelsbenker på Kverneriet Majorstua",
+            "h": 2086,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/fb500a18a5f6d7e20d0fd8f361c768af037438ed-1400x2086.jpg",
+            "w": 1400
           },
           {
-            "url": "/assets/img/g-burger.jpg",
-            "alt": "Servitør bærer to burgere på tallerkener"
+            "alt": "Servitør bærer to burgere på tallerkener",
+            "h": 2096,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/96a5a1dee40576c794a7a19634c2b2734b3abe1f-1400x2096.jpg",
+            "w": 1400
           },
           {
-            "url": "/assets/img/g-fries-herb.jpg",
-            "alt": "Trippelkokte fries med urter"
+            "alt": "Trippelkokte fries med urter",
+            "h": 801,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/37772e85c7257b09f28aeb1c8832edc631440b13-1200x801.jpg",
+            "w": 1200
           },
           {
-            "url": "/assets/img/g-patties.jpg",
-            "alt": "Grillede patties med smeltet blåmuggost"
+            "alt": "Grillede patties med smeltet blåmuggost",
+            "h": 801,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/c982e10d38fda1ed882143e9fb883132e21388af-1200x801.jpg",
+            "w": 1200
           },
           {
-            "url": "/assets/img/g-softserve-oreo.jpg",
-            "alt": "Soft serve med Oreo-smuler"
+            "alt": "Soft serve med Oreo-smuler",
+            "h": 801,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/1327a25f19e07d5b9aecd75fe76b03d0a3525bb2-1200x801.jpg",
+            "w": 1200
           },
           {
-            "url": "/assets/img/g-toast.jpg",
-            "alt": "Toast fra menyen"
+            "alt": "Toast fra menyen",
+            "h": 1796,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/bf919d0646c3776b2fa286d3679454fd469ef305-1200x1796.jpg",
+            "w": 1200
           },
           {
-            "url": "/assets/img/g-tomatoes.jpg",
-            "alt": "Skivede tomater til burgerne"
+            "alt": "Skivede tomater til burgerne",
+            "h": 801,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/50fee0ac40f873d772161de3bc70b4b6019ace57-1200x801.jpg",
+            "w": 1200
           },
           {
-            "url": "/assets/img/g-fries-truffle.jpg",
-            "alt": "Trøffelfries med parmesan"
+            "alt": "Trøffelfries med parmesan",
+            "h": 801,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/73d5d7242b94ffbe339097eaa8a40db504c6ca5f-1200x801.jpg",
+            "w": 1200
           }
-        ],
-        "heroImg": {
-          "url": "/assets/img/majorstua-hero.jpg",
-          "alt": "Spisesalen på Kverneriet Majorstua med grønne fløyelsbenker, blå bar og Aperol-plakater"
-        }
+        ]
       },
       "seo": {
         "title": "Kverneriet Majorstua – burger på Majorstuen, Oslo",
@@ -219,17 +238,17 @@
       "since": "2017",
       "tagline": "Solli, Oslo - your urban oasis since 2017",
       "address": {
-        "street": "Henrik Ibsens gate 100",
+        "city": "Oslo",
         "postalCode": "0255",
-        "city": "Oslo"
+        "street": "Henrik Ibsens gate 100"
       },
       "geo": {
         "lat": 59.914487,
         "lng": 10.718562
       },
       "maps": {
-        "google": "https://goo.gl/maps/pniiuKUfSTLJKqVd8",
-        "apple": "https://maps.apple.com/?address=Henrik%20Ibsens%20Gate%20100,%200255%20Oslo,%20Norge&auid=4561494559763924169&ll=59.914487,10.718562&q=Kverneriet"
+        "apple": "https://maps.apple.com/?address=Henrik%20Ibsens%20Gate%20100,%200255%20Oslo,%20Norge&auid=4561494559763924169&ll=59.914487,10.718562&q=Kverneriet",
+        "google": "https://goo.gl/maps/pniiuKUfSTLJKqVd8"
       },
       "facebook": "https://www.facebook.com/kvernerietsolli/",
       "email": "book.solli@kverneriet.com",
@@ -301,58 +320,73 @@
         "foodora": "https://www.foodora.no/restaurant/zdr3/kverneriet-solli"
       },
       "menuPdf": {
-        "drinks": "/static-pdf/drinks/Kverneriet_SOL_Beverage_26-June.pdf",
-        "kids": "/static-pdf/kverneriet_kids_menu.pdf"
+        "drinks": "https://cdn.sanity.io/files/u0hod2sg/production/459b7ee8182ff6ce68a1fb74ea7657c5795dde84.pdf",
+        "kids": "https://cdn.sanity.io/files/u0hod2sg/production/c8b5ef18512ef5115ebd02d46ff4fabc45ed4423.pdf"
       },
       "copy": {
         "heroSub": {
-          "no": "Burgerrestaurant og cocktailbar ved Solli plass, Henrik Ibsens gate 100, Oslo – siden 2017.",
-          "en": "Burger restaurant and cocktail bar at Solli plass, Henrik Ibsens gate 100, Oslo – since 2017."
+          "en": "Burger restaurant and cocktail bar at Solli plass, Henrik Ibsens gate 100, Oslo – since 2017.",
+          "no": "Burgerrestaurant og cocktailbar ved Solli plass, Henrik Ibsens gate 100, Oslo – siden 2017."
         },
         "slogan": "Your urban oasis",
-        "heroAlt": "Spisesalen på Kverneriet Solli med korallrosa sofabenker og grønne fløyelsstoler",
         "about1": {
-          "no": "Kverneriet Solli åpnet i 2017 i Henrik Ibsens gate 100, rett ved Solli plass mellom Frogner, Vika og Aker Brygge – en urban oase med uteservering, cocktailbar og de samme håndlagde burgerne som på Majorstua: kjøtt vi kverner selv, ferske brød og trippelkokte fries.",
-          "en": "Kverneriet Solli opened in 2017 at Henrik Ibsens gate 100, right by Solli plass between Frogner, Vika and Aker Brygge – an urban oasis with outdoor seating, a cocktail bar and the same handmade burgers as at Majorstua: beef we grind ourselves, fresh buns and triple-cooked fries."
+          "en": "Kverneriet Solli opened in 2017 at Henrik Ibsens gate 100, right by Solli plass between Frogner, Vika and Aker Brygge – an urban oasis with outdoor seating, a cocktail bar and the same handmade burgers as at Majorstua: beef we grind ourselves, fresh buns and triple-cooked fries.",
+          "no": "Kverneriet Solli åpnet i 2017 i Henrik Ibsens gate 100, rett ved Solli plass mellom Frogner, Vika og Aker Brygge – en urban oase med uteservering, cocktailbar og de samme håndlagde burgerne som på Majorstua: kjøtt vi kverner selv, ferske brød og trippelkokte fries."
         },
         "about2": {
-          "no": "Dagbladet kåret take-awayen vår til «Oslos overlegent beste burger» med terningkast 6, og Finansavisen kaller Solli sentrums beste sted for å kombinere business og burger. Lunsj tirsdag–fredag fra 11.30, kjøkken til 22 og bar til 23 tirsdag–lørdag. Hent selv, eller få levert med Wolt og Foodora.",
-          "en": "Dagbladet named our take-away “Oslo’s best burger by far” with a 6/6 rating, and Finansavisen calls Solli the best place downtown to combine business and burgers. Lunch Tuesday–Friday from 11.30, kitchen until 22.00 and bar until 23.00 Tuesday–Saturday. Pick up, or get delivery with Wolt and Foodora."
+          "en": "Dagbladet named our take-away “Oslo’s best burger by far” with a 6/6 rating, and Finansavisen calls Solli the best place downtown to combine business and burgers. Lunch Tuesday–Friday from 11.30, kitchen until 22.00 and bar until 23.00 Tuesday–Saturday. Pick up, or get delivery with Wolt and Foodora.",
+          "no": "Dagbladet kåret take-awayen vår til «Oslos overlegent beste burger» med terningkast 6, og Finansavisen kaller Solli sentrums beste sted for å kombinere business og burger. Lunsj tirsdag–fredag fra 11.30, kjøkken til 22 og bar til 23 tirsdag–lørdag. Hent selv, eller få levert med Wolt og Foodora."
+        },
+        "heroImg": {
+          "alt": "Spisesalen på Kverneriet Solli med korallrosa sofabenker og grønne fløyelsstoler",
+          "h": 1336,
+          "url": "https://cdn.sanity.io/images/u0hod2sg/production/0d00eff70ee25ad5e4f69e7373f6e86735d6ac67-2000x1336.jpg",
+          "w": 2000
         },
         "aboutImg": {
-          "url": "/assets/img/solli-about.jpg",
-          "alt": "Uteserveringen til Kverneriet Solli ved Solli plass med parasoller og rottingstoler"
+          "alt": "Uteserveringen til Kverneriet Solli ved Solli plass med parasoller og rottingstoler",
+          "h": 935,
+          "url": "https://cdn.sanity.io/images/u0hod2sg/production/7fbc988c02fe1ae9e0ad5c207ebe2760091e93f7-1400x935.jpg",
+          "w": 1400
         },
         "gallery": [
           {
-            "url": "/assets/img/trio-solli.jpg",
-            "alt": "Korallrosa sofabenk og dekkede bord på Kverneriet Solli"
+            "alt": "Korallrosa sofabenk og dekkede bord på Kverneriet Solli",
+            "h": 935,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/d5303d8c169da9c3a01882caaaebadaaba81a451-1400x935.jpg",
+            "w": 1400
           },
           {
-            "url": "/assets/img/meny-solli.jpg",
-            "alt": "Burger på marmorbord på Kverneriet Solli"
+            "alt": "Burger på marmorbord på Kverneriet Solli",
+            "h": 935,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/44e341209fe40b5e675433a067e82ff4a083a496-1400x935.jpg",
+            "w": 1400
           },
           {
-            "url": "/assets/img/ln-cocktail.jpg",
-            "alt": "Rød cocktail på marmorbaren"
+            "alt": "Rød cocktail på marmorbaren",
+            "h": 1796,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/97a3081f8af531f81919d8b0fdfe5d2e436a8cc9-1200x1796.jpg",
+            "w": 1200
           },
           {
-            "url": "/assets/img/g-fries-truffle.jpg",
-            "alt": "Trøffelfries med parmesan"
+            "alt": "Trøffelfries med parmesan",
+            "h": 801,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/73d5d7242b94ffbe339097eaa8a40db504c6ca5f-1200x801.jpg",
+            "w": 1200
           },
           {
-            "url": "/assets/img/g-burger.jpg",
-            "alt": "Servitør bærer to burgere på tallerkener"
+            "alt": "Servitør bærer to burgere på tallerkener",
+            "h": 2096,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/96a5a1dee40576c794a7a19634c2b2734b3abe1f-1400x2096.jpg",
+            "w": 1400
           },
           {
-            "url": "/assets/img/g-softserve.jpg",
-            "alt": "Soft serve med karamell"
+            "alt": "Soft serve med karamell",
+            "h": 801,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/df4f11f77c9540a96c56f76619269c5ab590b824-1200x801.jpg",
+            "w": 1200
           }
-        ],
-        "heroImg": {
-          "url": "/assets/img/solli-hero.jpg",
-          "alt": "Spisesalen på Kverneriet Solli med korallrosa sofabenker og grønne fløyelsstoler"
-        }
+        ]
       },
       "seo": {
         "title": "Kverneriet Solli – burger ved Solli plass, Oslo",
@@ -375,17 +409,17 @@
       "since": "2013",
       "tagline": "Tønsberg - kick-ass food since 2013",
       "address": {
-        "street": "Rambergveien 15",
+        "city": "Tønsberg",
         "postalCode": "3115",
-        "city": "Tønsberg"
+        "street": "Rambergveien 15"
       },
       "geo": {
         "lat": 59.264976,
         "lng": 10.40334
       },
       "maps": {
-        "google": "https://goo.gl/maps/JdA1UnpiprT2",
-        "apple": "https://maps.apple.com/?address=Rambergveien%2015A,%203115%20T%C3%B8nsberg,%20Norge&auid=5639938350662074769&ll=59.264976,10.403340&q=Kverneriet%20T%C3%B8nsberg"
+        "apple": "https://maps.apple.com/?address=Rambergveien%2015A,%203115%20T%C3%B8nsberg,%20Norge&auid=5639938350662074769&ll=59.264976,10.403340&q=Kverneriet%20T%C3%B8nsberg",
+        "google": "https://goo.gl/maps/JdA1UnpiprT2"
       },
       "facebook": "https://www.facebook.com/kverneriet/",
       "email": "book.tbg@kverneriet.com",
@@ -457,58 +491,73 @@
         "foodora": null
       },
       "menuPdf": {
-        "drinks": "/static-pdf/drinks/Kverneriet_TBG_Beverage_26-June.pdf",
-        "kids": "/static-pdf/kverneriet_kids_menu.pdf"
+        "drinks": "https://cdn.sanity.io/files/u0hod2sg/production/bbdf9ee8526afd4d85b562f735c24c594983b796.pdf",
+        "kids": "https://cdn.sanity.io/files/u0hod2sg/production/c8b5ef18512ef5115ebd02d46ff4fabc45ed4423.pdf"
       },
       "copy": {
         "heroSub": {
-          "no": "Burgerrestaurant på Kaldnes brygge, Rambergveien 15, Tønsberg – der det startet i 2013.",
-          "en": "Burger restaurant on Kaldnes brygge, Rambergveien 15, Tønsberg – where it all started in 2013."
+          "en": "Burger restaurant on Kaldnes brygge, Rambergveien 15, Tønsberg – where it all started in 2013.",
+          "no": "Burgerrestaurant på Kaldnes brygge, Rambergveien 15, Tønsberg – der det startet i 2013."
         },
         "slogan": "Kick-ass food since 2013",
-        "heroAlt": "Uteserveringen til Kverneriet Tønsberg på Kaldnes brygge med utsikt over kanalen mot Tønsberg brygge",
         "about1": {
-          "no": "Kverneriet Tønsberg er der det hele startet i 2013: en liten burgersjappe som har vokst til en fullverdig restaurant på Kaldnes brygge, Rambergveien 15, med uteservering ved kanalen og utsikt mot Tønsberg brygge. Kjøttet kverner vi selv, friesene tar tre dager, og menyen er den bredeste av de tre – salater, ribs, wings og kyllingretter i tillegg til burgerne.",
-          "en": "Kverneriet Tønsberg is where it all started in 2013: a small burger joint that has grown into a full restaurant on Kaldnes brygge, Rambergveien 15, with outdoor seating by the canal looking across to Tønsberg brygge. We grind the beef ourselves, the fries take three days, and the menu is the broadest of the three – salads, ribs, wings and chicken dishes alongside the burgers."
+          "en": "Kverneriet Tønsberg is where it all started in 2013: a small burger joint that has grown into a full restaurant on Kaldnes brygge, Rambergveien 15, with outdoor seating by the canal looking across to Tønsberg brygge. We grind the beef ourselves, the fries take three days, and the menu is the broadest of the three – salads, ribs, wings and chicken dishes alongside the burgers.",
+          "no": "Kverneriet Tønsberg er der det hele startet i 2013: en liten burgersjappe som har vokst til en fullverdig restaurant på Kaldnes brygge, Rambergveien 15, med uteservering ved kanalen og utsikt mot Tønsberg brygge. Kjøttet kverner vi selv, friesene tar tre dager, og menyen er den bredeste av de tre – salater, ribs, wings og kyllingretter i tillegg til burgerne."
         },
         "about2": {
-          "no": "Tønsbergs Blad kalte det «ren nytelse» i 2020 og ga oss 5 av 6 i 2024, og i 2021 lå vi øverst på Tripadvisors liste over Tønsbergs beste restauranter. Kjøkkenet holder åpent til 22 tirsdag–lørdag, baren til 23. Lunsj torsdag–søndag fra 12. Take-away henter du selv – forhåndsbestill på OrderX.",
-          "en": "Tønsbergs Blad called it “pure pleasure” in 2020 and gave us 5 out of 6 in 2024, and in 2021 we topped Tripadvisor’s list of Tønsberg’s best restaurants. The kitchen is open until 22.00 Tuesday–Saturday, the bar until 23.00. Lunch Thursday–Sunday from 12.00. Take-away is pick-up – pre-order on OrderX."
+          "en": "Tønsbergs Blad called it “pure pleasure” in 2020 and gave us 5 out of 6 in 2024, and in 2021 we topped Tripadvisor’s list of Tønsberg’s best restaurants. The kitchen is open until 22.00 Tuesday–Saturday, the bar until 23.00. Lunch Thursday–Sunday from 12.00. Take-away is pick-up – pre-order on OrderX.",
+          "no": "Tønsbergs Blad kalte det «ren nytelse» i 2020 og ga oss 5 av 6 i 2024, og i 2021 lå vi øverst på Tripadvisors liste over Tønsbergs beste restauranter. Kjøkkenet holder åpent til 22 tirsdag–lørdag, baren til 23. Lunsj torsdag–søndag fra 12. Take-away henter du selv – forhåndsbestill på OrderX."
+        },
+        "heroImg": {
+          "alt": "Uteserveringen til Kverneriet Tønsberg på Kaldnes brygge med utsikt over kanalen mot Tønsberg brygge",
+          "h": 2994,
+          "url": "https://cdn.sanity.io/images/u0hod2sg/production/f0a99c94d4b98962eeb2bdbc78ac1e248027a31e-2000x2994.jpg",
+          "w": 2000
         },
         "aboutImg": {
-          "url": "/assets/img/tonsberg-about.jpg",
-          "alt": "Lunsjbord med salater, toast, eggs benedict og cocktails på Kverneriet Tønsberg"
+          "alt": "Lunsjbord med salater, toast, eggs benedict og cocktails på Kverneriet Tønsberg",
+          "h": 2100,
+          "url": "https://cdn.sanity.io/images/u0hod2sg/production/6c08d4be13c6c634743b0c10ecb96d9cec44346e-1400x2100.jpg",
+          "w": 1400
         },
         "gallery": [
           {
-            "url": "/assets/img/trio-tonsberg.jpg",
-            "alt": "Bord på bryggeterrassen til Kverneriet Tønsberg med kanalen bak"
+            "alt": "Bord på bryggeterrassen til Kverneriet Tønsberg med kanalen bak",
+            "h": 2096,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/1cce75c0f4965469f45d9a3b70ade88d6126d75d-1400x2096.jpg",
+            "w": 1400
           },
           {
-            "url": "/assets/img/meny-tonsberg.jpg",
-            "alt": "Burger med smeltet ost, jalapeño og paprika på Kverneriet Tønsberg"
+            "alt": "Burger med smeltet ost, jalapeño og paprika på Kverneriet Tønsberg",
+            "h": 2096,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/a0da856890dd482848bd2a9bef1a2a74ee1bb17e-1400x2096.jpg",
+            "w": 1400
           },
           {
-            "url": "/assets/img/craft-pack.jpg",
-            "alt": "Kverneriets take-away-eske i naturmaterialer"
+            "alt": "Kverneriets take-away-eske i naturmaterialer",
+            "h": 1000,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/889f99b6751e8e6501d31f7b0427cd2a865a9f4e-1000x1000.jpg",
+            "w": 1000
           },
           {
-            "url": "/assets/img/g-burger.jpg",
-            "alt": "Servitør bærer to burgere på tallerkener"
+            "alt": "Servitør bærer to burgere på tallerkener",
+            "h": 2096,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/96a5a1dee40576c794a7a19634c2b2734b3abe1f-1400x2096.jpg",
+            "w": 1400
           },
           {
-            "url": "/assets/img/ln-beer.jpg",
-            "alt": "Øl tappes fra tappekrana i baren"
+            "alt": "Øl tappes fra tappekrana i baren",
+            "h": 1796,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/6056795e43f352771f25eec61e9eadb4dce6faf8-1200x1796.jpg",
+            "w": 1200
           },
           {
-            "url": "/assets/img/craft-fries.jpg",
-            "alt": "Trippelkokte fries med trøffel og parmesan"
+            "alt": "Trippelkokte fries med trøffel og parmesan",
+            "h": 935,
+            "url": "https://cdn.sanity.io/images/u0hod2sg/production/ff3d7812d55fade2ccb147a5ce63cbc23c8bc745-1400x935.jpg",
+            "w": 1400
           }
-        ],
-        "heroImg": {
-          "url": "/assets/img/tonsberg-hero.jpg",
-          "alt": "Uteserveringen til Kverneriet Tønsberg på Kaldnes brygge med utsikt over kanalen mot Tønsberg brygge"
-        }
+        ]
       },
       "seo": {
         "title": "Kverneriet Tønsberg – burger på Kaldnes brygge",

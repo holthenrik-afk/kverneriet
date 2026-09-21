@@ -39,7 +39,7 @@ rows.append({
 # --- Restauranter + menyer (om-tekster og bilder fra build_venue.py)
 import build_venue as BV
 for v in V['venues']:
-    s = v['slug']; c = BV.COPY[s]; mv = next(x for x in M['venues'] if x['slug'] == s)
+    s = v['slug']; c = BV.copy_of(v); mv = next(x for x in M['venues'] if x['slug'] == s)
     rows.append({
         '_id': f'venue-{s}', '_type': 'venue', 'slug': s, 'name': v['name'], 'fullName': v['fullName'], 'city': v['city'], 'area': v['area'], 'areaCues': v['areaCues'],
         'since': v['since'], 'tagline': v['tagline'], 'address': v['address'], 'geo': {'_type': 'geopoint', 'lat': v['geo']['lat'], 'lng': v['geo']['lng']},
@@ -48,7 +48,7 @@ for v in V['venues']:
         'lunch': v['lunch'], 'zenchef': v['zenchef'], 'groupThreshold': v['groupThreshold'],
         'channels': {k: u for k, u in v['channels'].items() if u},
         'drinksPdf': file_asset(v['menuPdf']['drinks']), 'kidsPdf': file_asset(v['menuPdf']['kids']),
-        'heroImage': img(kv.abs_url(s) and __import__('pages').PAGES[s]['img'], c['heroAlt']),
+        'heroImage': img(c['heroImg'], c['heroAlt']),
         'heroSub': loc(*c['heroSub']), 'slogan': c['slogan'],
         'about1': loc(*c['about'][0]), 'about2': loc(*c['about'][1]),
         'aboutImage': img(c['aboutImg'][0], c['aboutImg'][1]),
