@@ -2,7 +2,7 @@
   --dur-fast:120ms; /* @kind other */
   --dur-base:200ms; /* @kind other */
   --dur-slow:400ms; /* @kind other */
-  --ease-out:cubic-bezier(.2,.7,.2,1); /* @kind other */
+  --ease-out:cubic-bezier(.23,1,.32,1); /* @kind other */
   --ease-in-out:cubic-bezier(.4,0,.2,1); /* @kind other */
   /* No bounce, no spring. Movement is short and flat. */
 }
