@@ -1,553 +1,5 @@
 [
  {
-  "_createdAt": "2026-09-21T14:00:41Z",
-  "_id": "post-smashburger-vs-klassisk-burger",
-  "_rev": "81PXpUg2CMOFSiTnun685C",
-  "_type": "post",
-  "_updatedAt": "2026-09-21T14:00:42Z",
-  "author": "Kverneriet",
-  "body": [
-   {
-    "_key": "b2",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s1",
-      "_type": "span",
-      "marks": [],
-      "text": "Smashburger og klassisk burger starter med mye av det samme: godt kjøtt, høy varme og et burgerbrød. Men måten kjøttet formes og stekes på gir to ganske forskjellige burgere."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b6",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s3",
-      "_type": "span",
-      "marks": [],
-      "text": "Kort fortalt blir en "
-     },
-     {
-      "_key": "s4",
-      "_type": "span",
-      "marks": [
-       "strong"
-      ],
-      "text": "smashburger presset flat mot en svært varm stekeflate"
-     },
-     {
-      "_key": "s5",
-      "_type": "span",
-      "marks": [],
-      "text": ", mens en klassisk burger beholder mer av tykkelsen i kjøttet. Resultatet er forskjellig både i konsistens, smak og hvordan burgeren bygges."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b8",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s7",
-      "_type": "span",
-      "marks": [],
-      "text": "Hva er en smashburger?"
-     }
-    ],
-    "markDefs": [],
-    "style": "h2"
-   },
-   {
-    "_key": "b10",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s9",
-      "_type": "span",
-      "marks": [],
-      "text": "På en smashburger legges en kule med kjøtt på en varm stekeflate og presses hardt ned helt i starten av stekingen."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b12",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s11",
-      "_type": "span",
-      "marks": [],
-      "text": "Den store kontaktflaten mot varmen gir mye stekeskorpe. Burgeren blir relativt tynn, med sprø og karamelliserte kanter og en tydelig grillet smak."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b14",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s13",
-      "_type": "span",
-      "marks": [],
-      "text": "Derfor serveres smashburgere ofte med to eller flere patties oppå hverandre. Resten av burgeren holdes gjerne ganske enkel: ost, løk, pickles, saus og et mykt brød."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b16",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s15",
-      "_type": "span",
-      "marks": [],
-      "text": "Det er en stil hvor stekeskorpen får spille hovedrollen."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b18",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s17",
-      "_type": "span",
-      "marks": [],
-      "text": "Hva er en klassisk burger?"
-     }
-    ],
-    "markDefs": [],
-    "style": "h2"
-   },
-   {
-    "_key": "b20",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s19",
-      "_type": "span",
-      "marks": [],
-      "text": "En klassisk restaurantburger har vanligvis en tykkere patty som beholder mer av strukturen og saftigheten i kjøttet."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b22",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s21",
-      "_type": "span",
-      "marks": [],
-      "text": "Her blir kontrasten en annen: stekeskorpe på utsiden, mer kjøtt og tyggemotstand i midten og større rom for å kombinere burgeren med forskjellige oster, sauser, grønnsaker og andre toppings."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b27",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s23",
-      "_type": "span",
-      "marks": [],
-      "text": "Hos Kverneriet er hovedburgerne bygget rundt denne typen burger. Kjøttet kverner vi selv, og de fleste burgerne serveres med en 150 grams storfepatty stekt medium pluss. "
-     },
-     {
-      "_key": "s25",
-      "_type": "span",
-      "marks": [
-       "l24"
-      ],
-      "text": "Se hele menyen"
-     },
-     {
-      "_key": "s26",
-      "_type": "span",
-      "marks": [],
-      "text": "."
-     }
-    ],
-    "markDefs": [
-     {
-      "_key": "l24",
-      "_type": "link",
-      "href": "/meny/"
-     }
-    ],
-    "style": "normal"
-   },
-   {
-    "_key": "b29",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s28",
-      "_type": "span",
-      "marks": [],
-      "text": "Er smashburger bedre enn vanlig burger?"
-     }
-    ],
-    "markDefs": [],
-    "style": "h2"
-   },
-   {
-    "_key": "b31",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s30",
-      "_type": "span",
-      "marks": [],
-      "text": "Ikke nødvendigvis. De er bare gode på forskjellige ting."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b33",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s32",
-      "_type": "span",
-      "marks": [],
-      "text": "Vil du ha mye stekeskorpe, høy intensitet og en relativt enkel cheeseburger, er smashburger vanskelig å slå."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b35",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s34",
-      "_type": "span",
-      "marks": [],
-      "text": "Vil du derimot ha mer kjøttstruktur og en burger hvor forskjellige smaker og teksturer får større plass, passer den klassiske burgeren ofte bedre."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b37",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s36",
-      "_type": "span",
-      "marks": [],
-      "text": "Det er litt som forskjellen mellom en tynn, crispy pizza og en luftig napolitansk pizza. Begge kan være fantastiske. De løser bare oppgaven forskjellig."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b39",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s38",
-      "_type": "span",
-      "marks": [],
-      "text": "Hvorfor bruker ikke alle restauranter samme metode?"
-     }
-    ],
-    "markDefs": [],
-    "style": "h2"
-   },
-   {
-    "_key": "b41",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s40",
-      "_type": "span",
-      "marks": [],
-      "text": "Fordi burgeren må ses som en helhet."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b43",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s42",
-      "_type": "span",
-      "marks": [],
-      "text": "Kjøtt, fett, temperatur, brød, ost, syre, saus og tekstur påvirker hverandre. Endrer du én ting, må du ofte justere resten."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b45",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s44",
-      "_type": "span",
-      "marks": [],
-      "text": "En tynn smashpatty kan for eksempel fungere perfekt sammen med cheddar, pickles og en enkel burgersaus, men forsvinne litt i en burger med sopp, parmesan, chutney og flere kraftige smaker."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b47",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s46",
-      "_type": "span",
-      "marks": [],
-      "text": "En tykkere burger gir mer motstand til resten av ingrediensene."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b49",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s48",
-      "_type": "span",
-      "marks": [],
-      "text": "Det er også derfor vi mener en god burger ikke først og fremst handler om hvor mange toppings man klarer å legge mellom to brød. Den handler om balanse."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b51",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s50",
-      "_type": "span",
-      "marks": [],
-      "text": "Så hvilken bør du velge?"
-     }
-    ],
-    "markDefs": [],
-    "style": "h2"
-   },
-   {
-    "_key": "b53",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s52",
-      "_type": "span",
-      "marks": [],
-      "text": "Er du ute etter crispy kanter, mye stekeskorpe og en enkel cheeseburgeropplevelse, prøv en smashburger."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b55",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s54",
-      "_type": "span",
-      "marks": [],
-      "text": "Vil du ha en fyldigere burger med mer kjøttstruktur og større smaksvariasjon, velg en klassisk burger."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b57",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s56",
-      "_type": "span",
-      "marks": [],
-      "text": "Og hvis du fortsatt ikke klarer å bestemme deg?"
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b59",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s58",
-      "_type": "span",
-      "marks": [],
-      "text": "Den eneste vitenskapelig forsvarlige løsningen er å spise begge."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b61",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s60",
-      "_type": "span",
-      "marks": [
-       "strong"
-      ],
-      "text": "[Se menyen hos Kverneriet](/meny/) og finn din favoritt – på [Majorstua](/majorstua/), [Solli plass](/solli/) eller i [Tønsberg](/tonsberg/)."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b63",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s62",
-      "_type": "span",
-      "marks": [],
-      "text": "Ofte stilte spørsmål"
-     }
-    ],
-    "markDefs": [],
-    "style": "h2"
-   },
-   {
-    "_key": "b65",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s64",
-      "_type": "span",
-      "marks": [],
-      "text": "Hva er en smashburger?"
-     }
-    ],
-    "markDefs": [],
-    "style": "h3"
-   },
-   {
-    "_key": "b67",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s66",
-      "_type": "span",
-      "marks": [],
-      "text": "En burger der kjøttkulen presses flat mot en svært varm stekeflate helt i starten av stekingen. Det gir en tynn patty med mye stekeskorpe og sprø kanter, ofte servert som dobbel."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b69",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s68",
-      "_type": "span",
-      "marks": [],
-      "text": "Hva er forskjellen på smashburger og vanlig burger?"
-     }
-    ],
-    "markDefs": [],
-    "style": "h3"
-   },
-   {
-    "_key": "b71",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s70",
-      "_type": "span",
-      "marks": [],
-      "text": "Smashburgeren er tynn med mye stekeskorpe og enkel topping. Den klassiske burgeren har tykkere patty, mer saftighet og struktur i kjøttet, og tåler flere og kraftigere smaker."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   },
-   {
-    "_key": "b73",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s72",
-      "_type": "span",
-      "marks": [],
-      "text": "Hvilken type burger serverer Kverneriet?"
-     }
-    ],
-    "markDefs": [],
-    "style": "h3"
-   },
-   {
-    "_key": "b75",
-    "_type": "block",
-    "children": [
-     {
-      "_key": "s74",
-      "_type": "span",
-      "marks": [],
-      "text": "Klassisk restaurantburger: kjøtt vi kverner selv, 150 g patty stekt medium pluss, servert på Majorstua, Solli plass og i Tønsberg."
-     }
-    ],
-    "markDefs": [],
-    "style": "normal"
-   }
-  ],
-  "excerpt": "En smashburger presses flat mot en svært varm stekeflate, en klassisk burger beholder tykkelsen. Her er forskjellen i smak, konsistens og hvordan du velger.",
-  "mainImage": {
-   "alt": "Servitør bærer to burgere på tallerkener på Kverneriet",
-   "h": 2096,
-   "url": "https://cdn.sanity.io/images/u0hod2sg/production/96a5a1dee40576c794a7a19634c2b2734b3abe1f-1400x2096.jpg",
-   "w": 1400
-  },
-  "publishedAt": "2026-09-21T14:00:38Z",
-  "seoTitle": "Smashburger vs. klassisk burger – hva er forskjellen?",
-  "slug": "smashburger-vs-klassisk-burger",
-  "title": "Smashburger vs. klassisk burger: Hva er egentlig forskjellen?",
-  "updatedAt": "2026-09-21T14:00:42Z"
- },
- {
   "_createdAt": "2026-09-21T14:07:31Z",
   "_id": "post-burger-i-oslo",
   "_rev": "PoozYAQIPFFfK2hxgyYHsy",
@@ -2827,5 +2279,553 @@
   "slug": "burger-majorstuen-frogner-solli",
   "title": "Burger på Majorstuen, Frogner og Solli",
   "updatedAt": "2026-09-21T14:09:01Z"
+ },
+ {
+  "_createdAt": "2026-09-21T14:00:41Z",
+  "_id": "post-smashburger-vs-klassisk-burger",
+  "_rev": "jPb1M1KCHDKGzSgUA5tL97",
+  "_type": "post",
+  "_updatedAt": "2026-09-21T14:10:14Z",
+  "author": "Kverneriet",
+  "body": [
+   {
+    "_key": "b2",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s1",
+      "_type": "span",
+      "marks": [],
+      "text": "Smashburger og klassisk burger starter med mye av det samme: godt kjøtt, høy varme og et burgerbrød. Men måten kjøttet formes og stekes på gir to ganske forskjellige burgere."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b6",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s3",
+      "_type": "span",
+      "marks": [],
+      "text": "Kort fortalt blir en "
+     },
+     {
+      "_key": "s4",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "smashburger presset flat mot en svært varm stekeflate"
+     },
+     {
+      "_key": "s5",
+      "_type": "span",
+      "marks": [],
+      "text": ", mens en klassisk burger beholder mer av tykkelsen i kjøttet. Resultatet er forskjellig både i konsistens, smak og hvordan burgeren bygges."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b8",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s7",
+      "_type": "span",
+      "marks": [],
+      "text": "Hva er en smashburger?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b10",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s9",
+      "_type": "span",
+      "marks": [],
+      "text": "På en smashburger legges en kule med kjøtt på en varm stekeflate og presses hardt ned helt i starten av stekingen."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b12",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s11",
+      "_type": "span",
+      "marks": [],
+      "text": "Den store kontaktflaten mot varmen gir mye stekeskorpe. Burgeren blir relativt tynn, med sprø og karamelliserte kanter og en tydelig grillet smak."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b14",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s13",
+      "_type": "span",
+      "marks": [],
+      "text": "Derfor serveres smashburgere ofte med to eller flere patties oppå hverandre. Resten av burgeren holdes gjerne ganske enkel: ost, løk, pickles, saus og et mykt brød."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b16",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s15",
+      "_type": "span",
+      "marks": [],
+      "text": "Det er en stil hvor stekeskorpen får spille hovedrollen."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b18",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s17",
+      "_type": "span",
+      "marks": [],
+      "text": "Hva er en klassisk burger?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b20",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s19",
+      "_type": "span",
+      "marks": [],
+      "text": "En klassisk restaurantburger har vanligvis en tykkere patty som beholder mer av strukturen og saftigheten i kjøttet."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b22",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s21",
+      "_type": "span",
+      "marks": [],
+      "text": "Her blir kontrasten en annen: stekeskorpe på utsiden, mer kjøtt og tyggemotstand i midten og større rom for å kombinere burgeren med forskjellige oster, sauser, grønnsaker og andre toppings."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b27",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s23",
+      "_type": "span",
+      "marks": [],
+      "text": "Hos Kverneriet er hovedburgerne bygget rundt denne typen burger. Kjøttet kverner vi selv, og de fleste burgerne serveres med en 150 grams storfepatty stekt medium pluss. "
+     },
+     {
+      "_key": "s25",
+      "_type": "span",
+      "marks": [
+       "l24"
+      ],
+      "text": "Se hele menyen"
+     },
+     {
+      "_key": "s26",
+      "_type": "span",
+      "marks": [],
+      "text": "."
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l24",
+      "_type": "link",
+      "href": "/meny/"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b29",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s28",
+      "_type": "span",
+      "marks": [],
+      "text": "Er smashburger bedre enn vanlig burger?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b31",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s30",
+      "_type": "span",
+      "marks": [],
+      "text": "Ikke nødvendigvis. De er bare gode på forskjellige ting."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b33",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s32",
+      "_type": "span",
+      "marks": [],
+      "text": "Vil du ha mye stekeskorpe, høy intensitet og en relativt enkel cheeseburger, er smashburger vanskelig å slå."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b35",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s34",
+      "_type": "span",
+      "marks": [],
+      "text": "Vil du derimot ha mer kjøttstruktur og en burger hvor forskjellige smaker og teksturer får større plass, passer den klassiske burgeren ofte bedre."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b37",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s36",
+      "_type": "span",
+      "marks": [],
+      "text": "Det er litt som forskjellen mellom en tynn, crispy pizza og en luftig napolitansk pizza. Begge kan være fantastiske. De løser bare oppgaven forskjellig."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b39",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s38",
+      "_type": "span",
+      "marks": [],
+      "text": "Hvorfor bruker ikke alle restauranter samme metode?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b41",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s40",
+      "_type": "span",
+      "marks": [],
+      "text": "Fordi burgeren må ses som en helhet."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b43",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s42",
+      "_type": "span",
+      "marks": [],
+      "text": "Kjøtt, fett, temperatur, brød, ost, syre, saus og tekstur påvirker hverandre. Endrer du én ting, må du ofte justere resten."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b45",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s44",
+      "_type": "span",
+      "marks": [],
+      "text": "En tynn smashpatty kan for eksempel fungere perfekt sammen med cheddar, pickles og en enkel burgersaus, men forsvinne litt i en burger med sopp, parmesan, chutney og flere kraftige smaker."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b47",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s46",
+      "_type": "span",
+      "marks": [],
+      "text": "En tykkere burger gir mer motstand til resten av ingrediensene."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b49",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s48",
+      "_type": "span",
+      "marks": [],
+      "text": "Det er også derfor vi mener en god burger ikke først og fremst handler om hvor mange toppings man klarer å legge mellom to brød. Den handler om balanse."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b51",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s50",
+      "_type": "span",
+      "marks": [],
+      "text": "Så hvilken bør du velge?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b53",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s52",
+      "_type": "span",
+      "marks": [],
+      "text": "Er du ute etter crispy kanter, mye stekeskorpe og en enkel cheeseburgeropplevelse, prøv en smashburger."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b55",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s54",
+      "_type": "span",
+      "marks": [],
+      "text": "Vil du ha en fyldigere burger med mer kjøttstruktur og større smaksvariasjon, velg en klassisk burger."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b57",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s56",
+      "_type": "span",
+      "marks": [],
+      "text": "Og hvis du fortsatt ikke klarer å bestemme deg?"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b59",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s58",
+      "_type": "span",
+      "marks": [],
+      "text": "Den eneste vitenskapelig forsvarlige løsningen er å spise begge."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b61",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s60",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "[Se menyen hos Kverneriet](/meny/) og finn din favoritt – på [Majorstua](/majorstua/), [Solli plass](/solli/) eller i [Tønsberg](/tonsberg/)."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b63",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s62",
+      "_type": "span",
+      "marks": [],
+      "text": "Ofte stilte spørsmål"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b65",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s64",
+      "_type": "span",
+      "marks": [],
+      "text": "Hva er en smashburger?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h3"
+   },
+   {
+    "_key": "b67",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s66",
+      "_type": "span",
+      "marks": [],
+      "text": "En burger der kjøttkulen presses flat mot en svært varm stekeflate helt i starten av stekingen. Det gir en tynn patty med mye stekeskorpe og sprø kanter, ofte servert som dobbel."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b69",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s68",
+      "_type": "span",
+      "marks": [],
+      "text": "Hva er forskjellen på smashburger og vanlig burger?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h3"
+   },
+   {
+    "_key": "b71",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s70",
+      "_type": "span",
+      "marks": [],
+      "text": "Smashburgeren er tynn med mye stekeskorpe og enkel topping. Den klassiske burgeren har tykkere patty, mer saftighet og struktur i kjøttet, og tåler flere og kraftigere smaker."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b73",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s72",
+      "_type": "span",
+      "marks": [],
+      "text": "Hvilken type burger serverer Kverneriet?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h3"
+   },
+   {
+    "_key": "b75",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s74",
+      "_type": "span",
+      "marks": [],
+      "text": "Klassisk restaurantburger: kjøtt vi kverner selv, 150 g patty stekt medium pluss, servert på Majorstua, Solli plass og i Tønsberg."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   }
+  ],
+  "excerpt": "En smashburger presses flat mot en svært varm stekeflate, en klassisk burger beholder tykkelsen. Her er forskjellen i smak, konsistens og hvordan du velger.",
+  "mainImage": {
+   "alt": "Servitør bærer to burgere på tallerkener på Kverneriet",
+   "h": 2096,
+   "url": "https://cdn.sanity.io/images/u0hod2sg/production/96a5a1dee40576c794a7a19634c2b2734b3abe1f-1400x2096.jpg",
+   "w": 1400
+  },
+  "publishedAt": "2026-09-21T11:50:00Z",
+  "seoTitle": "Smashburger vs. klassisk burger – hva er forskjellen?",
+  "slug": "smashburger-vs-klassisk-burger",
+  "title": "Smashburger vs. klassisk burger: Hva er egentlig forskjellen?",
+  "updatedAt": "2026-09-21T14:10:14Z"
  }
 ]
