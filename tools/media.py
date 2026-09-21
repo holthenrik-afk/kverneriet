@@ -15,7 +15,7 @@ LOGOS = {
  'dagbladet': ('press-logo--dagbladet', 'Dagbladet'), 'finansavisen': ('press-logo--finansavisen', 'Finansavisen'),
  'dn': ('press-logo--dn', 'Dagens Næringsliv'), 'vg': ('press-logo--vg', 'VG'), 'aftenposten': ('press-logo--aftenposten', 'Aftenposten'),
  'dagsavisen': ('press-logo--dagsavisen', 'Dagsavisen'), 'nettavisen': ('press-logo--nettavisen', 'Nettavisen'),
- 'tb': ('press-logo--tb', 'Tønsbergs Blad'), 'godt': ('press-logo--text', 'Godt.no'), 'meravoslo': ('press-logo--img', 'Mer av Oslo'), 'op': ('press-logo--text', 'Østlands-Posten'),
+ 'tb': ('press-logo--tb', 'Tønsbergs Blad'), 'godt': ('press-logo--text', 'Godt.no'), 'meravoslo': ('press-logo--meravoslo', 'Mer av Oslo'), 'op': ('press-logo--text', 'Østlands-Posten'),
 }
 # Logoer som ikke egner seg som énfarget maske (Mer av Oslo har et beige/blått merke) vises som bilde
 IMG_LOGOS = {'meravoslo': ('/assets/press/meravoslo.png', 200, 199)}
@@ -106,14 +106,26 @@ def section(items, eyebrow_key='media.eyebrow', title_key='media.title'):
 
 SEEN_IN_ORDER = ['dagbladet', 'finansavisen', 'vg', 'aftenposten', 'dn', 'nettavisen', 'meravoslo', 'tb']
 def seen_in():
+    """«Omtalt i»: etiketten som en divider (samme komponent som «Galleri»/«Se også»), logoene i én rolig, énfarget rad."""
     present = [k for k in SEEN_IN_ORDER if any(m['outlet'] == k for m in MEDIA) or k == 'dagbladet']
-    return ('    <div class="seen-in"><span class="seen-in__label" data-i18n="media.seenIn">Omtalt i</span>' + ''.join(logo(k) for k in present) + '</div>')
+    return ('    <div class="seen-in"><div class="divider"><span data-i18n="media.seenIn">Omtalt i</span></div>'
+            '<div class="seen-in__logos">' + ''.join(logo(k) for k in present) + '</div></div>')
+
+def proof():
+    """Tillitsraden under heroen: to like bevis (terning + påstand + kilde), begge lenket til omtalen."""
+    items = []
+    for key, claim, i18n in (('db_2020', 'Oslos overlegent beste burger', 'home.trustDb'), ('fa_2020', 'Oslos beste take-away-burger', 'home.trustTa')):
+        m = BY_KEY[key]
+        items.append(f'<a class="proof__item" href="{e(m["url"])}" target="_blank" rel="noopener" data-track="media:{m["outlet"]}:{m["date"]}">'
+                     f'{die(m["rating"], m["outlet"])}<span class="proof__text"><strong class="proof__claim" data-i18n="{i18n}">{e(claim)}</strong>'
+                     f'<span class="proof__src">{e(LOGOS[m["outlet"]][1])} · {e(m["date"])}</span></span></a>')
+    return '    <div class="proof">' + ''.join(items) + '</div>'
 
 if __name__ == '__main__':
     s = open('index.html', encoding='utf-8').read()
     # Logostripe rett etter tillitsraden
-    s, n = re.subn(r'(    <div class="trust">.*?\n    </div>\n)(?:    <div class="seen-in">.*?</div>\n)?', lambda m: m.group(1) + seen_in() + '\n', s, count=1, flags=re.S)
-    if n != 1: raise SystemExit('trust row not found')
+    s, n = re.subn(r'    <div class="(?:trust|proof)">.*?\n    </div>\n(?:    <div class="seen-in">.*?</div>\n)?', lambda m: proof() + '\n' + seen_in() + '\n', s, count=1, flags=re.S)
+    if n != 1: raise SystemExit('trust/proof row not found')
     # Media-seksjonen erstatter presse-seksjonen på forsiden (kortene dekker det samme og mer)
     s, n = re.subn(r'  <section class="section[^"]*" id="(?:presse|media)">.*?\n  </section>\n', lambda m: section(MEDIA), s, count=1, flags=re.S)
     if n != 1: raise SystemExit('press/media section not found')

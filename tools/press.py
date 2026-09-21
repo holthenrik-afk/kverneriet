@@ -64,11 +64,7 @@ if __name__ == '__main__':
         if n != 1: print(f, 'press section owned by media.py – skipped'); continue
         open(f, 'w', encoding='utf-8').write(s2); print(f, 'press ok')
 
-    # Forsidens tillitsrad
-    s = open('index.html', encoding='utf-8').read()
-    s2, n = re.subn(r'    <div class="trust">.*?\n    </div>\n', TRUST + '\n', s, count=1, flags=re.S)
-    if n != 1: raise SystemExit('trust row not found')
-    open('index.html', 'w', encoding='utf-8').write(s2); print('trust ok')
+    # Forsidens tillitsrad («proof») skrives av media.py
 
     # Takeaway: presse-radene beholder foto + to sitater, men sitatene blir kort
     s = open('takeaway/index.html', encoding='utf-8').read()

@@ -189,6 +189,15 @@ html{scroll-behavior:smooth}
 .terning--lg .terning__die{height:68px}
 .terning--lg .terning__label{font-size:34px}
 
+.proof{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-4);margin-top:var(--space-7)}
+.proof__item{display:inline-flex;align-items:center;gap:var(--space-4);padding:var(--space-3) var(--space-5) var(--space-3) var(--space-4);border:1px solid var(--line-hairline);border-radius:var(--radius-1);background:var(--surface-card);color:inherit;text-decoration:none;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.proof__item:hover{border-color:var(--ink-300);box-shadow:var(--shadow-1)}
+.proof__item .terning__die{height:56px}
+.proof__item .terning__label{font-size:26px}
+.proof__text{display:flex;flex-direction:column;gap:2px;text-align:left;padding-left:var(--space-3);border-left:1px solid var(--line-hairline)}
+.proof__claim{font-family:var(--font-cond);font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-strong);line-height:1.2}
+.proof__src{font-size:var(--type-caption);color:var(--text-muted)}
+@media (max-width:520px){.proof{flex-direction:column;align-items:stretch}.proof__item{justify-content:flex-start}}
 .trust{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:var(--space-4) var(--space-7);margin-top:var(--space-7)}
 .trust__item{display:inline-flex;align-items:center;gap:14px;font-family:var(--font-cond);font-weight:700;font-size:13px;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted)}
 .trust__item strong{color:var(--text-strong);font-weight:700}
@@ -216,6 +225,7 @@ html{scroll-behavior:smooth}
 .press-logo--dagsavisen{-webkit-mask-image:url("/assets/press/dagsavisen.svg");mask-image:url("/assets/press/dagsavisen.svg");width:100px}
 .press-logo--nettavisen{-webkit-mask-image:url("/assets/press/nettavisen.svg");mask-image:url("/assets/press/nettavisen.svg");width:104px}
 .press-logo--tb{-webkit-mask-image:url("/assets/press/tb.png");mask-image:url("/assets/press/tb.png");width:106px}
+.press-logo--meravoslo{-webkit-mask-image:url("/assets/press/meravoslo-mono.png");mask-image:url("/assets/press/meravoslo-mono.png");width:54px;height:28px}
 .press-logo--img{-webkit-mask:none;mask:none;background:none;width:auto;height:40px;object-fit:contain;display:inline-block}
 .press-logo--text{-webkit-mask:none;mask:none;background:none;width:auto;height:auto;font-family:var(--font-cond);font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-700);white-space:nowrap;line-height:22px}
 
@@ -223,11 +233,11 @@ html{scroll-behavior:smooth}
 .terning--generic .terning__die{filter:none}
 
 /* «Sett i»-stripe under heroen */
-.seen-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--space-4) var(--space-6);margin-top:var(--space-7);padding-top:var(--space-6);border-top:1px solid var(--line-hairline)}
-.seen-in__label{font-family:var(--font-cond);font-weight:700;font-size:12px;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-faint)}
-.seen-in .press-logo{background-color:var(--ink-500);opacity:.85}
+.seen-in{margin-top:var(--space-8)}
+.seen-in__logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--space-5) var(--space-7);margin-top:var(--space-5)}
+.seen-in .press-logo{background-color:var(--ink-500);opacity:.8;height:22px}
+.seen-in .press-logo--dn{width:120px}.seen-in .press-logo--nettavisen{width:96px}.seen-in .press-logo--tb{width:100px}.seen-in .press-logo--meravoslo{height:28px;width:54px}
 .seen-in .press-logo--text,.press-head__logos .press-logo--text,.media-card .press-logo--text,.seen-in .press-logo--img,.press-head__logos .press-logo--img,.media-card .press-logo--img{background:none;-webkit-mask:none;mask:none;width:auto}
-.seen-in .press-logo--img{height:44px;opacity:1}
 .seen-in .press-logo--text{color:var(--ink-500)}
 
 /* «Kverneriet i media» – horisontalt kortgalleri (Auk-mønsteret) */
