@@ -546,5 +546,2286 @@
   "slug": "smashburger-vs-klassisk-burger",
   "title": "Smashburger vs. klassisk burger: Hva er egentlig forskjellen?",
   "updatedAt": "2026-09-21T14:00:42Z"
+ },
+ {
+  "_createdAt": "2026-09-21T14:07:31Z",
+  "_id": "post-burger-i-oslo",
+  "_rev": "PoozYAQIPFFfK2hxgyYHsy",
+  "_type": "post",
+  "_updatedAt": "2026-09-21T14:08:56Z",
+  "author": "Kverneriet",
+  "body": [
+   {
+    "_key": "b2",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s1",
+      "_type": "span",
+      "marks": [],
+      "text": "Leter du etter en skikkelig god burger i Oslo?"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b6",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s3",
+      "_type": "span",
+      "marks": [],
+      "text": "Hos Kverneriet har vi laget burgere med fokus på gode råvarer og skikkelig håndverk siden 2013. I Oslo finner du oss på "
+     },
+     {
+      "_key": "s4",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Majorstuen og Solli plass"
+     },
+     {
+      "_key": "s5",
+      "_type": "span",
+      "marks": [],
+      "text": ", med burgere, fries, cocktails og en meny laget både for en rask middag og en hel kveld rundt bordet."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b8",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s7",
+      "_type": "span",
+      "marks": [],
+      "text": "Burgerrestaurant i Oslo på Majorstuen og Solli"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b10",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s9",
+      "_type": "span",
+      "marks": [],
+      "text": "Kverneriet har to burgerrestauranter i Oslo:"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b13",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s11",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Kverneriet Majorstuen"
+     },
+     {
+      "_key": "s12",
+      "_type": "span",
+      "marks": [],
+      "text": "\nKirkeveien 64B, midt på Majorstuen."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b16",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s14",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Kverneriet Solli"
+     },
+     {
+      "_key": "s15",
+      "_type": "span",
+      "marks": [],
+      "text": "\nHenrik Ibsens gate 100, ved Solli plass og Frogner."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b18",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s17",
+      "_type": "span",
+      "marks": [],
+      "text": "Begge restaurantene serverer Kverneriets burgere, håndlagde fries, sides og andre retter."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b21",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s20",
+      "_type": "span",
+      "marks": [
+       "l19"
+      ],
+      "text": "Se restaurantene og bestill bord"
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l19",
+      "_type": "link",
+      "href": "/majorstua/#booking"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b23",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s22",
+      "_type": "span",
+      "marks": [],
+      "text": "Hva kjennetegner burgerne på Kverneriet?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b25",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s24",
+      "_type": "span",
+      "marks": [],
+      "text": "For oss handler en god burger om mer enn å stable flest mulig ingredienser mellom to brød."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b27",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s26",
+      "_type": "span",
+      "marks": [],
+      "text": "Det starter med kjøttet."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b29",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s28",
+      "_type": "span",
+      "marks": [],
+      "text": "Vi kverner storfekjøttet selv og bygger burgerne rundt balansen mellom kjøtt, fett, syre, sødme, crunch og saus."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b31",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s30",
+      "_type": "span",
+      "marks": [],
+      "text": "De fleste burgerne våre serveres med en 150 grams beef patty."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b33",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s32",
+      "_type": "span",
+      "marks": [],
+      "text": "Resultatet er en klassisk restaurantburger: saftig kjøtt, god stekeskorpe og toppings som skal løfte burgeren, ikke skjule den."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b35",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s34",
+      "_type": "span",
+      "marks": [],
+      "text": "Klassisk burger i Oslo"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b37",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s36",
+      "_type": "span",
+      "marks": [],
+      "text": "Smashburger har blitt enormt populært de siste årene. Vi liker smashburger også."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b41",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s38",
+      "_type": "span",
+      "marks": [],
+      "text": "Men Kverneriet lager først og fremst det vi vil kalle en "
+     },
+     {
+      "_key": "s39",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "klassisk restaurantburger"
+     },
+     {
+      "_key": "s40",
+      "_type": "span",
+      "marks": [],
+      "text": "."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b43",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s42",
+      "_type": "span",
+      "marks": [],
+      "text": "En tykkere burger gir mer struktur og saftighet i kjøttet og gir samtidig plass til smaker som ost, sopp, chili, løk, chutneys og andre toppings."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b48",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s44",
+      "_type": "span",
+      "marks": [],
+      "text": "Det er denne typen burger Kverneriet har bygget konseptet rundt. Les mer om forskjellen i "
+     },
+     {
+      "_key": "s46",
+      "_type": "span",
+      "marks": [
+       "l45"
+      ],
+      "text": "Smashburger vs. klassisk burger"
+     },
+     {
+      "_key": "s47",
+      "_type": "span",
+      "marks": [],
+      "text": "."
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l45",
+      "_type": "link",
+      "href": "/blogg/smashburger-vs-klassisk-burger/"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b50",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s49",
+      "_type": "span",
+      "marks": [],
+      "text": "Burger og fries"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b52",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s51",
+      "_type": "span",
+      "marks": [],
+      "text": "En burger uten fries føles litt uferdig."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b54",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s53",
+      "_type": "span",
+      "marks": [],
+      "text": "Derfor bruker vi også unødvendig mye tid på potetene."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b56",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s55",
+      "_type": "span",
+      "marks": [],
+      "text": "Våre håndlagde fries går gjennom flere steg før de havner på bordet. Målet er enkelt: sprø på utsiden og myke inni."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b58",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s57",
+      "_type": "span",
+      "marks": [],
+      "text": "Du kan selvfølgelig bestille dem klassisk, men menyen inneholder også forskjellige loaded fries og sides."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b60",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s59",
+      "_type": "span",
+      "marks": [],
+      "text": "Vegetarisk og glutenfri burger i Oslo"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b62",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s61",
+      "_type": "span",
+      "marks": [],
+      "text": "Skal flere ut og spise sammen, har ikke nødvendigvis alle lyst på det samme."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b64",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s63",
+      "_type": "span",
+      "marks": [],
+      "text": "Derfor kan flere av burgerne våre tilpasses med vegetarisk alternativ, og vi tilbyr glutenfritt burgerbrød."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b66",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s65",
+      "_type": "span",
+      "marks": [],
+      "text": "Har du allergier eller cøliaki, si alltid fra til restauranten når du bestiller slik at teamet kan hjelpe deg med hva som passer."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b68",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s67",
+      "_type": "span",
+      "marks": [],
+      "text": "Burger på Majorstuen"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b70",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s69",
+      "_type": "span",
+      "marks": [],
+      "text": "Kverneriet Majorstuen ligger i Kirkeveien, like ved Majorstukrysset."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b72",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s71",
+      "_type": "span",
+      "marks": [],
+      "text": "Det gjør restauranten til et naturlig stopp dersom du ser etter burger på Majorstuen, Bogstadveien eller i området rundt Frognerparken."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b74",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s73",
+      "_type": "span",
+      "marks": [],
+      "text": "Her kan du komme innom for burger og fries, middag med venner eller en lengre kveld rundt bordet."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b77",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s76",
+      "_type": "span",
+      "marks": [
+       "l75"
+      ],
+      "text": "Se Kverneriet Majorstuen"
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l75",
+      "_type": "link",
+      "href": "/majorstua/"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b79",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s78",
+      "_type": "span",
+      "marks": [],
+      "text": "Burger på Solli plass"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b81",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s80",
+      "_type": "span",
+      "marks": [],
+      "text": "Kverneriet Solli ligger i Henrik Ibsens gate ved Solli plass, mellom Frogner og sentrum."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b83",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s82",
+      "_type": "span",
+      "marks": [],
+      "text": "I tillegg til burgerrestauranten har Solli en cocktailbar, og passer godt dersom burgeren bare er starten på kvelden."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b86",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s85",
+      "_type": "span",
+      "marks": [
+       "l84"
+      ],
+      "text": "Se Kverneriet Solli"
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l84",
+      "_type": "link",
+      "href": "/solli/"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b88",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s87",
+      "_type": "span",
+      "marks": [],
+      "text": "Hvor får man god burger i Oslo?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b90",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s89",
+      "_type": "span",
+      "marks": [],
+      "text": "Det finnes mange gode burgerrestauranter i Oslo, fra små smashburgersteder til gatekjøkken og restauranter."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b92",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s91",
+      "_type": "span",
+      "marks": [],
+      "text": "Hos Kverneriet fokuserer vi på den klassiske restaurantburgeren: egenkvernet storfekjøtt, gode råvarer, gjennomarbeidede toppings og fries laget med samme ambisjonsnivå som burgeren."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b94",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s93",
+      "_type": "span",
+      "marks": [],
+      "text": "Om det gjør den til Oslos beste burger, får du avgjøre."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b96",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s95",
+      "_type": "span",
+      "marks": [],
+      "text": "Vi gjør vårt beste for å gjøre valget vanskelig."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b98",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s97",
+      "_type": "span",
+      "marks": [],
+      "text": "Klar for burger?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b100",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s99",
+      "_type": "span",
+      "marks": [],
+      "text": "Velg restauranten som passer deg:"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b108",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s101",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Kverneriet Majorstuen"
+     },
+     {
+      "_key": "s102",
+      "_type": "span",
+      "marks": [],
+      "text": "\nKirkeveien 64B\n"
+     },
+     {
+      "_key": "s104",
+      "_type": "span",
+      "marks": [
+       "l103"
+      ],
+      "text": "Se meny"
+     },
+     {
+      "_key": "s105",
+      "_type": "span",
+      "marks": [],
+      "text": " · "
+     },
+     {
+      "_key": "s107",
+      "_type": "span",
+      "marks": [
+       "l106"
+      ],
+      "text": "Bestill bord"
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l103",
+      "_type": "link",
+      "href": "/majorstua/menu/"
+     },
+     {
+      "_key": "l106",
+      "_type": "link",
+      "href": "/majorstua/#booking"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b116",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s109",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Kverneriet Solli"
+     },
+     {
+      "_key": "s110",
+      "_type": "span",
+      "marks": [],
+      "text": "\nHenrik Ibsens gate 100\n"
+     },
+     {
+      "_key": "s112",
+      "_type": "span",
+      "marks": [
+       "l111"
+      ],
+      "text": "Se meny"
+     },
+     {
+      "_key": "s113",
+      "_type": "span",
+      "marks": [],
+      "text": " · "
+     },
+     {
+      "_key": "s115",
+      "_type": "span",
+      "marks": [
+       "l114"
+      ],
+      "text": "Bestill bord"
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l111",
+      "_type": "link",
+      "href": "/solli/menu/"
+     },
+     {
+      "_key": "l114",
+      "_type": "link",
+      "href": "/solli/#booking"
+     }
+    ],
+    "style": "normal"
+   }
+  ],
+  "excerpt": "Kverneriet har to burgerrestauranter i Oslo: Majorstuen og Solli plass. Klassiske burgere med egenkvernet storfekjøtt, håndlagde fries og cocktails.",
+  "mainImage": {
+   "alt": "Burger fra Kverneriet holdt i hendene ved bordet",
+   "h": 1796,
+   "url": "https://cdn.sanity.io/images/u0hod2sg/production/5a9a673143e7b35ea67f4811c4cea73877005041-1200x1796.jpg",
+   "w": 1200
+  },
+  "publishedAt": "2026-09-21T12:30:00Z",
+  "seoTitle": "Burger i Oslo – Kverneriet på Majorstuen og Solli plass",
+  "slug": "burger-i-oslo",
+  "title": "Burger i Oslo",
+  "updatedAt": "2026-09-21T14:08:56Z"
+ },
+ {
+  "_createdAt": "2026-09-21T14:07:33Z",
+  "_id": "post-oslos-beste-burger",
+  "_rev": "PoozYAQIPFFfK2hxgyYI3T",
+  "_type": "post",
+  "_updatedAt": "2026-09-21T14:08:59Z",
+  "author": "Kverneriet",
+  "body": [
+   {
+    "_key": "b2",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s1",
+      "_type": "span",
+      "marks": [],
+      "text": "Søk etter «beste burger Oslo», og du får omtrent like mange meninger som det finnes burgerrestauranter."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b4",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s3",
+      "_type": "span",
+      "marks": [],
+      "text": "Det finnes smashburgere med sprø kanter, klassiske cheeseburgere, enorme gourmetburgere og alt imellom."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b6",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s5",
+      "_type": "span",
+      "marks": [],
+      "text": "Så hva kjennetegner egentlig en skikkelig god burger?"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b8",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s7",
+      "_type": "span",
+      "marks": [],
+      "text": "Her er det vi mener du bør se etter."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b10",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s9",
+      "_type": "span",
+      "marks": [],
+      "text": "1. Burgeren må smake kjøtt"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b12",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s11",
+      "_type": "span",
+      "marks": [],
+      "text": "Det høres selvfølgelig ut."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b14",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s13",
+      "_type": "span",
+      "marks": [],
+      "text": "Likevel er det fort gjort at kjøttet forsvinner under ost, saus og toppings."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b16",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s15",
+      "_type": "span",
+      "marks": [],
+      "text": "En god burger starter med godt kjøtt, riktig fettinnhold og riktig behandling av kjøttet."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b18",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s17",
+      "_type": "span",
+      "marks": [],
+      "text": "Hos Kverneriet kverner vi storfekjøttet selv. Det gir oss kontroll på råvaren og konsistensen, og gjør at kjøttet fortsatt kan spille hovedrollen i burgeren."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b20",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s19",
+      "_type": "span",
+      "marks": [],
+      "text": "2. En god stekeskorpe"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b22",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s21",
+      "_type": "span",
+      "marks": [],
+      "text": "Noe av den karakteristiske smaken i en burger kommer når kjøttet møter høy varme."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b24",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s23",
+      "_type": "span",
+      "marks": [],
+      "text": "Da får man stekeskorpen som gir kontrast mellom utsiden og det saftige kjøttet inni."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b26",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s25",
+      "_type": "span",
+      "marks": [],
+      "text": "Det gjelder enten du foretrekker en syltynn smashburger eller en tykkere klassisk burger."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b28",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s27",
+      "_type": "span",
+      "marks": [],
+      "text": "3. Riktig forhold mellom burger og brød"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b30",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s29",
+      "_type": "span",
+      "marks": [],
+      "text": "Brødet er ikke bare emballasje."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b32",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s31",
+      "_type": "span",
+      "marks": [],
+      "text": "For mye brød gjør burgeren tørr. For lite brød gjør at burgeren faller fra hverandre."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b34",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s33",
+      "_type": "span",
+      "marks": [],
+      "text": "Et godt burgerbrød skal være mykt, men sterkt nok til å holde kjøtt, saus og toppings sammen helt til siste bit."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b36",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s35",
+      "_type": "span",
+      "marks": [],
+      "text": "4. Fett trenger syre"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b38",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s37",
+      "_type": "span",
+      "marks": [],
+      "text": "Kjøtt. Ost. Majones. Bacon."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b40",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s39",
+      "_type": "span",
+      "marks": [],
+      "text": "Mye av det vi elsker på en burger er fett og rikt."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b42",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s41",
+      "_type": "span",
+      "marks": [],
+      "text": "Derfor trenger de beste burgerne nesten alltid en kontrast."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b44",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s43",
+      "_type": "span",
+      "marks": [],
+      "text": "Pickles, løk, chili, tomat, relish eller andre syrlige og friske elementer gjør at burgeren ikke blir tung etter de første bitene."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b46",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s45",
+      "_type": "span",
+      "marks": [],
+      "text": "5. Toppings må ha en funksjon"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b48",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s47",
+      "_type": "span",
+      "marks": [],
+      "text": "Mer er ikke alltid bedre."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b50",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s49",
+      "_type": "span",
+      "marks": [],
+      "text": "En burger trenger ikke ti toppings for å være interessant."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b52",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s51",
+      "_type": "span",
+      "marks": [],
+      "text": "Vi spør heller:"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b54",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s53",
+      "_type": "span",
+      "marks": [],
+      "text": "Hva gir crunch?"
+     }
+    ],
+    "level": 1,
+    "listItem": "bullet",
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b56",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s55",
+      "_type": "span",
+      "marks": [],
+      "text": "Hva gir syre?"
+     }
+    ],
+    "level": 1,
+    "listItem": "bullet",
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b58",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s57",
+      "_type": "span",
+      "marks": [],
+      "text": "Hva gir sødme?"
+     }
+    ],
+    "level": 1,
+    "listItem": "bullet",
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b60",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s59",
+      "_type": "span",
+      "marks": [],
+      "text": "Hva gir fett?"
+     }
+    ],
+    "level": 1,
+    "listItem": "bullet",
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b62",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s61",
+      "_type": "span",
+      "marks": [],
+      "text": "Hva skal være hovedsmaken?"
+     }
+    ],
+    "level": 1,
+    "listItem": "bullet",
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b64",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s63",
+      "_type": "span",
+      "marks": [],
+      "text": "Når alt har en jobb, smaker burgeren bedre enn summen av ingrediensene."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b66",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s65",
+      "_type": "span",
+      "marks": [],
+      "text": "Smashburger eller klassisk burger?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b68",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s67",
+      "_type": "span",
+      "marks": [],
+      "text": "Det kommer helt an på hva du liker."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b71",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s69",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Smashburger"
+     },
+     {
+      "_key": "s70",
+      "_type": "span",
+      "marks": [],
+      "text": " gir mye stekeskorpe, tynnere kjøtt og sprø kanter."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b74",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s72",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Klassisk burger"
+     },
+     {
+      "_key": "s73",
+      "_type": "span",
+      "marks": [],
+      "text": " gir mer kjøttstruktur, saftighet og plass til flere typer toppings."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b76",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s75",
+      "_type": "span",
+      "marks": [],
+      "text": "Kverneriet har først og fremst spesialisert seg på den klassiske restaurantburgeren."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b81",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s77",
+      "_type": "span",
+      "marks": [],
+      "text": "De fleste burgerne våre serveres med en 150 grams beef patty og bygges rundt forskjellige kombinasjoner av ost, saus, syre og tekstur. Les mer i "
+     },
+     {
+      "_key": "s79",
+      "_type": "span",
+      "marks": [
+       "l78"
+      ],
+      "text": "Smashburger vs. klassisk burger"
+     },
+     {
+      "_key": "s80",
+      "_type": "span",
+      "marks": [],
+      "text": "."
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l78",
+      "_type": "link",
+      "href": "/blogg/smashburger-vs-klassisk-burger/"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b83",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s82",
+      "_type": "span",
+      "marks": [],
+      "text": "Hvor får man burger i Oslo?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b85",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s84",
+      "_type": "span",
+      "marks": [],
+      "text": "Kverneriet har to burgerrestauranter i Oslo:"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b88",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s86",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "[Majorstuen](/majorstua/)"
+     },
+     {
+      "_key": "s87",
+      "_type": "span",
+      "marks": [],
+      "text": " i Kirkeveien 64B."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b91",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s89",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "[Solli plass](/solli/)"
+     },
+     {
+      "_key": "s90",
+      "_type": "span",
+      "marks": [],
+      "text": " i Henrik Ibsens gate 100."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b93",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s92",
+      "_type": "span",
+      "marks": [],
+      "text": "Begge serverer våre klassiske burgere, håndlagde fries og sides."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b95",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s94",
+      "_type": "span",
+      "marks": [],
+      "text": "Har Kverneriet Oslos beste burger?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b97",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s96",
+      "_type": "span",
+      "marks": [],
+      "text": "Det finnes heldigvis ikke et objektivt svar på hvem som lager Oslos beste burger."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b99",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s98",
+      "_type": "span",
+      "marks": [],
+      "text": "Noen vil alltid velge smash. Andre vil ha en tykk restaurantburger. Noen vil ha den enkleste cheeseburgeren de finner."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b101",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s100",
+      "_type": "span",
+      "marks": [],
+      "text": "Det vi kan si, er hva vi prøver å lage:"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b103",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s102",
+      "_type": "span",
+      "marks": [],
+      "text": "En burger hvor kjøttet står i sentrum, råvarene er gode, hvert element har en funksjon og du har lyst på én bit til når du er ferdig."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b105",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s104",
+      "_type": "span",
+      "marks": [],
+      "text": "Resten får du nesten avgjøre selv."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b111",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s107",
+      "_type": "span",
+      "marks": [
+       "l106"
+      ],
+      "text": "Se burgermenyen"
+     },
+     {
+      "_key": "s108",
+      "_type": "span",
+      "marks": [],
+      "text": " · "
+     },
+     {
+      "_key": "s110",
+      "_type": "span",
+      "marks": [
+       "l109"
+      ],
+      "text": "Bestill bord i Oslo"
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l106",
+      "_type": "link",
+      "href": "/meny/"
+     },
+     {
+      "_key": "l109",
+      "_type": "link",
+      "href": "/majorstua/#booking"
+     }
+    ],
+    "style": "normal"
+   }
+  ],
+  "excerpt": "Hva kjennetegner en skikkelig god burger? Kjøtt som smaker kjøtt, stekeskorpe, riktig brød, syre mot fett og toppings med en jobb. Slik tenker Kverneriet.",
+  "mainImage": {
+   "alt": "Grillede patties med smeltet blåmuggost på Kverneriet",
+   "h": 801,
+   "url": "https://cdn.sanity.io/images/u0hod2sg/production/c982e10d38fda1ed882143e9fb883132e21388af-1200x801.jpg",
+   "w": 1200
+  },
+  "publishedAt": "2026-09-21T12:20:00Z",
+  "seoTitle": "Oslos beste burger? Fem ting du bør se etter",
+  "slug": "oslos-beste-burger",
+  "title": "På jakt etter Oslos beste burger?",
+  "updatedAt": "2026-09-21T14:08:59Z"
+ },
+ {
+  "_createdAt": "2026-09-21T14:07:35Z",
+  "_id": "post-burger-majorstuen-frogner-solli",
+  "_rev": "jPb1M1KCHDKGzSgUA5t6cX",
+  "_type": "post",
+  "_updatedAt": "2026-09-21T14:09:01Z",
+  "author": "Kverneriet",
+  "body": [
+   {
+    "_key": "b2",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s1",
+      "_type": "span",
+      "marks": [],
+      "text": "På jakt etter burger vest i Oslo?"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b6",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s3",
+      "_type": "span",
+      "marks": [],
+      "text": "Kverneriet har to burgerrestauranter på hver sin side av Frogner: "
+     },
+     {
+      "_key": "s4",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Majorstuen og Solli plass"
+     },
+     {
+      "_key": "s5",
+      "_type": "span",
+      "marks": [],
+      "text": "."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b8",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s7",
+      "_type": "span",
+      "marks": [],
+      "text": "Enten du kommer fra Bogstadveien, Frognerparken, Nationaltheatret eller sentrum, er det derfor aldri spesielt langt til nærmeste Kverneriet."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b10",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s9",
+      "_type": "span",
+      "marks": [],
+      "text": "Burger på Majorstuen"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b14",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s11",
+      "_type": "span",
+      "marks": [],
+      "text": "Kverneriet Majorstuen ligger i "
+     },
+     {
+      "_key": "s12",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Kirkeveien 64B"
+     },
+     {
+      "_key": "s13",
+      "_type": "span",
+      "marks": [],
+      "text": ", like ved Majorstukrysset."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b16",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s15",
+      "_type": "span",
+      "marks": [],
+      "text": "Restauranten ligger i gangavstand fra blant annet Bogstadveien, Colosseum kino, Frognerparken og Vigelandsparken."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b18",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s17",
+      "_type": "span",
+      "marks": [],
+      "text": "På menyen finner du våre klassiske burgere med egenkvernet storfekjøtt, håndlagde fries, sides og alternativer for dem som ikke skal ha burger."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b21",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s19",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Adresse:"
+     },
+     {
+      "_key": "s20",
+      "_type": "span",
+      "marks": [],
+      "text": " Kirkeveien 64B, Oslo"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b27",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s23",
+      "_type": "span",
+      "marks": [
+       "l22"
+      ],
+      "text": "Se meny Majorstuen"
+     },
+     {
+      "_key": "s24",
+      "_type": "span",
+      "marks": [],
+      "text": " · "
+     },
+     {
+      "_key": "s26",
+      "_type": "span",
+      "marks": [
+       "l25"
+      ],
+      "text": "Bestill bord Majorstuen"
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l22",
+      "_type": "link",
+      "href": "/majorstua/menu/"
+     },
+     {
+      "_key": "l25",
+      "_type": "link",
+      "href": "/majorstua/#booking"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b29",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s28",
+      "_type": "span",
+      "marks": [],
+      "text": "Burger på Frogner og Solli plass"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b33",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s30",
+      "_type": "span",
+      "marks": [],
+      "text": "Er du nærmere Frogner, Aker Brygge eller sentrum, finner du Kverneriet Solli i "
+     },
+     {
+      "_key": "s31",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Henrik Ibsens gate 100"
+     },
+     {
+      "_key": "s32",
+      "_type": "span",
+      "marks": [],
+      "text": "."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b35",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s34",
+      "_type": "span",
+      "marks": [],
+      "text": "Her kombinerer vi burgerrestauranten med cocktailbar, så Solli fungerer like godt for en rask burger som for middag og drinker med venner."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b38",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s36",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Adresse:"
+     },
+     {
+      "_key": "s37",
+      "_type": "span",
+      "marks": [],
+      "text": " Henrik Ibsens gate 100, Oslo"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b44",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s40",
+      "_type": "span",
+      "marks": [
+       "l39"
+      ],
+      "text": "Se meny Solli"
+     },
+     {
+      "_key": "s41",
+      "_type": "span",
+      "marks": [],
+      "text": " · "
+     },
+     {
+      "_key": "s43",
+      "_type": "span",
+      "marks": [
+       "l42"
+      ],
+      "text": "Bestill bord Solli"
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l39",
+      "_type": "link",
+      "href": "/solli/menu/"
+     },
+     {
+      "_key": "l42",
+      "_type": "link",
+      "href": "/solli/#booking"
+     }
+    ],
+    "style": "normal"
+   },
+   {
+    "_key": "b46",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s45",
+      "_type": "span",
+      "marks": [],
+      "text": "Klassisk burger fremfor smashburger"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b48",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s47",
+      "_type": "span",
+      "marks": [],
+      "text": "Oslo har fått mange gode smashburgersteder de siste årene."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b50",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s49",
+      "_type": "span",
+      "marks": [],
+      "text": "Kverneriet gjør noe litt annet."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b52",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s51",
+      "_type": "span",
+      "marks": [],
+      "text": "Vi har først og fremst spesialisert oss på klassiske restaurantburgere med en tykkere patty, hvor kjøttet får mer struktur og toppings får større spillerom."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b54",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s53",
+      "_type": "span",
+      "marks": [],
+      "text": "De fleste burgerne våre serveres med 150 gram storfekjøtt som vi kverner selv."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b56",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s55",
+      "_type": "span",
+      "marks": [],
+      "text": "Burger med vegetarisk eller glutenfritt alternativ"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b58",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s57",
+      "_type": "span",
+      "marks": [],
+      "text": "Skal hele gjengen spise sammen?"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b60",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s59",
+      "_type": "span",
+      "marks": [],
+      "text": "Flere av burgerne kan tilpasses med vegetarisk alternativ, og glutenfritt burgerbrød er tilgjengelig."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b62",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s61",
+      "_type": "span",
+      "marks": [],
+      "text": "Ved allergier eller cøliaki anbefaler vi alltid at du informerer restauranten når du bestiller."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b64",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s63",
+      "_type": "span",
+      "marks": [],
+      "text": "Burger før eller etter kino?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b66",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s65",
+      "_type": "span",
+      "marks": [],
+      "text": "Skal du på Colosseum kino, ligger Kverneriet Majorstuen bare noen minutter unna."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b68",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s67",
+      "_type": "span",
+      "marks": [],
+      "text": "Det gjør restauranten til et enkelt alternativ både før og etter filmen."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b70",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s69",
+      "_type": "span",
+      "marks": [],
+      "text": "På Solli er du samtidig i kort avstand fra blant annet Nationaltheatret, Aker Brygge, Vika og Frogner."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b72",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s71",
+      "_type": "span",
+      "marks": [],
+      "text": "Hvor bør jeg spise burger på Majorstuen?"
+     }
+    ],
+    "markDefs": [],
+    "style": "h2"
+   },
+   {
+    "_key": "b74",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s73",
+      "_type": "span",
+      "marks": [],
+      "text": "Hvis du er ute etter en klassisk restaurantburger på Majorstuen, finner du Kverneriet i Kirkeveien 64B."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b76",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s75",
+      "_type": "span",
+      "marks": [],
+      "text": "Her serverer vi egenkvernet storfekjøtt, burgere, håndlagde fries og sides i en fullverdig restaurant."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b78",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s77",
+      "_type": "span",
+      "marks": [],
+      "text": "På den andre siden av Frogner finner du samme konsept på Solli plass."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b80",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s79",
+      "_type": "span",
+      "marks": [
+       "strong"
+      ],
+      "text": "Majorstuen eller Solli?"
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b82",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s81",
+      "_type": "span",
+      "marks": [],
+      "text": "Velg den som er nærmest."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b84",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s83",
+      "_type": "span",
+      "marks": [],
+      "text": "Burgeren tar vi oss av."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b87",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s86",
+      "_type": "span",
+      "marks": [
+       "l85"
+      ],
+      "text": "Bestill bord"
+     }
+    ],
+    "markDefs": [
+     {
+      "_key": "l85",
+      "_type": "link",
+      "href": "/majorstua/#booking"
+     }
+    ],
+    "style": "normal"
+   }
+  ],
+  "excerpt": "Burger vest i Oslo: Kverneriet ligger på Majorstuen (Kirkeveien 64B) og ved Solli plass (Henrik Ibsens gate 100), på hver sin side av Frogner.",
+  "mainImage": {
+   "alt": "Korallrosa sofabenk og dekkede bord på Kverneriet Solli",
+   "h": 935,
+   "url": "https://cdn.sanity.io/images/u0hod2sg/production/d5303d8c169da9c3a01882caaaebadaaba81a451-1400x935.jpg",
+   "w": 1400
+  },
+  "publishedAt": "2026-09-21T12:10:00Z",
+  "seoTitle": "Burger på Majorstuen, Frogner og Solli plass – Kverneriet",
+  "slug": "burger-majorstuen-frogner-solli",
+  "title": "Burger på Majorstuen, Frogner og Solli",
+  "updatedAt": "2026-09-21T14:09:01Z"
  }
 ]
