@@ -468,3 +468,4 @@ html{scroll-behavior:smooth}
 .post__body .pullquote{margin:var(--space-6) 0;padding-left:var(--space-5);border-left:3px solid var(--text-accent);font-size:var(--type-display-4);font-family:var(--font-display);text-transform:uppercase;line-height:var(--leading-display)}
 .photo--inline{margin-top:var(--space-6);aspect-ratio:3/2}
 .post-card h2 a{border:0;color:inherit}
+.faq-inline{margin-top:var(--space-8)}

@@ -19,8 +19,24 @@ def _spans(block):
         out += t
     return out
 
+def _faq_html(items):
+    rows = ''.join(f'<details class="faq__item"><summary><h3 class="faq__q">{q}</h3></summary><div class="faq__a"><p>{a}</p></div></details>' for q, a in items)
+    return f'<section class="faq-inline" id="faq"><h2 class="display-3">Ofte stilte spørsmål</h2><div class="faq" style="margin-top:var(--space-4)">{rows}</div></section>'
+
 def to_html(blocks, cls_p=''):
-    """Full HTML (blogginnlegg, landingssider)."""
+    """Full HTML (blogginnlegg, landingssider). En «## Ofte stilte spørsmål»-seksjon med ### spørsmål + svar
+    blir til samme <details>-markup som resten av siden (og dermed FAQPage-markup via seo_head)."""
+    blocks = list(blocks or [])
+    for i, b in enumerate(blocks):
+        if b.get('_type') == 'block' and b.get('style') == 'h2' and _spans(b).strip().lower().startswith('ofte stilte'):
+            items = []; q = None; j = i + 1
+            while j < len(blocks) and not (blocks[j].get('_type') == 'block' and blocks[j].get('style') == 'h2'):
+                bj = blocks[j]
+                if bj.get('_type') == 'block' and bj.get('style') == 'h3': q = _spans(bj); items.append([q, ''])
+                elif bj.get('_type') == 'block' and items: items[-1][1] = (items[-1][1] + ' ' + _spans(bj)).strip()
+                j += 1
+            if items:
+                return to_html(blocks[:i], cls_p) + '\n' + _faq_html([(q, a) for q, a in items if a]) + ('\n' + to_html(blocks[j:], cls_p) if j < len(blocks) else '')
     out = []; lst = None
     def close():
         nonlocal lst
