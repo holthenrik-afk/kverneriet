@@ -436,3 +436,24 @@ html{scroll-behavior:smooth}
 .hero-dark--venue .hero-dark__scrim{background:linear-gradient(to top,rgba(20,15,11,.84) 0%,rgba(20,15,11,.55) 45%,rgba(20,15,11,.22) 100%)}
 .hero-home__sub{margin-top:var(--space-4);font-size:var(--type-body-lg);color:var(--text-strong);max-width:56ch;margin-inline:auto}
 .hero-home .lede{margin-top:var(--space-4)}
+
+/* ---------- «Smooth side» (21.09.2026) ----------
+   1) Sideskift: kryssfading mellom sidene med cross-document View Transitions (Chrome 126+, Safari 18.2+;
+      andre nettlesere får vanlig sideskift). Headeren beholder sitt eget navn så den står stille mens
+      innholdet toner. 2) Rolig inntoning av kortgrupper første gang de kommer i syne – 240 ms, 6 px, 40 ms
+      forskyvning per kort. Klassene settes av JS, så uten JS er alt synlig fra start. */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:160ms var(--ease-out) both vt-out}
+::view-transition-new(root){animation:220ms var(--ease-out) both vt-in}
+@keyframes vt-out{to{opacity:0}}
+@keyframes vt-in{from{opacity:0;transform:translateY(4px)}}
+.site-header{view-transition-name:site-header}
+::view-transition-old(site-header),::view-transition-new(site-header){animation:none}
+.reveal>*{opacity:0;transform:translateY(6px);transition:opacity 240ms var(--ease-out),transform 240ms var(--ease-out)}
+.reveal.is-in>*{opacity:1;transform:none}
+.reveal.is-in>:nth-child(2){transition-delay:40ms}.reveal.is-in>:nth-child(3){transition-delay:80ms}.reveal.is-in>:nth-child(4){transition-delay:120ms}
+.reveal.is-in>:nth-child(5){transition-delay:160ms}.reveal.is-in>:nth-child(6){transition-delay:200ms}.reveal.is-in>:nth-child(7){transition-delay:240ms}.reveal.is-in>:nth-child(8){transition-delay:280ms}
+@media (prefers-reduced-motion:reduce){
+  @view-transition{navigation:none}
+  .reveal>*{opacity:1;transform:none;transition:none}
+}

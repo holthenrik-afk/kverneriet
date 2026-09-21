@@ -1,4 +1,5 @@
-/* Kverneriet — site behaviour. No frameworks, no scroll-driven reveals (DS: motion is short and flat). */
+/* Kverneriet — site behaviour. No frameworks. Motion is short and flat (DS); the only scroll-driven thing is a
+   one-time 240 ms fade-in of card groups, and it only runs where IntersectionObserver exists. */
 (function(){
   'use strict';
 
@@ -279,6 +280,20 @@
       b.textContent=(t('book.sentBadge')||'')+' – Kverneriet '+VENUE_NAMES[v];
     });
   });
+
+  /* Rolig inntoning av kortgrupper første gang de kommer i syne (én gang, kort, flat).
+     Grupper som allerede er i viewporten ved lasting vises med en gang. */
+  if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var groups=document.querySelectorAll('.venue-trio,.grid-3,.occ-grid,.gallery-grid,.media-scroller,.faq');
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-in');io.unobserve(en.target);}});
+    },{rootMargin:'0px 0px -10% 0px',threshold:0.05});
+    Array.prototype.forEach.call(groups,function(g){
+      var r=g.getBoundingClientRect();
+      if(r.top<window.innerHeight&&r.bottom>0)return;
+      g.classList.add('reveal');io.observe(g);
+    });
+  }
 
   /* Apply the stored language once the DOM is in place */
   applyLang(LANG);
