@@ -56,6 +56,19 @@ PAGES = {
     img='/assets/img/ln-hero.jpg'),
 }
 
+def _overrides():
+    import kv
+    for v in kv.venues()['venues']:
+        if v.get('seo'):
+            PAGES[v['slug']]['title'] = v['seo'].get('title') or PAGES[v['slug']]['title']
+            PAGES[v['slug']]['desc'] = v['seo'].get('desc') or PAGES[v['slug']]['desc']
+        if v.get('copy', {}).get('heroImg', {}).get('url'): PAGES[v['slug']]['img'] = v['copy']['heroImg']['url']
+    for l in kv.landing():
+        if l.get('seoTitle'): PAGES[l['slug']]['title'] = l['seoTitle']
+        if l.get('seoDescription'): PAGES[l['slug']]['desc'] = l['seoDescription']
+        if l.get('img'): PAGES[l['slug']]['img'] = l['img']
+_overrides()
+
 def check():
     for k, p in PAGES.items():
         assert len(p['title']) <= 60, f'{k}: tittel {len(p["title"])} tegn'

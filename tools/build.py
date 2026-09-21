@@ -11,7 +11,7 @@ import os, re, sys, hashlib, subprocess, datetime, functools
 print = functools.partial(print, flush=True)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import kv, chrome, modal, faq, i18n_gen as G, pages
-import build_venue, build_menu, build_landing, images, seo_head
+import build_venue, build_menu, build_landing, build_blog, images, seo_head
 import media as MD
 os.chdir(kv.ROOT)
 
@@ -19,11 +19,15 @@ V = kv.venues(); ORG = V['org']
 e = kv.esc
 
 def about_section():
-    G.add('home.aboutEyebrow', 'Om Kverneriet', 'About Kverneriet'); G.add('home.aboutTitle', 'Burgersjappa fra Tønsberg som ble tre restauranter', 'The Tønsberg burger joint that became three restaurants')
-    G.add('home.about1', 'Kverneriet startet som en liten burgersjappe i Tønsberg i 2013. I 2015 åpnet vi på Majorstua i Oslo, og i 2017 ved Solli plass. Oppskriften er den samme alle tre steder: vi kverner alt kjøttet selv av storfe i toppklasse og steker burgerne medium pluss, brødene er ferske, og friesene er håndlagde, trippelkokte og tar tre dager – naturlig glutenfrie.',
-          'Kverneriet started as a small burger joint in Tønsberg in 2013. In 2015 we opened at Majorstua in Oslo, and in 2017 at Solli plass. The recipe is the same in all three: we grind all the beef ourselves from top-grade cattle and cook the burgers medium plus, the buns are fresh, and the fries are handmade, triple-cooked and take three days – naturally gluten-free.')
+    sc = kv.site_copy()
+    t = sc.get('aboutTitle') or {'no': 'Burgersjappa fra Tønsberg som ble tre restauranter', 'en': 'The Tønsberg burger joint that became three restaurants'}
+    a1 = sc.get('about1') or {'no': '', 'en': ''}
+    G.add('home.aboutEyebrow', 'Om Kverneriet', 'About Kverneriet'); G.add('home.aboutTitle', t['no'], t.get('en') or t['no'])
+    G.add('home.about1', a1['no'], a1.get('en') or a1['no'])
     rng = faq.burger_range('majorstua') or (239, 289); fries = faq.fries_from() or 84; pk0 = ORG['packages']['items'][0]['price']
-    G.add('home.about2', f'Burgerne koster fra {rng[0]} til {rng[1]} kr og fries fra {fries} kr. Bord for inntil 8 personer (7 i Tønsberg) booker du online med bekreftelse med en gang; større grupper sender forespørsel og velger matpakke fra {pk0} kr per person. Alle restaurantene har drop-in-bord og take-away du henter selv, og Majorstua og Solli leverer hjem med Wolt og Foodora.',
+    a2 = sc.get('about2')
+    if a2 and a2.get('no'): G.add('home.about2', a2['no'], a2.get('en') or a2['no'])
+    else: G.add('home.about2', f'Burgerne koster fra {rng[0]} til {rng[1]} kr og fries fra {fries} kr. Bord for inntil 8 personer (7 i Tønsberg) booker du online med bekreftelse med en gang; større grupper sender forespørsel og velger matpakke fra {pk0} kr per person. Alle restaurantene har drop-in-bord og take-away du henter selv, og Majorstua og Solli leverer hjem med Wolt og Foodora.',
           f'Burgers cost NOK {rng[0]}–{rng[1]} and fries from NOK {fries}. Tables for up to 8 (7 in Tønsberg) are booked online with instant confirmation; larger groups send a request and choose a food package from NOK {pk0} per person. All three restaurants keep walk-in tables and do pick-up take-away, and Majorstua and Solli deliver with Wolt and Foodora.')
     # Om-teksten ligger som innledning i restaurant-seksjonen (Henrik ville slå de to sammen, 21.09.2026)
     return f'''      <!-- om:start -->
@@ -31,7 +35,7 @@ def about_section():
         <header class="sec-head">
           <div class="sec-head__rule"></div>
           <span class="kv-eyebrow" data-i18n="home.aboutEyebrow">Om Kverneriet</span>
-          <h2 class="display-2" data-i18n="home.aboutTitle">Burgersjappa fra Tønsberg som ble tre restauranter</h2>
+          <h2 class="display-2" data-i18n="home.aboutTitle">{e(G._D['no']['home.aboutTitle'])}</h2>
         </header>
         <div>
           <p class="lede" data-i18n="home.about1">{e(G._D['no']['home.about1'])}</p>
@@ -155,7 +159,7 @@ def cache_bust():
     print(f'css v={h} js v={js}')
 
 if __name__ == '__main__':
-    print('== sider'); build_venue.build(); build_menu.build(); build_landing.build(); patch_index(); patch_takeaway(); build_404()
+    print('== sider'); build_venue.build(); build_menu.build(); build_landing.build(); build_blog.build(); patch_index(); patch_takeaway(); build_404()
     print('== presse'); subprocess.run([sys.executable, 'tools/media.py'], check=True); subprocess.run([sys.executable, 'tools/press.py'], check=True)
     print('== bilder'); images.apply_all(images.build_variants())
     print('== oversettelser'); print(G.write(), 'genererte nøkler')

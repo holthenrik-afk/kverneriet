@@ -126,55 +126,21 @@ def hours_line(slug):
     v = vv(slug)
     return ', '.join(f'{kv.day_range(h["days"])} {kv.hhmm(h["opens"])}–{kv.hhmm(h["closes"])}' for h in v['hours']['kitchen'])
 
-PAGES = [
- dict(slug='lunsj', crumb='Lunsj',
-      imgAlt='Lunsjbord med salater, burger og cocktails på Kverneriet Tønsberg', pos='center 40%',
-      eyebrow='Majorstua · Solli · Tønsberg', h1='Lunsj i Oslo og Tønsberg',
-      sub=f'Burgerlunsj med kjøtt vi kverner selv og fries som tar tre dager – {lunch_sub()}.', cta='book',
-      sec_eyebrow='Burgerlunsj i Oslo og Tønsberg', h2='En skikkelig lunsj, ikke en rask matbit',
-      body=[f'På <a href="/majorstua/">Majorstua</a> åpner kjøkkenet kl. 11 tirsdag til fredag, på <a href="/solli/">Solli</a> kl. 11.30. Da får du de samme burgerne som om kvelden: 150 gram kjøtt vi kverner selv, ferske brød og fries som har tatt tre dager å lage. Har du en times pause, rekker du både en burger og en milkshake.',
-            f'I <a href="/tonsberg/">Tønsberg</a> serverer vi lunsj torsdag til søndag fra kl. 12, med en bredere meny enn i Oslo – {tonsberg_unique()} i tillegg til burgerne. Sitter dere flere fra samme kontor, booker dere bord, så står det klart når dere kommer.'],
-      facts_title='Lunsj og kjøkkentider', facts=[('Majorstua', f'Lunsj {vv("majorstua")["lunch"]} · kjøkken {hours_line("majorstua")}', '/majorstua/'), ('Solli', f'Lunsj {vv("solli")["lunch"]} · kjøkken {hours_line("solli")}', '/solli/'), ('Tønsberg', f'Lunsj {vv("tonsberg")["lunch"]} · kjøkken {hours_line("tonsberg")}', '/tonsberg/'),
-                                       ('Grupper fra kontoret', 'Book bord, så slipper dere å vente'), ('Take-away', 'Forhåndsbestill og hent selv på alle tre')],
-      facts_note='Hele menyen serveres fra kjøkkenet åpner. Baren holder åpent lenger – se restaurantsidene.',
-      media=['fa_2024', 'dn_2016', 'dn_2017'],
-      others=[('julebord', 'xmas', 'Julebord'), ('selskap', 'groups', 'Selskap og grupper'), ('late-night', 'late', 'Late night')]),
- dict(slug='julebord', crumb='Julebord',
-      imgAlt='Spisesalen på Kverneriet Solli med korallrosa stoler og dekkede bord',
-      eyebrow='November og desember', h1='Julebord i Oslo og Tønsberg',
-      sub=f'Julebord med burger i stedet for ribbe – for grupper over 8 (7 i Tønsberg) på Majorstua, Solli og i Tønsberg. Matpakker fra {PK["items"][0]["price"]} kr per person, bar som holder åpent etter maten.', cta='group',
-      sec_eyebrow=f'Grupper over 8 (7 i Tønsberg) · fra {PK["items"][0]["price"]} kr', h2='Et julebord folk faktisk gleder seg til',
-      body=['Ikke alle vil ha pinnekjøtt fire ganger i desember. Hos oss får gjengen din burgere av kjøtt vi kverner selv, fries som tar tre dager og milkshakes – på <a href="/majorstua/">Majorstua</a>, <a href="/solli/">Solli</a> eller i <a href="/tonsberg/">Tønsberg</a>, i et lokale med bar som holder åpent til 23 tirsdag–lørdag.',
-            f'Bordet velger én matpakke for hele gjengen: {", ".join(f"{p["name"]} ({p["price"]} kr)" for p in PK["items"])}. Send oss en forespørsel med antall, dato og ønsket tidspunkt, så kommer vi tilbake med et forslag til bord og meny. Julebordene fyller opp tidlig, så jo før du booker, jo bedre.'],
-      facts_title='Slik fungerer det', facts=[('Antall', 'Grupper over 8 personer (7 i Tønsberg) booker som selskap')] + [(p['name'], f'{p["price"]} kr per person – {p["desc"]}') for p in PK['items']] + [('Barn', f'Barnemeny {PK["kids"]} kr for gjester under 12'), ('Baren', 'Åpen til 23 tirsdag–lørdag, 22 søndag og mandag')],
-      facts_note='Pakkene gjelder hele bordet. Allergier og spesialbehov løser vi når vi får beskjed på forhånd.',
-      media=['db_2023', 'fa_2026', 'vg_2017'],
-      others=[('selskap', 'groups', 'Selskap og grupper'), ('lunsj', 'lunch', 'Lunsj'), ('late-night', 'late', 'Late night')]),
- dict(slug='selskap', crumb='Selskap og grupper',
-      imgAlt='Uteserveringen til Kverneriet Tønsberg på Kaldnes brygge i kveldslys',
-      eyebrow='Bursdag · Vennegjeng · Firma', h1='Selskap i Oslo og Tønsberg',
-      sub=f'Gruppebooking for bursdag, firmafest og vennegjeng på Majorstua, Solli eller i Tønsberg. Grupper over 8 (7 i Tønsberg) velger matpakke fra {PK["items"][0]["price"]} kr per person.', cta='group',
-      sec_eyebrow='Grupper over 8 personer (7 i Tønsberg)', h2='Samle gjengen rundt et langbord',
-      body=['Vi tar imot selskap på alle tre restaurantene: <a href="/majorstua/">Kverneriet Majorstua</a> og <a href="/solli/">Kverneriet Solli</a> i Oslo, og <a href="/tonsberg/">Kverneriet Tønsberg</a>. Bursdag, avslutning, vennegjeng som ikke har sett hverandre på lenge, eller et team som fortjener noe bedre enn kantina – burgere av kjøtt vi kverner selv passer alle.',
-            f'Grupper over 8 (7 i Tønsberg) velger én matpakke for hele bordet, så maten kommer samlet og raskt. Fyll ut forespørselen med antall, dato og tidsrom, så finner vi plass. Skal dere ha barn med, har vi egen barnemeny til {PK["kids"]} kr for gjester under 12.'],
-      facts_title='Godt å vite', facts=[('Antall', 'Grupper over 8 (7 i Tønsberg) booker som selskap – vi finner plass til større selskap også')] + [(p['name'], f'{p["price"]} kr per person') for p in PK['items']] + [('Barn', f'Barnemeny {PK["kids"]} kr for gjester under 12'), ('Allergier', 'Alle retter er merket med allergener i menyen'), ('Drop-in', 'Mindre grupper booker online eller kommer innom')],
-      facts_note='Forespørselen går til restauranten, og bordet er bekreftet når du har fått e-post fra oss.',
-      media=['db_2023', 'vg_2017', 'ap_2020'],
-      others=[('julebord', 'xmas', 'Julebord'), ('lunsj', 'lunch', 'Lunsj'), ('late-night', 'late', 'Late night')]),
- dict(slug='late-night', crumb='Late night',
-      imgAlt='Gjester som skåler med cocktails og burgere på Kverneriet om kvelden', pos='center 40%',
-      gallery=[('/assets/img/ln-beer.jpg', 'Øl tappes fra tappekrana i baren', '4/5'), ('/assets/img/ln-burger.jpg', 'Burger holdt i hendene ved bordet', '4/5'), ('/assets/img/ln-cocktail.jpg', 'Rød cocktail på marmorbaren', '4/5')],
-      eyebrow='Åpent sent · tirsdag–lørdag', h1='Late night burger i Oslo',
-      sub='Spise sent? Kjøkkenet på Majorstua og Solli serverer hele menyen til kl. 22, og baren holder åpent til 23 tirsdag til lørdag. Ingen booking nødvendig.', cta='book',
-      sec_eyebrow='Majorstua · Solli · Tønsberg', h2='Åpent sent: kjøkkenet til 22, baren til 23',
-      body=['Etter kino, etter kampen, etter en lang dag på jobb. Kjøkkenet på <a href="/majorstua/">Majorstua</a> og <a href="/solli/">Solli</a> serverer hele menyen til kl. 22 fra tirsdag til lørdag (21 søndag og mandag), og baren holder åpent en time til. Vi har mange drop-in-bord, så du trenger ikke booke for å spise sent i Oslo.',
-            'Nattmat på Kverneriet betyr burger av kjøtt vi kverner selv, fries som tar tre dager, og en milkshake med 4 cl matchende sprit – eller en øl fra tappen og en cocktail fra baren. I <a href="/tonsberg/">Tønsberg</a> holder kjøkkenet åpent til 22 tirsdag–lørdag og baren til 23.'],
-      facts_title='Sene åpningstider', facts=[('Majorstua – kjøkken', hours_line('majorstua'), '/majorstua/'), ('Solli – kjøkken', hours_line('solli'), '/solli/'), ('Tønsberg – kjøkken', hours_line('tonsberg'), '/tonsberg/'),
-                                              ('Baren', 'Til 23 tirsdag–lørdag, til 22 søndag og mandag (alle tre)'), ('Make it grown-up', 'Milkshake med 4 cl sprit, +80 kr'), ('Drop-in', 'Mange bord uten booking')],
-      facts_note='Kjøkkentider per restaurant. Baren holder åpent etter at kjøkkenet stenger.',
-      media=['fa_2025', 'db_2020', 'mao_2018'],
-      others=[('lunsj', 'lunch', 'Lunsj'), ('selskap', 'groups', 'Selskap og grupper'), ('julebord', 'xmas', 'Julebord')]),
-]
+# Tekstene ligger i content/landing.json (redigeres i Sanity → tools/fetch_sanity.py). Faktakortene med åpningstider
+# regnes fortsatt ut fra venues.json når teksten er tom, så tidene aldri spriker.
+def _pages():
+    out = []
+    for p in kv.landing():
+        d = dict(p)
+        d['facts'] = [tuple(f) for f in d.get('facts', [])]
+        d['others'] = [tuple(o) for o in d.get('others', [])]
+        if d.get('gallery'): d['gallery'] = [tuple(g) for g in d['gallery']]
+        if isinstance(d.get('body'), list) and d['body'] and isinstance(d['body'][0], dict):
+            import portable as PT
+            d['body'] = PT.paragraphs(d['body'])
+        out.append(d)
+    return out
+PAGES = _pages()
 
 def build():
     for p in PAGES:

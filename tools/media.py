@@ -39,50 +39,8 @@ def die(rating, outlet_key):
 
 # ---- Sitatbank: 90 omtaler ble funnet og verifisert 15.09.2026 (scratch: press-confirmed.json).
 # Her ligger de redaksjonelle og positive, sterkeste først. 'vg' brukes også for Godt.no (VGs matseksjon). ----
-MEDIA = [
- dict(key='db_2020', outlet='dagbladet', title='«Oslos overlegent beste burger»', date='2020', url='https://www.dagbladet.no/mat/oslos-overlegent-beste-burger/72391109',
-      rating='6/6', quote='Burgerne fra Kverneriet er så nære man kommer en perfekt.', venue='solli', photo='/assets/img/ta-press-burger.jpg', alt='Burger fra Kverneriet holdt opp mot lyset'),
- dict(key='fa_2026', outlet='finansavisen', title='«Oslo, våkne opp!»', date='2026', url='https://www.finansavisen.no/mat-og-drikke/2026/02/21/8326967/anmeldelse-av-restaurant-kverneriet-pa-majorstuen',
-      rating='5/6', quote='Kverneriet bør spille en av hovedrollene på Oslos burgerscene. Nesten toppklasse.', venue='majorstua', photo='/assets/img/majorstua-about.jpg', alt='Spisesalen på Kverneriet Majorstua'),
- dict(key='db_2023', outlet='dagbladet', title='Oslos beste burger: «Himmelsk!»', date='2023', url='https://www.dagbladet.no/mat/oslos-beste-burger-himmelsk/78327900',
-      rating='', quote='Kverneriet har toppet de fleste av våre tidligere burgertester, og det skjønner vi godt.', venue='solli', photo='/assets/img/solli-hero.jpg', alt='Spisesalen på Kverneriet Solli'),
- dict(key='vg_2016', outlet='vg', title='«Sjefsburger»', date='2016', url='https://www.godt.no/anmeldelser/restaurant/i/mRdjng/restaurantanmeldelse-av-kverneriet-sjefsburger',
-      rating='5/6', quote='Kverneriet på Majorstuen har Oslos beste burger.', venue='majorstua', photo='/assets/img/trio-majorstua.jpg', alt='Kverneriet Majorstua'),
- dict(key='dn_2017', outlet='dn', title='«Dette er faktisk vilt godt»', date='2017', url='https://www.dn.no/smak/lunsjguiden/kverneriet/solli-plass/burgere/-dette-er-faktisk-vilt-godt/2-1-193022',
-      rating='21/25', quote='Dette er en av de beste burgerne jeg har smakt her i byen.', venue='solli', photo='/assets/img/meny-solli.jpg', alt='Burger på marmorbord, Kverneriet Solli'),
- dict(key='fa_2020', outlet='finansavisen', title='Test av take-away-burger i Oslo', date='2020', url='https://www.finansavisen.no/premium/lunsjguiden/2020/04/19/7518435/test-av-takeaway-burger-i-oslo',
-      rating='6/6', quote='Her har de gjort alt riktig. Brødet er luftig og kjøttet er virkelig godt.', venue='solli', photo='/assets/img/ta-press-boxes.jpg', alt='Take-away-esker fra Kverneriet'),
- dict(key='vg_2017', outlet='vg', title='«Bra burger»', date='2017', url='https://www.godt.no/anmeldelser/restaurant/i/OpBAwb/restaurantanmeldelse-av-kverneriet-bra-burger',
-      rating='5/6', quote='Kverneriet på Solli plass byr på vellaget tohåndsmat i fine omgivelser.', venue='solli', photo='/assets/img/solli-about.jpg', alt='Uteserveringen ved Solli plass'),
- dict(key='ap_2015', outlet='aftenposten', title='«Oslo har fått en ny burgerhimmel»', date='2015', url='https://www.aftenposten.no/oslo/sulten/i/4dROV/kverneriet-oslo-har-faatt-en-ny-burgerhimmel',
-      rating='', quote='Majorstuen har fått et nytt, godt vannhull med nydelig håndmat.', venue='majorstua', photo='/assets/img/g-burger.jpg', alt='Burger på tallerken'),
- dict(key='mao_2018', outlet='meravoslo', title='Hamburgere laget med kjærlighet', date='2018', url='https://meravoslo.no/nyheter/22/7/2018/kverneriet',
-      rating='6/6', quote='Vi kan på det varmeste anbefale å prøve Umami-burgeren, for det er ikke mange bedre hamburgere i Oslo mener vi!', venue='solli', photo='/assets/img/craft-grind.jpg', alt='Nykvernede patties på fjøl'),
- dict(key='tb_2024', outlet='tb', title='«Smakene sitter som de skal»', date='2024', url='https://www.tb.no/kverneriet-i-tonsberg-smakene-sitter-som-de-skal-men-gar-det-egentlig-an-med-ananas-pa-burger/r/5-76-2376585',
-      rating='5/6', quote='Kverneriet har noe for alle.', venue='tonsberg', photo='/assets/img/tonsberg-about.jpg', alt='Lunsjbord på Kverneriet Tønsberg'),
- dict(key='ap_2020', outlet='aftenposten', title='«Majorstua-burger med mersmak»', date='2020', url='https://vink.aftenposten.no/artikkel/APLkgA/anmeldelse-av-burgerrestauranten-kverneriet-pa-majorstua',
-      rating='4/6', quote='Servicen er på alerten fra det øyeblikket vi kommer inn døren til vi har fått bestilt, samt gjennom hele måltidet.', venue='majorstua', photo='/assets/img/majorstua-hero.jpg', alt='Kverneriet Majorstua'),
- dict(key='fa_2026b', outlet='finansavisen', title='Fire burgere i Oslo du bør teste', date='2026', url='https://www.finansavisen.no/mat-og-drikke/2026/01/31/8324464/her-er-fire-restauranter-i-oslo-vi-anbefaler-at-du-tester-burgeren',
-      rating='', quote='Fortsetter å levere ordentlig gode burgere år etter år.', venue='generelt', photo='/assets/img/g-fries-truffle.jpg', alt='Trøffelfries'),
- dict(key='na_2020', outlet='nettavisen', title='172 ting du bør ha sett i Norge', date='2020', url='https://www.nettavisen.no/livsstil/reisetips/172-ting-du-bor-ha-sett-i-norge/s/12-95-3423952768',
-      rating='', quote='Rett ved finner du Oslos beste burger på Kverneriet.', venue='majorstua', photo='/assets/img/g-softserve-oreo.jpg', alt='Soft serve med Oreo'),
- dict(key='ap_2023', outlet='aftenposten', title='Oslos beste 2023: burger', date='2023', url='https://vink.aftenposten.no/artikkel/eJQ8Gl/render-er-vinner-av-oslos-beste-2023-i-kategorien-burger',
-      rating='', quote='Steder som […] Kverneriet […] fortsetter å levere varene, år etter år.', venue='generelt', photo='/assets/img/craft-fries.jpg', alt='Fries med trøffel og parmesan'),
- dict(key='db_2017', outlet='dagbladet', title='«Wow! Her blir det vanskelig å finne ord»', date='2017', url='https://www.dagbladet.no/mat/robinson-begynte-a-mape-pa-burgerrestauranten--wow-her-blir-det-vanskelig-a-finne-ord/68690888',
-      rating='', quote='Mørt og saftig kjøtt og delikat tilbehør.', venue='solli', photo='/assets/img/ln-burger.jpg', alt='Burger i hendene ved bordet'),
- dict(key='db_2016', outlet='dagbladet', title='«Nam-nam på Kverneriet»', date='2016', url='https://www.dagbladet.no/tema/nam-nam-pa-kverneriet/60427896',
-      rating='', quote='Kjøttet i Umami-burgeren var grovkvernet, veldig saftig og full av spennende smaker.', venue='majorstua', photo='/assets/img/g-patties.jpg', alt='Patties med blåmuggost'),
- dict(key='tb_2020', outlet='tb', title='«Ren nytelse»', date='2020', url='https://www.tb.no/tbs-restaurantanmeldere-mener-kverneriet-er-mer-enn-burgere-ren-nytelse/r/5-76-1253308',
-      rating='', quote='TBs restaurantanmeldere mener Kverneriet er mer enn burgere: ren nytelse.', venue='tonsberg', photo='/assets/img/tonsberg-hero.jpg', alt='Kverneriet Tønsberg på Kaldnes, ved kanalen'),
- dict(key='op_2021', outlet='op', title='Folket har talt: Tønsbergs beste restaurant', date='2021', url='https://www.op.no/folket-har-talt-dette-er-tonsbergs-beste-restaurant-en-bekreftelse-pa-at-vi-er-pa-rett-vei/s/5-36-1112460',
-      rating='', quote='Folket har talt – dette er Tønsbergs beste restaurant: – En bekreftelse på at vi er på rett vei.', venue='tonsberg', photo='/assets/img/trio-tonsberg.jpg', alt='Uteserveringen i Tønsberg'),
- dict(key='fa_2024', outlet='finansavisen', title='Forretningslunsjen på Solli plass', date='2024', url='https://www.finansavisen.no/mat-og-drikke/2024/03/22/8112125/finansavisen-sin-anmeldelse-av-restaurant-kverneriet-pa-solli-plass',
-      rating='', quote='Er det sentrums beste sted for å kombinere business og burger? Ja.', venue='solli', photo='/assets/img/solli-hero.jpg', alt='Spisesalen på Kverneriet Solli'),
- dict(key='fa_2025', outlet='finansavisen', title='Overtidsmaten vi anbefaler', date='2025', url='https://www.finansavisen.no/mat-og-drikke/2025/09/21/8292533/til-lange-dager-pa-kontoret-her-er-overtidsmaten-vi-anbefaler',
-      rating='', quote='Kverneriet har servert bankers burgere i luksussegmentet i en årrekke. Dette er noe helt annet enn den jevne gatekjøkkenburgeren.', venue='generelt', photo='/assets/img/ta-band.jpg', alt='Innpakket take-away-burger'),
- dict(key='dn_2016', outlet='dn', title='Lunsjguiden: Kverneriet Majorstua', date='2016', url='https://www.dn.no/smak/lunsjguiden/mat/smak/-gar-ikke-folk-snart-lei/1-1-5753348',
-      rating='21/25', quote='Har man lyst på burger til lunsj, er Kverneriet absolutt et godt valg.', venue='majorstua', photo='/assets/img/g-burger.jpg', alt='Burger på tallerken'),
-]
+# Omtalene ligger i content/press.json (redigeres i Sanity → tools/fetch_sanity.py). Sortering = rekkefølgen i fila.
+MEDIA = [m for m in kv.press() if m.get('featured', True)]
 
 BY_KEY = {m['key']: m for m in MEDIA}
 def by_key(*keys): return [BY_KEY[k] for k in keys]

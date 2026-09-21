@@ -6,6 +6,10 @@ import kv
 V = kv.venues()
 ORG = V['org']
 
+def blog_link(markup):
+    """Bloggen lenkes først når det finnes innlegg."""
+    return (markup + '\n') if kv.posts() else ''
+
 def header(active=None, menu_href='/meny/'):
     links = ''.join(f'      <a{" class=\"is-active\"" if v["slug"] == active else ""} href="{kv.url(v["slug"])}">{kv.esc(v["name"])}</a>\n' for v in V['venues'])
     panel = ''.join(f'      <a href="{kv.url(v["slug"])}"{" class=\"is-active\"" if v["slug"] == active else ""}>{kv.esc(v["name"])}</a>\n' for v in V['venues'])
@@ -36,7 +40,7 @@ def header(active=None, menu_href='/meny/'):
       <a href="/julebord/" data-i18n="lp.xmas">Julebord</a>
       <a href="/selskap/" data-i18n="lp.groups">Selskap og grupper</a>
       <a href="/late-night/" data-i18n="lp.late">Late night</a>
-      <a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
+{blog_link('      <a href="/blogg/" data-i18n="blog.title">Blogg</a>')}      <a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
       <a href="https://join.kverneriet.com/" data-i18n="act.work">Jobb hos oss</a>
     </div>
   </div>
@@ -68,7 +72,7 @@ def footer(menu_href='/meny/'):
     <span class="pipe" aria-hidden="true">|</span><a href="/julebord/" data-i18n="lp.xmas">Julebord</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/selskap/" data-i18n="lp.groups">Selskap og grupper</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/late-night/" data-i18n="lp.late">Late night</a>
-    <span class="pipe" aria-hidden="true">|</span><a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
+{blog_link('    <span class="pipe" aria-hidden="true">|</span><a href="/blogg/" data-i18n="blog.title">Blogg</a>')}    <span class="pipe" aria-hidden="true">|</span><a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
     <span class="pipe" aria-hidden="true">|</span><a href="https://join.kverneriet.com/" data-i18n="foot.work">Jobb hos oss</a>
     <span class="pipe" aria-hidden="true">|</span><a href="{ORG['sameAs'][0]}" rel="noopener" target="_blank">Facebook</a>
   </div>

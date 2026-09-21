@@ -79,7 +79,7 @@ def venue_faq(v):
                      'How do I get to Kverneriet Tønsberg?', 'We are on Kaldnes brygge at Rambergveien 15, just across the canal bridge from Tønsberg brygge and the town centre, about a ten-minute walk from Tønsberg station. Outdoor seating by the canal when the weather allows.'),
     }[slug]
     q.append((f'faq.{slug}.getthere',) + getting)
-    return q
+    return q + extra(slug)
 
 def kids_answer(v, lang):
     items = kids_items(v['slug']); pdf = v['menuPdf']['kids']
@@ -92,6 +92,9 @@ def kids_answer(v, lang):
     return f'For group bookings we offer a kids menu at NOK {PK["kids"]} for guests under 12. Otherwise the menu has child-friendly options like fries, chicken tenders and soft serve – just ask.'
 
 def general_faq():
+    return _general_faq() + extra('index')
+
+def _general_faq():
     vs = V['venues']
     where_no = ', '.join(f'{v["name"]} ({v["address"]["street"]}, {v["address"]["city"]})' for v in vs)
     links = ' · '.join(f'<a href="{kv.url(v["slug"])}">{v["fullName"]}</a>' for v in vs)
@@ -113,6 +116,9 @@ def general_faq():
     ]
 
 def takeaway_faq():
+    return _takeaway_faq() + extra('takeaway')
+
+def _takeaway_faq():
     return [
         ('faq.ta.how', 'Hvordan bestiller jeg take-away fra Kverneriet?',
          'Velg restaurant og trykk «Hent selv» for å forhåndsbestille på OrderX, eller bestill hjemlevering med Wolt eller Foodora (Majorstua og Solli). I Tønsberg henter du selv.',
@@ -129,6 +135,9 @@ def takeaway_faq():
     ]
 
 def landing_faq(slug):
+    return _landing_faq(slug) + extra(slug)
+
+def _landing_faq(slug):
     vs = V['venues']
     lunch_no = '; '.join(f'{v["name"]} {v["lunch"]}' for v in vs)
     lunch_en = '; '.join(f'{v["name"]} {LUNCH_EN[v["slug"]]}' for v in vs)
@@ -172,6 +181,15 @@ def landing_faq(slug):
              'What can I drink late?', 'A milkshake with 4 cl of matching spirit (“Make it grown-up”), draught beer, wine and cocktails from the bar. See the drinks menu on the restaurant page.'),
         ],
     }.get(slug, [])
+
+def extra(page):
+    """Redaktørenes egne spørsmål (Sanity «faqItem») for en side."""
+    out = []
+    for i, f in enumerate(kv.site_copy().get('faqExtra') or []):
+        if f.get('page') != page or not f.get('question') or not f.get('answer'): continue
+        qn, an = f['question'].get('no', ''), f['answer'].get('no', '')
+        out.append((f'faq.x.{page}.{i}', qn, kv.esc(an).replace('\n', '<br>'), f['question'].get('en') or qn, kv.esc(f['answer'].get('en') or an).replace('\n', '<br>')))
+    return out
 
 def strip(s): return re.sub(r'<[^>]+>', '', s).replace('&nbsp;', ' ')
 

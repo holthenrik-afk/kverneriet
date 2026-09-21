@@ -1,0 +1,30 @@
+{
+  "name": "studio-kverneriet",
+  "private": true,
+  "version": "1.0.0",
+  "main": "package.json",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity graphql deploy"
+  },
+  "keywords": ["sanity"],
+  "dependencies": {
+    "@sanity/vision": "^6",
+    "react": "^19",
+    "react-dom": "^19",
+    "sanity": "^6",
+    "styled-components": "^6"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^5",
+    "@types/react": "^19",
+    "eslint": "^9",
+    "prettier": "^3",
+    "typescript": "^5"
+  },
+  "prettier": {"semi": false, "printWidth": 100, "bracketSpacing": false, "singleQuote": true}
+}

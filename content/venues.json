@@ -139,6 +139,68 @@
       "menuPdf": {
         "drinks": "/static-pdf/drinks/Kverneriet_MJS_Beverage_26-Aug.pdf",
         "kids": "/static-pdf/kverneriet_kids_menu.pdf"
+      },
+      "copy": {
+        "heroSub": {
+          "no": "Burgerrestaurant i Kirkeveien 64B på Majorstuen, Oslo – siden 2015.",
+          "en": "Burger restaurant at Kirkeveien 64B, Majorstuen, Oslo – since 2015."
+        },
+        "slogan": "Flipping kick-ass burgers",
+        "heroAlt": "Spisesalen på Kverneriet Majorstua med grønne fløyelsbenker, blå bar og Aperol-plakater",
+        "about1": {
+          "no": "Kverneriet Majorstua åpnet i 2015 i Kirkeveien 64B, tre minutter fra Majorstuen T-bane. Her har vi flippet håndlagde burgere siden: 150 gram kjøtt vi kverner selv av storfe i toppklasse, ferske brød og fries som tar tre dager å lage. Menyen har vokst sammen med gjestene – hot wings, ribs, salater, soft serve på Jersey-melk og milkshakes – men burgeren er fortsatt hjertet.",
+          "en": "Kverneriet Majorstua opened in 2015 at Kirkeveien 64B, three minutes from Majorstuen metro. We have been flipping handmade burgers here ever since: 150 grams of beef we grind ourselves from top-grade cattle, fresh buns and fries that take three days to make. The menu has grown with our guests – hot wings, ribs, salads, Jersey-milk soft serve and milkshakes – but the burger is still the heart of it."
+        },
+        "about2": {
+          "no": "Lokalet har grønne fløyelsbenker, blå bar og plass til både en rask lunsj tirsdag–fredag fra 11 og lange kvelder: kjøkkenet serverer til 22, og baren holder åpent til 23 tirsdag–lørdag. Finansavisen ga oss 5 av 6 i 2026 og mener Kverneriet «bør spille en av hovedrollene på Oslos burgerscene».",
+          "en": "The room has green velvet booths, a blue bar and space for both a quick lunch Tuesday–Friday from 11 and long evenings: the kitchen serves until 22.00 and the bar stays open until 23.00 Tuesday–Saturday. Finansavisen gave us 5 out of 6 in 2026 and thinks Kverneriet “should play one of the lead roles on Oslo’s burger scene”."
+        },
+        "aboutImg": {
+          "url": "/assets/img/majorstua-about.jpg",
+          "alt": "Bord, benker og plakater i spisesalen på Kverneriet Majorstua"
+        },
+        "gallery": [
+          {
+            "url": "/assets/img/trio-majorstua.jpg",
+            "alt": "Blå bar og fløyelsbenker på Kverneriet Majorstua"
+          },
+          {
+            "url": "/assets/img/g-burger.jpg",
+            "alt": "Servitør bærer to burgere på tallerkener"
+          },
+          {
+            "url": "/assets/img/g-fries-herb.jpg",
+            "alt": "Trippelkokte fries med urter"
+          },
+          {
+            "url": "/assets/img/g-patties.jpg",
+            "alt": "Grillede patties med smeltet blåmuggost"
+          },
+          {
+            "url": "/assets/img/g-softserve-oreo.jpg",
+            "alt": "Soft serve med Oreo-smuler"
+          },
+          {
+            "url": "/assets/img/g-toast.jpg",
+            "alt": "Toast fra menyen"
+          },
+          {
+            "url": "/assets/img/g-tomatoes.jpg",
+            "alt": "Skivede tomater til burgerne"
+          },
+          {
+            "url": "/assets/img/g-fries-truffle.jpg",
+            "alt": "Trøffelfries med parmesan"
+          }
+        ],
+        "heroImg": {
+          "url": "/assets/img/majorstua-hero.jpg",
+          "alt": "Spisesalen på Kverneriet Majorstua med grønne fløyelsbenker, blå bar og Aperol-plakater"
+        }
+      },
+      "seo": {
+        "title": "Kverneriet Majorstua – burger på Majorstuen, Oslo",
+        "desc": "Burgerrestaurant i Kirkeveien 64B på Majorstuen. 5 av 6 i Finansavisen og VG. Lunsj tir–fre fra 11, kjøkken til 22, bar til 23. Book bord eller hent selv."
       }
     },
     {
@@ -241,6 +303,60 @@
       "menuPdf": {
         "drinks": "/static-pdf/drinks/Kverneriet_SOL_Beverage_26-June.pdf",
         "kids": "/static-pdf/kverneriet_kids_menu.pdf"
+      },
+      "copy": {
+        "heroSub": {
+          "no": "Burgerrestaurant og cocktailbar ved Solli plass, Henrik Ibsens gate 100, Oslo – siden 2017.",
+          "en": "Burger restaurant and cocktail bar at Solli plass, Henrik Ibsens gate 100, Oslo – since 2017."
+        },
+        "slogan": "Your urban oasis",
+        "heroAlt": "Spisesalen på Kverneriet Solli med korallrosa sofabenker og grønne fløyelsstoler",
+        "about1": {
+          "no": "Kverneriet Solli åpnet i 2017 i Henrik Ibsens gate 100, rett ved Solli plass mellom Frogner, Vika og Aker Brygge – en urban oase med uteservering, cocktailbar og de samme håndlagde burgerne som på Majorstua: kjøtt vi kverner selv, ferske brød og trippelkokte fries.",
+          "en": "Kverneriet Solli opened in 2017 at Henrik Ibsens gate 100, right by Solli plass between Frogner, Vika and Aker Brygge – an urban oasis with outdoor seating, a cocktail bar and the same handmade burgers as at Majorstua: beef we grind ourselves, fresh buns and triple-cooked fries."
+        },
+        "about2": {
+          "no": "Dagbladet kåret take-awayen vår til «Oslos overlegent beste burger» med terningkast 6, og Finansavisen kaller Solli sentrums beste sted for å kombinere business og burger. Lunsj tirsdag–fredag fra 11.30, kjøkken til 22 og bar til 23 tirsdag–lørdag. Hent selv, eller få levert med Wolt og Foodora.",
+          "en": "Dagbladet named our take-away “Oslo’s best burger by far” with a 6/6 rating, and Finansavisen calls Solli the best place downtown to combine business and burgers. Lunch Tuesday–Friday from 11.30, kitchen until 22.00 and bar until 23.00 Tuesday–Saturday. Pick up, or get delivery with Wolt and Foodora."
+        },
+        "aboutImg": {
+          "url": "/assets/img/solli-about.jpg",
+          "alt": "Uteserveringen til Kverneriet Solli ved Solli plass med parasoller og rottingstoler"
+        },
+        "gallery": [
+          {
+            "url": "/assets/img/trio-solli.jpg",
+            "alt": "Korallrosa sofabenk og dekkede bord på Kverneriet Solli"
+          },
+          {
+            "url": "/assets/img/meny-solli.jpg",
+            "alt": "Burger på marmorbord på Kverneriet Solli"
+          },
+          {
+            "url": "/assets/img/ln-cocktail.jpg",
+            "alt": "Rød cocktail på marmorbaren"
+          },
+          {
+            "url": "/assets/img/g-fries-truffle.jpg",
+            "alt": "Trøffelfries med parmesan"
+          },
+          {
+            "url": "/assets/img/g-burger.jpg",
+            "alt": "Servitør bærer to burgere på tallerkener"
+          },
+          {
+            "url": "/assets/img/g-softserve.jpg",
+            "alt": "Soft serve med karamell"
+          }
+        ],
+        "heroImg": {
+          "url": "/assets/img/solli-hero.jpg",
+          "alt": "Spisesalen på Kverneriet Solli med korallrosa sofabenker og grønne fløyelsstoler"
+        }
+      },
+      "seo": {
+        "title": "Kverneriet Solli – burger ved Solli plass, Oslo",
+        "desc": "Burgerrestaurant og cocktailbar i Henrik Ibsens gate 100 ved Solli plass. 6 av 6 i Dagbladet. Lunsj tir–fre fra 11.30. Book bord, Wolt eller Foodora."
       }
     },
     {
@@ -343,6 +459,60 @@
       "menuPdf": {
         "drinks": "/static-pdf/drinks/Kverneriet_TBG_Beverage_26-June.pdf",
         "kids": "/static-pdf/kverneriet_kids_menu.pdf"
+      },
+      "copy": {
+        "heroSub": {
+          "no": "Burgerrestaurant på Kaldnes brygge, Rambergveien 15, Tønsberg – der det startet i 2013.",
+          "en": "Burger restaurant on Kaldnes brygge, Rambergveien 15, Tønsberg – where it all started in 2013."
+        },
+        "slogan": "Kick-ass food since 2013",
+        "heroAlt": "Uteserveringen til Kverneriet Tønsberg på Kaldnes brygge med utsikt over kanalen mot Tønsberg brygge",
+        "about1": {
+          "no": "Kverneriet Tønsberg er der det hele startet i 2013: en liten burgersjappe som har vokst til en fullverdig restaurant på Kaldnes brygge, Rambergveien 15, med uteservering ved kanalen og utsikt mot Tønsberg brygge. Kjøttet kverner vi selv, friesene tar tre dager, og menyen er den bredeste av de tre – salater, ribs, wings og kyllingretter i tillegg til burgerne.",
+          "en": "Kverneriet Tønsberg is where it all started in 2013: a small burger joint that has grown into a full restaurant on Kaldnes brygge, Rambergveien 15, with outdoor seating by the canal looking across to Tønsberg brygge. We grind the beef ourselves, the fries take three days, and the menu is the broadest of the three – salads, ribs, wings and chicken dishes alongside the burgers."
+        },
+        "about2": {
+          "no": "Tønsbergs Blad kalte det «ren nytelse» i 2020 og ga oss 5 av 6 i 2024, og i 2021 lå vi øverst på Tripadvisors liste over Tønsbergs beste restauranter. Kjøkkenet holder åpent til 22 tirsdag–lørdag, baren til 23. Lunsj torsdag–søndag fra 12. Take-away henter du selv – forhåndsbestill på OrderX.",
+          "en": "Tønsbergs Blad called it “pure pleasure” in 2020 and gave us 5 out of 6 in 2024, and in 2021 we topped Tripadvisor’s list of Tønsberg’s best restaurants. The kitchen is open until 22.00 Tuesday–Saturday, the bar until 23.00. Lunch Thursday–Sunday from 12.00. Take-away is pick-up – pre-order on OrderX."
+        },
+        "aboutImg": {
+          "url": "/assets/img/tonsberg-about.jpg",
+          "alt": "Lunsjbord med salater, toast, eggs benedict og cocktails på Kverneriet Tønsberg"
+        },
+        "gallery": [
+          {
+            "url": "/assets/img/trio-tonsberg.jpg",
+            "alt": "Bord på bryggeterrassen til Kverneriet Tønsberg med kanalen bak"
+          },
+          {
+            "url": "/assets/img/meny-tonsberg.jpg",
+            "alt": "Burger med smeltet ost, jalapeño og paprika på Kverneriet Tønsberg"
+          },
+          {
+            "url": "/assets/img/craft-pack.jpg",
+            "alt": "Kverneriets take-away-eske i naturmaterialer"
+          },
+          {
+            "url": "/assets/img/g-burger.jpg",
+            "alt": "Servitør bærer to burgere på tallerkener"
+          },
+          {
+            "url": "/assets/img/ln-beer.jpg",
+            "alt": "Øl tappes fra tappekrana i baren"
+          },
+          {
+            "url": "/assets/img/craft-fries.jpg",
+            "alt": "Trippelkokte fries med trøffel og parmesan"
+          }
+        ],
+        "heroImg": {
+          "url": "/assets/img/tonsberg-hero.jpg",
+          "alt": "Uteserveringen til Kverneriet Tønsberg på Kaldnes brygge med utsikt over kanalen mot Tønsberg brygge"
+        }
+      },
+      "seo": {
+        "title": "Kverneriet Tønsberg – burger på Kaldnes brygge",
+        "desc": "Burgerrestaurant på Kaldnes brygge i Tønsberg, Rambergveien 15, siden 2013. Kjøtt vi kverner selv, fries som tar tre dager, uteservering ved kanalen."
       }
     }
   ]

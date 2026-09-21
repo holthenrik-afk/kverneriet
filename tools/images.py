@@ -2,7 +2,7 @@
 """Bildepipeline (LCP/CWV): lager responsive varianter av assets/img/*.jpg i assets/img/r/ som
 <navn>-<bredde>.jpg og .webp (sips + cwebp), og imgopt() skriver <picture>/srcset/sizes/width/height inn i
 HTML-en. Originalene røres ikke. Kjør: python3 tools/build.py (varianter lages bare når de mangler)."""
-import os, re, subprocess, sys, json
+import os, re, subprocess, sys, json, shutil
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import kv
 os.chdir(kv.ROOT)
@@ -18,6 +18,8 @@ def dims(path):
 def build_variants():
     os.makedirs(OUT, exist_ok=True)
     index = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
+    if not (shutil.which('sips') and shutil.which('cwebp')):
+        print('  images: sips/cwebp mangler (CI) – bruker variantene som ligger i assets/img/r'); return index
     for f in sorted(os.listdir(SRC)):
         if not f.lower().endswith('.jpg'): continue
         src = os.path.join(SRC, f); name = f[:-4]
@@ -48,6 +50,21 @@ def sizes_for(tag, before):
     return '(max-width:760px) 100vw, 50vw'
 
 IMG_RE = re.compile(r'<img ([^>]*?)src="/assets/img/([a-z0-9-]+)\.jpg"([^>]*)>')
+CDN_RE = re.compile(r'<img ([^>]*?)src="(https://cdn\.sanity\.io/images/[^"?]+-(\d+)x(\d+)\.[a-z]+)(?:\?[^"]*)?"([^>]*)>')
+
+def cdnopt(html):
+    """Bilder fra Sanity: samme srcset/sizes/width/height som lokale, men via CDN-parametre."""
+    def one(m):
+        attrs = (m.group(1) + m.group(5)).strip(); url, w, h = m.group(2), int(m.group(3)), int(m.group(4))
+        if 'srcset=' in attrs: return m.group(0)
+        before = html[max(0, m.start() - 2500):m.start()]
+        sizes = sizes_for(attrs, before)
+        widths = [x for x in WIDTHS if x < w] + [min(w, max(WIDTHS))]
+        attrs = re.sub(r'\s*(width|height)="\d+"', '', attrs)
+        srcset = ', '.join(f'{url}?w={x}&auto=format&q=80 {x}w' for x in sorted(set(widths)))
+        fallback = max([x for x in widths if x <= 1200] or widths)
+        return f'<img {attrs} src="{url}?w={fallback}&auto=format&q=80" srcset="{srcset}" sizes="{sizes}" width="{w}" height="{h}">'
+    return CDN_RE.sub(one, html)
 PIC_RE = re.compile(r'<picture><source type="image/webp"[^>]*><img ([^>]*?)src="/assets/img/r/([a-z0-9-]+)-\d+\.jpg"([^>]*)></picture>')
 
 def unwrap(html):
@@ -59,7 +76,7 @@ def unwrap(html):
     return PIC_RE.sub(one, html)
 
 def imgopt(html, index):
-    html = unwrap(html)
+    html = cdnopt(unwrap(html))
     out = []; pos = 0
     for m in IMG_RE.finditer(html):
         name = m.group(2); entry = index.get(name)

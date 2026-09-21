@@ -27,7 +27,7 @@ try:
 except Exception:
     CONFIRMED = {}
 
-BRAND = ('Kverneriet er en norsk burgerrestaurant startet i Tønsberg i 2013, med restauranter på Majorstua (2015) og Solli plass (2017) i Oslo. '
+BRAND = (kv.site_copy().get('brandStory') or {}).get('no') or ('Kverneriet er en norsk burgerrestaurant startet i Tønsberg i 2013, med restauranter på Majorstua (2015) og Solli plass (2017) i Oslo. '
          'Vi kverner alt kjøttet selv av storfe i toppklasse, steker burgerne medium pluss, lager trippelkokte fries som tar tre dager og serverer soft serve og milkshakes på Jersey-melk. '
          'Take-away-emballasjen er vår egen, i naturmaterialer.')
 
@@ -138,7 +138,7 @@ def crumbs(*items):
 def webpage(slug, extra=None):
     p = pages.PAGES[slug]
     n = {"@context": "https://schema.org", "@type": "WebPage", "@id": kv.abs_url(slug) + '#webpage', "name": p['title'], "description": p['desc'], "url": kv.abs_url(slug),
-         "inLanguage": "nb", "isPartOf": {"@id": SITE_ID}, "about": {"@id": ORG_ID}, "primaryImageOfPage": DOMAIN + p['img'].lstrip('/')}
+         "inLanguage": "nb", "isPartOf": {"@id": SITE_ID}, "about": {"@id": ORG_ID}, "primaryImageOfPage": absimg(p['img'])}
     if extra: n.update(extra)
     return n
 
@@ -158,6 +158,18 @@ def ld_for(slug, html):
     elif slug == 'meny':
         ld.append(webpage(slug, {"@type": "CollectionPage", "hasPart": [{"@type": "Menu", "@id": kv.abs_url(v['slug'] + '-menu') + '#menu', "url": kv.abs_url(v['slug'] + '-menu'), "name": f"Meny – {v['fullName']}"} for v in V['venues']]}))
         ld.append(crumbs(("Kverneriet", DOMAIN), ("Meny", kv.abs_url('meny'))))
+    elif slug == 'blogg':
+        ld.append(webpage(slug, {"@type": "Blog", "name": "Kverneriet – blogg"}))
+        ld.append(crumbs(("Kverneriet", DOMAIN), ("Blogg", kv.abs_url('blogg'))))
+    elif slug.startswith('blog-'):
+        p = pages.PAGES[slug]['post']
+        n = {"@context": "https://schema.org", "@type": "BlogPosting", "@id": kv.abs_url(slug) + '#post', "headline": p['title'], "url": kv.abs_url(slug), "inLanguage": "nb",
+             "datePublished": p['publishedAt'], "dateModified": p.get('updatedAt') or p['publishedAt'], "description": pages.PAGES[slug]['desc'],
+             "author": {"@type": "Organization", "name": p.get('author') or "Kverneriet"}, "publisher": {"@id": ORG_ID}, "isPartOf": {"@id": SITE_ID},
+             "mainEntityOfPage": kv.abs_url(slug)}
+        if (p.get('mainImage') or {}).get('url'): n["image"] = p['mainImage']['url']
+        ld.append(n)
+        ld.append(crumbs(("Kverneriet", DOMAIN), ("Blogg", kv.abs_url('blogg')), (p['title'], kv.abs_url(slug))))
     else:
         ld.append(webpage(slug))
         name = {'takeaway': 'Take-away', 'lunsj': 'Lunsj', 'julebord': 'Julebord', 'selskap': 'Selskap og grupper', 'late-night': 'Late night'}[slug]
@@ -166,9 +178,11 @@ def ld_for(slug, html):
     if pairs: ld.append(faq.ld(pairs))
     return ld
 
+def absimg(path): return path if path.startswith('http') else DOMAIN + path.lstrip('/')
+
 def head_block(slug, html):
-    p = pages.PAGES[slug]; url = kv.abs_url(slug); img = DOMAIN + p['img'].lstrip('/')
-    size = img_size(p['img'])
+    p = pages.PAGES[slug]; url = kv.abs_url(slug); img = absimg(p['img'])
+    size = img_size(p['img']) if not p['img'].startswith('http') else None
     og_size = f'<meta property="og:image:width" content="{size[0]}">\n<meta property="og:image:height" content="{size[1]}">\n' if size else ''
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False, separators=(",", ":"))}</script>\n' for x in ld_for(slug, html))
     return (f'<link rel="canonical" href="{url}">\n'
@@ -199,9 +213,13 @@ def apply_all():
         html2 = html2.replace('<html lang="no">', '<html lang="nb">')
         open(file, 'w', encoding='utf-8').write(html2); print(file, 'head ok')
 
+def POSTS_EXIST(): return bool(kv.posts())
+
 def sitemap():
-    prio = {'index': '1.0', 'majorstua': '0.9', 'solli': '0.9', 'tonsberg': '0.9', 'majorstua-menu': '0.8', 'solli-menu': '0.8', 'tonsberg-menu': '0.8', 'meny': '0.6', 'takeaway': '0.8'}
-    rows = ''.join(f'  <url><loc>{kv.abs_url(s)}</loc><lastmod>{TODAY}</lastmod><changefreq>{"weekly" if s in prio and prio[s] >= "0.8" else "monthly"}</changefreq><priority>{prio.get(s, "0.7")}</priority></url>\n' for s in kv.PAGES)
+    prio = {'index': '1.0', 'majorstua': '0.9', 'solli': '0.9', 'tonsberg': '0.9', 'majorstua-menu': '0.8', 'solli-menu': '0.8', 'tonsberg-menu': '0.8', 'meny': '0.6', 'takeaway': '0.8', 'blogg': '0.6'}
+    def lastmod(s):
+        p = pages.PAGES.get(s, {}); return (p.get('post') or {}).get('publishedAt', TODAY)[:10] if s.startswith('blog-') else TODAY
+    rows = ''.join(f'  <url><loc>{kv.abs_url(s)}</loc><lastmod>{lastmod(s)}</lastmod><changefreq>{"weekly" if s in prio and prio[s] >= "0.8" else "monthly"}</changefreq><priority>{prio.get(s, "0.6" if s.startswith("blog-") else "0.7")}</priority></url>\n' for s in kv.PAGES if s != 'blogg' or POSTS_EXIST())
     open('sitemap.xml', 'w', encoding='utf-8').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + rows + '</urlset>\n')
     print('sitemap.xml ok')
 

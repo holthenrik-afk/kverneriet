@@ -27,6 +27,9 @@ PAGES = {
 VENUE_SLUGS = ['majorstua', 'solli', 'tonsberg']
 LANDING_SLUGS = ['lunsj', 'julebord', 'selskap', 'late-night']
 
+def register(slug, file, url):
+    PAGES[slug] = (file, url)
+
 def path(slug): return PAGES[slug][0]
 def url(slug): return PAGES[slug][1]
 def abs_url(slug): return DOMAIN.rstrip('/') + url(slug)
@@ -45,6 +48,15 @@ def venues():
     return json.load(open(os.path.join(ROOT, 'content/venues.json'), encoding='utf-8'))
 def venue(slug):
     return next(v for v in venues()['venues'] if v['slug'] == slug)
+def load_json(name, default=None):
+    p = os.path.join(ROOT, 'content', name)
+    return json.load(open(p, encoding='utf-8')) if os.path.exists(p) else default
+
+def press(): return load_json('press.json', [])
+def landing(): return load_json('landing.json', [])
+def site_copy(): return load_json('site-copy.json', {})
+def posts(): return load_json('blog.json', [])
+
 def menus():
     src = open(os.path.join(ROOT, 'content/menus.js'), encoding='utf-8').read()
     return json.loads(src[src.index('{'): src.rindex('}') + 1])
