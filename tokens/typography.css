@@ -1,0 +1,38 @@
+:root{
+  --font-display:"Bourton","Arial Narrow",Impact,sans-serif;
+  --font-cond:"Barlow Condensed","Arial Narrow",sans-serif;
+  --font-body:"Montserrat",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+  --weight-bold:700;
+  --weight-black:400; /* Bourton ships one weight — never synthesise bold */
+
+  /* Display — Bourton, uppercase. Slightly open tracking suits its geometry. */
+  --type-hero:clamp(52px,8vw,116px);
+  --type-display-1:64px;
+  --type-display-2:46px;
+  --type-display-3:34px;
+  --type-display-4:26px;
+  --leading-display:0.98;
+  --tracking-display:0.005em;
+
+  /* Eyebrow / label — condensed uppercase, wide tracking */
+  --type-eyebrow:13px;
+  --type-label:14px;
+  --tracking-label:0.16em;
+
+  /* Body — Montserrat runs wide, so sizes sit one step below the old serif's */
+  --type-body-lg:19px;
+  --type-body:16px;
+  --type-body-sm:14px;
+  --type-caption:12px;
+  --leading-body:1.6;
+  --leading-tight:1.35;
+
+  /* Numerics — prices, hours */
+  --type-price:22px;
+  --tracking-price:0.01em;
+}

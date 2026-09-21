@@ -1,0 +1,349 @@
+{
+  "_comment": "Kverneriet — restaurantfakta (NAP, åpningstider, geo, kanaler). Én kilde for HTML-tekst, JSON-LD, footer og landingssider. Hentet fra kverneriet.com 16.09.2026. Rediger her og kjør `python3 tools/build.py`.",
+  "org": {
+    "name": "Kverneriet",
+    "legalName": "Kverneriet AS",
+    "domain": "https://kverneriet.com/",
+    "telephone": "+4790600333",
+    "telephoneDisplay": "+47 906 00 333",
+    "email": "book.major@kverneriet.com",
+    "founded": "2013",
+    "giftcard": "https://giftcard.kverneriet.com/",
+    "sameAs": [
+      "https://www.facebook.com/kverneriet/",
+      "https://www.facebook.com/kvernerietmajorstua/",
+      "https://www.facebook.com/kvernerietsolli/"
+    ],
+    "priceRange": "kr 84–369",
+    "packages": {
+      "note": "Selskap over 8 gjester (Tønsberg: over 7) velger én matpakke for hele bordet.",
+      "items": [
+        {
+          "name": "Burger Package",
+          "price": 429,
+          "desc": "Valgfri 150 g-burger til alle, bordet deler tynne og tykke fries (original, trøffel/persille, parmesan/persille) og et utvalg dipper."
+        },
+        {
+          "name": "Dinner Package",
+          "price": 579,
+          "desc": "Trøffel-tater tots og hot wings til deling, deretter valgfri 150 g-burger med fries og dipper."
+        },
+        {
+          "name": "Full Package",
+          "price": 779,
+          "desc": "Chili cheese-baller, trøffel-tater tots, hot wings og romanosalat til deling, valgfri 150 g-burger med fries og dipper, og kjøkkenets dessert."
+        }
+      ],
+      "kids": 169,
+      "kidsNote": "Barnemeny 169 kr for gjester under 12 ved selskapsbooking (fra kverneriet.com sitt bookingskjema)."
+    },
+    "deliveryMarkup": "15–20 %"
+  },
+  "venues": [
+    {
+      "slug": "majorstua",
+      "name": "Majorstua",
+      "fullName": "Kverneriet Majorstua",
+      "city": "Oslo",
+      "area": "Majorstuen",
+      "areaCues": [
+        "Majorstuen",
+        "Kirkeveien",
+        "Frogner",
+        "Majorstua T-bane"
+      ],
+      "since": "2015",
+      "tagline": "Majorstua, Oslo - flipping kick-ass burgers since 2015",
+      "address": {
+        "street": "Kirkeveien 64B",
+        "postalCode": "0366",
+        "city": "Oslo"
+      },
+      "geo": {
+        "lat": 59.929192,
+        "lng": 10.714806
+      },
+      "maps": {
+        "google": "https://g.page/kvernerietmajorstua?share",
+        "apple": "https://maps.apple.com/?address=Kirkeveien%2064,%200364%20Oslo,%20Norge&auid=4899923583137773310&ll=59.929192,10.714806&q=Kverneriet"
+      },
+      "facebook": "https://www.facebook.com/kvernerietmajorstua/",
+      "email": "book.major@kverneriet.com",
+      "zenchef": "385239",
+      "groupThreshold": 8,
+      "hours": {
+        "kitchen": [
+          {
+            "days": [
+              "Monday"
+            ],
+            "opens": "16:00",
+            "closes": "21:00"
+          },
+          {
+            "days": [
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "11:00",
+            "closes": "22:00"
+          },
+          {
+            "days": [
+              "Saturday"
+            ],
+            "opens": "12:00",
+            "closes": "22:00"
+          },
+          {
+            "days": [
+              "Sunday"
+            ],
+            "opens": "12:00",
+            "closes": "21:00"
+          }
+        ],
+        "bar": [
+          {
+            "days": [
+              "Monday"
+            ],
+            "closes": "22:00"
+          },
+          {
+            "days": [
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ],
+            "closes": "23:00"
+          },
+          {
+            "days": [
+              "Sunday"
+            ],
+            "closes": "22:00"
+          }
+        ]
+      },
+      "lunch": "tirsdag–fredag fra 11.00",
+      "channels": {
+        "pickup": "https://orderx.eu/V2W2X5V5",
+        "wolt": "https://wolt.com/nb/nor/oslo/restaurant/kverneriet-majorstua",
+        "foodora": "https://www.foodora.no/restaurant/tkiq/kverneriet-majorstuen"
+      },
+      "menuPdf": {
+        "drinks": "/static-pdf/drinks/Kverneriet_MJS_Beverage_26-Aug.pdf",
+        "kids": "/static-pdf/kverneriet_kids_menu.pdf"
+      }
+    },
+    {
+      "slug": "solli",
+      "name": "Solli",
+      "fullName": "Kverneriet Solli",
+      "city": "Oslo",
+      "area": "Solli plass",
+      "areaCues": [
+        "Solli plass",
+        "Henrik Ibsens gate",
+        "Frogner",
+        "Vika",
+        "Aker Brygge"
+      ],
+      "since": "2017",
+      "tagline": "Solli, Oslo - your urban oasis since 2017",
+      "address": {
+        "street": "Henrik Ibsens gate 100",
+        "postalCode": "0255",
+        "city": "Oslo"
+      },
+      "geo": {
+        "lat": 59.914487,
+        "lng": 10.718562
+      },
+      "maps": {
+        "google": "https://goo.gl/maps/pniiuKUfSTLJKqVd8",
+        "apple": "https://maps.apple.com/?address=Henrik%20Ibsens%20Gate%20100,%200255%20Oslo,%20Norge&auid=4561494559763924169&ll=59.914487,10.718562&q=Kverneriet"
+      },
+      "facebook": "https://www.facebook.com/kvernerietsolli/",
+      "email": "book.solli@kverneriet.com",
+      "zenchef": "385260",
+      "groupThreshold": 8,
+      "hours": {
+        "kitchen": [
+          {
+            "days": [
+              "Monday"
+            ],
+            "opens": "16:00",
+            "closes": "21:00"
+          },
+          {
+            "days": [
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "11:30",
+            "closes": "22:00"
+          },
+          {
+            "days": [
+              "Saturday"
+            ],
+            "opens": "14:00",
+            "closes": "22:00"
+          },
+          {
+            "days": [
+              "Sunday"
+            ],
+            "opens": "14:00",
+            "closes": "21:00"
+          }
+        ],
+        "bar": [
+          {
+            "days": [
+              "Monday"
+            ],
+            "closes": "22:00"
+          },
+          {
+            "days": [
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ],
+            "closes": "23:00"
+          },
+          {
+            "days": [
+              "Sunday"
+            ],
+            "closes": "22:00"
+          }
+        ]
+      },
+      "lunch": "tirsdag–fredag fra 11.30",
+      "channels": {
+        "pickup": "https://orderx.eu/7RRAB9MC1001",
+        "wolt": "https://wolt.com/nb/nor/oslo/restaurant/kverneriet-solli-plass",
+        "foodora": "https://www.foodora.no/restaurant/zdr3/kverneriet-solli"
+      },
+      "menuPdf": {
+        "drinks": "/static-pdf/drinks/Kverneriet_SOL_Beverage_26-June.pdf",
+        "kids": "/static-pdf/kverneriet_kids_menu.pdf"
+      }
+    },
+    {
+      "slug": "tonsberg",
+      "name": "Tønsberg",
+      "fullName": "Kverneriet Tønsberg",
+      "city": "Tønsberg",
+      "area": "Kaldnes",
+      "areaCues": [
+        "Kaldnes",
+        "Rambergveien",
+        "Kanalen",
+        "Tønsberg brygge",
+        "Vestfold"
+      ],
+      "since": "2013",
+      "tagline": "Tønsberg - kick-ass food since 2013",
+      "address": {
+        "street": "Rambergveien 15",
+        "postalCode": "3115",
+        "city": "Tønsberg"
+      },
+      "geo": {
+        "lat": 59.264976,
+        "lng": 10.40334
+      },
+      "maps": {
+        "google": "https://goo.gl/maps/JdA1UnpiprT2",
+        "apple": "https://maps.apple.com/?address=Rambergveien%2015A,%203115%20T%C3%B8nsberg,%20Norge&auid=5639938350662074769&ll=59.264976,10.403340&q=Kverneriet%20T%C3%B8nsberg"
+      },
+      "facebook": "https://www.facebook.com/kverneriet/",
+      "email": "book.tbg@kverneriet.com",
+      "zenchef": "385236",
+      "groupThreshold": 7,
+      "hours": {
+        "kitchen": [
+          {
+            "days": [
+              "Monday"
+            ],
+            "opens": "16:00",
+            "closes": "21:00"
+          },
+          {
+            "days": [
+              "Tuesday",
+              "Wednesday"
+            ],
+            "opens": "16:00",
+            "closes": "22:00"
+          },
+          {
+            "days": [
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ],
+            "opens": "12:00",
+            "closes": "22:00"
+          },
+          {
+            "days": [
+              "Sunday"
+            ],
+            "opens": "12:00",
+            "closes": "21:00"
+          }
+        ],
+        "bar": [
+          {
+            "days": [
+              "Monday"
+            ],
+            "closes": "22:00"
+          },
+          {
+            "days": [
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ],
+            "closes": "23:00"
+          },
+          {
+            "days": [
+              "Sunday"
+            ],
+            "closes": "22:00"
+          }
+        ]
+      },
+      "lunch": "torsdag–søndag fra 12.00",
+      "channels": {
+        "pickup": "https://orderx.eu/TTBYXPVF",
+        "wolt": null,
+        "foodora": null
+      },
+      "menuPdf": {
+        "drinks": "/static-pdf/drinks/Kverneriet_TBG_Beverage_26-June.pdf",
+        "kids": "/static-pdf/kverneriet_kids_menu.pdf"
+      }
+    }
+  ]
+}

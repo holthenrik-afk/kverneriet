@@ -1,0 +1,20 @@
+# Viderekoblinger fra gamle kverneriet.com-adresser (Netlify/Cloudflare Pages-format; GitHub Pages bruker HTML-stubbene i stedet)
+/index.html  /  301
+/majorstua.html  /majorstua/  301
+/solli.html  /solli/  301
+/tonsberg.html  /tonsberg/  301
+/meny.html  /meny/  301
+/takeaway.html  /takeaway/  301
+/lunsj.html  /lunsj/  301
+/julebord.html  /julebord/  301
+/selskap.html  /selskap/  301
+/late-night.html  /late-night/  301
+/packages/  /selskap/  301
+/packages  /selskap/  301
+/giftcard/  https://giftcard.kverneriet.com/  301
+/giftcard  https://giftcard.kverneriet.com/  301
+/gc/  https://giftcard.kverneriet.com/  301
+/gc  https://giftcard.kverneriet.com/  301
+/majorstua/menu  /majorstua/menu/  301
+/solli/menu  /solli/menu/  301
+/tonsberg/menu  /tonsberg/menu/  301

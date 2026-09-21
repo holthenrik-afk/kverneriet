@@ -1,0 +1,68 @@
+:root{
+  /* Base — paper. The brand's ground is light. */
+  --paper-0:#FFFFFF;
+  --paper-50:#FAF8F5;
+  --paper-100:#F4F2EE;
+  --paper-200:#EFEFEF;
+  --paper-300:#E2DFD9;
+
+  /* Base — ink. Taken from the wordmark's brown. */
+  --ink-900:#2B211A;
+  --ink-700:#453529;
+  --ink-500:#6E5F53;
+  --ink-400:#8F8378;
+  --ink-200:#C9C1B8;
+
+  /* Base — teal. The brand green. */
+  --teal-900:#043F37;
+  --teal-700:#085C51;
+  --teal-500:#0E7A6B;
+  --teal-100:#D6E6E2;
+
+  /* Base — coral & rose. Rose is the mark's colour. */
+  --coral-600:#C94247;
+  --coral-500:#EF5F63;
+  --coral-400:#F58186;
+  --rose-500:#D06965;
+  --blush-100:#FFE4E4;
+
+  /* Base — cream */
+  --cream-100:#F9EAB8;
+  --cream-200:#F0D98F;
+
+  /* Semantic — surfaces */
+  --surface-page:var(--paper-50);
+  --surface-raised:var(--paper-100);
+  --surface-card:var(--paper-0);
+  --surface-inset:var(--paper-200);
+  --surface-tint:var(--blush-100);
+  --surface-accent:var(--cream-100);
+  --surface-invert:var(--teal-700);
+  --surface-scrim:rgba(250,248,245,.88);
+
+  /* Semantic — text */
+  --text-strong:var(--teal-700);
+  --text-body:var(--ink-700);
+  --text-muted:var(--ink-500);
+  --text-faint:var(--ink-400);
+  --text-accent:var(--coral-600);
+  --text-on-accent:#FFF8F6;
+  --text-on-invert:var(--paper-50);
+
+  /* Semantic — lines */
+  --line-hairline:rgba(69,53,41,.14);
+  --line-strong:rgba(69,53,41,.30);
+  --line-accent:var(--coral-500);
+
+  /* Semantic — interactive */
+  --action-primary:var(--coral-500);
+  --action-primary-hover:var(--coral-600);
+  --action-primary-press:#AE3238;
+  --action-wash:rgba(8,92,81,.07);
+  --focus-ring:var(--teal-500);
+
+  /* Semantic — status */
+  --status-ok:var(--teal-500);
+  --status-warn:#B4832A;
+  --status-danger:var(--coral-600);
+}

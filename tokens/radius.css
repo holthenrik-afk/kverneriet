@@ -1,0 +1,9 @@
+:root{
+  /* Softer than a butcher's shop, still square-shouldered. */
+  --radius-0:0px;
+  --radius-1:3px;
+  --radius-2:6px;
+  --radius-pill:999px;
+  --border-hair:1px;
+  --border-thick:2px;
+}

@@ -1,0 +1,13 @@
+:root{
+  /* Light room: shadows are soft, low and warm-tinted. */
+  --shadow-0:none;
+  --shadow-1:0 1px 2px rgba(43,33,26,.06);
+  --shadow-2:0 10px 28px rgba(43,33,26,.10);
+  --shadow-lift:0 24px 60px rgba(43,33,26,.16);
+  --glow-focus:0 0 0 3px rgba(14,122,107,.16);
+  --inset-hairline:inset 0 0 0 1px rgba(69,53,41,.12);
+
+  /* Protection gradients for type over photography */
+  --scrim-bottom:linear-gradient(to top,rgba(20,15,11,.78) 0%,rgba(20,15,11,.36) 46%,rgba(20,15,11,0) 100%); /* @kind shadow */
+  --scrim-full:linear-gradient(to top,rgba(20,15,11,.72) 0%,rgba(20,15,11,.24) 60%,rgba(20,15,11,.42) 100%); /* @kind shadow */
+}

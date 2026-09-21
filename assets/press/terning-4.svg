@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 124" role="img" aria-labelledby="t">
+<title id="t">Terningkast</title>
+<ellipse cx="62" cy="116" rx="46" ry="6" fill="#000" opacity=".12"/>
+<path d="M82 47 L110 19 L110 87 L82 115 Z" fill="#2B211A"/>
+<rect x="12" y="47" width="70" height="68" rx="3" fill="#453529"/>
+<path d="M12 47 L40 19 L110 19 L82 47 Z" fill="#6E5F53"/>
+<path d="M12 47 L40 19 L110 19 L82 47 Z M82 47 L82 115" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1"/>
+<g fill="#FAF8F5" transform="matrix(70 0 28 -28 12 47)"><circle cx=".24" cy=".26" r=".09"/><circle cx=".76" cy=".26" r=".09"/><circle cx=".24" cy=".74" r=".09"/><circle cx=".76" cy=".74" r=".09"/></g>
+</svg>
