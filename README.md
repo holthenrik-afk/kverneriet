@@ -49,9 +49,9 @@ Slik henger det sammen:
 1. Redaktøren trykker **Publish** i Studio.
 2. `tools/fetch_sanity.py` henter innholdet (offentlig lesetilgang, ingen nøkkel) og skriver `content/venues.json`, `content/menus.js`, `content/press.json`, `content/landing.json`, `content/site-copy.json` og `content/blog.json`.
 3. `tools/build.py` bygger sidene som før. Bilder lastet opp i Sanity serveres fra Sanitys CDN med `srcset` (`?w=…&auto=format`), lokale bilder går gjennom `tools/images.py` som før.
-4. GitHub Actions kjører 2–3 ved push, hver time (`schedule`), manuelt, og ved webhook fra Sanity (`repository_dispatch`, type `sanity-publish`).
+4. GitHub Actions kjører 2–3 ved push, hvert 10. minutt (`schedule`), manuelt (`gh workflow run pages.yml`), og ved webhook fra Sanity (`repository_dispatch`, type `sanity-publish`).
 
-**Webhook (valgfritt, gir oppdatering innen et par minutter i stedet for innen en time):** i sanity.io/manage → API → Webhooks: URL `https://api.github.com/repos/holthenrik-afk/kverneriet/dispatches`, metode POST, header `Authorization: Bearer <GitHub-token med repo-tilgang>` og `Accept: application/vnd.github+json`, body `{"event_type":"sanity-publish"}`, trigger på create/update/delete.
+**Webhook (valgfritt, gir oppdatering innen et par minutter i stedet for innen ti):** i sanity.io/manage → API → Webhooks: URL `https://api.github.com/repos/holthenrik-afk/kverneriet/dispatches`, metode POST, header `Authorization: Bearer <GitHub-token med repo-tilgang>` og `Accept: application/vnd.github+json`, body `{"event_type":"sanity-publish"}`, trigger på create/update/delete.
 
 **Gi kunden tilgang:** sanity.io/manage → prosjektet → Members → inviter e-post med rollen Editor. De logger inn på kverneriet.sanity.studio med Google eller e-post.
 

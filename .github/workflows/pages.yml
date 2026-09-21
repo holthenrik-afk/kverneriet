@@ -1,5 +1,5 @@
 # Publiserer nettstedet til GitHub Pages.
-# Kjører ved push til main, når Sanity sender webhook (repository_dispatch «sanity-publish»), hver time, og manuelt.
+# Kjører ved push til main, når Sanity sender webhook (repository_dispatch «sanity-publish»), hvert 10. minutt, og manuelt.
 # CI henter innholdet fra Sanity (tools/fetch_sanity.py) og bygger sidene (tools/build.py). Bildevarianter i
 # assets/img/r lages bare lokalt (sips/cwebp); Sanity-bilder går via Sanitys CDN og trenger ingen forbehandling.
 name: Publiser til GitHub Pages
@@ -9,7 +9,7 @@ on:
   repository_dispatch:
     types: [sanity-publish]
   schedule:
-    - cron: '17 * * * *'
+    - cron: '*/10 * * * *'
   workflow_dispatch:
 permissions:
   contents: read
