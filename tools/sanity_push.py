@@ -24,11 +24,14 @@ _assets = None
 def asset_ref(path, alt):
     """Finn (eller last opp) bildet i Sanity og returner en photo-verdi."""
     global _assets
+    m = re.match(r'https://cdn\.sanity\.io/images/[^/]+/[^/]+/([0-9a-f]+)-(\d+x\d+)\.(\w+)', path or '')
+    if m:  # bildet ligger allerede i Sanity
+        return {'_type': 'photo', 'alt': alt, 'asset': {'_type': 'reference', '_ref': f'image-{m.group(1)}-{m.group(2)}-{m.group(3)}'}}
     name = os.path.basename(path)
     if _assets is None:
         _assets = {a['originalFilename']: a['_id'] for a in query('*[_type == "sanity.imageAsset"]{_id, originalFilename}') if a.get('originalFilename')}
     if name not in _assets:
-        out = sanity(['assets', 'upload', '--image', path.lstrip('/')])
+        out = sanity(['assets', 'upload', '--type', 'image', '--file', os.path.abspath(path.lstrip('/'))])
         m = re.search(r'"_id":\s*"([^"]+)"', out)
         if not m: raise SystemExit(f'fikk ikke lastet opp {path}:\n{out[-400:]}')
         _assets[name] = m.group(1)

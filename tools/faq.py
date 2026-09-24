@@ -180,6 +180,22 @@ def _landing_faq(slug):
             ('faq.sel.how', 'Hvordan booker vi?', 'Trykk «Send gruppeforespørsel», velg restaurant og fyll inn antall, dato og tidsrom. Vi svarer på e-post, og bordet er bekreftet når du har fått bekreftelsen.',
              'How do we book?', 'Press “Send group request”, choose a restaurant and fill in headcount, date and time window. We reply by e-mail, and the table is confirmed once you have our confirmation.'),
         ],
+        'middag': [
+            ('faq.mid.book', 'Må jeg booke bord til middag?', 'Nei, vi har mange drop-in-bord. Vil du være sikker på plass, særlig fredag og lørdag, booker du online for inntil 8 personer (7 i Tønsberg) og får bekreftelse med en gang.',
+             'Do I need to book for dinner?', 'No, we keep plenty of walk-in tables. To be sure of a table, especially on Friday and Saturday, book online for up to 8 guests (7 in Tønsberg) with instant confirmation.'),
+            ('faq.mid.late', 'Hvor lenge er kjøkkenet åpent?', f'Kjøkkenet serverer til kl. 22 tirsdag–lørdag og til 21 søndag og mandag. Baren holder åpent til 23 tirsdag–lørdag, så dere kan bli sittende etter maten.',
+             'How late is the kitchen open?', 'The kitchen serves until 22.00 Tuesday–Saturday and until 21.00 Sunday and Monday. The bar stays open until 23.00 Tuesday–Saturday, so you can stay on after dinner.'),
+            ('faq.mid.groups', 'Kan vi komme mange?', f'Ja. Grupper over 8 (7 i Tønsberg) booker som selskap og velger én matpakke for bordet, fra {PK["items"][0]["price"]} kr per person. <a href="/selskap/">Les mer om selskap</a>.',
+             'Can we come as a big group?', f'Yes. Groups larger than 8 (7 in Tønsberg) book as a party and choose one food package for the table, from NOK {PK["items"][0]["price"]} per person. <a href="/selskap/">More about parties</a>.'),
+        ],
+        'cocktails': [
+            ('faq.cock.food', 'Må jeg spise for å sitte i baren?', 'Nei. Du er like velkommen til å slå deg ned med en cocktail, et glass vin eller en øl som til en full middag. Alle tre restaurantene har bar.',
+             'Do I have to eat to sit at the bar?', 'No. You are just as welcome for a cocktail, a glass of wine or a beer as for a full dinner. All three restaurants have a bar.'),
+            ('faq.cock.free', 'Har dere alkoholfrie cocktails?', 'Ja, vi har et stort alkoholfritt utvalg med cocktails, øl og vin – laget for å være et ordentlig alternativ, ikke et kompromiss.',
+             'Do you have alcohol-free cocktails?', 'Yes, we have a large alcohol-free selection of cocktails, beer and wine – made to be a real alternative, not a compromise.'),
+            ('faq.cock.late', 'Hvor lenge er baren åpen?', 'Baren holder åpent til kl. 23 tirsdag–lørdag og til 22 søndag og mandag, på alle tre restaurantene.',
+             'How late is the bar open?', 'The bar is open until 23.00 Tuesday–Saturday and until 22.00 Sunday and Monday, at all three restaurants.'),
+        ],
         'late-night': [
             ('faq.ln.late', 'Hvor sent kan jeg spise burger hos Kverneriet?', 'Kjøkkenet på Majorstua og Solli serverer hele menyen til kl. 22 tirsdag–lørdag (21 søndag og mandag). I Tønsberg til 22 tirsdag–lørdag. Baren holder åpent en time lenger.',
              'How late can I get a burger at Kverneriet?', 'The kitchens at Majorstua and Solli serve the full menu until 22.00 Tuesday–Saturday (21.00 Sunday and Monday). Tønsberg until 22.00 Tuesday–Saturday. The bar stays open an hour longer.'),

@@ -6,96 +6,37 @@
   "pos": "center 40%",
   "eyebrow": "Majorstua · Solli · Tønsberg",
   "h1": "Lunsj i Oslo og Tønsberg",
-  "sub": "Burgerlunsj med kjøtt vi kverner selv og fries som tar tre dager – tirsdag–fredag fra 11.00 på Majorstua, tirsdag–fredag fra 11.30 på Solli og torsdag–søndag fra 12.00 i Tønsberg.",
+  "sub": "Lunsj trenger ikke bare være noe du skal rekke mellom to ting. Hos oss er det like naturlig å stikke innom for en rask burger som å bli sittende litt lenger.",
   "cta": "book",
-  "sec_eyebrow": "Burgerlunsj i Oslo og Tønsberg",
-  "h2": "En skikkelig lunsj, ikke en rask matbit",
+  "sec_eyebrow": "Majorstua · Solli · Tønsberg",
+  "h2": "Lunsj der praten får gå litt lenger",
   "body": [
    {
-    "_key": "b0",
+    "_key": "b2",
     "_type": "block",
     "children": [
      {
-      "_key": "c0",
+      "_key": "s1",
       "_type": "span",
       "marks": [],
-      "text": "På "
-     },
-     {
-      "_key": "c1",
-      "_type": "span",
-      "marks": [
-       "l1"
-      ],
-      "text": "Majorstua"
-     },
-     {
-      "_key": "c2",
-      "_type": "span",
-      "marks": [],
-      "text": " åpner kjøkkenet kl. 11 tirsdag til fredag, på "
-     },
-     {
-      "_key": "c3",
-      "_type": "span",
-      "marks": [
-       "l3"
-      ],
-      "text": "Solli"
-     },
-     {
-      "_key": "c4",
-      "_type": "span",
-      "marks": [],
-      "text": " kl. 11.30. Da får du de samme burgerne som om kvelden: 150 gram kjøtt vi kverner selv, ferske brød og fries som har tatt tre dager å lage. Har du en times pause, rekker du både en burger og en milkshake."
+      "text": "Kverneriet passer godt for lunsj med kollegaer, uformelle møter, en pause fra kontoret eller en lang lunsj med venner. Stemningen er avslappet, maten er laget med samme detaljfokus som på kvelden, og det skal være enkelt å finne noe godt i glasset – enten det er kaffe, øl, vin eller noe alkoholfritt."
      }
     ],
-    "markDefs": [
-     {
-      "_key": "l1",
-      "_type": "link",
-      "href": "/majorstua/"
-     },
-     {
-      "_key": "l3",
-      "_type": "link",
-      "href": "/solli/"
-     }
-    ],
+    "markDefs": [],
     "style": "normal"
    },
    {
-    "_key": "b1",
+    "_key": "b4",
     "_type": "block",
     "children": [
      {
-      "_key": "c0",
+      "_key": "s3",
       "_type": "span",
       "marks": [],
-      "text": "I "
-     },
-     {
-      "_key": "c1",
-      "_type": "span",
-      "marks": [
-       "l1"
-      ],
-      "text": "Tønsberg"
-     },
-     {
-      "_key": "c2",
-      "_type": "span",
-      "marks": [],
-      "text": " serverer vi lunsj torsdag til søndag fra kl. 12, med en bredere meny enn i Oslo – Banana Bread &amp; Ice Cream, Buffalo Cabbage, Chimichurri Burrata, Crispy Chicken &amp; Whipped Feta, Duck Confit Salad, Oh My Thai og Tex-Mex Beef Salad i tillegg til burgerne. Sitter dere flere fra samme kontor, booker dere bord, så står det klart når dere kommer."
+      "text": "Vi liker lunsjer der praten får gå litt lenger enn planlagt. Et møte kan bli til en burger, en burger kan bli til kaffe, og noen ganger er det akkurat sånn en god arbeidsdag bør se ut. Kjøkkenet åpner kl. 11 på <a href=\"/majorstua/\">Majorstua</a>, 11.30 på <a href=\"/solli/\">Solli</a> og 12 torsdag til søndag i <a href=\"/tonsberg/\">Tønsberg</a>."
      }
     ],
-    "markDefs": [
-     {
-      "_key": "l1",
-      "_type": "link",
-      "href": "/tonsberg/"
-     }
-    ],
+    "markDefs": [],
     "style": "normal"
    }
   ],
@@ -133,24 +74,136 @@
   ],
   "others": [
    [
-    "julebord",
-    "xmas",
-    "Julebord"
+    "middag",
+    "dinner",
+    "Middag"
+   ],
+   [
+    "cocktails",
+    "cocktails",
+    "Cocktails"
    ],
    [
     "selskap",
     "groups",
     "Selskap og grupper"
-   ],
-   [
-    "late-night",
-    "late",
-    "Late night"
    ]
   ],
   "seoTitle": "Burgerlunsj på Majorstuen, Solli og i Tønsberg – Kverneriet",
   "seoDescription": "Lunsj med burger: kjøkkenet åpner 11 på Majorstua, 11.30 på Solli og 12 tor–søn i Tønsberg. Kjøtt vi kverner selv, fries som tar tre dager. Book bord.",
   "img": "https://cdn.sanity.io/images/u0hod2sg/production/6c08d4be13c6c634743b0c10ecb96d9cec44346e-1400x2100.jpg"
+ },
+ {
+  "slug": "middag",
+  "crumb": "Middag",
+  "cta": "book",
+  "img": "/assets/img/ln-hero.jpg",
+  "imgAlt": "Gjester som skåler med cocktails og burgere på Kverneriet om kvelden",
+  "pos": "center 40%",
+  "eyebrow": "Hver kveld · Oslo og Tønsberg",
+  "h1": "Middag hos Kverneriet",
+  "sub": "Middagen er hjertet av Kverneriet. Noen kommer innom for en spontan burger på en tirsdag, andre samler hele vennegjengen rundt bordet. Vi har plass til begge deler.",
+  "sec_eyebrow": "Fra to til tjue rundt bordet",
+  "h2": "En kveld ute, uten at det blir stivt",
+  "body": [
+   {
+    "_key": "b6",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s5",
+      "_type": "span",
+      "marks": [],
+      "text": "Kverneriet passer like godt for date night og vennemiddager som for familietreff, bursdager, jobbsamlinger og større selskaper. Det skal være uformelt nok til at alle føler seg komfortable, men gjennomført nok til at det føles som en kveld ute."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b8",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s7",
+      "_type": "span",
+      "marks": [],
+      "text": "På kjøkkenet gjør vi kanskje ting litt mer komplisert enn nødvendig. Vi kverner kjøttet selv, baker burgerbrødene ferske, lager mest mulig fra bunnen av og bruker tre dager på våre håndlagde, trippelkokte fries. Men en god middag handler om mer enn det som ligger på tallerkenen. Det handler om stemningen rundt bordet, hva som er i glasset og menneskene som tar vare på deg gjennom kvelden."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b10",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s9",
+      "_type": "span",
+      "marks": [],
+      "text": "Enten dere er to eller tjue, ønsker vi at Kverneriet skal være et sted hvor det er enkelt å samles – og lett å bli sittende litt lenger enn man hadde tenkt. Book bord på <a href=\"/majorstua/\">Majorstua</a>, <a href=\"/solli/\">Solli plass</a> eller i <a href=\"/tonsberg/\">Tønsberg</a>."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   }
+  ],
+  "facts_title": "Godt å vite",
+  "facts": [
+   [
+    "Majorstua",
+    "Kjøkken mandag 16.00–21.00, tirsdag–fredag 11.00–22.00, lørdag 12.00–22.00, søndag 12.00–21.00",
+    "/majorstua/"
+   ],
+   [
+    "Solli",
+    "Kjøkken mandag 16.00–21.00, tirsdag–fredag 11.30–22.00, lørdag 14.00–22.00, søndag 14.00–21.00",
+    "/solli/"
+   ],
+   [
+    "Tønsberg",
+    "Kjøkken mandag 16.00–21.00, tirsdag–onsdag 16.00–22.00, torsdag–lørdag 12.00–22.00, søndag 12.00–21.00",
+    "/tonsberg/"
+   ],
+   [
+    "Drop-in",
+    "Vi har mange bord uten booking"
+   ],
+   [
+    "Grupper",
+    "Over 8 (7 i Tønsberg) velger matpakke fra 429 kr per person",
+    "/selskap/"
+   ],
+   [
+    "Barn",
+    "Barnemeny fra 99 kr"
+   ]
+  ],
+  "facts_note": "Baren holder åpent til 23 tirsdag–lørdag, så dere kan bli sittende etter maten.",
+  "media": [
+   "db_2023",
+   "fa_2026",
+   "vg_2017"
+  ],
+  "others": [
+   [
+    "lunsj",
+    "lunch",
+    "Lunsj"
+   ],
+   [
+    "cocktails",
+    "cocktails",
+    "Cocktails"
+   ],
+   [
+    "selskap",
+    "groups",
+    "Selskap og grupper"
+   ]
+  ],
+  "cta2": "menu"
  },
  {
   "slug": "julebord",
@@ -459,6 +512,128 @@
   "seoTitle": "Selskap og gruppebooking – burger i Oslo og Tønsberg",
   "seoDescription": "Bursdag, firmafest eller vennegjeng? Grupper over 8 (7 i Tønsberg) velger matpakke fra 429 kr på Majorstua, Solli eller i Tønsberg. Send forespørsel.",
   "img": "https://cdn.sanity.io/images/u0hod2sg/production/f0a99c94d4b98962eeb2bdbc78ac1e248027a31e-2000x2994.jpg"
+ },
+ {
+  "slug": "cocktails",
+  "crumb": "Cocktails",
+  "cta": "book",
+  "img": "/assets/img/ln-cocktail.jpg",
+  "imgAlt": "Rød cocktail på marmorbaren hos Kverneriet",
+  "eyebrow": "Bar på alle tre restaurantene",
+  "h1": "Cocktails hos Kverneriet",
+  "sub": "Vi tar cocktails like seriøst som vi tar burgerne våre. Du trenger ikke komme for å spise – stikk gjerne innom bare for et glass.",
+  "sec_eyebrow": "Baren",
+  "h2": "Samme detaljfokus i glasset som på tallerkenen",
+  "body": [
+   {
+    "_key": "b12",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s11",
+      "_type": "span",
+      "marks": [],
+      "text": "På samme måte som kjøkkenet hele tiden leter etter nye smaker og kombinasjoner, jobber bartenderne våre kontinuerlig med å utvikle nye cocktails. Vi tester råvarer, teknikker, teksturer og smaker, og henter inspirasjon fra hele verden. Noen ganger starter ideen med en klassisk cocktail, andre ganger med en urt, en frukt, en dessert eller en smak vi bare synes er skikkelig spennende."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b14",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s13",
+      "_type": "span",
+      "marks": [],
+      "text": "Målet er ikke å gjøre ting kompliserte bare for å gjøre dem kompliserte. Målet er å skape nye smaksopplevelser: cocktails med flere lag, overraskende kombinasjoner og detaljer som gjør hele forskjellen. Mye av det vi serverer lager eller forbereder vi selv, og vi bruker tid på å finne balansen mellom sødme, syre, styrke, aroma og tekstur."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   },
+   {
+    "_key": "b16",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "s15",
+      "_type": "span",
+      "marks": [],
+      "text": "Alle restaurantene har bar, og du er like velkommen til å slå deg ned med noe godt i glasset som til en full middag. Alkohol er heller ingen forutsetning for en god drink: vi har et stort alkoholfritt utvalg med cocktails, øl og vin, slik at det alltid finnes et ordentlig alternativ – ikke bare et kompromiss."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   }
+  ],
+  "gallery": [
+   [
+    "/assets/img/ln-cocktail.jpg",
+    "Rød cocktail på marmorbaren",
+    "4/5"
+   ],
+   [
+    "/assets/img/ln-beer.jpg",
+    "Øl tappes fra tappekrana i baren",
+    "4/5"
+   ],
+   [
+    "/assets/img/ln-hero.jpg",
+    "Gjester som skåler i baren på Kverneriet",
+    "4/5"
+   ]
+  ],
+  "facts_title": "Baren",
+  "facts": [
+   [
+    "Baren, Majorstua",
+    "mandag til 22.00, tirsdag–lørdag til 23.00, søndag til 22.00",
+    "/majorstua/"
+   ],
+   [
+    "Baren, Solli",
+    "mandag til 22.00, tirsdag–lørdag til 23.00, søndag til 22.00",
+    "/solli/"
+   ],
+   [
+    "Baren, Tønsberg",
+    "mandag til 22.00, tirsdag–lørdag til 23.00, søndag til 22.00",
+    "/tonsberg/"
+   ],
+   [
+    "Alkoholfritt",
+    "Egen meny med cocktails, øl og vin"
+   ],
+   [
+    "Make it grown-up",
+    "Milkshake med 4 cl matchende sprit, +80 kr"
+   ],
+   [
+    "Uten mat",
+    "Du er velkommen bare for et glass"
+   ]
+  ],
+  "facts_note": "Drikkemenyene ligger som PDF på hver restaurantside.",
+  "others": [
+   [
+    "middag",
+    "dinner",
+    "Middag"
+   ],
+   [
+    "late-night",
+    "late",
+    "Late night"
+   ],
+   [
+    "lunsj",
+    "lunch",
+    "Lunsj"
+   ]
+  ],
+  "cta2": "menu"
  },
  {
   "slug": "late-night",

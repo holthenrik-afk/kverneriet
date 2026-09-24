@@ -37,6 +37,8 @@ def header(active=None, menu_href='/meny/'):
       <a href="/takeaway/" data-i18n="act.takeaway">Take-away</a>
       <button type="button" class="mobile-panel__btn" data-book-open data-i18n="act.book">Book bord</button>
       <a href="/lunsj/" data-i18n="lp.lunch">Lunsj</a>
+      <a href="/middag/" data-i18n="lp.dinner">Middag</a>
+      <a href="/cocktails/" data-i18n="lp.cocktails">Cocktails</a>
       <a href="/julebord/" data-i18n="lp.xmas">Julebord</a>
       <a href="/selskap/" data-i18n="lp.groups">Selskap og grupper</a>
       <a href="/late-night/" data-i18n="lp.late">Late night</a>
@@ -69,6 +71,8 @@ def footer(menu_href='/meny/'):
     <span class="pipe" aria-hidden="true">|</span><a href="{menu_href}" data-i18n="act.menu">Meny</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/takeaway/" data-i18n="act.takeaway">Take-away</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/lunsj/" data-i18n="lp.lunch">Lunsj</a>
+    <span class="pipe" aria-hidden="true">|</span><a href="/middag/" data-i18n="lp.dinner">Middag</a>
+    <span class="pipe" aria-hidden="true">|</span><a href="/cocktails/" data-i18n="lp.cocktails">Cocktails</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/julebord/" data-i18n="lp.xmas">Julebord</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/selskap/" data-i18n="lp.groups">Selskap og grupper</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/late-night/" data-i18n="lp.late">Late night</a>

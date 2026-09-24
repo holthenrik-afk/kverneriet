@@ -23,9 +23,11 @@ PAGES = {
     'julebord':   ('julebord/index.html',       '/julebord/'),
     'selskap':    ('selskap/index.html',        '/selskap/'),
     'late-night': ('late-night/index.html',     '/late-night/'),
+    'middag':     ('middag/index.html',         '/middag/'),
+    'cocktails':  ('cocktails/index.html',      '/cocktails/'),
 }
 VENUE_SLUGS = ['majorstua', 'solli', 'tonsberg']
-LANDING_SLUGS = ['lunsj', 'julebord', 'selskap', 'late-night']
+LANDING_SLUGS = ['lunsj', 'middag', 'julebord', 'selskap', 'cocktails', 'late-night']
 
 def register(slug, file, url):
     PAGES[slug] = (file, url)

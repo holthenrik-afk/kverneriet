@@ -249,7 +249,7 @@ export const landingPage = defineType({
       name: 'slug',
       title: 'Side',
       type: 'string',
-      options: {list: [{title: 'Lunsj', value: 'lunsj'}, {title: 'Julebord', value: 'julebord'}, {title: 'Selskap', value: 'selskap'}, {title: 'Late night', value: 'late-night'}]},
+      options: {list: [{title: 'Lunsj', value: 'lunsj'}, {title: 'Middag', value: 'middag'}, {title: 'Julebord', value: 'julebord'}, {title: 'Selskap', value: 'selskap'}, {title: 'Cocktails', value: 'cocktails'}, {title: 'Late night', value: 'late-night'}]},
       validation: (r) => r.required(),
       readOnly: true,
     }),

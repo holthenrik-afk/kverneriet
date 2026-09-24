@@ -97,7 +97,7 @@ def main():
     # --- landing.json (tekst fra Sanity, fakta/others/media fra gammel fil når de ikke er satt)
     oldl = {l['slug']: l for l in kv.landing()}
     out_l = []
-    for slug in ('lunsj', 'julebord', 'selskap', 'late-night'):
+    for slug in ('lunsj', 'middag', 'julebord', 'selskap', 'cocktails', 'late-night'):
         o = oldl.get(slug, {}); l = next((x for x in landing if x['slug'] == slug), None) or {}
         d = dict(o)
         for k_s, k_o in (('seoTitle', 'seoTitle'), ('seoDescription', 'seoDescription'), ('eyebrow', 'eyebrow'), ('h1', 'h1'), ('sub', 'sub'), ('sectionEyebrow', 'sec_eyebrow'), ('h2', 'h2'), ('factsTitle', 'facts_title'), ('factsNote', 'facts_note')):

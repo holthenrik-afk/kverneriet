@@ -32,6 +32,8 @@ def page(p):
         cta_primary = f'<a class="btn btn--primary btn--lg" href="/majorstua/#booking" data-book-open data-track="lp:{slug}:book" data-i18n="lp.bookNow">Book bord nå</a>'
     else:
         cta_primary = f'<a class="btn btn--primary btn--lg" href="/majorstua/#booking" data-book-open data-book-mode="large" data-track="lp:{slug}:group" data-i18n="lp.groupCta">Send gruppeforespørsel</a>'
+    cta_secondary = (f'<a class="btn btn--ghost btn--md" href="/meny/" data-i18n="act.seeMenu">Se menyen</a>' if p.get('cta2') == 'menu'
+                     else f'<a class="btn btn--ghost btn--md" href="/takeaway/" data-order-open data-track="lp:{slug}:takeaway" data-i18n="act.order">Bestill take-away</a>')
     crumbs = f'<nav class="crumbs" aria-label="Brødsmuler"><ol><li><a href="/">Kverneriet</a></li><li><span aria-current="page">{e(p["crumb"])}</span></li></ol></nav>'
     G.add('lp.venues', 'Restaurantene', 'The restaurants')
     return f'''<!DOCTYPE html>
@@ -80,7 +82,7 @@ def page(p):
         {''.join(f'<p class="lede" style="margin-top:var(--space-5)">{t}</p>' for t in p['body'])}
         <div style="margin-top:var(--space-6);display:flex;gap:12px;flex-wrap:wrap">
           {cta_primary.replace('btn--lg', 'btn--md')}
-          <a class="btn btn--ghost btn--md" href="/takeaway/" data-order-open data-track="lp:{slug}:takeaway" data-i18n="act.order">Bestill take-away</a>
+          {cta_secondary}
         </div>
       </div>
       <div>

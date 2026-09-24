@@ -50,6 +50,14 @@ PAGES = {
     title='Selskap og gruppebooking – burger i Oslo og Tønsberg',
     desc='Bursdag, firmafest eller vennegjeng? Grupper over 8 (7 i Tønsberg) velger matpakke fra 429 kr på Majorstua, Solli eller i Tønsberg. Send forespørsel.',
     img='/assets/img/tonsberg-hero.jpg'),
+ 'middag': dict(
+    title='Middag i Oslo og Tønsberg – burger og bar | Kverneriet',
+    desc='Middag hos Kverneriet: håndlagde burgere, ferske brød og trippelkokte fries på Majorstua, Solli plass og i Tønsberg. Fra to til tjue rundt bordet.',
+    img='/assets/img/ln-hero.jpg'),
+ 'cocktails': dict(
+    title='Cocktails i Oslo – bar på Majorstua og Solli | Kverneriet',
+    desc='Cocktails laget med samme detaljfokus som burgerne. Bar på alle tre restaurantene, stort vinkart, øl fra tappen og et bredt alkoholfritt utvalg.',
+    img='/assets/img/ln-cocktail.jpg'),
  'late-night': dict(
     title='Late night burger i Oslo – kjøkken til 22 | Kverneriet',
     desc='Spise sent i Oslo? Kjøkkenet på Majorstua og Solli serverer burgere til 22, baren holder åpent til 23 tir–lør. Milkshake med sprit, øl fra tappen. Drop-in.',
