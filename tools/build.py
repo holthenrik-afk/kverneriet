@@ -89,17 +89,11 @@ def patch_index():
     G.add('home.hoursNote', 'Åpningstider, meny og booking på hver restaurantside.', 'Opening hours, menu and booking on each restaurant page.')
     s = re.sub(r'<h1( lang="en")?>[^<]*</h1>\n(    <p class="hero-home__sub"[^\n]*\n)?',
                f'<h1 lang="en">Handcrafted burgers</h1>\n    <p class="hero-home__sub" data-i18n="home.heroSub">{e(hs["no"])}</p>\n', s, count=1)
-    # Ordene lunsj / middag / cocktails lenkes automatisk til sidene sine, så teksten kan skrives som ren tekst i Sanity
-    LINKS = {'no': [('lunsj', '/lunsj/'), ('middag', '/middag/'), ('cocktails', '/cocktails/')],
-             'en': [('lunch', '/lunsj/'), ('dinner', '/middag/'), ('cocktails', '/cocktails/')]}
-    def autolink(txt, lang):
-        out = e(txt)
-        for word, href in LINKS[lang]:
-            out = re.sub(r'(?<![\w>])(' + word + r')(?![\w<])', lambda m: f'<a href="{href}">{m.group(1)}</a>', out, count=1, flags=re.I)
-        return out
-    G.add('home.lede.html', autolink(G._D['no']['home.lede'], 'no'), autolink(G._D['en']['home.lede'], 'en'))
     s = re.sub(r'<p class="lede" data-i18n(?:-html)?="home\.lede(?:\.html)?">.*?</p>',
-               f'<p class="lede" data-i18n-html="home.lede.html">{G._D["no"]["home.lede.html"]}</p>', s, count=1, flags=re.S)
+               f'<p class="lede" data-i18n="home.lede">{e(G._D["no"]["home.lede"])}</p>', s, count=1, flags=re.S)
+    G.add('home.hoursNote', 'Åpningstider, meny og booking på hver restaurantside.', 'Opening hours, menu and booking on each restaurant page.')
+    s = re.sub(r'<h1( lang="en")?>[^<]*</h1>\n(    <p class="hero-home__sub"[^\n]*\n)?',
+               f'<h1 lang="en">Handcrafted burgers</h1>\n    <p class="hero-home__sub" data-i18n="home.heroSub">{e(hs["no"])}</p>\n', s, count=1)
     # Take-away hører ikke hjemme blant det første gjesten ser (ønske fra Kverneriet 24.09.2026)
     s = re.sub(r'\s*<button class="btn btn--solid btn--lg" type="button" data-order-open data-track="cta:takeaway"[^>]*>[^<]*</button>', '', s, count=1)
     # Triptych: riktige alt-tekster og stedslinjer fra venues.json
