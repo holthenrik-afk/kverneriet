@@ -4,17 +4,125 @@
   "no": "Kverneriet er en norsk burgerrestaurant startet i Tønsberg i 2013, med restauranter på Majorstua (2015) og Solli plass (2017) i Oslo. Vi kverner alt kjøttet selv av storfe i toppklasse, steker burgerne medium pluss, lager trippelkokte fries som tar tre dager og serverer soft serve og milkshakes på Jersey-melk. Take-away-emballasjen er vår egen, i naturmaterialer."
  },
  "aboutTitle": {
-  "en": "The Tønsberg burger joint that became three restaurants",
-  "no": "Burgersjappa fra Tønsberg som ble tre restauranter"
- },
- "about1": {
-  "en": "Kverneriet started as a small burger joint in Tønsberg in 2013. In 2015 we opened at Majorstua in Oslo, and in 2017 at Solli plass. The recipe is the same in all three: we grind all the beef ourselves from top-grade cattle and cook the burgers medium plus, the buns are fresh, and the fries are handmade, triple-cooked and take three days – naturally gluten-free.",
-  "no": "Kverneriet startet som en liten burgersjappe i Tønsberg i 2013. I 2015 åpnet vi på Majorstua i Oslo, og i 2017 ved Solli plass. Oppskriften er den samme alle tre steder: vi kverner alt kjøttet selv av storfe i toppklasse og steker burgerne medium pluss, brødene er ferske, og friesene er håndlagde, trippelkokte og tar tre dager – naturlig glutenfrie."
+  "en": "It started in Tønsberg",
+  "no": "Det startet i Tønsberg"
  },
  "faqExtra": [],
  "posts": [],
- "about2": {
-  "no": "",
-  "en": ""
- }
+ "aboutParagraphs": [
+  {
+   "_key": "p0",
+   "_type": "localizedText",
+   "en": "Kverneriet started in Tønsberg in 2013, with a simple idea: make really good burgers and do things properly. In 2015 we opened at Majorstua, and two years later at Solli plass.",
+   "no": "Kverneriet startet i Tønsberg i 2013, med en enkel idé om å lage skikkelig gode burgere og gjøre ting ordentlig. I 2015 åpnet vi på Majorstua, og to år senere på Solli plass."
+  },
+  {
+   "_key": "p1",
+   "_type": "localizedText",
+   "en": "A lot has happened since then, but the way we work is still the same. We grind the beef ourselves, bake the buns fresh and spend three days on our handmade, triple-cooked fries. For dessert we make our Soft Serve Deluxe with 100 % Jersey milk from Jerseymeieriet – naturally rich, extra creamy and something else entirely. We may make things more complicated than necessary, but we think it is worth it.",
+   "no": "Mye har skjedd siden den gang, men måten vi jobber på er fortsatt den samme. Vi kverner kjøttet selv, baker burgerbrødene ferske og bruker tre dager på våre håndlagde, trippelkokte fries. Til dessert lager vi vår Soft Serve Deluxe med 100 % Jersey-melk fra Jerseymeieriet – naturlig rik, ekstra kremet og noe helt annet enn vanlig softis. Vi gjør kanskje ting litt mer komplisert enn nødvendig, men vi synes det er verdt det."
+  },
+  {
+   "_key": "p2",
+   "_type": "localizedText",
+   "en": "All three restaurants have a proper bar, with cocktails we are proud of, a long wine list and a wide selection of beer. For those who want something without alcohol, we have a separate menu of alcohol-free cocktails, beer and wine.",
+   "no": "Alle restaurantene våre har også en ordentlig bar, med cocktails vi er stolte av, et stort vinkart og et bredt utvalg øl. Og for de som ønsker noe uten alkohol, har vi en egen meny med alkoholfrie cocktails, øl og vin."
+  },
+  {
+   "_key": "p3",
+   "_type": "localizedText",
+   "en": "If you want Kverneriet at home, you can pick up take-away at the restaurant. In Oslo you can also order delivery through Wolt and Foodora.",
+   "no": "Vil du ta Kverneriet med hjem, kan du hente take-away direkte i restauranten. I Oslo kan du også bestille levering gjennom Wolt og Foodora."
+  }
+ ],
+ "heroSub": {
+  "en": "Burger restaurant in Oslo and Tønsberg since 2013.",
+  "no": "Burgerrestaurant i Oslo og Tønsberg siden 2013."
+ },
+ "heroLede": {
+  "en": "We probably make things more complicated than necessary. We grind the beef ourselves, spend three days on the fries and make as much as we can from scratch. We think it is worth it. Kverneriet is handcrafted burgers, seriously good cocktails and people who genuinely care that you have a good time.",
+  "no": "Vi gjør kanskje ting litt mer komplisert enn nødvendig. Vi kverner kjøttet selv, bruker tre dager på friesene og lager mest mulig fra bunnen av. Vi synes det er verdt det. Kverneriet er håndlagde burgere, skikkelig gode cocktails og mennesker som oppriktig bryr seg om at du har det bra."
+ },
+ "craftEyebrow": {
+  "en": "Craft, not shortcuts",
+  "no": "Håndverk, ingen snarveier"
+ },
+ "craftTitle": {
+  "en": "The way we work",
+  "no": "Slik jobber vi"
+ },
+ "craftItems": [
+  {
+   "image": "https://cdn.sanity.io/images/u0hod2sg/production/5c6c574127528aeb0e4e2ff95d879b4c2a019693-1400x935.jpg",
+   "alt": "Grillede patties med smeltet blåmuggost på Kverneriet",
+   "title": {
+    "en": "The beef",
+    "no": "Kjøttet"
+   },
+   "body": {
+    "en": "We grind all the beef ourselves from top-grade cattle and cook the burgers medium plus. The buns are baked fresh.",
+    "no": "Vi kverner alt kjøttet selv av storfe i toppklasse og steker burgerne medium pluss. Burgerbrødene bakes ferske."
+   }
+  },
+  {
+   "image": "https://cdn.sanity.io/images/u0hod2sg/production/ff3d7812d55fade2ccb147a5ce63cbc23c8bc745-1400x935.jpg",
+   "alt": "Trippelkokte fries med trøffel og parmesan",
+   "title": {
+    "en": "Three-day fries",
+    "no": "Tre dagers fries"
+   },
+   "body": {
+    "en": "Our handmade, triple-cooked fries take three days. We think you can taste the work, and they are naturally gluten-free.",
+    "no": "De håndlagde, trippelkokte friesene våre tar tre dager å lage. Vi mener du kan smake alt arbeidet, og de er naturlig glutenfrie."
+   }
+  },
+  {
+   "image": "https://cdn.sanity.io/images/u0hod2sg/production/df4f11f77c9540a96c56f76619269c5ab590b824-1200x801.jpg",
+   "alt": "Soft Serve Deluxe med karamell på Kverneriet",
+   "title": {
+    "en": "Soft Serve Deluxe",
+    "no": "Soft Serve Deluxe"
+   },
+   "body": {
+    "en": "Our soft serve is made with 100 % Jersey milk from Jerseymeieriet. Naturally rich, extra creamy and something else entirely.",
+    "no": "Softisen vår lages med 100 % Jersey-melk fra Jerseymeieriet. Naturlig rik, ekstra kremet og noe helt annet enn vanlig softis."
+   }
+  },
+  {
+   "image": "https://cdn.sanity.io/images/u0hod2sg/production/97a3081f8af531f81919d8b0fdfe5d2e436a8cc9-1200x1796.jpg",
+   "alt": "Rød cocktail på marmorbaren",
+   "title": {
+    "en": "The bar",
+    "no": "Baren"
+   },
+   "body": {
+    "en": "Every restaurant has a proper bar: cocktails we are proud of, a long wine list and a wide selection of beer. We also have a separate alcohol-free menu of cocktails, beer and wine.",
+    "no": "Alle restaurantene har en ordentlig bar: cocktails vi er stolte av, et stort vinkart og et bredt utvalg øl. Vi har også en egen meny med alkoholfrie cocktails, øl og vin."
+   }
+  },
+  {
+   "image": "https://cdn.sanity.io/images/u0hod2sg/production/28b41d48b45671881998741503d43c235374103d-2000x2994.jpg",
+   "alt": "Gjester som skåler med cocktails og burgere på Kverneriet",
+   "title": {
+    "en": "The people",
+    "no": "Folkene"
+   },
+   "body": {
+    "en": "The food is half the job. The rest is people who genuinely care that you have a good time, from the moment you walk in.",
+    "no": "Maten er halve jobben. Resten er mennesker som oppriktig bryr seg om at du har det bra, fra du kommer inn til du går ut."
+   }
+  },
+  {
+   "image": "https://cdn.sanity.io/images/u0hod2sg/production/889f99b6751e8e6501d31f7b0427cd2a865a9f4e-1000x1000.jpg",
+   "alt": "Kverneriets take-away-eske i naturmaterialer",
+   "title": {
+    "en": "The packaging",
+    "no": "Emballasjen"
+   },
+   "body": {
+    "en": "Instead of generic packaging full of plastic, we designed our own from scratch, in natural materials.",
+    "no": "I stedet for standardemballasje full av plast har vi designet vår egen fra bunnen av, i naturmaterialer."
+   }
+  }
+ ]
 }

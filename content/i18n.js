@@ -1,6 +1,6 @@
 // Kverneriet — språklag. Norsk er standard; engelsk byttes til med velgeren i headeren.
-// Merkevarelinjer («awesome food for awesome people», «stay safe - eat home», «flipping
-// kick-ass burgers») og driftsvarsler på norsk oversettes aldri. Rettene i menyen ligger
+// Merkevarelinjer («awesome food for awesome people», «stay safe - eat home») og
+// driftsvarsler på norsk oversettes aldri. Rettene i menyen ligger
 // i content/menus.js og er alltid på engelsk, slik den ekte menyen er.
 window.KV_I18N = {
   no: {
@@ -50,7 +50,6 @@ window.KV_I18N = {
     'v.welcome': 'Velkommen til',
     'v.orderTitle': 'Bestill take-away',
     'v.menuCta': 'Se hele menyen',
-    'maj.about': 'Her på Kverneriet Majorstua har vi flippet håndlagde burgere i godt over fem år. Det startet med burger og fries, men sammen med gjestene våre har menyen vokst til å romme mye mer. Ambisjonen er den samme: skikkelig god mat, laget av de beste råvarene, med håndverk som ikke tar snarveier. Vi håper vi snart får servere deg!',
     'maj.readMenu': 'Les menyen',
     'sol.about': 'Kverneriet Solli ligger ved Solli plass i Oslo. Bestill for henting, eller få maten levert hjem med Wolt eller Foodora.',
     'ton.about': 'Kverneriet Tønsberg er restauranten vår i Tønsberg. Bestill på nett og hent selv ved disken.',
@@ -168,7 +167,6 @@ window.KV_I18N = {
     'v.welcome': 'Welcome to',
     'v.orderTitle': 'Order take-away',
     'v.menuCta': 'See the full menu',
-    'maj.about': 'Here at Kverneriet Majorstua we’ve been flipping handcrafted deliciousness for over half a decade now. Even if it all started with our delicious burger and fries we have evolved together with our guest to bring you a variety of delicious dishes that suits all tastes. Our main ambition is to create really good food through the use of the best produce and immaculate craftsmanship that doesn’t cut corners. We hope to serve you soon!',
     'maj.readMenu': 'Read the menu',
     'sol.about': 'Kverneriet Solli sits at Solli plass in Oslo. Order for pick up, or get it delivered with Wolt or Foodora.',
     'ton.about': 'Kverneriet Tønsberg is our restaurant in Tønsberg. Order online and pick up at the counter.',

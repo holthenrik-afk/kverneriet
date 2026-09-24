@@ -19,30 +19,58 @@ V = kv.venues(); ORG = V['org']
 e = kv.esc
 
 def about_section():
+    """«Det startet i Tønsberg» – tittel og avsnitt fra content/site-copy.json (redigeres i Sanity)."""
     sc = kv.site_copy()
-    t = sc.get('aboutTitle') or {'no': 'Burgersjappa fra Tønsberg som ble tre restauranter', 'en': 'The Tønsberg burger joint that became three restaurants'}
-    a1 = sc.get('about1') or {'no': '', 'en': ''}
+    t = sc.get('aboutTitle') or {'no': 'Det startet i Tønsberg', 'en': 'It started in Tønsberg'}
+    paras = sc.get('aboutParagraphs') or []
     G.add('home.aboutEyebrow', 'Om Kverneriet', 'About Kverneriet'); G.add('home.aboutTitle', t['no'], t.get('en') or t['no'])
-    G.add('home.about1', a1['no'], a1.get('en') or a1['no'])
-    rng = faq.burger_range('majorstua') or (239, 289); fries = faq.fries_from() or 84; pk0 = ORG['packages']['items'][0]['price']
-    a2 = sc.get('about2')
-    if a2 and a2.get('no'): G.add('home.about2', a2['no'], a2.get('en') or a2['no'])
-    else: G.add('home.about2', f'Burgerne koster fra {rng[0]} til {rng[1]} kr og fries fra {fries} kr. Bord for inntil 8 personer (7 i Tønsberg) booker du online med bekreftelse med en gang; større grupper sender forespørsel og velger matpakke fra {pk0} kr per person. Alle restaurantene har drop-in-bord og take-away du henter selv, og Majorstua og Solli leverer hjem med Wolt og Foodora.',
-          f'Burgers cost NOK {rng[0]}–{rng[1]} and fries from NOK {fries}. Tables for up to 8 (7 in Tønsberg) are booked online with instant confirmation; larger groups send a request and choose a food package from NOK {pk0} per person. All three restaurants keep walk-in tables and do pick-up take-away, and Majorstua and Solli deliver with Wolt and Foodora.')
-    # Om-teksten ligger som innledning i restaurant-seksjonen (Henrik ville slå de to sammen, 21.09.2026)
+    body = ''
+    for i, para in enumerate(paras):
+        G.add(f'home.about{i + 1}', para['no'], para.get('en') or para['no'])
+        cls = ' class="lede"' if i == 0 else ''
+        style = '' if i == 0 else ' style="margin-top:var(--space-4);color:var(--text-muted)"'
+        body += f'          <p{cls}{style} data-i18n="home.about{i + 1}">{e(para["no"])}</p>\n'
     return f'''      <!-- om:start -->
       <div class="grid-2 grid-2--start">
         <header class="sec-head">
           <div class="sec-head__rule"></div>
           <span class="kv-eyebrow" data-i18n="home.aboutEyebrow">Om Kverneriet</span>
-          <h2 class="display-2" data-i18n="home.aboutTitle">{e(G._D['no']['home.aboutTitle'])}</h2>
+          <h2 class="display-2" data-i18n="home.aboutTitle">{e(t['no'])}</h2>
         </header>
         <div>
-          <p class="lede" data-i18n="home.about1">{e(G._D['no']['home.about1'])}</p>
-          <p style="margin-top:var(--space-4);color:var(--text-muted)" data-i18n="home.about2">{e(G._D['no']['home.about2'])}</p>
-        </div>
+{body}        </div>
       </div>
       <!-- om:end -->'''
+
+def craft_section():
+    """«Slik jobber vi» – kortene ligger i content/site-copy.json (craftItems) og redigeres i Sanity."""
+    sc = kv.site_copy()
+    eb = sc.get('craftEyebrow') or {'no': 'Håndverk, ingen snarveier', 'en': 'Craft, not shortcuts'}
+    ti = sc.get('craftTitle') or {'no': 'Slik jobber vi', 'en': 'The way we work'}
+    G.add('home.craftEyebrow', eb['no'], eb.get('en') or eb['no']); G.add('home.craftTitle', ti['no'], ti.get('en') or ti['no'])
+    cards = ''
+    for i, it in enumerate(sc.get('craftItems') or []):
+        G.add(f'craft.{i}.t', it['title']['no'], it['title'].get('en') or it['title']['no'])
+        G.add(f'craft.{i}.b', it['body']['no'], it['body'].get('en') or it['body']['no'])
+        cards += (f'        <div class="venue-card">\n'
+                  f'          <figure class="photo" style="aspect-ratio:1/1"><img src="{it["image"]}" alt="{e(it["alt"])}" loading="lazy"></figure>\n'
+                  f'          <h3 class="display-4" data-i18n="craft.{i}.t">{e(it["title"]["no"])}</h3>\n'
+                  f'          <p class="menu-item__desc" style="margin-top:0" data-i18n="craft.{i}.b">{e(it["body"]["no"])}</p>\n'
+                  f'        </div>\n')
+    return f'''  <!-- The craft -->
+  <section class="section">
+    <div class="wrap">
+      <header class="sec-head">
+        <div class="sec-head__rule"></div>
+        <span class="kv-eyebrow" data-i18n="home.craftEyebrow">{e(eb['no'])}</span>
+        <h2 class="display-2" data-i18n="home.craftTitle">{e(ti['no'])}</h2>
+      </header>
+      <div class="grid-3" style="margin-top:var(--space-7)">
+{cards}      </div>
+    </div>
+  </section>
+
+'''
 
 def add_gen_script(s):
     return re.sub(r'(<script src="/content/i18n\.js[^"]*" defer></script>\n)(?!<script src="/content/i18n-gen\.js)', r'\1<script src="/content/i18n-gen.js" defer></script>\n', s, count=1)
@@ -53,24 +81,32 @@ def patch_index():
     s = modal.apply(s)
     s = s.replace('<main>', '<main id="main">', 1)
     # H1 beholder merkevarelinjen, men får en synlig undertekst med sted og produkt
-    G.add('home.heroSub', 'Burgerrestaurant på Majorstua og Solli plass i Oslo, og i Tønsberg – siden 2013.', 'Burger restaurant at Majorstua and Solli plass in Oslo, and in Tønsberg – since 2013.')
+    sc = kv.site_copy()
+    hs = sc.get('heroSub') or {'no': 'Burgerrestaurant i Oslo og Tønsberg siden 2013.', 'en': 'Burger restaurant in Oslo and Tønsberg since 2013.'}
+    hl = sc.get('heroLede') or {}
+    G.add('home.heroSub', hs['no'], hs.get('en') or hs['no'])
+    if hl.get('no'): G.add('home.lede', hl['no'], hl.get('en') or hl['no'])
     G.add('home.hoursNote', 'Åpningstider, meny og booking på hver restaurantside.', 'Opening hours, menu and booking on each restaurant page.')
-    if 'home.heroSub' not in s:
-        s = re.sub(r'<h1( lang="en")?>Flipping kick-ass burgers</h1>\n', '<h1 lang="en">Flipping kick-ass burgers</h1>\n    <p class="hero-home__sub" data-i18n="home.heroSub">Burgerrestaurant på Majorstua og Solli plass i Oslo, og i Tønsberg – siden 2013.</p>\n', 1)
+    s = re.sub(r'<h1( lang="en")?>[^<]*</h1>\n(    <p class="hero-home__sub"[^\n]*\n)?',
+               f'<h1 lang="en">Handcrafted burgers</h1>\n    <p class="hero-home__sub" data-i18n="home.heroSub">{e(hs["no"])}</p>\n', s, count=1)
+    s = re.sub(r'(<p class="lede" data-i18n="home.lede">)[^<]*(</p>)', lambda m: m.group(1) + e(G._D['no']['home.lede']) + m.group(2), s, count=1)
+    # Take-away hører ikke hjemme blant det første gjesten ser (ønske fra Kverneriet 24.09.2026)
+    s = re.sub(r'\s*<button class="btn btn--solid btn--lg" type="button" data-order-open data-track="cta:takeaway"[^>]*>[^<]*</button>', '', s, count=1)
     # Triptych: riktige alt-tekster og stedslinjer fra venues.json
     s = s.replace('alt="Kyllingburger fra Kverneriet Majorstua"', 'alt="Blå bar og grønne fløyelsbenker på Kverneriet Majorstua"')
     s = s.replace('alt="Uteserveringen på bryggekanten i Tønsberg"', 'alt="Bryggeterrassen til Kverneriet Tønsberg med kanalen bak"')
     for v in V['venues']:
         s = re.sub(r'(<a class="venue-panel" href="%s">.*?<span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> )[^<]*(</span>)' % re.escape(kv.url(v['slug'])),
-                   lambda m: m.group(1) + e(f'{v["address"]["street"]}, {v["city"]} · {v["tagline"].split(" - ")[-1]}') + m.group(2), s, count=1, flags=re.S)
+                   lambda m: m.group(1) + e(f'{v["address"]["street"]}, {v["city"]} · {(v["copy"]["slogan"]["no"] if isinstance(v["copy"]["slogan"], dict) else v["copy"]["slogan"]).rstrip(".")}') + m.group(2), s, count=1, flags=re.S)
     # Om-teksten inn i restaurant-seksjonen (#om), FAQ før gavekort
     s = re.sub(r'      <!-- om:start -->.*?<!-- om:end -->', lambda m: about_section(), s, count=1, flags=re.S)
+    s = re.sub(r'  <!-- The craft -->\n  <section class="section">.*?\n  </section>\n\n', lambda m: craft_section(), s, count=1, flags=re.S)
     s = re.sub(r'  <section class="section[^"]*" id="faq">.*?\n  </section>\n', '', s, count=1, flags=re.S)
     s = s.replace('\n</main>', '\n' + faq.section(faq.general_faq()) + '</main>', 1)
     s = s.replace('<html lang="no">', '<html lang="nb">')
     s = add_gen_script(s)
-    s = s.replace('<span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> Awesome food for awesome people since 2013</span>', '<span class="kv-eyebrow" lang="en"><span class="glyph" aria-hidden="true">⋮</span> Awesome food for awesome people since 2013</span>')
-    s = s.replace('<h1>Flipping kick-ass burgers</h1>', '<h1 lang="en">Flipping kick-ass burgers</h1>')
+    s = re.sub(r'<span class="kv-eyebrow"( lang="en")?><span class="glyph" aria-hidden="true">⋮</span> Awesome food for awesome people[^<]*</span>',
+               '<span class="kv-eyebrow" lang="en"><span class="glyph" aria-hidden="true">⋮</span> Awesome food for awesome people</span>', s, count=1)
     s = s.replace('<span class="kv-eyebrow">Stay safe - eat home</span>', '<span class="kv-eyebrow" lang="en">Stay safe - eat home</span>')
     open('index.html', 'w', encoding='utf-8').write(s); print('index.html ok')
 

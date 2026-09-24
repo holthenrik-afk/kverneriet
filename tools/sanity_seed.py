@@ -24,15 +24,17 @@ def loc(no, en=None): return {'no': no, 'en': en or no}
 
 # --- Innstillinger
 import seo_head as SH  # BRAND-teksten
+SC = kv.site_copy()
 rows.append({
     '_id': 'siteSettings', '_type': 'siteSettings', 'name': ORG['name'], 'legalName': ORG.get('legalName'), 'telephone': ORG['telephone'],
     'telephoneDisplay': ORG['telephoneDisplay'], 'email': ORG['email'], 'giftcard': ORG['giftcard'], 'founded': ORG['founded'], 'sameAs': ORG['sameAs'],
     'priceRange': ORG['priceRange'], 'deliveryMarkup': ORG.get('deliveryMarkup', '15–20 %'), 'packagesNote': ORG['packages']['note'],
     'packages': keyed([{'_type': 'packageItem', **p} for p in ORG['packages']['items']]), 'kidsPrice': ORG['packages']['kids'], 'kidsNote': ORG['packages'].get('kidsNote'),
     'brandStory': loc(SH.BRAND, 'Kverneriet is a Norwegian burger restaurant started in Tønsberg in 2013, with restaurants at Majorstua (2015) and Solli plass (2017) in Oslo. We grind all the beef ourselves from top-grade cattle, cook the burgers medium plus, make triple-cooked fries that take three days and serve Jersey-milk soft serve and milkshakes. Our take-away packaging is our own, in natural materials.'),
-    'aboutTitle': loc('Burgersjappa fra Tønsberg som ble tre restauranter', 'The Tønsberg burger joint that became three restaurants'),
-    'about1': loc('Kverneriet startet som en liten burgersjappe i Tønsberg i 2013. I 2015 åpnet vi på Majorstua i Oslo, og i 2017 ved Solli plass. Oppskriften er den samme alle tre steder: vi kverner alt kjøttet selv av storfe i toppklasse og steker burgerne medium pluss, brødene er ferske, og friesene er håndlagde, trippelkokte og tar tre dager – naturlig glutenfrie.',
-                  'Kverneriet started as a small burger joint in Tønsberg in 2013. In 2015 we opened at Majorstua in Oslo, and in 2017 at Solli plass. The recipe is the same in all three: we grind all the beef ourselves from top-grade cattle and cook the burgers medium plus, the buns are fresh, and the fries are handmade, triple-cooked and take three days – naturally gluten-free.'),
+    'heroSub': SC.get('heroSub'), 'heroLede': SC.get('heroLede'), 'craftEyebrow': SC.get('craftEyebrow'), 'craftTitle': SC.get('craftTitle'),
+    'aboutParagraphs': keyed([{'_type': 'localizedText', **p} for p in SC.get('aboutParagraphs', [])]),
+    'craftItems': keyed([{'_type': 'craftItem', 'title': c['title'], 'body': c['body'], 'photo': img(c['image'], c['alt'])} for c in SC.get('craftItems', [])]),
+    'aboutTitle': SC.get('aboutTitle') or loc('Det startet i Tønsberg', 'It started in Tønsberg'),
     'allergenKey': keyed([{'_type': 'allergenCode', 'code': c, 'name': n} for c, n in M['allergenKey'].items()]),
 })
 
@@ -49,7 +51,7 @@ for v in V['venues']:
         'channels': {k: u for k, u in v['channels'].items() if u},
         'drinksPdf': file_asset(v['menuPdf']['drinks']), 'kidsPdf': file_asset(v['menuPdf']['kids']),
         'heroImage': img(c['heroImg'], c['heroAlt']),
-        'heroSub': loc(*c['heroSub']), 'slogan': c['slogan'],
+        'heroSub': loc(*c['heroSub']), 'slogan': loc(*c['slogan']),
         'about1': loc(*c['about'][0]), 'about2': loc(*c['about'][1]),
         'aboutImage': img(c['aboutImg'][0], c['aboutImg'][1]),
         'gallery': [img(p, a, f'g{i}') for i, (p, a, _) in enumerate(c['gallery'])],

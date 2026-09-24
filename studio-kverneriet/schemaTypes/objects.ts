@@ -146,6 +146,18 @@ export const allergenCode = defineType({
   preview: {select: {title: 'code', subtitle: 'name'}},
 })
 
+export const craftItem = defineType({
+  name: 'craftItem',
+  title: 'Håndverkskort',
+  type: 'object',
+  fields: [
+    defineField({name: 'title', title: 'Tittel', type: 'localizedString', validation: (r) => r.required()}),
+    defineField({name: 'body', title: 'Tekst', type: 'localizedText', validation: (r) => r.required()}),
+    defineField({name: 'photo', title: 'Bilde', type: 'photo'}),
+  ],
+  preview: {select: {title: 'title.no', media: 'photo'}},
+})
+
 export const fact = defineType({
   name: 'fact',
   title: 'Faktapunkt',

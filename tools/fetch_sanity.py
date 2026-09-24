@@ -25,7 +25,7 @@ def imgs(field): return f'"{field}": {field}[]{IMG}'
 
 def main():
     try:
-        settings = q('*[_id == "siteSettings"][0]')
+        settings = q(f'*[_id == "siteSettings"][0] {{ ..., craftItems[] {{ ..., {img("photo")} }} }}')
     except Exception as ex:
         print(f'fetch_sanity: fikk ikke kontakt med Sanity ({ex}). Beholder content/ som det er.'); sys.exit(2)
     if not settings:
@@ -52,7 +52,7 @@ def main():
     for v in venues:
         o = oldv.get(v['slug'], {})
         c = {
-            'heroSub': v.get('heroSub') or o.get('copy', {}).get('heroSub'), 'slogan': v.get('slogan') or o.get('copy', {}).get('slogan', ''),
+            'heroSub': v.get('heroSub') or o.get('copy', {}).get('heroSub'), 'slogan': v.get('slogan') or o.get('copy', {}).get('slogan', ''),  # slogan er {no, en}
             'about1': v.get('about1') or o.get('copy', {}).get('about1'), 'about2': v.get('about2') or o.get('copy', {}).get('about2'),
             'heroImg': v.get('heroImage') if (v.get('heroImage') or {}).get('url') else o.get('copy', {}).get('heroImg'),
             'aboutImg': v.get('aboutImage') if (v.get('aboutImage') or {}).get('url') else o.get('copy', {}).get('aboutImg'),
@@ -110,8 +110,12 @@ def main():
 
     # --- site-copy.json + blog.json
     sc = kv.site_copy()
-    for k in ('brandStory', 'aboutTitle', 'about1', 'about2', 'blogTitle', 'blogIntro'):
+    for k in ('brandStory', 'aboutTitle', 'heroSub', 'heroLede', 'craftEyebrow', 'craftTitle', 'blogTitle', 'blogIntro'):
         if settings.get(k) and settings[k].get('no'): sc[k] = settings[k]
+    if settings.get('aboutParagraphs'): sc['aboutParagraphs'] = [p for p in settings['aboutParagraphs'] if p.get('no')]
+    if settings.get('craftItems'):
+        sc['craftItems'] = [{'image': (c.get('photo') or {}).get('url') or '/assets/img/craft-grind.jpg', 'alt': (c.get('photo') or {}).get('alt', ''), 'title': c['title'], 'body': c['body']}
+                            for c in settings['craftItems'] if c.get('title', {}).get('no')]
     sc['faqExtra'] = faqs
     json.dump(sc, open('content/site-copy.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     json.dump(posts, open('content/blog.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

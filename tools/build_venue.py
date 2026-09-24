@@ -14,7 +14,8 @@ e = kv.esc
 # Om-tekster, bilder og slagord per restaurant ligger i content/venues.json under «copy» (redigeres i Sanity).
 def copy_of(v):
     c = v['copy']
-    return dict(heroSub=(c['heroSub']['no'], c['heroSub'].get('en') or c['heroSub']['no']), slogan=c['slogan'], heroAlt=c['heroImg']['alt'], heroImg=c['heroImg']['url'],
+    sl = c['slogan'] if isinstance(c['slogan'], dict) else {'no': c['slogan'], 'en': c['slogan']}
+    return dict(heroSub=(c['heroSub']['no'], c['heroSub'].get('en') or c['heroSub']['no']), slogan=(sl['no'], sl.get('en') or sl['no']), heroAlt=c['heroImg']['alt'], heroImg=c['heroImg']['url'],
                 about=[(c['about1']['no'], c['about1'].get('en') or c['about1']['no']), (c['about2']['no'], c['about2'].get('en') or c['about2']['no'])],
                 aboutImg=(c['aboutImg']['url'], c['aboutImg']['alt']), gallery=[(g['url'], g['alt'], '1/1') for g in c['gallery']])
 
@@ -51,7 +52,7 @@ def hours_block(v):
 
 def page(v):
     s = v['slug']; c = copy_of(v); a = v['address']; p = pages.PAGES[s]
-    G.add(f'{s}.heroSub', *c['heroSub'])
+    G.add(f'{s}.heroSub', *c['heroSub']); G.add(f'{s}.slogan', *c['slogan'])
     for i, (no, en) in enumerate(c['about']): G.add(f'{s}.about{i+1}', no, en)
     G.add('v.welcome', 'Velkommen til', 'Welcome to'); G.add('v.faq', 'Spørsmål', 'FAQ'); G.add('v.takeaway', 'Take-away', 'Take-away')
     G.add('book.venueIntro', 'Book online for inntil {n} personer og få bekreftelse med en gang. Større grupper sender forespørsel her – vi svarer på e-post. Vi har også mange drop-in-bord.',
@@ -102,7 +103,7 @@ def page(v):
       <span class="kv-eyebrow" data-i18n="{since_key}">{e(v['area'])}, {e(v['city'])} · siden {v['since']}</span>
       <h1 class="hero-title" style="margin-top:var(--space-3);max-width:14ch">{e(v['fullName'])}</h1>
       <p class="hero-sub" data-i18n="{s}.heroSub">{e(c['heroSub'][0])}</p>
-      <p class="kv-eyebrow hero-slogan" lang="en">{e(c['slogan'])}</p>
+      <p class="kv-eyebrow hero-slogan" data-i18n="{s}.slogan">{e(c['slogan'][0])}</p>
       <div style="display:flex;gap:12px;margin-top:var(--space-6);flex-wrap:wrap">
         <a class="btn btn--primary btn--lg" href="#booking" data-book-open data-book-venue="{s}" data-track="cta:book:{s}" data-i18n="act.book">Book bord</a>
         <a class="btn btn--paper btn--lg" href="{kv.url(s + '-menu')}" data-i18n="act.seeMenu">Se menyen</a>
