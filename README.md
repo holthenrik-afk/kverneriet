@@ -20,7 +20,8 @@ python3 -m http.server 4173
 | `/majorstua/menu/`, `/solli/menu/`, `/tonsberg/menu/` | `<slug>/menu/index.html` | `tools/build_menu.py` fra `content/menus.js` (forhåndsrendret meny) |
 | `/meny/` | `meny/index.html` | `tools/build_menu.py` (velg restaurant) |
 | `/takeaway/` | `takeaway/index.html` | håndskrevet + `tools/build.py` |
-| `/lunsj/`, `/julebord/`, `/selskap/`, `/late-night/` | `<slug>/index.html` | `tools/build_landing.py` |
+| `/lunsj/`, `/middag/`, `/julebord/`, `/selskap/`, `/cocktails/`, `/late-night/` | `<slug>/index.html` | `tools/build_landing.py` |
+| `/blogg/`, `/blogg/<slug>/` | `blogg/…/index.html` | `tools/build_blog.py` fra Sanity («Blogginnlegg») |
 
 Strukturen ble lagt om 16.09.2026 for at ingen adresser kverneriet.com rangerer på i dag (`/majorstua/`, `/solli/menu/` osv.) skal gå tapt ved lansering. Gamle adresser (`.html`, `/packages/`, `/giftcard/`) viderekobles på to måter: `_redirects` for Netlify/Cloudflare Pages, og HTML-stubber med meta refresh + canonical for GitHub Pages og andre verter uten viderekobling på serveren. Begge genereres fra samme tabell i `tools/seo_head.py`.
 
@@ -54,6 +55,10 @@ Slik henger det sammen:
 **Webhook (valgfritt, gir oppdatering innen et par minutter i stedet for innen ti):** i sanity.io/manage → API → Webhooks: URL `https://api.github.com/repos/holthenrik-afk/kverneriet/dispatches`, metode POST, header `Authorization: Bearer <GitHub-token med repo-tilgang>` og `Accept: application/vnd.github+json`, body `{"event_type":"sanity-publish"}`, trigger på create/update/delete.
 
 **Gi kunden tilgang:** sanity.io/manage → prosjektet → Members → inviter e-post med rollen Editor. De logger inn på kverneriet.sanity.studio med Google eller e-post.
+
+**Endret tekst lokalt?** `python3 tools/sanity_push.py` skyver tekstfeltene i `content/site-copy.json` og `content/venues.json` opp til Sanity uten å røre bildene. Motsatt vei går `tools/fetch_sanity.py`. Sanity er kilden, så push før du henter.
+
+**Ordene lunsj, middag og cocktails** i ingressen på forsiden lenkes automatisk til sidene sine av `tools/build.py`, så teksten skrives som ren tekst i Sanity.
 
 **Lokalt:** `cd studio-kverneriet && npm run dev` åpner Studio på localhost:3333. `npx sanity deploy` publiserer ny Studio-versjon (etter endringer i `schemaTypes/`). Første innlasting av dagens innhold ble gjort med `tools/sanity_seed.py` + `sanity dataset import` (21.09.2026); scriptet kan kjøres igjen med `--replace` for å nullstille.
 
