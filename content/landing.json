@@ -33,7 +33,7 @@
       "_key": "s3",
       "_type": "span",
       "marks": [],
-      "text": "Vi liker lunsjer der praten får gå litt lenger enn planlagt. Et møte kan bli til en burger, en burger kan bli til kaffe, og noen ganger er det akkurat sånn en god arbeidsdag bør se ut. Kjøkkenet åpner kl. 11 på <a href=\"/majorstua/\">Majorstua</a>, 11.30 på <a href=\"/solli/\">Solli</a> og 12 torsdag til søndag i <a href=\"/tonsberg/\">Tønsberg</a>."
+      "text": "Vi liker lunsjer der praten får gå litt lenger enn planlagt. Et møte kan bli til en burger, en burger kan bli til kaffe, og noen ganger er det akkurat sånn en god arbeidsdag bør se ut. Kjøkkenet åpner kl. 11 på &lt;a href=\"/majorstua/\"&gt;Majorstua&lt;/a&gt;, 11.30 på &lt;a href=\"/solli/\"&gt;Solli&lt;/a&gt; og 12 torsdag til søndag i &lt;a href=\"/tonsberg/\"&gt;Tønsberg&lt;/a&gt;."
      }
     ],
     "markDefs": [],
@@ -142,7 +142,7 @@
       "_key": "s9",
       "_type": "span",
       "marks": [],
-      "text": "Enten dere er to eller tjue, ønsker vi at Kverneriet skal være et sted hvor det er enkelt å samles – og lett å bli sittende litt lenger enn man hadde tenkt. Book bord på <a href=\"/majorstua/\">Majorstua</a>, <a href=\"/solli/\">Solli plass</a> eller i <a href=\"/tonsberg/\">Tønsberg</a>."
+      "text": "Enten dere er to eller tjue, ønsker vi at Kverneriet skal være et sted hvor det er enkelt å samles – og lett å bli sittende litt lenger enn man hadde tenkt. Book bord på &lt;a href=\"/majorstua/\"&gt;Majorstua&lt;/a&gt;, &lt;a href=\"/solli/\"&gt;Solli plass&lt;/a&gt; eller i &lt;a href=\"/tonsberg/\"&gt;Tønsberg&lt;/a&gt;."
      }
     ],
     "markDefs": [],
@@ -217,53 +217,53 @@
   "h2": "Et julebord folk faktisk gleder seg til",
   "body": [
    {
-    "_key": "b0",
+    "_key": "b21",
     "_type": "block",
     "children": [
      {
-      "_key": "c0",
+      "_key": "s11",
       "_type": "span",
       "marks": [],
       "text": "Ikke alle vil ha pinnekjøtt fire ganger i desember. Hos oss får gjengen din burgere av kjøtt vi kverner selv, fries som tar tre dager og milkshakes – på "
      },
      {
-      "_key": "c1",
+      "_key": "s13",
       "_type": "span",
       "marks": [
-       "l1"
+       "l12"
       ],
       "text": "Majorstua"
      },
      {
-      "_key": "c2",
+      "_key": "s14",
       "_type": "span",
       "marks": [],
       "text": ", "
      },
      {
-      "_key": "c3",
+      "_key": "s16",
       "_type": "span",
       "marks": [
-       "l3"
+       "l15"
       ],
       "text": "Solli"
      },
      {
-      "_key": "c4",
+      "_key": "s17",
       "_type": "span",
       "marks": [],
       "text": " eller i "
      },
      {
-      "_key": "c5",
+      "_key": "s19",
       "_type": "span",
       "marks": [
-       "l5"
+       "l18"
       ],
       "text": "Tønsberg"
      },
      {
-      "_key": "c6",
+      "_key": "s20",
       "_type": "span",
       "marks": [],
       "text": ", i et lokale med bar som holder åpent til 23 tirsdag–lørdag."
@@ -271,17 +271,17 @@
     ],
     "markDefs": [
      {
-      "_key": "l1",
+      "_key": "l12",
       "_type": "link",
       "href": "/majorstua/"
      },
      {
-      "_key": "l3",
+      "_key": "l15",
       "_type": "link",
       "href": "/solli/"
      },
      {
-      "_key": "l5",
+      "_key": "l18",
       "_type": "link",
       "href": "/tonsberg/"
      }
@@ -289,11 +289,11 @@
     "style": "normal"
    },
    {
-    "_key": "b1",
+    "_key": "b23",
     "_type": "block",
     "children": [
      {
-      "_key": "c0",
+      "_key": "s22",
       "_type": "span",
       "marks": [],
       "text": "Bordet velger én matpakke for hele gjengen: Burger Package (429 kr), Dinner Package (579 kr), Full Package (779 kr). Send oss en forespørsel med antall, dato og ønsket tidspunkt, så kommer vi tilbake med et forslag til bord og meny. Julebordene fyller opp tidlig, så jo før du booker, jo bedre."
@@ -369,53 +369,53 @@
   "h2": "Samle gjengen rundt et langbord",
   "body": [
    {
-    "_key": "b0",
+    "_key": "b34",
     "_type": "block",
     "children": [
      {
-      "_key": "c0",
+      "_key": "s24",
       "_type": "span",
       "marks": [],
       "text": "Vi tar imot selskap på alle tre restaurantene: "
      },
      {
-      "_key": "c1",
+      "_key": "s26",
       "_type": "span",
       "marks": [
-       "l1"
+       "l25"
       ],
       "text": "Kverneriet Majorstua"
      },
      {
-      "_key": "c2",
+      "_key": "s27",
       "_type": "span",
       "marks": [],
       "text": " og "
      },
      {
-      "_key": "c3",
+      "_key": "s29",
       "_type": "span",
       "marks": [
-       "l3"
+       "l28"
       ],
       "text": "Kverneriet Solli"
      },
      {
-      "_key": "c4",
+      "_key": "s30",
       "_type": "span",
       "marks": [],
       "text": " i Oslo, og "
      },
      {
-      "_key": "c5",
+      "_key": "s32",
       "_type": "span",
       "marks": [
-       "l5"
+       "l31"
       ],
       "text": "Kverneriet Tønsberg"
      },
      {
-      "_key": "c6",
+      "_key": "s33",
       "_type": "span",
       "marks": [],
       "text": ". Bursdag, avslutning, vennegjeng som ikke har sett hverandre på lenge, eller et team som fortjener noe bedre enn kantina – burgere av kjøtt vi kverner selv passer alle."
@@ -423,17 +423,17 @@
     ],
     "markDefs": [
      {
-      "_key": "l1",
+      "_key": "l25",
       "_type": "link",
       "href": "/majorstua/"
      },
      {
-      "_key": "l3",
+      "_key": "l28",
       "_type": "link",
       "href": "/solli/"
      },
      {
-      "_key": "l5",
+      "_key": "l31",
       "_type": "link",
       "href": "/tonsberg/"
      }
@@ -441,11 +441,11 @@
     "style": "normal"
    },
    {
-    "_key": "b1",
+    "_key": "b36",
     "_type": "block",
     "children": [
      {
-      "_key": "c0",
+      "_key": "s35",
       "_type": "span",
       "marks": [],
       "text": "Grupper over 8 (7 i Tønsberg) velger én matpakke for hele bordet, så maten kommer samlet og raskt. Fyll ut forespørselen med antall, dato og tidsrom, så finner vi plass. Skal dere ha barn med, har vi egen barnemeny til 169 kr for gjester under 12."
@@ -526,11 +526,11 @@
   "h2": "Samme detaljfokus i glasset som på tallerkenen",
   "body": [
    {
-    "_key": "b12",
+    "_key": "b38",
     "_type": "block",
     "children": [
      {
-      "_key": "s11",
+      "_key": "s37",
       "_type": "span",
       "marks": [],
       "text": "På samme måte som kjøkkenet hele tiden leter etter nye smaker og kombinasjoner, jobber bartenderne våre kontinuerlig med å utvikle nye cocktails. Vi tester råvarer, teknikker, teksturer og smaker, og henter inspirasjon fra hele verden. Noen ganger starter ideen med en klassisk cocktail, andre ganger med en urt, en frukt, en dessert eller en smak vi bare synes er skikkelig spennende."
@@ -540,11 +540,11 @@
     "style": "normal"
    },
    {
-    "_key": "b14",
+    "_key": "b40",
     "_type": "block",
     "children": [
      {
-      "_key": "s13",
+      "_key": "s39",
       "_type": "span",
       "marks": [],
       "text": "Målet er ikke å gjøre ting kompliserte bare for å gjøre dem kompliserte. Målet er å skape nye smaksopplevelser: cocktails med flere lag, overraskende kombinasjoner og detaljer som gjør hele forskjellen. Mye av det vi serverer lager eller forbereder vi selv, og vi bruker tid på å finne balansen mellom sødme, syre, styrke, aroma og tekstur."
@@ -554,11 +554,11 @@
     "style": "normal"
    },
    {
-    "_key": "b16",
+    "_key": "b42",
     "_type": "block",
     "children": [
      {
-      "_key": "s15",
+      "_key": "s41",
       "_type": "span",
       "marks": [],
       "text": "Alle restaurantene har bar, og du er like velkommen til å slå deg ned med noe godt i glasset som til en full middag. Alkohol er heller ingen forutsetning for en god drink: vi har et stort alkoholfritt utvalg med cocktails, øl og vin, slik at det alltid finnes et ordentlig alternativ – ikke bare et kompromiss."
@@ -665,39 +665,39 @@
   "h2": "Åpent sent: kjøkkenet til 22, baren til 23",
   "body": [
    {
-    "_key": "b0",
+    "_key": "b50",
     "_type": "block",
     "children": [
      {
-      "_key": "c0",
+      "_key": "s43",
       "_type": "span",
       "marks": [],
       "text": "Etter kino, etter kampen, etter en lang dag på jobb. Kjøkkenet på "
      },
      {
-      "_key": "c1",
+      "_key": "s45",
       "_type": "span",
       "marks": [
-       "l1"
+       "l44"
       ],
       "text": "Majorstua"
      },
      {
-      "_key": "c2",
+      "_key": "s46",
       "_type": "span",
       "marks": [],
       "text": " og "
      },
      {
-      "_key": "c3",
+      "_key": "s48",
       "_type": "span",
       "marks": [
-       "l3"
+       "l47"
       ],
       "text": "Solli"
      },
      {
-      "_key": "c4",
+      "_key": "s49",
       "_type": "span",
       "marks": [],
       "text": " serverer hele menyen til kl. 22 fra tirsdag til lørdag (21 søndag og mandag), og baren holder åpent en time til. Vi har mange drop-in-bord, så du trenger ikke booke for å spise sent i Oslo."
@@ -705,12 +705,12 @@
     ],
     "markDefs": [
      {
-      "_key": "l1",
+      "_key": "l44",
       "_type": "link",
       "href": "/majorstua/"
      },
      {
-      "_key": "l3",
+      "_key": "l47",
       "_type": "link",
       "href": "/solli/"
      }
@@ -718,25 +718,25 @@
     "style": "normal"
    },
    {
-    "_key": "b1",
+    "_key": "b55",
     "_type": "block",
     "children": [
      {
-      "_key": "c0",
+      "_key": "s51",
       "_type": "span",
       "marks": [],
       "text": "Nattmat på Kverneriet betyr burger av kjøtt vi kverner selv, fries som tar tre dager, og en milkshake med 4 cl matchende sprit – eller en øl fra tappen og en cocktail fra baren. I "
      },
      {
-      "_key": "c1",
+      "_key": "s53",
       "_type": "span",
       "marks": [
-       "l1"
+       "l52"
       ],
       "text": "Tønsberg"
      },
      {
-      "_key": "c2",
+      "_key": "s54",
       "_type": "span",
       "marks": [],
       "text": " holder kjøkkenet åpent til 22 tirsdag–lørdag og baren til 23."
@@ -744,7 +744,7 @@
     ],
     "markDefs": [
      {
-      "_key": "l1",
+      "_key": "l52",
       "_type": "link",
       "href": "/tonsberg/"
      }
