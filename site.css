@@ -421,7 +421,6 @@ html{scroll-behavior:smooth}
 .site-footer__venue p a{border:0;color:var(--text-muted);text-decoration:underline;text-underline-offset:3px}
 .hero-sub{margin-top:var(--space-4);max-width:52ch;font-size:var(--type-body-lg);color:rgba(255,255,255,.88)}
 .hero-slogan{display:block;margin-top:var(--space-3);color:rgba(255,255,255,.7)}
-.mobile-panel__btn{background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
 .bk-frame{display:none}
 .bk-frame.is-loaded{display:block;opacity:1;transition:opacity var(--dur-base) var(--ease-out)}
 @starting-style{.bk-frame.is-loaded{opacity:0}}

@@ -35,7 +35,6 @@ def header(active=None, menu_href='/meny/'):
       <a href="/" data-i18n="act.home">Hjem</a>
 {panel}      <a href="{menu_href}" data-i18n="act.menu">Meny</a>
       <a href="/takeaway/" data-i18n="act.takeaway">Take-away</a>
-      <button type="button" class="mobile-panel__btn" data-book-open data-i18n="act.book">Book bord</button>
       <a href="/lunsj/" data-i18n="lp.lunch">Lunsj</a>
       <a href="/middag/" data-i18n="lp.dinner">Middag</a>
       <a href="/cocktails/" data-i18n="lp.cocktails">Cocktails</a>
