@@ -26,6 +26,10 @@
       el.textContent=s;
       if(el.hasAttribute('data-label'))el.setAttribute('data-label',s);
     });
+    document.querySelectorAll('[data-i18n-title]').forEach(function(el){
+      var s=d[el.getAttribute('data-i18n-title')];
+      if(s!==undefined)el.setAttribute('title',s);
+    });
     document.querySelectorAll('[data-i18n-html]').forEach(function(el){
       var s=d[el.getAttribute('data-i18n-html')];
       if(s!==undefined)el.innerHTML=s;
@@ -89,18 +93,20 @@
   }
   function setModalVenue(slug){
     if(!modal)return;
-    if(!/^(majorstua|solli|tonsberg)$/.test(slug||''))slug='majorstua';
+    if(!/^(majorstua|solli|tonsberg)$/.test(slug||''))slug='';
     var seg=document.getElementById('modal-venue');
     if(seg)Array.prototype.forEach.call(seg.querySelectorAll('button'),function(b){var on=b.getAttribute('data-mvenue')===slug;b.classList.toggle('is-on',on);b.setAttribute('aria-pressed',on?'true':'false');});
     var bk=modal.querySelector('.bk');
     if(bk&&bk._kv)bk._kv.setVenue(slug);
+    var taPick=document.getElementById('modal-ta-pick');
+    if(taPick)taPick.hidden=!!slug;
     Array.prototype.forEach.call(modal.querySelectorAll('#modal-ta .order-group[data-venue]'),function(g){g.hidden=g.getAttribute('data-venue')!==slug;});
   }
   function openModal(mode,opts){
     if(!modal)return;
     opts=opts||{};
     setModalMode(mode);
-    setModalVenue(opts.venue||document.body.getAttribute('data-venue')||'majorstua');
+    setModalVenue(opts.venue||document.body.getAttribute('data-venue')||'');
     var bk=modal.querySelector('.bk');
     if(bk&&bk._kv){
       bk._kv.setMode(opts.bookMode||'online');
@@ -201,7 +207,8 @@
     function zenchefUrl(slug){return root.getAttribute('data-zenchef-'+slug)||'';}
     function loadFrame(){
       if(!frame||online.hidden||root.offsetParent===null)return;
-      var slug=root.getAttribute('data-venue')||'majorstua';
+      var slug=root.getAttribute('data-venue');
+      if(!slug)return;
       var url=zenchefUrl(slug);
       if(!url)return;
       var cur=frame.querySelector('iframe');
@@ -212,12 +219,20 @@
     }
     var api={
       setVenue:function(slug){
-        if(!VENUE_NAMES[slug])slug='majorstua';
+        if(!VENUE_NAMES[slug])slug='';
         root.setAttribute('data-venue',slug);
-        if(venueSeg)Array.prototype.forEach.call(venueSeg.querySelectorAll('button'),function(b){var on=b.getAttribute('data-bvenue')===slug;b.classList.toggle('is-on',on);b.setAttribute('aria-pressed',on?'true':'false');});
-        if(zcLink&&zenchefUrl(slug))zcLink.setAttribute('href',zenchefUrl(slug));
-        var intro=root.querySelector('.bk-online__intro');var thr=root.getAttribute('data-threshold-'+slug);
-        if(intro&&thr){intro.setAttribute('data-i18n-n',thr);var txt=t('book.onlineIntro');if(txt)intro.textContent=txt.split('{n}').join(thr);}
+        root.classList.toggle('bk--novenue',!slug);
+        if(venueSeg)Array.prototype.forEach.call(venueSeg.querySelectorAll('button'),function(b){var on=!!slug&&b.getAttribute('data-bvenue')===slug;b.classList.toggle('is-on',on);b.setAttribute('aria-pressed',on?'true':'false');});
+        if(zcLink&&slug&&zenchefUrl(slug))zcLink.setAttribute('href',zenchefUrl(slug));
+        var fb=root.querySelector('.bk-zenchef-fallback');if(fb)fb.hidden=!slug;
+        var pick=root.querySelector('.bk-pick');if(pick)pick.hidden=!!slug;
+        var sb=large&&large.querySelector('button[type="submit"]');if(sb)sb.disabled=!slug;
+        var intro=root.querySelector('.bk-online__intro');var thr=slug&&root.getAttribute('data-threshold-'+slug);
+        if(intro){
+          if(thr){intro.setAttribute('data-i18n','book.onlineIntro');intro.setAttribute('data-i18n-n',thr);var txt=t('book.onlineIntro');if(txt)intro.textContent=txt.split('{n}').join(thr);}
+          else{intro.setAttribute('data-i18n','book.pickVenue');intro.removeAttribute('data-i18n-n');var p=t('book.pickVenue');if(p)intro.textContent=p;}
+        }
+        if(!slug&&frame){frame.innerHTML='';frame.classList.remove('is-loaded');}
         loadFrame();
       },
       setMode:function(mode){
@@ -246,11 +261,12 @@
         var btn=form.querySelector('button[type="submit"]');
         if(btn){btn.disabled=true;btn.textContent=t('f.sending')||'…';}
         var src=form.querySelector('[name="source"]');var nl=form.querySelector('[name="newsletter"]');
-        var venue=root.getAttribute('data-venue')||'majorstua';
+        var venue=root.getAttribute('data-venue');
+        if(!venue){var vs=root.querySelector('.bk-venue button');if(vs)vs.focus();return;}
         track('booking:'+venue+':'+(form===large?'group':'online'),{kv_source:src?src.value:'',kv_newsletter:nl?!!nl.checked:false});
         if(form===large){
           var to=root.getAttribute('data-email-'+venue)||'book.major@kverneriet.com';
-          var f=function(n){var el=form.querySelector('[name="'+n+'"]');return el?el.value:'';};
+          var f=function(n){var el=form.querySelector('[name="'+n+'"]');return (el&&el.value)||'–';};
           var body=['Gruppeforespørsel – Kverneriet '+VENUE_NAMES[venue],'','Navn: '+f('name'),'Telefon: '+f('phone'),'E-post: '+f('email'),'Dato: '+f('date'),'Tidligste start: '+f('earliest'),'Seneste start: '+f('latest'),'Antall gjester: '+f('guests'),'Matpakke: '+f('package'),'Barnemenyer: '+f('kids'),'Anledning: '+f('occasion'),'Andre ønsker: '+f('request'),'Hørte om oss via: '+f('source'),'Nyhetsbrev: '+(nl&&nl.checked?'ja':'nei'),'','(Sendt fra kverneriet.com)'].join('\n');
           window.location.href='mailto:'+to+'?subject='+encodeURIComponent('Gruppeforespørsel '+f('date')+' – '+f('guests')+' gjester')+'&body='+encodeURIComponent(body);
         }
@@ -271,12 +287,12 @@
     Array.prototype.forEach.call(root.querySelectorAll('input[type="date"]'),function(i){i.setAttribute('min',iso);if(!i.value)i.value=iso;});
     var again=root.querySelector('.bk-again');
     if(again)again.addEventListener('click',function(){api.reset();});
-    api.setVenue(root.getAttribute('data-venue')||document.body.getAttribute('data-venue')||'majorstua');
+    api.setVenue(root.getAttribute('data-venue')||document.body.getAttribute('data-venue')||'');
   }
   Array.prototype.forEach.call(document.querySelectorAll('.bk'),wireBooking);
   document.addEventListener('kv:lang',function(){
     Array.prototype.forEach.call(document.querySelectorAll('.bk .bk-sent:not([hidden]) .badge'),function(b){
-      var root=b.closest('.bk');var v=root.getAttribute('data-venue')||'majorstua';
+      var root=b.closest('.bk');var v=root.getAttribute('data-venue');if(!v)return;
       b.textContent=(t('book.sentBadge')||'')+' – Kverneriet '+VENUE_NAMES[v];
     });
   });

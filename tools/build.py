@@ -111,7 +111,9 @@ def patch_index():
     s = add_gen_script(s)
     s = re.sub(r'<span class="kv-eyebrow"( lang="en")?><span class="glyph" aria-hidden="true">⋮</span> Awesome food for awesome people[^<]*</span>',
                '<span class="kv-eyebrow" lang="en"><span class="glyph" aria-hidden="true">⋮</span> Awesome food for awesome people</span>', s, count=1)
-    s = s.replace('<span class="kv-eyebrow">Stay safe - eat home</span>', '<span class="kv-eyebrow" lang="en">Stay safe - eat home</span>')
+    # «Stay safe - eat home» er en korona-linje som ikke hører hjemme i tonefallet lenger (ønske fra Kverneriet 06.10.2026)
+    s = re.sub(r'<span class="kv-eyebrow"(?: lang="en")?>Stay safe - eat home</span>',
+               '<span class="kv-eyebrow" data-i18n="ta.eyebrow">Ta Kverneriet med hjem</span>', s)
     open('index.html', 'w', encoding='utf-8').write(s); print('index.html ok')
 
 def patch_takeaway():

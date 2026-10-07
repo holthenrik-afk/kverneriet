@@ -204,7 +204,7 @@ def page(v):
       <div>
         <header class="sec-head">
           <div class="sec-head__rule"></div>
-          <span class="kv-eyebrow" lang="en">Stay safe - eat home</span>
+          <span class="kv-eyebrow" data-i18n="ta.eyebrow">Ta Kverneriet med hjem</span>
           <h2 class="display-3" data-i18n="v.orderTitle">Bestill take-away</h2>
         </header>
         <p class="lede" style="margin-top:var(--space-5)" data-i18n="home.taBody">Vi tar take-away like seriøst som maten vi serverer i restauranten. Er det Norges beste take-away-burger? Noen mener det - vi lar deg avgjøre.</p>

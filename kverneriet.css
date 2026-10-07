@@ -492,6 +492,9 @@ html{scroll-behavior:smooth}
 .field{display:grid;gap:6px}
 .field__label{font-family:var(--font-cond);font-size:12px;font-weight:700;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted)}
 .field__hint{font-size:var(--type-caption);color:var(--text-faint)}
+/* Obligatoriske felt: * i merkefargen, uten understreking (abbr får den fra nettleseren). */
+.req{text-decoration:none;border:0;color:var(--text-accent);font-weight:700;cursor:help}
+.check .req{font-size:var(--type-caption)}
 .field input,.field select,.field textarea{font-family:var(--font-body);font-size:16px;color:var(--text-body);background:var(--surface-card);border:1px solid var(--line-hairline);border-radius:var(--radius-1);padding:11px 14px;width:100%;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--coral-500);box-shadow:var(--glow-focus);outline:none}
 .field select{appearance:none;background-image:none}
