@@ -30,10 +30,10 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Kverneriet","item":"https://kverneriet.com/"},{"@type":"ListItem","position":2,"name":"Take-away","item":"https://kverneriet.com/takeaway/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvordan bestiller jeg take-away fra Kverneriet?","acceptedAnswer":{"@type":"Answer","text":"Velg restaurant og trykk «Hent selv» for å forhåndsbestille på OrderX, eller bestill hjemlevering med Wolt eller Foodora (Majorstua og Solli). I Tønsberg henter du selv."}},{"@type":"Question","name":"Hva koster hjemlevering?","acceptedAnswer":{"@type":"Answer","text":"Hjemlevering kjøres av Wolt og Foodora og koster 15–20 % mer enn å hente selv. Henter du selv, betaler du menypris."}},{"@type":"Question","name":"Holder burgeren seg varm og i form?","acceptedAnswer":{"@type":"Answer","text":"Ja. Emballasjen er designet av oss: en boks i naturmaterialer der burgeren skyves ut, så den holder formen og varmen. Dagbladet skrev at burgeren «holder seg perfekt i formen»."}}]}</script>
 <!-- seo:end -->
-<link rel="stylesheet" href="/kverneriet.css?v=bc3ce523">
-<script src="/content/i18n.js?v=0f850492" defer></script>
-<script src="/content/i18n-gen.js?v=0f850492" defer></script>
-<script src="/site.js?v=0f850492" defer></script>
+<link rel="stylesheet" href="/kverneriet.css?v=eb0c4347">
+<script src="/content/i18n.js?v=2e6022d6" defer></script>
+<script src="/content/i18n-gen.js?v=2e6022d6" defer></script>
+<script src="/site.js?v=2e6022d6" defer></script>
 </head>
 <body>
 
@@ -187,6 +187,148 @@
     <span class="pipe" aria-hidden="true">|</span><a href="https://www.facebook.com/kverneriet/" rel="noopener" target="_blank">Facebook</a>
   </div>
 </footer>
+
+<!-- Book / take-away-modal (generert av tools/modal.py) -->
+<div class="modal-root is-novenue" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="order-title">
+  <div class="modal-root__backdrop" data-order-close></div>
+  <div class="modal modal--wide">
+    <button class="icon-btn modal__close" type="button" data-order-close aria-label="Lukk">&times;</button>
+    <p class="modal__title display-3" id="order-title">Book bord</p>
+    <div class="field" style="margin-top:var(--space-5)"><span class="field__label" data-i18n="book.venue">Hvilken restaurant?</span>
+      <div class="seg seg--block" id="modal-venue" role="group" aria-label="Restaurant"><button type="button" data-mvenue="majorstua" aria-pressed="false">Majorstua</button><button type="button" data-mvenue="solli" aria-pressed="false">Solli</button><button type="button" data-mvenue="tonsberg" aria-pressed="false">Tønsberg</button></div>
+    </div>
+    <div class="seg seg--block" id="action-mode" role="group" aria-label="Book eller take-away" style="margin-top:var(--space-4)">
+      <button type="button" class="is-on" aria-pressed="true" data-amode="book" data-i18n="act.book">Book bord</button>
+      <button type="button" aria-pressed="false" data-amode="ta" data-i18n="act.takeaway">Take-away</button>
+    </div>
+    <div id="modal-book" style="margin-top:var(--space-5)">
+      <div class="bk bk--novenue" data-venue="" data-zenchef-majorstua="https://bookings.zenchef.com/results?rid=385239&lang=no" data-zenchef-solli="https://bookings.zenchef.com/results?rid=385260&lang=no" data-zenchef-tonsberg="https://bookings.zenchef.com/results?rid=385236&lang=no" data-threshold-majorstua="8" data-threshold-solli="8" data-threshold-tonsberg="7" data-email-majorstua="book.major@kverneriet.com" data-email-solli="book.solli@kverneriet.com" data-email-tonsberg="book.tbg@kverneriet.com">
+        
+        <div class="seg seg--block bk-mode" role="group" aria-label="Bookingtype">
+          <button type="button" class="is-on" aria-pressed="true" data-mode="online" data-i18n="book.online">Online booking</button>
+          <button type="button" aria-pressed="false" data-mode="large" data-i18n="book.large">Større grupper</button>
+        </div>
+        <div class="bk-online stack-4" style="margin-top:var(--space-5)">
+          <p class="bk-online__intro" data-i18n="book.pickVenue">Velg restaurant over, så åpner bookingen her.</p>
+          <div class="bk-frame" aria-live="polite"></div>
+          <p class="caption bk-zenchef-fallback" hidden><a class="bk-zenchef-link" href="" target="_blank" rel="noopener" data-i18n="book.openWindow">Åpne online booking i eget vindu</a></p>
+        </div>
+        <form class="bk-large stack-4" style="margin-top:var(--space-5)" hidden>
+          <p class="caption" data-i18n="book.largeIntro">Grupper over 8 (7 i Tønsberg) sender en forespørsel og velger én matpakke for hele bordet. Vi svarer på e-post.</p>
+          <p class="caption bk-pick" data-i18n="book.pickVenue">Velg restaurant over, så åpner bookingen her.</p>
+          <p class="caption" data-i18n="f.required">Felt merket med * må fylles ut.</p>
+          <div class="form-grid-2">
+            <div class="field"><label class="field__label" for="m-lb-name"><span data-i18n="f.name">Fullt navn</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></label><input id="m-lb-name" name="name" type="text" required autocomplete="name"></div>
+            <div class="field"><label class="field__label" for="m-lb-phone"><span data-i18n="f.phone">Telefonnummer</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></label><input id="m-lb-phone" name="phone" type="tel" required autocomplete="tel"></div>
+          </div>
+          <div class="field"><label class="field__label" for="m-lb-email"><span data-i18n="f.email">E-postadresse</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></label><input id="m-lb-email" name="email" type="email" required autocomplete="email"></div>
+          <div class="form-grid-3">
+            <div class="field"><label class="field__label" for="m-lb-date"><span data-i18n="f.date">Dato for besøket</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></label><input id="m-lb-date" name="date" type="date" required></div>
+            <div class="field"><label class="field__label" for="m-lb-earliest" data-i18n="f.earliest">Tidligste start</label><input id="m-lb-earliest" name="earliest" type="time"></div>
+            <div class="field"><label class="field__label" for="m-lb-latest" data-i18n="f.latest">Seneste start</label><input id="m-lb-latest" name="latest" type="time"></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="field"><label class="field__label" for="m-lb-guests"><span data-i18n="f.guests">Gjester</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></label><div class="select-wrap"><select id="m-lb-guests" name="guests" required><option>8</option><option>9</option><option>10</option><option>12</option><option>15</option><option>20+</option></select></div></div>
+            <div class="field"><label class="field__label" for="m-lb-package"><span data-i18n="f.package">Matpakke</span></label><div class="select-wrap"><select id="m-lb-package" name="package"><option value="" data-i18n="f.packagePick">Velg matpakke</option><option>Burger Package (429 kr)</option><option>Dinner Package (579 kr)</option><option>Full Package (779 kr)</option></select></div><span class="field__hint" data-i18n="f.packageHint">Bordet velger én pakke. Barnemeny 169 kr for gjester under 12.</span></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="field"><label class="field__label" for="m-lb-kids" data-i18n="f.kids">Barnemenyer</label><div class="select-wrap"><select id="m-lb-kids" name="kids"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div></div>
+            <div class="field"><label class="field__label" for="m-lb-occasion" data-i18n="f.occasion">Hva er anledningen?</label><input id="m-lb-occasion" name="occasion" type="text"></div>
+          </div>
+          <div class="field"><label class="field__label" for="m-lb-request" data-i18n="f.request">Andre ønsker?</label><textarea id="m-lb-request" name="request" rows="3"></textarea></div>
+          <div class="field"><label class="field__label" for="m-lb-source" data-i18n="f.source">Hvor hørte du om oss?</label><div class="select-wrap"><select id="m-lb-source" name="source">
+            <option value="google" data-i18n="f.src.google">Google</option><option value="social" data-i18n="f.src.social">Instagram eller Facebook</option><option value="tiktok" data-i18n="f.src.tiktok">TikTok</option><option value="friends" data-i18n="f.src.friends">Anbefalt av venner</option><option value="walk" data-i18n="f.src.walk">Gikk forbi</option><option value="press" data-i18n="f.src.press">Avis eller anmeldelse</option><option value="other" data-i18n="f.src.other">Annet</option>
+          </select></div></div>
+          <label class="check"><input type="checkbox" name="consent" required><span><span data-i18n="f.consent">Forespørselen sendes som e-post til restauranten. Ved å sende inn godtar du at Kverneriet bruker navn, telefon og e-post til å svare deg og håndtere bookingen. Vi deler ikke opplysningene med andre.</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></span></label>
+          <label class="check"><input type="checkbox" name="newsletter"><span data-i18n="f.newsletter">Ja takk, send meg nyheter og tilbud på e-post og SMS. Kan avmeldes når som helst.</span></label>
+          <button class="btn btn--primary btn--lg btn--block" type="submit" disabled data-label="Send forespørsel" data-i18n="f.submit">Send forespørsel</button>
+        </form>
+        <div class="bk-sent stack-4" style="margin-top:var(--space-5)" hidden>
+          <span class="badge" data-i18n="book.sentBadge">Forespørsel klar</span>
+          <p style="color:var(--text-muted)"><span data-i18n="book.sentBody">E-postprogrammet ditt åpner med forespørselen ferdig utfylt – trykk send. Vi svarer på e-post, og bordet er bekreftet når du har fått svar fra oss.</span></p>
+          <button class="btn btn--ghost btn--sm bk-again" type="button" data-i18n="book.again">Send en ny forespørsel</button>
+        </div>
+      </div>
+    </div>
+    <div id="modal-ta" class="stack-6" style="margin-top:var(--space-6)" hidden>
+      <span class="kv-eyebrow" data-i18n="ta.eyebrow">Ta Kverneriet med hjem</span>
+      <p class="caption" id="modal-ta-pick" data-i18n="book.pickVenueTa">Velg restaurant over for å se take-away-valgene.</p>
+      <div class="order-group" data-venue="majorstua"><div class="kv-eyebrow">Majorstua, Oslo</div><div class="order-group__channels"><a class="btn btn--primary btn--md btn--block" href="https://orderx.eu/V2W2X5V5?utm_source=kverneriet.com&utm_medium=website&utm_campaign=takeaway&utm_content=majorstua-pickup" target="_blank" rel="noopener" data-track="order:majorstua:pickup" data-i18n="act.pickup">Hent selv</a><a class="btn btn--outline btn--md btn--block" href="https://wolt.com/nb/nor/oslo/restaurant/kverneriet-majorstua" target="_blank" rel="noopener" data-track="order:majorstua:wolt" data-i18n="act.wolt">Wolt hjemlevering (+15-20%)</a><a class="btn btn--outline btn--md btn--block" href="https://www.foodora.no/restaurant/tkiq/kverneriet-majorstuen" target="_blank" rel="noopener" data-track="order:majorstua:foodora" data-i18n="act.foodora">Foodora hjemlevering (+15-20%)</a></div></div><div class="order-group" data-venue="solli"><div class="kv-eyebrow">Solli, Oslo</div><div class="order-group__channels"><a class="btn btn--primary btn--md btn--block" href="https://orderx.eu/7RRAB9MC1001?utm_source=kverneriet.com&utm_medium=website&utm_campaign=takeaway&utm_content=solli-pickup" target="_blank" rel="noopener" data-track="order:solli:pickup" data-i18n="act.pickup">Hent selv</a><a class="btn btn--outline btn--md btn--block" href="https://wolt.com/nb/nor/oslo/restaurant/kverneriet-solli-plass" target="_blank" rel="noopener" data-track="order:solli:wolt" data-i18n="act.wolt">Wolt hjemlevering (+15-20%)</a><a class="btn btn--outline btn--md btn--block" href="https://www.foodora.no/restaurant/zdr3/kverneriet-solli" target="_blank" rel="noopener" data-track="order:solli:foodora" data-i18n="act.foodora">Foodora hjemlevering (+15-20%)</a></div></div><div class="order-group" data-venue="tonsberg"><div class="kv-eyebrow">Tønsberg</div><div class="order-group__channels"><a class="btn btn--primary btn--md btn--block" href="https://orderx.eu/TTBYXPVF?utm_source=kverneriet.com&utm_medium=website&utm_campaign=takeaway&utm_content=tonsberg-pickup" target="_blank" rel="noopener" data-track="order:tonsberg:pickup" data-i18n="act.pickup">Hent selv</a></div></div>
+      <p class="caption" data-i18n="modal.note">Hjemlevering (Majorstua og Solli) kjøres av Wolt og Foodora og koster 15–20 % mer enn å hente selv. I Tønsberg henter du selv.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Book / take-away-modal (generert av tools/modal.py) -->
+<div class="modal-root is-novenue" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="order-title">
+  <div class="modal-root__backdrop" data-order-close></div>
+  <div class="modal modal--wide">
+    <button class="icon-btn modal__close" type="button" data-order-close aria-label="Lukk">&times;</button>
+    <p class="modal__title display-3" id="order-title">Book bord</p>
+    <div class="field" style="margin-top:var(--space-5)"><span class="field__label" data-i18n="book.venue">Hvilken restaurant?</span>
+      <div class="seg seg--block" id="modal-venue" role="group" aria-label="Restaurant"><button type="button" data-mvenue="majorstua" aria-pressed="false">Majorstua</button><button type="button" data-mvenue="solli" aria-pressed="false">Solli</button><button type="button" data-mvenue="tonsberg" aria-pressed="false">Tønsberg</button></div>
+    </div>
+    <div class="seg seg--block" id="action-mode" role="group" aria-label="Book eller take-away" style="margin-top:var(--space-4)">
+      <button type="button" class="is-on" aria-pressed="true" data-amode="book" data-i18n="act.book">Book bord</button>
+      <button type="button" aria-pressed="false" data-amode="ta" data-i18n="act.takeaway">Take-away</button>
+    </div>
+    <div id="modal-book" style="margin-top:var(--space-5)">
+      <div class="bk bk--novenue" data-venue="" data-zenchef-majorstua="https://bookings.zenchef.com/results?rid=385239&lang=no" data-zenchef-solli="https://bookings.zenchef.com/results?rid=385260&lang=no" data-zenchef-tonsberg="https://bookings.zenchef.com/results?rid=385236&lang=no" data-threshold-majorstua="8" data-threshold-solli="8" data-threshold-tonsberg="7" data-email-majorstua="book.major@kverneriet.com" data-email-solli="book.solli@kverneriet.com" data-email-tonsberg="book.tbg@kverneriet.com">
+        
+        <div class="seg seg--block bk-mode" role="group" aria-label="Bookingtype">
+          <button type="button" class="is-on" aria-pressed="true" data-mode="online" data-i18n="book.online">Online booking</button>
+          <button type="button" aria-pressed="false" data-mode="large" data-i18n="book.large">Større grupper</button>
+        </div>
+        <div class="bk-online stack-4" style="margin-top:var(--space-5)">
+          <p class="bk-online__intro" data-i18n="book.pickVenue">Velg restaurant over, så åpner bookingen her.</p>
+          <div class="bk-frame" aria-live="polite"></div>
+          <p class="caption bk-zenchef-fallback" hidden><a class="bk-zenchef-link" href="" target="_blank" rel="noopener" data-i18n="book.openWindow">Åpne online booking i eget vindu</a></p>
+        </div>
+        <form class="bk-large stack-4" style="margin-top:var(--space-5)" hidden>
+          <p class="caption" data-i18n="book.largeIntro">Grupper over 8 (7 i Tønsberg) sender en forespørsel og velger én matpakke for hele bordet. Vi svarer på e-post.</p>
+          <p class="caption bk-pick" data-i18n="book.pickVenue">Velg restaurant over, så åpner bookingen her.</p>
+          <p class="caption" data-i18n="f.required">Felt merket med * må fylles ut.</p>
+          <div class="form-grid-2">
+            <div class="field"><label class="field__label" for="m-lb-name"><span data-i18n="f.name">Fullt navn</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></label><input id="m-lb-name" name="name" type="text" required autocomplete="name"></div>
+            <div class="field"><label class="field__label" for="m-lb-phone"><span data-i18n="f.phone">Telefonnummer</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></label><input id="m-lb-phone" name="phone" type="tel" required autocomplete="tel"></div>
+          </div>
+          <div class="field"><label class="field__label" for="m-lb-email"><span data-i18n="f.email">E-postadresse</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></label><input id="m-lb-email" name="email" type="email" required autocomplete="email"></div>
+          <div class="form-grid-3">
+            <div class="field"><label class="field__label" for="m-lb-date"><span data-i18n="f.date">Dato for besøket</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></label><input id="m-lb-date" name="date" type="date" required></div>
+            <div class="field"><label class="field__label" for="m-lb-earliest" data-i18n="f.earliest">Tidligste start</label><input id="m-lb-earliest" name="earliest" type="time"></div>
+            <div class="field"><label class="field__label" for="m-lb-latest" data-i18n="f.latest">Seneste start</label><input id="m-lb-latest" name="latest" type="time"></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="field"><label class="field__label" for="m-lb-guests"><span data-i18n="f.guests">Gjester</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></label><div class="select-wrap"><select id="m-lb-guests" name="guests" required><option>8</option><option>9</option><option>10</option><option>12</option><option>15</option><option>20+</option></select></div></div>
+            <div class="field"><label class="field__label" for="m-lb-package"><span data-i18n="f.package">Matpakke</span></label><div class="select-wrap"><select id="m-lb-package" name="package"><option value="" data-i18n="f.packagePick">Velg matpakke</option><option>Burger Package (429 kr)</option><option>Dinner Package (579 kr)</option><option>Full Package (779 kr)</option></select></div><span class="field__hint" data-i18n="f.packageHint">Bordet velger én pakke. Barnemeny 169 kr for gjester under 12.</span></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="field"><label class="field__label" for="m-lb-kids" data-i18n="f.kids">Barnemenyer</label><div class="select-wrap"><select id="m-lb-kids" name="kids"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div></div>
+            <div class="field"><label class="field__label" for="m-lb-occasion" data-i18n="f.occasion">Hva er anledningen?</label><input id="m-lb-occasion" name="occasion" type="text"></div>
+          </div>
+          <div class="field"><label class="field__label" for="m-lb-request" data-i18n="f.request">Andre ønsker?</label><textarea id="m-lb-request" name="request" rows="3"></textarea></div>
+          <div class="field"><label class="field__label" for="m-lb-source" data-i18n="f.source">Hvor hørte du om oss?</label><div class="select-wrap"><select id="m-lb-source" name="source">
+            <option value="google" data-i18n="f.src.google">Google</option><option value="social" data-i18n="f.src.social">Instagram eller Facebook</option><option value="tiktok" data-i18n="f.src.tiktok">TikTok</option><option value="friends" data-i18n="f.src.friends">Anbefalt av venner</option><option value="walk" data-i18n="f.src.walk">Gikk forbi</option><option value="press" data-i18n="f.src.press">Avis eller anmeldelse</option><option value="other" data-i18n="f.src.other">Annet</option>
+          </select></div></div>
+          <label class="check"><input type="checkbox" name="consent" required><span><span data-i18n="f.consent">Forespørselen sendes som e-post til restauranten. Ved å sende inn godtar du at Kverneriet bruker navn, telefon og e-post til å svare deg og håndtere bookingen. Vi deler ikke opplysningene med andre.</span> <abbr class="req" data-i18n-title="f.requiredTitle" title="Må fylles ut">*</abbr></span></label>
+          <label class="check"><input type="checkbox" name="newsletter"><span data-i18n="f.newsletter">Ja takk, send meg nyheter og tilbud på e-post og SMS. Kan avmeldes når som helst.</span></label>
+          <button class="btn btn--primary btn--lg btn--block" type="submit" disabled data-label="Send forespørsel" data-i18n="f.submit">Send forespørsel</button>
+        </form>
+        <div class="bk-sent stack-4" style="margin-top:var(--space-5)" hidden>
+          <span class="badge" data-i18n="book.sentBadge">Forespørsel klar</span>
+          <p style="color:var(--text-muted)"><span data-i18n="book.sentBody">E-postprogrammet ditt åpner med forespørselen ferdig utfylt – trykk send. Vi svarer på e-post, og bordet er bekreftet når du har fått svar fra oss.</span></p>
+          <button class="btn btn--ghost btn--sm bk-again" type="button" data-i18n="book.again">Send en ny forespørsel</button>
+        </div>
+      </div>
+    </div>
+    <div id="modal-ta" class="stack-6" style="margin-top:var(--space-6)" hidden>
+      <span class="kv-eyebrow" data-i18n="ta.eyebrow">Ta Kverneriet med hjem</span>
+      <p class="caption" id="modal-ta-pick" data-i18n="book.pickVenueTa">Velg restaurant over for å se take-away-valgene.</p>
+      <div class="order-group" data-venue="majorstua"><div class="kv-eyebrow">Majorstua, Oslo</div><div class="order-group__channels"><a class="btn btn--primary btn--md btn--block" href="https://orderx.eu/V2W2X5V5?utm_source=kverneriet.com&utm_medium=website&utm_campaign=takeaway&utm_content=majorstua-pickup" target="_blank" rel="noopener" data-track="order:majorstua:pickup" data-i18n="act.pickup">Hent selv</a><a class="btn btn--outline btn--md btn--block" href="https://wolt.com/nb/nor/oslo/restaurant/kverneriet-majorstua" target="_blank" rel="noopener" data-track="order:majorstua:wolt" data-i18n="act.wolt">Wolt hjemlevering (+15-20%)</a><a class="btn btn--outline btn--md btn--block" href="https://www.foodora.no/restaurant/tkiq/kverneriet-majorstuen" target="_blank" rel="noopener" data-track="order:majorstua:foodora" data-i18n="act.foodora">Foodora hjemlevering (+15-20%)</a></div></div><div class="order-group" data-venue="solli"><div class="kv-eyebrow">Solli, Oslo</div><div class="order-group__channels"><a class="btn btn--primary btn--md btn--block" href="https://orderx.eu/7RRAB9MC1001?utm_source=kverneriet.com&utm_medium=website&utm_campaign=takeaway&utm_content=solli-pickup" target="_blank" rel="noopener" data-track="order:solli:pickup" data-i18n="act.pickup">Hent selv</a><a class="btn btn--outline btn--md btn--block" href="https://wolt.com/nb/nor/oslo/restaurant/kverneriet-solli-plass" target="_blank" rel="noopener" data-track="order:solli:wolt" data-i18n="act.wolt">Wolt hjemlevering (+15-20%)</a><a class="btn btn--outline btn--md btn--block" href="https://www.foodora.no/restaurant/zdr3/kverneriet-solli" target="_blank" rel="noopener" data-track="order:solli:foodora" data-i18n="act.foodora">Foodora hjemlevering (+15-20%)</a></div></div><div class="order-group" data-venue="tonsberg"><div class="kv-eyebrow">Tønsberg</div><div class="order-group__channels"><a class="btn btn--primary btn--md btn--block" href="https://orderx.eu/TTBYXPVF?utm_source=kverneriet.com&utm_medium=website&utm_campaign=takeaway&utm_content=tonsberg-pickup" target="_blank" rel="noopener" data-track="order:tonsberg:pickup" data-i18n="act.pickup">Hent selv</a></div></div>
+      <p class="caption" data-i18n="modal.note">Hjemlevering (Majorstua og Solli) kjøres av Wolt og Foodora og koster 15–20 % mer enn å hente selv. I Tønsberg henter du selv.</p>
+    </div>
+  </div>
+</div>
 
 <!-- Book / take-away-modal (generert av tools/modal.py) -->
 <div class="modal-root is-novenue" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="order-title">

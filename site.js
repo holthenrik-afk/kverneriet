@@ -70,6 +70,8 @@
   var header=document.querySelector('.site-header');
   function setStickTop(){
     if(header){document.documentElement.style.setProperty('--stick-top',header.offsetHeight+'px');}
+    var navStack=document.querySelector('.nav-stack')||document.querySelector('.section-nav');
+    if(navStack){document.documentElement.style.setProperty('--nav-h',navStack.offsetHeight+'px');}
   }
   setStickTop();
   window.addEventListener('resize',setStickTop);
@@ -171,7 +173,8 @@
   }
   function spyOnScroll(){
     if(!spySections.length)return;
-    var offset=(header?header.offsetHeight:64)+120;
+    var stack=document.querySelector('.nav-stack')||document.querySelector('.section-nav');
+    var offset=(header?header.offsetHeight:64)+(stack?stack.offsetHeight:56)+64;
     var id=spyCurrent;
     for(var i=0;i<spySections.length;i++){
       if(spySections[i].getBoundingClientRect().top-offset<=0)id=spySections[i].id;

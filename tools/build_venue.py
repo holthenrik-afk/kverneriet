@@ -83,16 +83,7 @@ def page(v):
 
 {chrome.header(active=s, menu_href=kv.url(s + '-menu'))}
 <!-- Undermeny for restauranten -->
-<nav class="section-nav" aria-label="{e(v['name'])}" data-scrollspy>
-  <ul>
-    <li><a href="#about" data-i18n="v.about">Om</a></li>
-    <li><a href="#gallery" data-i18n="v.gallery">Galleri</a></li>
-    <li><a href="#booking" data-i18n="v.booking">Booking</a></li>
-    <li><a href="#practical" data-i18n="v.practical">Praktisk info</a></li>
-    <li><a href="#faq" data-i18n="v.faq">Spørsmål</a></li>
-    <li><a href="{kv.url(s + '-menu')}" data-i18n="act.menu">Meny</a></li>
-  </ul>
-</nav>
+{chrome.venue_nav(s)}
 
 <main id="main">
 

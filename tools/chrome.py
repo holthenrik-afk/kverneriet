@@ -82,6 +82,24 @@ def footer(menu_href='/meny/'):
 </footer>
 '''
 
+SECTIONS = [('about', 'v.about', 'Om'), ('gallery', 'v.gallery', 'Galleri'), ('booking', 'v.booking', 'Booking'),
+            ('practical', 'v.practical', 'Praktisk info'), ('faq', 'v.faq', 'Spørsmål')]
+
+def venue_nav(slug, on_menu=False):
+    """Raden med restaurantens egne seksjoner. Samme rekkefølge på restaurantsiden og på menysiden,
+    så gjesten ikke mister veien tilbake til «Om» når hun står i menyen (ønske fra Henrik 07.10.2026).
+    Første punkt heter restauranten, ikke «Om». På menysiden peker lenkene hjem til restaurantsiden."""
+    v = kv.venue(slug)
+    base = kv.url(slug) if on_menu else ''
+    items = f'<li><a href="{base}#about">{kv.esc(v["name"])}</a></li>'
+    items += ''.join(f'<li><a href="{base}#{i}" data-i18n="{k}">{kv.esc(t)}</a></li>' for i, k, t in SECTIONS[1:])
+    items += (f'<li><a href="{kv.url(slug + "-menu")}" aria-current="page" class="is-active" data-i18n="act.menu">Meny</a></li>'
+              if on_menu else
+              f'<li><a href="{kv.url(slug + "-menu")}" data-i18n="act.menu">Meny</a></li>')
+    spy = '' if on_menu else ' data-scrollspy'
+    return (f'<nav class="section-nav section-nav--venue" aria-label="{kv.esc(v["name"])}"{spy}>\n'
+            f'  <ul>{items}</ul>\n</nav>')
+
 HEADER_RE = r'(?:<a class="skip-link"[^>]*>.*?</a>\n)?<header class="site-header">.*?</header>\n'
 FOOTER_RE = r'<footer class="site-footer">.*?</footer>\n'
 

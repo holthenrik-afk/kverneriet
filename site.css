@@ -30,7 +30,7 @@ html{scroll-behavior:smooth}
 .stack-4{display:grid;gap:var(--space-4)}
 .stack-5{display:grid;gap:var(--space-5)}
 .stack-6{display:grid;gap:var(--space-6)}
-[id]{scroll-margin-top:calc(var(--stick-top) + 72px)}
+[id]{scroll-margin-top:calc(var(--stick-top) + var(--nav-h, 56px) + 16px)}
 
 /* ---------- Type ---------- */
 .hero-title{font-family:var(--font-display);font-weight:400;font-synthesis:none;text-transform:uppercase;line-height:var(--leading-display);letter-spacing:var(--tracking-display);font-size:var(--type-hero);color:var(--text-strong)}
@@ -120,6 +120,12 @@ html{scroll-behavior:smooth}
 .mobile-panel a:hover{background:var(--action-wash)}
 
 /* ---------- Section nav (DS SectionNav, sticky under header) ---------- */
+/* Menysiden har to rader: restaurantens seksjoner over menyseksjonene. De klebrer som én stabel,
+   så vi slipper å regne offset per rad. --nav-h måles i site.js. */
+.nav-stack{position:sticky;top:var(--stick-top);z-index:30;background:var(--surface-scrim);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line-hairline)}
+.nav-stack .section-nav{position:static;top:auto;z-index:auto;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:0}
+.nav-stack .section-nav--venue{border-bottom:1px solid var(--line-hairline)}
+.section-nav--venue a[aria-current="page"]{color:var(--text-strong)}
 .section-nav{position:sticky;top:var(--stick-top);z-index:30;background:var(--surface-scrim);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line-hairline);padding:0 var(--gutter)}
 .section-nav ul{list-style:none;margin:0 auto;padding:0;max-width:var(--page-max);display:flex;gap:var(--space-5);overflow-x:auto;scrollbar-width:none}
 .section-nav ul::-webkit-scrollbar{display:none}
@@ -168,7 +174,7 @@ html{scroll-behavior:smooth}
 .menu-sec{padding-top:var(--space-8)}
 .menu-sec:first-child{padding-top:0}
 .menu-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:var(--space-8);align-items:start;margin-top:var(--space-6)}
-.menu-aside{position:sticky;top:calc(var(--stick-top) + 68px);display:grid;gap:var(--space-5)}
+.menu-aside{position:sticky;top:calc(var(--stick-top) + var(--nav-h, 56px) + 12px);display:grid;gap:var(--space-5)}
 .allergen-row{display:flex;gap:10px;align-items:center}
 
 /* ---------- Hours (DS HoursList) ---------- */

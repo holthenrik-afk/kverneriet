@@ -83,9 +83,12 @@ def venue_menu_page(v):
     return head(slug, p) + f'''<body data-venue="{slug}" data-menu-venue="{slug}">
 
 {chrome.header(active=slug, menu_href=kv.url(slug + '-menu'))}
-<nav class="section-nav" aria-label="Menyseksjoner" data-scrollspy id="menu-section-nav">
+<div class="nav-stack">
+{chrome.venue_nav(slug, on_menu=True)}
+<nav class="section-nav section-nav--menu" aria-label="Menyseksjoner" data-scrollspy id="menu-section-nav">
   <ul id="menu-sections-list">{nav}</ul>
 </nav>
+</div>
 
 <main id="main">
   <div class="wrap" style="padding-top:var(--space-7);padding-bottom:var(--section-y)">
