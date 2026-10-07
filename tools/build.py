@@ -100,8 +100,15 @@ def patch_index():
     s = s.replace('alt="Kyllingburger fra Kverneriet Majorstua"', 'alt="Blå bar og grønne fløyelsbenker på Kverneriet Majorstua"')
     s = s.replace('alt="Uteserveringen på bryggekanten i Tønsberg"', 'alt="Bryggeterrassen til Kverneriet Tønsberg med kanalen bak"')
     for v in V['venues']:
-        s = re.sub(r'(<a class="venue-panel" href="%s">.*?<span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> )[^<]*(</span>)' % re.escape(kv.url(v['slug'])),
-                   lambda m: m.group(1) + e(f'{v["address"]["street"]}, {v["city"]} · {(v["copy"]["slogan"]["no"] if isinstance(v["copy"]["slogan"], dict) else v["copy"]["slogan"]).rstrip(".")}') + m.group(2), s, count=1, flags=re.S)
+        sl = v['copy']['slogan']
+        sl = sl if isinstance(sl, dict) else {'no': sl, 'en': sl}
+        place = f'{v["address"]["street"]}, {v["city"]} · '
+        # Egen i18n-nøkkel per kort, så slagordet også bytter språk (adressen gjør den ikke)
+        G.add(f'home.card.{v["slug"]}', place + sl['no'].rstrip('.'), place + sl['en'].rstrip('.'))
+        line = f'<span data-i18n="home.card.{v["slug"]}">{e(place + sl["no"].rstrip("."))}</span>'
+        pat = r'(<a class="venue-panel" href="%s">.*?<span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> )(?:<span data-i18n="home\.card\.[a-z]+">[^<]*</span>|[^<]*)(</span>)' % re.escape(kv.url(v['slug']))
+        s, n = re.subn(pat, lambda m: m.group(1) + line + m.group(2), s, count=1, flags=re.S)
+        if n != 1: raise SystemExit(f'venue-panel {v["slug"]}: {n} treff')
     # Om-teksten inn i restaurant-seksjonen (#om), FAQ før gavekort
     s = re.sub(r'      <!-- om:start -->.*?<!-- om:end -->', lambda m: about_section(), s, count=1, flags=re.S)
     s = re.sub(r'  <!-- The craft -->\n  <section class="section">.*?\n  </section>\n\n', lambda m: craft_section(), s, count=1, flags=re.S)
