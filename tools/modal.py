@@ -131,7 +131,7 @@ def btn(cls, href, key, text, track):
 TA = ''.join(order_group(v['slug']) for v in V['venues'])
 
 MODAL = f'''<!-- Book / take-away-modal (generert av tools/modal.py) -->
-<div class="modal-root" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="order-title">
+<div class="modal-root is-novenue" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="order-title">
   <div class="modal-root__backdrop" data-order-close></div>
   <div class="modal modal--wide">
     <button class="icon-btn modal__close" type="button" data-order-close aria-label="Lukk">&times;</button>

@@ -98,6 +98,7 @@
     if(seg)Array.prototype.forEach.call(seg.querySelectorAll('button'),function(b){var on=b.getAttribute('data-mvenue')===slug;b.classList.toggle('is-on',on);b.setAttribute('aria-pressed',on?'true':'false');});
     var bk=modal.querySelector('.bk');
     if(bk&&bk._kv)bk._kv.setVenue(slug);
+    modal.classList.toggle('is-novenue',!slug);
     var taPick=document.getElementById('modal-ta-pick');
     if(taPick)taPick.hidden=!!slug;
     Array.prototype.forEach.call(modal.querySelectorAll('#modal-ta .order-group[data-venue]'),function(g){g.hidden=g.getAttribute('data-venue')!==slug;});

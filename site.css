@@ -305,6 +305,9 @@ html{scroll-behavior:smooth}
 /* Obligatoriske felt: * i merkefargen, uten understreking (abbr får den fra nettleseren). */
 .req{text-decoration:none;border:0;color:var(--text-accent);font-weight:700;cursor:help}
 .check .req{font-size:var(--type-caption)}
+/* Bookingen er sekvensiell: velg restaurant først, så dukker «Book bord / Take-away»
+   og «Online booking / Større grupper» opp. Unngår tre rader med tabs på én gang. */
+#order-modal.is-novenue #action-mode,.bk--novenue .bk-mode{display:none}
 .field input,.field select,.field textarea{font-family:var(--font-body);font-size:16px;color:var(--text-body);background:var(--surface-card);border:1px solid var(--line-hairline);border-radius:var(--radius-1);padding:11px 14px;width:100%;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--coral-500);box-shadow:var(--glow-focus);outline:none}
 .field select{appearance:none;background-image:none}
