@@ -1,12 +1,12 @@
 """Felles for generatorene: sideregister, URL-er og innholdslaget.
 
-URL-strukturen følger kverneriet.com slik den er indeksert i dag (/majorstua/, /solli/, /tonsberg/,
+URL-strukturen følger kverneriet.com slik den var indeksert (kverneriet.com 301-es hit) (/majorstua/, /solli/, /tonsberg/,
 /takeaway/, /<restaurant>/menu/), så ingen rangerte adresser går tapt ved lanseringen.
 Hver side ligger som <mappe>/index.html; forsiden er index.html i roten."""
 import json, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DOMAIN = 'https://kverneriet.com/'
+DOMAIN = 'https://kverneriet.no/'
 
 # slug -> (fil, offentlig sti)
 PAGES = {

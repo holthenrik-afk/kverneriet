@@ -125,7 +125,7 @@ def order_group(slug):
     return f'<div class="order-group" data-venue="{slug}"><div class="kv-eyebrow">{label}</div><div class="order-group__channels">{"".join(links)}</div></div>'
 
 def btn(cls, href, key, text, track):
-    utm = href + ('&' if '?' in href else '?') + f'utm_source=kverneriet.com&utm_medium=website&utm_campaign=takeaway&utm_content={track.split(":")[1]}-{track.split(":")[2]}' if 'orderx.eu' in href else href
+    utm = href + ('&' if '?' in href else '?') + f'utm_source=kverneriet.no&utm_medium=website&utm_campaign=takeaway&utm_content={track.split(":")[1]}-{track.split(":")[2]}' if 'orderx.eu' in href else href
     return f'<a class="btn {cls} btn--md btn--block" href="{utm}" target="_blank" rel="noopener" data-track="{track}" data-i18n="{key}">{text}</a>'
 
 TA = ''.join(order_group(v['slug']) for v in V['venues'])

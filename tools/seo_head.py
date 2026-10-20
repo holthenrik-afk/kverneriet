@@ -86,7 +86,7 @@ def restaurant_node(v, with_reviews=True):
     kitchen = '; '.join(f'{kv.day_range(h["days"])} {kv.hhmm(h["opens"])}–{kv.hhmm(h["closes"])}' for h in v['hours']['kitchen'])
     same = [v['facebook']] + [u for u in (v['channels'].get('wolt'), v['channels'].get('foodora')) if u]
     n = {"@type": "Restaurant", "@id": kv.abs_url(slug) + '#restaurant', "name": v['fullName'], "alternateName": f"Kverneriet {v['area']}" if v['area'] != v['name'] else None,
-         "url": kv.abs_url(slug), "image": [DOMAIN + pages.PAGES[slug]['img'].lstrip('/')],
+         "url": kv.abs_url(slug), "image": [absimg(pages.PAGES[slug]['img'])],
          "description": f"Burgerrestaurant på {v['area']} i {v['city']} siden {v['since']}. Kjøtt vi kverner selv, trippelkokte fries, hot wings, soft serve og milkshakes. Kjøkkenet: {kitchen}. Lunsj {v['lunch']}.",
          "telephone": ORG['telephone'], "email": v['email'],
          "address": {"@type": "PostalAddress", "streetAddress": a['street'], "postalCode": a['postalCode'], "addressLocality": a['city'], "addressCountry": "NO"},
