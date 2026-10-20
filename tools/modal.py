@@ -156,13 +156,16 @@ MODAL = f'''<!-- Book / take-away-modal (generert av tools/modal.py) -->
 </div>
 '''
 
-MODAL_RE = re.compile(r'<!-- (?:Take-away-modal|Book / take-away-modal[^>]*) -->\n<div class="modal-root" id="order-modal".*?\n</div>\n+(?=</body>)', re.S)
+# Tåler ekstra klasser på rota (f.eks. is-novenue) og krever ikke at modalen ligger rett før </body>.
+# Uten den toleransen sluttet bytte-regexen å matche, og hvert bygg la på en ny kopi (9 stk. i produksjon 20.10.2026).
+MODAL_RE = re.compile(r'<!-- (?:Take-away-modal|Book / take-away-modal[^>]*) -->\n<div class="modal-root[^"]*" id="order-modal".*?\n  </div>\n</div>\n+', re.S)
 
 def apply(html):
-    """Setter inn / erstatter modalen rett før </body>."""
-    s2, n = MODAL_RE.subn(lambda m: MODAL.rstrip('\n') + '\n\n', html, count=1)
-    if n == 0:
-        s2 = html.replace('</body>', MODAL.rstrip('\n') + '\n\n</body>', 1)
+    """Setter inn modalen rett før </body>. Fjerner ALLE eksisterende først, så den aldri kan duplisere."""
+    s2 = MODAL_RE.sub('', html)
+    s2 = s2.replace('</body>', MODAL.rstrip('\n') + '\n\n</body>', 1)
+    n = s2.count('id="order-modal"')
+    if n != 1: raise SystemExit(f'modal: {n} modaler i resultatet, skal være 1')
     return s2
 
 if __name__ == '__main__':
