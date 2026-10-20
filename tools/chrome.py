@@ -100,6 +100,19 @@ def venue_nav(slug, on_menu=False):
     return (f'<nav class="section-nav section-nav--venue" aria-label="{kv.esc(v["name"])}"{spy}>\n'
             f'  <ul>{items}</ul>\n</nav>')
 
+# Metricool-sporingspiksel. Et rent bilde-kall, ingen JavaScript og ingen informasjonskapsel fra
+# vår side. Ligger rett før </body> på hver side så den ikke forsinker noe som gjesten ser.
+PIXEL = ('<img src="https://tracker.metricool.com/c3po.jpg?hash=bfb4103a56494b4aa00b3a58c4162aaf" '
+         'alt="" width="1" height="1" aria-hidden="true" referrerpolicy="no-referrer-when-downgrade" '
+         'style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none">')
+PIXEL_RE = r'<img src="https://tracker\.metricool\.com/c3po\.jpg[^>]*>\n?'
+
+def add_pixel(html):
+    """Setter inn sporingspikselen én gang per side, og bytter den ut hvis den finnes fra før."""
+    import re as _re
+    html = _re.sub(PIXEL_RE, '', html)
+    return html.replace('</body>', PIXEL + '\n</body>', 1)
+
 HEADER_RE = r'(?:<a class="skip-link"[^>]*>.*?</a>\n)?<header class="site-header">.*?</header>\n'
 FOOTER_RE = r'<footer class="site-footer">.*?</footer>\n'
 

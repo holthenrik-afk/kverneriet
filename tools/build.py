@@ -204,6 +204,7 @@ def cache_bust():
         s = re.sub(r'<link rel="stylesheet" href="/styles\.css[^"]*">\n<link rel="stylesheet" href="/site\.css[^"]*">', f'<link rel="stylesheet" href="/kverneriet.css?v={h}">', s)
         s = re.sub(r'href="/kverneriet\.css\?v=[0-9a-f]+"', f'href="/kverneriet.css?v={h}"', s)
         s = re.sub(r'src="(/site\.js|/meny\.js|/content/i18n\.js|/content/i18n-gen\.js|/content/menus\.js)(\?v=[0-9a-z]+)?"', lambda m: f'src="{m.group(1)}?v={js}"', s)
+        s = chrome.add_pixel(s)
         open(f, 'w', encoding='utf-8').write(s)
     print(f'css v={h} js v={js}')
 
