@@ -48,8 +48,12 @@ def by_key(*keys): return [BY_KEY[k] for k in keys]
 def card(m):
     lg = logo(m['outlet'])
     d = die(m['rating'], m['outlet'])
-    return (f'<article class="media-card">'
-            f'<figure class="photo"><img src="{m["photo"]}" alt="{e(m["alt"])}" loading="lazy"></figure>'
+    # Uten bilde droppes figuren helt. Pressebildene er VÅRE egne bilder av restaurantene,
+    # ikke avisenes – de er opphavsrettsbeskyttet og kan ikke hentes fra artiklene.
+    ph = (f'<figure class="photo"><img src="{m["photo"]}" alt="{e(m["alt"])}" loading="lazy"></figure>'
+          if m.get('photo') else '')
+    return (f'<article class="media-card{"" if ph else " media-card--nophoto"}">'
+            f'{ph}'
             f'<div class="media-card__body"><div class="media-card__head">{lg}{d}</div>'
             f'<h3 class="media-card__title">{e(m["title"])}</h3><p>&laquo;{e(m["quote"])}&raquo;</p>'
             f'<div class="media-card__meta"><span class="caption">{e("VG / Godt.no" if m["outlet"]=="vg" else LOGOS[m["outlet"]][1])} · {e(m["date"])}</span>'
