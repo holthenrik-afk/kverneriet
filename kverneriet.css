@@ -447,7 +447,14 @@ html{scroll-behavior:smooth}
 .media-card .photo{aspect-ratio:4/3}
 .media-card__body{padding:var(--space-5);display:grid;gap:var(--space-3);align-content:start}
 .media-card__head{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);min-height:44px}
-.media-card__title{font-family:var(--font-cond);font-weight:700;font-size:17px;line-height:1.25;text-transform:uppercase;letter-spacing:.02em;color:var(--text-strong)}
+.media-card .press-logo{height:30px;width:120px}
+.media-card .press-logo--vg{width:82px}
+.media-card .press-logo--aftenposten{width:108px}
+.media-card .press-logo--dn{width:176px}
+.media-card .press-logo--tb{width:142px}
+.media-card .press-logo--nettavisen{width:140px}
+.media-card .press-logo--dagsavisen{width:134px}
+.media-card__title{font-family:var(--font-cond);font-weight:700;font-size:21px;line-height:1.2;text-transform:uppercase;letter-spacing:.02em;color:var(--text-strong)}
 .media-card p{color:var(--text-body);font-size:var(--type-body-sm);line-height:1.5}
 .media-card__meta{display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);margin-top:auto;padding-top:var(--space-2)}
 .media-card__meta .caption{color:var(--text-faint)}
