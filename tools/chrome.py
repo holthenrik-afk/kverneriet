@@ -1,7 +1,7 @@
 """Header, mobilpanel og footer – likt på alle sider, skrevet fra ett sted (tools/chrome.py).
 Footeren bærer NAP (navn, adresse, telefon) for alle tre restaurantene, så hver side i nettstedet
 sier hvor Kverneriet er. Brukes av build-venue.py, build-landing.py, build-menu.py og build.py."""
-import kv
+import kv, i18n_gen as G
 
 V = kv.venues()
 ORG = V['org']
@@ -31,19 +31,22 @@ def header(active=None, menu_href='/meny/'):
         <svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
       </button>
     </div>
-    <div class="mobile-panel" id="mobile-panel">
-      <a href="/" data-i18n="act.home">Hjem</a>
-{panel}      <a href="{menu_href}" data-i18n="act.menu">Meny</a>
-      <a href="/takeaway/" data-i18n="act.takeaway">Take-away</a>
+    <nav class="mobile-panel" id="mobile-panel" aria-label="Hovedmeny">
+      <p class="mobile-panel__gruppe" data-i18n="nav.venues">Restauranter</p>
+{panel}      <p class="mobile-panel__gruppe" data-i18n="nav.eat">Mat og drikke</p>
+      <a href="{menu_href}" data-i18n="act.menu">Meny</a>
       <a href="/lunsj/" data-i18n="lp.lunch">Lunsj</a>
       <a href="/middag/" data-i18n="lp.dinner">Middag</a>
       <a href="/cocktails/" data-i18n="lp.cocktails">Cocktails</a>
+      <a href="/takeaway/" data-i18n="act.takeaway">Take-away</a>
+      <p class="mobile-panel__gruppe" data-i18n="nav.occasions">Anledninger</p>
       <a href="/julebord/" data-i18n="lp.xmas">Julebord</a>
       <a href="/selskap/" data-i18n="lp.groups">Selskap og grupper</a>
       <a href="/late-night/" data-i18n="lp.late">Late night</a>
-{blog_link('      <a href="/blogg/" data-i18n="blog.title">Blogg</a>')}      <a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
-      <a href="https://join.kverneriet.com/" data-i18n="act.work">Jobb hos oss</a>
-    </div>
+      <p class="mobile-panel__gruppe" data-i18n="nav.more">Mer</p>
+      <a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
+{blog_link('      <a href="/blogg/" data-i18n="blog.title">Blogg</a>')}      <a href="https://join.kverneriet.com/" data-i18n="act.work">Jobb hos oss</a>
+    </nav>
   </div>
 </header>
 '''
@@ -81,6 +84,11 @@ def footer(menu_href='/meny/'):
   </div>
 </footer>
 '''
+
+G.add('nav.venues', 'Restauranter', 'Restaurants')
+G.add('nav.eat', 'Mat og drikke', 'Food and drink')
+G.add('nav.occasions', 'Anledninger', 'Occasions')
+G.add('nav.more', 'Mer', 'More')
 
 SECTIONS = [('about', 'v.about', 'Om'), ('gallery', 'v.gallery', 'Galleri'), ('booking', 'v.booking', 'Booking'),
             ('practical', 'v.practical', 'Praktisk info'), ('faq', 'v.faq', 'Spørsmål')]
