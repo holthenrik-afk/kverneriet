@@ -10,13 +10,76 @@ Kjør: python3 tools/build.py"""
 import os, re, sys, hashlib, subprocess, datetime, functools
 print = functools.partial(print, flush=True)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import kv, chrome, modal, faq, i18n_gen as G, pages
+import kv, chrome, modal, faq, carousel, i18n_gen as G, pages
 import build_venue, build_menu, build_landing, build_blog, images, seo_head
 import media as MD
 os.chdir(kv.ROOT)
 
 V = kv.venues(); ORG = V['org']
 e = kv.esc
+
+def cta_section():
+    """Heldekkende bånd: stemningsbilde, ingressen og Book bord (ønske fra Kverneriet 21.10.2026)."""
+    sc = kv.site_copy()
+    hl = sc.get('heroLede') or {}
+    if hl.get('no'): G.add('home.lede', hl['no'], hl.get('en') or hl['no'])
+    G.add('home.ctaAlt', 'Spisesalen på Kverneriet Majorstua', 'The dining room at Kverneriet Majorstua')
+    return f"""  <section class="cta-band">
+    <img class="cta-band__img" src="/assets/img/majorstua-about.jpg" alt="{e(G._D['no']['home.ctaAlt'])}" loading="lazy" decoding="async">
+    <div class="cta-band__scrim" aria-hidden="true"></div>
+    <div class="cta-band__inner wrap">
+      <p class="lede" data-i18n="home.lede">{e(G._D['no']['home.lede'])}</p>
+      <button class="btn btn--primary btn--lg" type="button" data-book-open data-track="cta:band:book" data-i18n="act.book">Book bord</button>
+    </div>
+  </section>
+"""
+
+
+def locations_section():
+    """Restaurantene som egen seksjon igjen (Viktors punkt 6)."""
+    G.add('home.locEyebrow', 'Tre steder', 'Three places')
+    G.add('home.locTitle', 'Restaurantene', 'The restaurants')
+    trio = TRIO_HTML
+    for v in kv.venues()['venues']:
+        sl = v['copy']['slogan']
+        sl = sl if isinstance(sl, dict) else {'no': sl, 'en': sl}
+        place = f'{v["address"]["street"]}, {v["city"]} · '
+        # Egen i18n-nøkkel per kort, så slagordet bytter språk (adressen gjør den ikke)
+        G.add(f'home.card.{v["slug"]}', place + sl['no'].rstrip('.'), place + sl['en'].rstrip('.'))
+        line = f'<span data-i18n="home.card.{v["slug"]}">{e(place + sl["no"].rstrip("."))}</span>'
+        pat = r'(<a class="venue-panel" href="%s">.*?<span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> )(?:<span data-i18n="home\.card\.[a-z]+">[^<]*</span>|[^<]*)(</span>)' % re.escape(kv.url(v['slug']))
+        trio, n = re.subn(pat, lambda m: m.group(1) + line + m.group(2), trio, count=1, flags=re.S)
+        if n != 1: raise SystemExit(f'venue-panel {v["slug"]}: {n} treff')
+    return ('  <section class="section section--flush-top" id="locations">\n    <div class="wrap">\n'
+            '      <header class="sec-head"><div class="sec-head__rule"></div>'
+            '<span class="kv-eyebrow" data-i18n="home.locEyebrow">Tre steder</span>'
+            '<h2 class="display-2" data-i18n="home.locTitle">Restaurantene</h2></header>\n'
+            + trio +
+            '    </div>\n  </section>\n')
+
+
+TRIO_HTML = """      <div class="venue-trio" style="margin-top:var(--space-7)">
+        <a class="venue-panel" href="/majorstua/">
+          <figure class="photo" style="aspect-ratio:3/4"><picture><source type="image/webp" srcset="/assets/img/r/trio-majorstua-480.webp 480w, /assets/img/r/trio-majorstua-800.webp 800w, /assets/img/r/trio-majorstua-1200.webp 1200w, /assets/img/r/trio-majorstua-1400.webp 1400w" sizes="(max-width:760px) 100vw, 50vw"><img alt="Blå bar og grønne fløyelsbenker på Kverneriet Majorstua" loading="lazy" src="/assets/img/r/trio-majorstua-1200.jpg" srcset="/assets/img/r/trio-majorstua-480.jpg 480w, /assets/img/r/trio-majorstua-800.jpg 800w, /assets/img/r/trio-majorstua-1200.jpg 1200w, /assets/img/r/trio-majorstua-1400.jpg 1400w" sizes="(max-width:760px) 100vw, 50vw" width="1400" height="2086"></picture></figure>
+          <h3 class="display-3">Majorstua</h3>
+          <span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> <span data-i18n="home.card.majorstua">Kirkeveien 64B, Oslo · Burger, bar og nabolagsstemning</span></span>
+          <span class="venue-panel__cta" data-i18n="act.explore">Utforsk</span>
+        </a>
+        <a class="venue-panel" href="/solli/">
+          <figure class="photo" style="aspect-ratio:3/4"><picture><source type="image/webp" srcset="/assets/img/r/trio-solli-480.webp 480w, /assets/img/r/trio-solli-800.webp 800w, /assets/img/r/trio-solli-1200.webp 1200w, /assets/img/r/trio-solli-1400.webp 1400w" sizes="(max-width:760px) 100vw, 50vw"><img alt="Spisesalen på Kverneriet Solli" loading="lazy" src="/assets/img/r/trio-solli-1200.jpg" srcset="/assets/img/r/trio-solli-480.jpg 480w, /assets/img/r/trio-solli-800.jpg 800w, /assets/img/r/trio-solli-1200.jpg 1200w, /assets/img/r/trio-solli-1400.jpg 1400w" sizes="(max-width:760px) 100vw, 50vw" width="1400" height="935"></picture></figure>
+          <h3 class="display-3">Solli</h3>
+          <span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> <span data-i18n="home.card.solli">Henrik Ibsens gate 100, Oslo · Fra lunsj til cocktails</span></span>
+          <span class="venue-panel__cta" data-i18n="act.explore">Utforsk</span>
+        </a>
+        <a class="venue-panel" href="/tonsberg/">
+          <figure class="photo" style="aspect-ratio:3/4"><picture><source type="image/webp" srcset="/assets/img/r/trio-tonsberg-480.webp 480w, /assets/img/r/trio-tonsberg-800.webp 800w, /assets/img/r/trio-tonsberg-1200.webp 1200w, /assets/img/r/trio-tonsberg-1400.webp 1400w" sizes="(max-width:760px) 100vw, 50vw"><img alt="Bryggeterrassen til Kverneriet Tønsberg med kanalen bak" loading="lazy" src="/assets/img/r/trio-tonsberg-1200.jpg" srcset="/assets/img/r/trio-tonsberg-480.jpg 480w, /assets/img/r/trio-tonsberg-800.jpg 800w, /assets/img/r/trio-tonsberg-1200.jpg 1200w, /assets/img/r/trio-tonsberg-1400.jpg 1400w" sizes="(max-width:760px) 100vw, 50vw" width="1400" height="2096"></picture></figure>
+          <h3 class="display-3">T&oslash;nsberg</h3>
+          <span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> <span data-i18n="home.card.tonsberg">Rambergveien 15, Tønsberg · Der det hele startet</span></span>
+          <span class="venue-panel__cta" data-i18n="act.explore">Utforsk</span>
+        </a>
+      </div>
+"""
+
 
 def about_section():
     """«Det startet i Tønsberg» – tittel og avsnitt fra content/site-copy.json (redigeres i Sanity)."""
@@ -102,18 +165,15 @@ def patch_index():
     # Triptych: riktige alt-tekster og stedslinjer fra venues.json
     s = s.replace('alt="Kyllingburger fra Kverneriet Majorstua"', 'alt="Blå bar og grønne fløyelsbenker på Kverneriet Majorstua"')
     s = s.replace('alt="Uteserveringen på bryggekanten i Tønsberg"', 'alt="Bryggeterrassen til Kverneriet Tønsberg med kanalen bak"')
-    for v in V['venues']:
-        sl = v['copy']['slogan']
-        sl = sl if isinstance(sl, dict) else {'no': sl, 'en': sl}
-        place = f'{v["address"]["street"]}, {v["city"]} · '
-        # Egen i18n-nøkkel per kort, så slagordet også bytter språk (adressen gjør den ikke)
-        G.add(f'home.card.{v["slug"]}', place + sl['no'].rstrip('.'), place + sl['en'].rstrip('.'))
-        line = f'<span data-i18n="home.card.{v["slug"]}">{e(place + sl["no"].rstrip("."))}</span>'
-        pat = r'(<a class="venue-panel" href="%s">.*?<span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> )(?:<span data-i18n="home\.card\.[a-z]+">[^<]*</span>|[^<]*)(</span>)' % re.escape(kv.url(v['slug']))
-        s, n = re.subn(pat, lambda m: m.group(1) + line + m.group(2), s, count=1, flags=re.S)
-        if n != 1: raise SystemExit(f'venue-panel {v["slug"]}: {n} treff')
     # Om-teksten inn i restaurant-seksjonen (#om), FAQ før gavekort
-    s = re.sub(r'      <!-- om:start -->.*?<!-- om:end -->', lambda m: about_section(), s, count=1, flags=re.S)
+    s, n = re.subn(r'  <!-- story:start -->.*?  <!-- story:end -->', lambda m: '  <!-- story:start -->\n' + carousel.story_section().rstrip('\n') + '\n  <!-- story:end -->', s, count=1, flags=re.S)
+    if n != 1: raise SystemExit('build: fant ikke story-markørene')
+    s, n = re.subn(r'  <!-- cta:start -->.*?  <!-- cta:end -->', lambda m: '  <!-- cta:start -->\n' + cta_section().rstrip('\n') + '\n  <!-- cta:end -->', s, count=1, flags=re.S)
+    if n != 1: raise SystemExit('build: fant ikke cta-markørene')
+    s, n = re.subn(r'  <!-- locations:start -->.*?  <!-- locations:end -->', lambda m: '  <!-- locations:start -->\n' + locations_section().rstrip('\n') + '\n  <!-- locations:end -->', s, count=1, flags=re.S)
+    if n != 1: raise SystemExit('build: fant ikke locations-markørene')
+    s, n = re.subn(r'  <!-- anledninger:start -->.*?  <!-- anledninger:end -->', lambda m: '  <!-- anledninger:start -->\n' + carousel.occasions_section().rstrip('\n') + '\n  <!-- anledninger:end -->', s, count=1, flags=re.S)
+    if n != 1: raise SystemExit('build: fant ikke anledninger-markørene')
     s = re.sub(r'  <!-- The craft -->\n  <section class="section">.*?\n  </section>\n\n', lambda m: craft_section(), s, count=1, flags=re.S)
     s = re.sub(r'  <section class="section[^"]*" id="faq">.*?\n  </section>\n', '', s, count=1, flags=re.S)
     s = s.replace('\n</main>', '\n' + faq.section(faq.general_faq()) + '</main>', 1)

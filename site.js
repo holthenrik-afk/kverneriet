@@ -342,6 +342,41 @@
     });
   })();
 
+  /* Karusellene: piler, prikker og tastatur. Sporet scroller allerede uten JS. */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-kar]'),function(rot){
+    var spor=rot.querySelector('.kar__spor');
+    var kort=Array.prototype.slice.call(spor.children);
+    var prikker=Array.prototype.slice.call(rot.querySelectorAll('[data-kar-goto]'));
+    if(kort.length<2){var st=rot.querySelector('.kar__styring');if(st)st.hidden=true;return;}
+    var cur=0;
+    function mark(i){cur=i;prikker.forEach(function(d,j){
+      if(j===i)d.setAttribute('aria-current','true');else d.removeAttribute('aria-current');});}
+    function go(i){
+      i=Math.max(0,Math.min(kort.length-1,i));
+      spor.scrollTo({left:kort[i].offsetLeft-spor.offsetLeft,behavior:'smooth'});mark(i);
+    }
+    var p=rot.querySelector('[data-kar-prev]'),n=rot.querySelector('[data-kar-next]');
+    if(p)p.addEventListener('click',function(){go(cur-1);});
+    if(n)n.addEventListener('click',function(){go(cur+1);});
+    prikker.forEach(function(d,i){d.addEventListener('click',function(){go(i);});});
+    var t;
+    spor.addEventListener('scroll',function(){
+      window.clearTimeout(t);
+      t=window.setTimeout(function(){
+        var v=spor.scrollLeft+spor.clientWidth/2,best=0,bd=Infinity;
+        kort.forEach(function(k,i){
+          var c=k.offsetLeft-spor.offsetLeft+k.offsetWidth/2,d=Math.abs(c-v);
+          if(d<bd){bd=d;best=i;}});
+        if(best!==cur)mark(best);
+      },90);
+    },{passive:true});
+    spor.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'){e.preventDefault();go(cur+1);}
+      else if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1);}
+    });
+    mark(0);
+  });
+
   /* Apply the stored language once the DOM is in place */
   applyLang(LANG);
 })();

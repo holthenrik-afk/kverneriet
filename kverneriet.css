@@ -706,3 +706,55 @@ html{scroll-behavior:smooth}
 @media (max-width:719px){
   .hero-home__inner{min-height:min(64vh,520px)}
 }
+
+/* ---------- Karusell med kort ----------
+   Brukt to steder på forsiden. Hele kortet er klikkbart, og lenken nederst er en lenke –
+   ingen primærknapp, så den ikke konkurrerer med «Book bord» øverst. */
+.kar{position:relative;margin-top:var(--space-7)}
+.kar__spor{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,32%);gap:var(--space-5);
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;
+  overscroll-behavior-x:contain;padding-bottom:var(--space-2)}
+.kar__spor::-webkit-scrollbar{display:none}
+.kar__spor:focus-visible{outline:2px solid var(--line-accent);outline-offset:4px}
+.kort{scroll-snap-align:start;display:flex;flex-direction:column;text-align:left;
+  background:var(--surface-card);border:1px solid var(--line-hairline);border-radius:var(--radius-1);
+  overflow:hidden;padding:0;cursor:pointer;font:inherit;color:inherit;
+  transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  .kort:hover{border-color:var(--line-strong);box-shadow:var(--shadow-2);transform:translateY(-2px)}
+  .kort:hover .kort__lenke::after{transform:translateX(3px)}
+}
+.kort__bilde{margin:0;aspect-ratio:4/3;overflow:hidden;background:var(--surface-inset)}
+.kort__bilde img{width:100%;height:100%;object-fit:cover;display:block}
+.kort__tekst{padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2);flex:1}
+.kort__tit{font-family:var(--font-display);font-size:var(--type-display-4);line-height:1.1;
+  text-transform:uppercase;color:var(--text-strong);text-wrap:balance}
+.kort__sub{font-size:var(--type-body-sm);color:var(--text-muted);line-height:1.5;flex:1}
+.kort__lenke{font-family:var(--font-cond);font-weight:700;text-transform:uppercase;
+  letter-spacing:var(--tracking-label);font-size:12px;color:var(--text-accent);margin-top:auto}
+.kort__lenke::after{content:" \2192";display:inline-block;transition:transform var(--dur-fast) var(--ease-out)}
+
+.kar__styring{display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-5)}
+.kar__pil{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-hairline);
+  background:var(--surface-card);color:var(--text-strong);font-size:20px;line-height:1;cursor:pointer;
+  transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+.kar__pil:hover{border-color:var(--line-strong);background:var(--surface-raised)}
+.kar__prikker{display:flex;gap:7px}
+.kar__prikk{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:var(--line-hairline);
+  cursor:pointer;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
+.kar__prikk[aria-current="true"]{background:var(--line-accent);transform:scale(1.4)}
+
+@media (max-width:719px){
+  .kar__spor{grid-auto-columns:minmax(240px,78%);gap:var(--space-4)}
+  .kar__pil{display:none}
+  .kar__styring{justify-content:center}
+}
+
+/* ---------- Heldekkende CTA-bånd ---------- */
+.cta-band{position:relative;isolation:isolate;overflow:hidden;background:var(--teal-900)}
+.cta-band__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cta-band__scrim{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to bottom,rgba(4,30,26,.74) 0%,rgba(4,30,26,.62) 50%,rgba(4,30,26,.80) 100%)}
+.cta-band__inner{padding-block:clamp(var(--space-8),9vw,var(--space-10));
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-6)}
+.cta-band__inner .lede{color:var(--paper-50);max-width:58ch;margin:0}
