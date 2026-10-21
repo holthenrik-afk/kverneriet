@@ -49,22 +49,83 @@
 
   /* ---------- Sporing ----------
      Alle konverteringsknapper og utgående bestillingslenker har data-track="kategori:sted:kanal".
-     Klikk pushes til window.dataLayer (Google Tag Manager / GA4 leser derfra) og som et
-     kv:track-event. Sett inn GTM-containeren i <head> når kontoen er klar; ingenting annet
-     må endres. OrderX-lenkene bærer i tillegg UTM-parametre. */
+     Klikk pushes til window.dataLayer, sendes til GA4 med gtag (taggen settes inn av
+     tools/chrome.py) og som et kv:track-event. OrderX-lenkene bærer i tillegg UTM-parametre. */
   window.dataLayer=window.dataLayer||[];
+  var VENUE_RE=/^(majorstua|solli|tonsberg)$/;
+  function ga(name,params){if(typeof window.gtag==='function')window.gtag('event',name,params);}
+  function gaName(parts){
+    var s=parts.join(':');
+    if(parts[0]==='order')return 'click_takeaway';
+    if(/:group$/.test(s))return 'open_group_booking';
+    if(/(^|:)book(:|$)/.test(s))return 'open_booking';
+    if(/(^|:)takeaway(:|$)/.test(s))return 'open_takeaway';
+    if(parts[0]==='giftcard')return 'click_giftcard';
+    if(parts[0]==='media')return 'click_press';
+    return 'kv_click';
+  }
+  function pageVenue(){return document.body.getAttribute('data-venue')||'';}
   function track(name,extra){
     var parts=String(name).split(':');
     var payload={event:'kv_click',kv_action:parts[0]||'',kv_venue:parts[1]||'',kv_channel:parts[2]||'',kv_page:location.pathname||'index.html',kv_lang:LANG};
     if(extra)for(var k in extra)payload[k]=extra[k];
     window.dataLayer.push(payload);
+    var venue=parts.filter(function(p){return VENUE_RE.test(p);})[0]||pageVenue();
+    ga(gaName(parts),{kv_track:String(name),kv_venue:venue,kv_channel:parts[2]||'',kv_page:payload.kv_page});
     document.dispatchEvent(new CustomEvent('kv:track',{detail:payload}));
   }
   window.KVTrack=track;
   document.addEventListener('click',function(e){
     var el=e.target.closest('[data-track]');
-    if(el)track(el.getAttribute('data-track'));
+    if(el){track(el.getAttribute('data-track'));return;}
+    var tel=e.target.closest('a[href^="tel:"]');
+    if(tel)ga('click_call',{kv_venue:pageVenue(),kv_page:location.pathname});
   },true);
+
+  /* Zenchef-rammen i bookingen sender hendelser til siden med postMessage (zcf-bookings-*). De
+     sendes videre til GA4 med rene navn. booking_created er hovedmålet og arver kilden (UTM, gclid)
+     fra besøket. Bare antall gjester, dato og tid følger med, aldri noe om gjesten. */
+  var ZC_EVENTS={'zcf-bookings-booking_created':'booking_created','zcf-bookings-choose_pax':'zc_choose_pax',
+    'zcf-bookings-choose_date':'zc_choose_date','zcf-bookings-choose_slot':'zc_choose_slot',
+    'zcf-bookings-choose_room':'zc_choose_room','zcf-bookings-open_calendar':'zc_open_calendar'};
+  var ZC_FIELDS={pax:'guests',nb_guests:'guests',date:'zc_date',day:'zc_date',time:'zc_time',slot:'zc_time'};
+  window.addEventListener('message',function(e){
+    if(e.origin!=='https://bookings.zenchef.com'||!e.data||typeof e.data!=='object')return;
+    var name=ZC_EVENTS[e.data.type];if(!name)return;
+    var venue='';
+    Array.prototype.forEach.call(document.querySelectorAll('.bk-frame iframe'),function(f){if(f.contentWindow===e.source)venue=f.getAttribute('data-venue')||'';});
+    var p={kv_venue:venue||pageVenue(),kv_page:location.pathname},d=e.data.data||{};
+    for(var k in ZC_FIELDS){var v=d[k];if(typeof v==='number'||(typeof v==='string'&&v.length<=20))p[ZC_FIELDS[k]]=v;}
+    window.dataLayer.push({event:name,kv_venue:p.kv_venue});
+    ga(name,p);
+    if(name==='booking_created'&&typeof window.fbq==='function')window.fbq('track','Schedule',{content_name:p.kv_venue});
+  });
+
+  /* Samtykke: banneret vises til gjesten har valgt. Valget lagres i localStorage («kv-consent») og
+     leses av Google-taggen i <head>. Meta-pikselen lastes bare etter ja. */
+  var consentBox=document.querySelector('.consent');
+  function loadMeta(){
+    if(window.fbq)return;
+    var n=window.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments);};
+    if(!window._fbq)window._fbq=n;n.push=n;n.loaded=true;n.version='2.0';n.queue=[];
+    var s=document.createElement('script');s.async=true;s.src='https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(s);
+    window.fbq('init','1328532094743171');window.fbq('track','PageView');
+  }
+  function applyConsent(v){
+    var g=v==='granted'?'granted':'denied';
+    if(typeof window.gtag==='function')window.gtag('consent','update',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g});
+    if(v==='granted')loadMeta();
+    else if(typeof window.fbq==='function')window.fbq('consent','revoke');
+  }
+  var stored=null;try{stored=localStorage.getItem('kv-consent');}catch(e){}
+  if(stored==='granted')loadMeta();
+  if(consentBox&&stored!=='granted'&&stored!=='denied')consentBox.hidden=false;
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-consent]');
+    if(b){var v=b.getAttribute('data-consent');try{localStorage.setItem('kv-consent',v);}catch(err){}applyConsent(v);if(consentBox)consentBox.hidden=true;return;}
+    if(e.target.closest('[data-consent-open]')&&consentBox){consentBox.hidden=false;var f=consentBox.querySelector('button');if(f)f.focus();}
+  });
 
   /* Sticky offsets: measure the real header so section navs and anchors line up. */
   var header=document.querySelector('.site-header');
