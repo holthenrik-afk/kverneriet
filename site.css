@@ -511,7 +511,8 @@ html{scroll-behavior:smooth}
 .hero-home--video .btn--outline{border-color:rgba(250,248,245,.72);color:var(--paper-50);background:rgba(4,30,26,.28);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .hero-home--video .btn--outline:hover{background:rgba(4,30,26,.5);border-color:var(--paper-50)}
 .hero-trust{padding-top:var(--space-7)}
-.hero-trust .lede{max-width:68ch}
+.hero-trust{text-align:center}
+.hero-trust .lede{max-width:62ch;margin-inline:auto}
 @media (max-width:719px){
   .hero-home__inner{min-height:min(64vh,520px)}
 }
