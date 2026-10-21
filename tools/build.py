@@ -87,13 +87,16 @@ def patch_index():
     G.add('home.heroSub', hs['no'], hs.get('en') or hs['no'])
     if hl.get('no'): G.add('home.lede', hl['no'], hl.get('en') or hl['no'])
     G.add('home.hoursNote', 'Åpningstider, meny og booking på hver restaurantside.', 'Opening hours, menu and booking on each restaurant page.')
-    s = re.sub(r'<h1( lang="en")?>[^<]*</h1>\n(    <p class="hero-home__sub"[^\n]*\n)?',
-               f'<h1 lang="en">Handcrafted burgers</h1>\n    <p class="hero-home__sub" data-i18n="home.heroSub">{e(hs["no"])}</p>\n', s, count=1)
+    # Innrykket varierer med hvordan heroen er bygget, så regexen tar vare på det den fant.
+    s, n = re.subn(r'( *)<h1( lang="en")?>[^<]*</h1>\n(?:[ \t]*<p class="hero-home__sub"[^\n]*\n)?',
+               lambda m: f'{m.group(1)}<h1 lang="en">Handcrafted burgers</h1>\n'
+                         f'{m.group(1)}<p class="hero-home__sub" data-i18n="home.heroSub">{e(hs["no"])}</p>\n',
+               s, count=1)
+    if n != 1: raise SystemExit('build: fant ikke h1 i heroen')
     s = re.sub(r'<p class="lede" data-i18n(?:-html)?="home\.lede(?:\.html)?">.*?</p>',
                f'<p class="lede" data-i18n="home.lede">{e(G._D["no"]["home.lede"])}</p>', s, count=1, flags=re.S)
     G.add('home.hoursNote', 'Åpningstider, meny og booking på hver restaurantside.', 'Opening hours, menu and booking on each restaurant page.')
-    s = re.sub(r'<h1( lang="en")?>[^<]*</h1>\n(    <p class="hero-home__sub"[^\n]*\n)?',
-               f'<h1 lang="en">Handcrafted burgers</h1>\n    <p class="hero-home__sub" data-i18n="home.heroSub">{e(hs["no"])}</p>\n', s, count=1)
+
     # Take-away hører ikke hjemme blant det første gjesten ser (ønske fra Kverneriet 24.09.2026)
     s = re.sub(r'\s*<button class="btn btn--solid btn--lg" type="button" data-order-open data-track="cta:takeaway"[^>]*>[^<]*</button>', '', s, count=1)
     # Triptych: riktige alt-tekster og stedslinjer fra venues.json

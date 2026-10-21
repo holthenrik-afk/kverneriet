@@ -682,3 +682,26 @@ html{scroll-behavior:smooth}
 
 .post-featured h2 a{border:0;color:inherit}
 .post-featured h2 a:hover{color:var(--teal-900)}
+
+/* ---------- Hero med video ----------
+   Videoen er dekor: den lastes først når skjermen er bred nok og gjesten ikke har slått av
+   bevegelse. Fram til da står posterbildet, og teksten er lesbar uansett. */
+.hero-home--video{position:relative;isolation:isolate;background:var(--teal-900);overflow:hidden}
+.hero-home--video .hero-home__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero-home--video .hero-home__scrim{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to bottom,rgba(4,30,26,.70) 0%,rgba(4,30,26,.46) 38%,rgba(4,30,26,.58) 72%,rgba(4,30,26,.86) 100%)}
+.hero-home__inner{padding-block:clamp(var(--space-8),11vh,var(--space-10));
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-2);
+  min-height:min(72vh,620px);justify-content:center}
+.hero-home--video .kv-eyebrow{color:var(--cream-100)}
+.hero-home--video h1{color:var(--paper-50)}
+.hero-home--video .hero-home__sub{color:var(--paper-50);opacity:.92}
+.hero-home--video .hero-home__cta{margin-top:var(--space-5);justify-content:center}
+/* Outline-knappen forsvinner mot et lyst bilde – den trenger egen flate her. */
+.hero-home--video .btn--outline{border-color:rgba(250,248,245,.72);color:var(--paper-50);background:rgba(4,30,26,.28);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.hero-home--video .btn--outline:hover{background:rgba(4,30,26,.5);border-color:var(--paper-50)}
+.hero-trust{padding-top:var(--space-7)}
+.hero-trust .lede{max-width:68ch}
+@media (max-width:719px){
+  .hero-home__inner{min-height:min(64vh,520px)}
+}

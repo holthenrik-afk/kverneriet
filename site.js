@@ -315,6 +315,33 @@
     });
   }
 
+  /* Hero-video: ren dekor. Lastes bare der den gir noe – ikke på smale skjermer, ikke for
+     dem som har slått av bevegelse, og ikke i strømsparemodus der autoplay uansett nektes. */
+  (function(){
+    var v=document.querySelector('[data-hero-video]');
+    if(!v)return;
+    var still=window.matchMedia('(prefers-reduced-motion: reduce)');
+    var bred=window.matchMedia('(min-width: 760px)');
+    var startet=false;
+    function start(){
+      if(startet||still.matches||!bred.matches)return;
+      startet=true;
+      ['/assets/video/hero.webm|video/webm','/assets/video/hero.mp4|video/mp4'].forEach(function(d){
+        var p=d.split('|'),s=document.createElement('source');
+        s.src=p[0];s.type=p[1];v.appendChild(s);
+      });
+      v.load();
+      var spill=v.play();
+      if(spill&&spill.catch)spill.catch(function(){});
+    }
+    if('requestIdleCallback' in window)requestIdleCallback(start,{timeout:1800});
+    else window.setTimeout(start,900);
+    document.addEventListener('visibilitychange',function(){
+      if(!startet)return;
+      document.hidden?v.pause():v.play().catch(function(){});
+    });
+  })();
+
   /* Apply the stored language once the DOM is in place */
   applyLang(LANG);
 })();
