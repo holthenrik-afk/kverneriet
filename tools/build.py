@@ -105,21 +105,41 @@ def about_section():
       </div>
       <!-- om:end -->'''
 
+# Stikkordene til «Slik jobber vi» ligger her og ikke i site-copy.json, fordi
+# fetch_sanity.py bygger craftItems på nytt ved hver henting og bare kjenner
+# image, alt, title og body. Et felt lagt i JSON-en ville vært slettet innen
+# ti minutter. Nøkkelen er tittelen i små bokstaver: endrer Kverneriet tittelen
+# i Sanity, forsvinner pillen i stedet for å vise feil faktum.
+CRAFT_STIKKORD = {
+    'kjøttet':           ('Kvernes her',     'Ground here'),
+    'tre dagers fries':  ('Tre dager',       'Three days'),
+    'soft serve deluxe': ('100 % Jersey',    '100% Jersey'),
+    'baren':             ('Egen bar',        'Our own bar'),
+    'folkene':           ('Siden 2013',      'Since 2013'),
+    'emballasjen':       ('Naturmaterialer', 'Natural materials'),
+}
+
+
 def craft_section():
-    """«Slik jobber vi» – kortene ligger i content/site-copy.json (craftItems) og redigeres i Sanity."""
+    """«Slik jobber vi» – samme karusell som de to andre på forsiden.
+
+    Kortene peker ingen steder ennå (href=None), så de rendres som vanlige kort
+    uten «Les mer». Innholdet redigeres fortsatt i Sanity.
+    """
     sc = kv.site_copy()
     eb = sc.get('craftEyebrow') or {'no': 'Håndverk, ingen snarveier', 'en': 'Craft, not shortcuts'}
     ti = sc.get('craftTitle') or {'no': 'Slik jobber vi', 'en': 'The way we work'}
     G.add('home.craftEyebrow', eb['no'], eb.get('en') or eb['no']); G.add('home.craftTitle', ti['no'], ti.get('en') or ti['no'])
-    cards = ''
+
+    items = []
     for i, it in enumerate(sc.get('craftItems') or []):
-        G.add(f'craft.{i}.t', it['title']['no'], it['title'].get('en') or it['title']['no'])
-        G.add(f'craft.{i}.b', it['body']['no'], it['body'].get('en') or it['body']['no'])
-        cards += (f'        <div class="venue-card">\n'
-                  f'          <figure class="photo" style="aspect-ratio:1/1"><img src="{it["image"]}" alt="{e(it["alt"])}" loading="lazy"></figure>\n'
-                  f'          <h3 class="display-4" data-i18n="craft.{i}.t">{e(it["title"]["no"])}</h3>\n'
-                  f'          <p class="menu-item__desc" style="margin-top:0" data-i18n="craft.{i}.b">{e(it["body"]["no"])}</p>\n'
-                  f'        </div>\n')
+        kort = {'key': str(i), 'href': None, 'image': it['image'],
+                'alt': {'no': it.get('alt', ''), 'en': it.get('alt', '')},
+                'title': it['title'], 'sub': it['body']}
+        s = CRAFT_STIKKORD.get(it['title']['no'].strip().lower())
+        if s: kort['stikkord'] = {'no': s[0], 'en': s[1]}
+        items.append(kort)
+
     return f'''  <!-- The craft -->
   <section class="section">
     <div class="wrap">
@@ -128,8 +148,7 @@ def craft_section():
         <span class="kv-eyebrow" data-i18n="home.craftEyebrow">{e(eb['no'])}</span>
         <h2 class="display-2" data-i18n="home.craftTitle">{e(ti['no'])}</h2>
       </header>
-      <div class="grid-3" style="margin-top:var(--space-7)">
-{cards}      </div>
+      {carousel.track(items, 'craft', 'Slik jobber vi')}
     </div>
   </section>
 

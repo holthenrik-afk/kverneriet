@@ -25,7 +25,12 @@ def _href(h):
 
 
 def card(c, nokkel):
-    """Ett kort. Lenken nederst er en lenke, ikke en knapp."""
+    """Ett kort. Lenken nederst er en lenke, ikke en knapp.
+
+    Stikkordet ligger som en pille nederst til venstre på bildet. Det skal være et
+    operativt faktum – klokkeslett, antall personer eller pris fra – fordi det er
+    det gjesten leter etter når hun bestemmer seg få timer før besøket.
+    """
     tit, sub, alt = c['title'], c.get('sub') or {}, c.get('alt') or {}
     lt = c.get('lenketekst') or {'no': 'Les mer', 'en': 'Read more'}
     k = f'{nokkel}.{c["key"]}'
@@ -33,12 +38,25 @@ def card(c, nokkel):
     if sub.get('no'): G.add(f'{k}.sub', sub['no'], sub.get('en') or sub['no'])
     G.add(f'{k}.cta', lt['no'], lt.get('en') or lt['no'])
 
-    href, attrs = _href(c.get('href', ''))
-    tag = 'a' if href else 'button'
-    opn = f'<a class="kort" href="{href}" {attrs}>' if href else f'<button class="kort" type="button" {attrs}>'
+    stikk = c.get('stikkord') or {}
+    pille = ''
+    if stikk.get('no'):
+        G.add(f'{k}.pille', stikk['no'], stikk.get('en') or stikk['no'])
+        pille = f'<span class="kort__pille" data-i18n="{k}.pille">{e(stikk["no"])}</span>'
+
     bilde = (f'<figure class="kort__bilde"><img src="{c["image"]}" alt="{e(alt.get("no",""))}" '
-             f'loading="lazy" decoding="async"></figure>') if c.get('image') else ''
+             f'loading="lazy" decoding="async">{pille}</figure>') if c.get('image') else ''
     sub_html = f'<p class="kort__sub" data-i18n="{k}.sub">{e(sub["no"])}</p>' if sub.get('no') else ''
+
+    # href=None betyr et kort som bare skal leses – «Slik jobber vi» peker ingen steder
+    # ennå. Da blir det en div uten lenketekst, ikke en knapp som ikke gjør noe.
+    if c.get('href') is None:
+        return (f'<div class="kort kort--flat">{bilde}<div class="kort__tekst">'
+                f'<h3 class="kort__tit" data-i18n="{k}.title">{e(tit["no"])}</h3>'
+                f'{sub_html}</div></div>')
+
+    href, attrs = _href(c['href'])
+    opn = f'<a class="kort" href="{href}" {attrs}>' if href else f'<button class="kort" type="button" {attrs}>'
     return (f'{opn}{bilde}<div class="kort__tekst">'
             f'<h3 class="kort__tit" data-i18n="{k}.title">{e(tit["no"])}</h3>'
             f'{sub_html}'
@@ -77,21 +95,31 @@ def story_section():
             '    </div>\n  </section>\n')
 
 
+# nøkkel, lenke, stikkord (pille), tittel, undertekst, bilde, alt-tekst.
+# Bildene er valgt uten synlig alkohol: Tønsberg har fått advarsel før, og
+# kortene ligger på forsiden der de treffer alle.
 ANLEDNINGER = [
-    ('lunsj',      'lunsj',    'Fra kl. 11 i Oslo, 12 i Tønsberg',  'Lunsj',
-     'Samme burgere som om kvelden, raskt nok til en times pause.'),
-    ('julebord',   'julebord', 'November og desember',              'Julebord',
-     'Burgere i stedet for ribbe. Grupper over 8, 7 i Tønsberg.'),
-    ('selskap',    'selskap',  'Bursdag · vennegjeng · firma',      'Selskap og grupper',
-     'Langbord til gjengen, barnemeny til de små. Opptil 30–40 personer.'),
-    ('latenight',  'late-night', 'Kjøkken til 22, bar til 23',      'Late night',
-     'Etter kino, etter kampen. Drop-in-bord og milkshake med sprit.'),
-    ('middag',     'middag',   'Hver kveld',                        'Middag',
-     'Tre dagers fries, kjøtt vi kverner selv, og god tid.'),
-    ('takeaway',   '#order',   'Hent selv eller få levert',         'Take-away',
-     'Hent selv via OrderX, eller få levert med Wolt og Foodora i Oslo.'),
-    ('gavekort',   'giftcard', 'Hele året',                         'Gavekort',
-     'Et måltid noen faktisk gleder seg til.'),
+    ('lunsj',      'lunsj',      'Fra kl. 11',        'Lunsj',
+     'Samme burgere som om kvelden, raskt nok til en times pause.',
+     '/assets/img/hero-lunsj.jpg',    'Gjester på uteserveringen en lys ettermiddag'),
+    ('julebord',   'julebord',   'Nov og des',        'Julebord',
+     'Burgere i stedet for ribbe. Grupper over 8, 7 i Tønsberg.',
+     '/assets/img/hero-julebord.jpg', 'Spisesalen på Kverneriet Tønsberg'),
+    ('selskap',    'selskap',    'Fra 8 personer',    'Selskap og grupper',
+     'Langbord til gjengen, barnemeny til de små. Opptil 30–40 personer.',
+     '/assets/img/hero-selskap.jpg',  'Gjester ved bordene på uteserveringen'),
+    ('latenight',  'late-night', 'Kjøkken til 22',    'Late night',
+     'Etter kino, etter kampen. Drop-in-bord.',
+     '/assets/img/ln-burger.jpg',     'Burger servert sent på kvelden'),
+    ('middag',     'middag',     'Hver kveld',        'Middag',
+     'Tre dagers fries, kjøtt vi kverner selv, og god tid.',
+     '/assets/img/index-hero.jpg',    'Burger fra Kverneriet på tallerken'),
+    ('takeaway',   '#order',     'Hent eller levert', 'Take-away',
+     'Hent selv via OrderX, eller få levert med Wolt og Foodora i Oslo.',
+     '/assets/img/hero-takeaway.jpg', 'Person med take-away-pose fra Kverneriet på gaten'),
+    ('gavekort',   'giftcard',   'Hele året',         'Gavekort',
+     'Et måltid noen faktisk gleder seg til.',
+     '/assets/img/craft-pack.jpg',    'Kverneriets emballasje i naturmaterialer'),
 ]
 
 
@@ -100,7 +128,10 @@ def occasions_section():
     items = [{'key': k, 'href': h,
               'title': {'no': t, 'en': t},
               'sub': {'no': b, 'en': b},
-              'lenketekst': {'no': 'Les mer', 'en': 'Read more'}} for k, h, e, t, b in ANLEDNINGER]
+              'stikkord': {'no': s, 'en': s},
+              'image': img, 'alt': {'no': alt, 'en': alt},
+              'lenketekst': {'no': 'Les mer', 'en': 'Read more'}}
+             for k, h, s, t, b, img, alt in ANLEDNINGER]
     G.add('home.occEyebrow', 'Lunsj, kveld og fest', 'Lunch, evening and celebration')
     G.add('home.occTitle', 'Anledninger', 'Occasions')
     return ('  <section class="section section--flush-top" id="anledninger">\n    <div class="wrap">\n'
