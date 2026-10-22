@@ -445,9 +445,25 @@ html{scroll-behavior:smooth}
 
 /* «Sett i»-stripe under heroen */
 .seen-in{margin-top:var(--space-7)}
-.seen-in__logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--space-5) var(--space-7);margin-top:var(--space-5)}
-.seen-in .press-logo{background-color:var(--ink-500);opacity:.8;height:22px}
-.seen-in .press-logo--dn{width:120px}.seen-in .press-logo--nettavisen{width:96px}.seen-in .press-logo--tb{width:100px}.seen-in .press-logo--meravoslo{height:28px;width:54px}
+/* Rutenett og ikke flex-wrap: med åtte logoer i ulike bredder brøt flexen
+   6 + 2, som ser skjevt ut. Rutenettet gir fire og fire uansett bredde. */
+.seen-in__logos{display:grid;grid-template-columns:repeat(4,1fr);place-items:center;
+  gap:var(--space-6) var(--space-5);margin-top:var(--space-5)}
+@media (max-width:719px){
+  .seen-in__logos{grid-template-columns:repeat(2,1fr)}
+}
+/* Logoene er masker med contain, så både bredde og høyde må opp for at de skal
+   bli større – bare høyde gjør ingenting når bredden er det trange målet.
+   Faktoren står ett sted; grunntallene er hver logos egen bredde ved 22px. */
+.seen-in{--kv-logo:1.55}
+.seen-in .press-logo{background-color:var(--ink-500);opacity:.8;
+  height:calc(22px * var(--kv-logo));width:calc(88px * var(--kv-logo))}
+.seen-in .press-logo--vg{width:calc(60px * var(--kv-logo))}
+.seen-in .press-logo--aftenposten{width:calc(80px * var(--kv-logo))}
+.seen-in .press-logo--dn{width:calc(120px * var(--kv-logo))}
+.seen-in .press-logo--nettavisen{width:calc(96px * var(--kv-logo))}
+.seen-in .press-logo--tb{width:calc(100px * var(--kv-logo))}
+.seen-in .press-logo--meravoslo{height:calc(28px * var(--kv-logo));width:calc(54px * var(--kv-logo))}
 .seen-in .press-logo--text,.press-head__logos .press-logo--text,.media-card .press-logo--text,.seen-in .press-logo--img,.press-head__logos .press-logo--img,.media-card .press-logo--img{background:none;-webkit-mask:none;mask:none;width:auto}
 .seen-in .press-logo--text{color:var(--ink-500)}
 
@@ -714,10 +730,13 @@ html{scroll-behavior:smooth}
 /* Outline-knappen forsvinner mot et lyst bilde – den trenger egen flate her. */
 .hero-home--video .btn--outline{border-color:rgba(250,248,245,.72);color:var(--paper-50);background:rgba(0,0,0,.28);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .hero-home--video .btn--outline:hover{background:rgba(0,0,0,.5);border-color:var(--paper-50)}
-/* Karusellen under starter med section--flush-top, så luften mot presselogoene
-   må komme herfra. Uten den legger seksjonsoverskriften seg oppå logorekka. */
-.hero-trust{padding-top:var(--space-7);padding-bottom:var(--space-8)}
-.hero-trust{text-align:center}
+/* Presse-stripen står i en lyserosa boks. Karusellen under er flush-top, så
+   luften mot logorekka må komme herfra. */
+.hero-trust{padding-block:var(--space-8);text-align:center}
+.hero-trust .seen-in{margin-top:0}
+/* Ingen streker rundt etiketten her – boksen avgrenser den allerede. */
+.hero-trust .divider{justify-content:center}
+.hero-trust .divider::before,.hero-trust .divider::after{display:none}
 .hero-trust .lede{max-width:62ch;margin-inline:auto}
 @media (max-width:719px){
   .hero-home__inner{min-height:min(64vh,520px)}

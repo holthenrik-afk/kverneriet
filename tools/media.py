@@ -70,7 +70,7 @@ SEEN_IN_ORDER = ['dagbladet', 'finansavisen', 'vg', 'aftenposten', 'dn', 'nettav
 def seen_in():
     """«Omtalt i»: etiketten som en divider (samme komponent som «Galleri»/«Se også»), logoene i én rolig, énfarget rad."""
     present = [k for k in SEEN_IN_ORDER if any(m['outlet'] == k for m in MEDIA) or k == 'dagbladet']
-    return ('    <div class="seen-in"><div class="divider"><span data-i18n="media.seenIn">Omtalt i</span></div>'
+    return ('      <div class="seen-in"><div class="divider"><span data-i18n="media.seenIn">Omtalt i</span></div>'
             '<div class="seen-in__logos">' + ''.join(logo(k) for k in present) + '</div></div>')
 
 def proof():
@@ -87,7 +87,8 @@ if __name__ == '__main__':
     s = open('index.html', encoding='utf-8').read()
     # Logostripe rett etter tillitsraden
     # Tillitsraden (beviskortene) er tatt bort etter ønske fra Henrik 21.09.2026 – bare «Omtalt i»-stripen står igjen under CTA-ene
-    s, n = re.subn(r'(?:    <div class="proof">.*?</div>\n|    <div class="trust">.*?\n    </div>\n)?    <div class="seen-in">.*?</div>\n', lambda m: seen_in() + '\n', s, count=1, flags=re.S)
+    # Innrykket er ikke fast: stripen ligger nå inne i en wrap i den fargede boksen.
+    s, n = re.subn(r'(?: *<div class="proof">.*?</div>\n| *<div class="trust">.*?\n *</div>\n)? *<div class="seen-in">.*?</div>\n', lambda m: seen_in() + '\n', s, count=1, flags=re.S)
     if n != 1: raise SystemExit('seen-in strip not found')
     # Media-seksjonen erstatter presse-seksjonen på forsiden (kortene dekker det samme og mer)
     s, n = re.subn(r'  <section class="section[^"]*" id="(?:presse|media)">.*?\n  </section>\n', lambda m: section(MEDIA), s, count=1, flags=re.S)
