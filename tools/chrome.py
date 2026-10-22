@@ -81,6 +81,7 @@ def footer(menu_href='/meny/'):
 {blog_link('    <span class="pipe" aria-hidden="true">|</span><a href="/blogg/" data-i18n="blog.title">Blogg</a>')}    <span class="pipe" aria-hidden="true">|</span><a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
     <span class="pipe" aria-hidden="true">|</span><a href="https://join.kverneriet.com/" data-i18n="foot.work">Jobb hos oss</a>
     <span class="pipe" aria-hidden="true">|</span><a href="{ORG['sameAs'][0]}" rel="noopener" target="_blank">Facebook</a>
+    <span class="pipe" aria-hidden="true">|</span><button type="button" class="link-btn" data-consent-open data-i18n="consent.title">Informasjonskapsler</button>
   </div>
 </footer>
 '''
@@ -120,6 +121,46 @@ def add_pixel(html):
     import re as _re
     html = _re.sub(PIXEL_RE, '', html)
     return html.replace('</body>', PIXEL + '\n</body>', 1)
+
+# Google-taggen: GA4 (G-QP2HX05YNB) og Google Ads (AW-679169843), de samme ID-ene som kverneriet.com,
+# så historikken henger sammen. Consent Mode v2: alt står som «denied» til gjesten har sagt ja i
+# banneret (site.js), og et tidligere valg leses fra localStorage før taggen lastes.
+GA4, ADS = 'G-QP2HX05YNB', 'AW-679169843'
+TAG_HEAD = f'''<!-- sporing:start -->
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}
+(function(){{var c=null;try{{c=localStorage.getItem('kv-consent');}}catch(e){{}}var g=c==='granted'?'granted':'denied';
+gtag('consent','default',{{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500}});}})();
+gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);
+gtag('js',new Date());gtag('config','{GA4}');gtag('config','{ADS}');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA4}"></script>
+<!-- sporing:end -->
+'''
+CONSENT = '''<!-- samtykke:start -->
+<div class="consent" role="dialog" aria-labelledby="consent-title" hidden>
+  <p class="consent__title kv-eyebrow" id="consent-title" data-i18n="consent.title">Informasjonskapsler</p>
+  <p class="consent__text" data-i18n="consent.text">Vi bruker informasjonskapsler fra Google og Meta for å se hvordan siden brukes og om annonsene våre virker. Du velger selv, og kan endre valget nederst på siden.</p>
+  <div class="consent__actions">
+    <button type="button" class="btn btn--outline btn--md" data-consent="denied" data-i18n="consent.deny">Bare nødvendige</button>
+    <button type="button" class="btn btn--solid btn--md" data-consent="granted" data-i18n="consent.accept">Godta</button>
+  </div>
+</div>
+<!-- samtykke:end -->
+'''
+G.add('consent.title', 'Informasjonskapsler', 'Cookies')
+G.add('consent.text', 'Vi bruker informasjonskapsler fra Google og Meta for å se hvordan siden brukes og om annonsene våre virker. Du velger selv, og kan endre valget nederst på siden.',
+      'We use cookies from Google and Meta to see how the site is used and whether our ads work. It is your choice, and you can change it at the bottom of the page.')
+G.add('consent.deny', 'Bare nødvendige', 'Only necessary')
+G.add('consent.accept', 'Godta', 'Accept')
+
+def add_tracking(html):
+    """Google-taggen øverst i <head> og samtykkebanneret før </body>, én gang per side."""
+    import re as _re
+    html = _re.sub(r'<!-- sporing:start -->.*?<!-- sporing:end -->\n', '', html, flags=_re.S)
+    html = _re.sub(r'<!-- samtykke:start -->.*?<!-- samtykke:end -->\n', '', html, flags=_re.S)
+    html = _re.sub(r'(<meta name="viewport"[^>]*>\n)', lambda m: m.group(1) + TAG_HEAD, html, count=1)
+    return html.replace('</body>', CONSENT + '</body>', 1)
 
 HEADER_RE = r'(?:<a class="skip-link"[^>]*>.*?</a>\n)?<header class="site-header">.*?</header>\n'
 FOOTER_RE = r'<footer class="site-footer">.*?</footer>\n'

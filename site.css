@@ -373,6 +373,13 @@ html{scroll-behavior:smooth}
 .site-footer__row .pipe{color:var(--text-faint)}
 .site-footer__row a{border:0;font-family:var(--font-cond);font-weight:700;font-size:13px;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted)}
 .site-footer__row a:hover{color:var(--text-strong)}
+.site-footer__row .link-btn{background:none;border:0;padding:0;cursor:pointer;font-family:var(--font-cond);font-weight:700;font-size:13px;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted)}
+.site-footer__row .link-btn:hover{color:var(--text-strong)}
+/* Samtykkebanner: rolig kort nederst, samme kortstil som modalen. Begge valg er like store. */
+.consent{position:fixed;left:var(--gutter);right:var(--gutter);bottom:var(--gutter);z-index:70;max-width:520px;margin-left:auto;background:var(--surface-card);border:1px solid var(--line-hairline);border-radius:var(--radius-1);box-shadow:var(--shadow-lift);padding:var(--space-5)}
+.consent[hidden]{display:none}
+.consent__text{margin:var(--space-2) 0 var(--space-4);color:var(--text-muted);font-size:15px;line-height:1.5}
+.consent__actions{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
 .site-footer__note{max-width:var(--page-wide);margin:var(--space-4) auto 0;font-size:var(--type-caption);color:var(--text-faint)}
 
 /* ---------- Venue cards / triptych on the landing page ---------- */
