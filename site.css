@@ -646,7 +646,10 @@ html{scroll-behavior:smooth}
    overflow:hidden, så det som vokser utenfor kanten klippes bort. */
 .cta-band--skifte .cta-band__img{
   animation:kv-vokst calc(var(--kv-runde) * 2) ease-in-out infinite alternate}
-.cta-band__img--fade{opacity:0;
+/* Må ha samme spesifisitet som regelen over, ellers vinner den og slår ut
+   hele animation-egenskapen her – da blir krysstoningen borte og båndet står
+   fast på det første bildet. */
+.cta-band--skifte .cta-band__img--fade{opacity:0;
   animation:kv-vokst calc(var(--kv-runde) * 2) ease-in-out infinite alternate,
             kv-skifte var(--kv-runde) linear infinite;
   animation-delay:0s,calc((var(--kv-fade) - 1) * var(--kv-runde) / 3)}
