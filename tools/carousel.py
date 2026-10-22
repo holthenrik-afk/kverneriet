@@ -98,22 +98,45 @@ def story_section():
 # nøkkel, lenke, stikkord (pille), tittel, undertekst, bilde, alt-tekst.
 # Bildene er valgt uten synlig alkohol: Tønsberg har fått advarsel før, og
 # kortene ligger på forsiden der de treffer alle.
+# (nøkkel, side, stikkord, tittel, undertekst, bilde, alt-tekst) – norsk og engelsk.
+# Kortene sto lenge med norsk tekst også i den engelske utgaven, fordi de ble satt opp
+# med 'en': samme norske streng. Begge språk står nå side om side her.
 ANLEDNINGER = [
-    ('lunsj',      'lunsj',      'Fra kl. 11',        'Lunsj',
-     'Samme burgere som om kvelden, raskt nok til en times pause.',
-     '/assets/img/hero-lunsj.jpg',    'Gjester på uteserveringen en lys ettermiddag'),
-    ('julebord',   'julebord',   'Nov og des',        'Julebord',
-     'Burgere i stedet for ribbe. Grupper over 8, 7 i Tønsberg.',
-     '/assets/img/hero-julebord.jpg', 'Spisesalen på Kverneriet Tønsberg'),
-    ('selskap',    'selskap',    'Fra 8 personer',    'Selskap og grupper',
-     'Langbord til gjengen, barnemeny til de små. Opptil 30–40 personer.',
-     '/assets/img/hero-selskap.jpg',  'Gjester ved bordene på uteserveringen'),
-    ('latenight',  'late-night', 'Kjøkken til 22',    'Late night',
-     'Etter kino, etter kampen. Drop-in-bord.',
-     '/assets/img/ln-burger.jpg',     'Burger servert sent på kvelden'),
-    ('middag',     'middag',     'Hver kveld',        'Middag',
-     'Tre dagers fries, kjøtt vi kverner selv, og god tid.',
-     '/assets/img/index-hero.jpg',    'Burger fra Kverneriet på tallerken'),
+    ('lunsj',      'lunsj',
+     ('Fra kl. 11', 'From 11.00'),
+     ('Lunsj', 'Lunch'),
+     ('Samme burgere som om kvelden, raskt nok til en times pause.',
+      'The same burgers as in the evening, fast enough for an hour off.'),
+     '/assets/img/hero-lunsj.jpg',
+     ('Gjester på uteserveringen en lys ettermiddag', 'Guests on the terrace on a bright afternoon')),
+    ('julebord',   'julebord',
+     ('Nov og des', 'Nov and Dec'),
+     ('Julebord', 'Christmas parties'),
+     ('Burgere i stedet for ribbe. Grupper over 8, 7 i Tønsberg.',
+      'Burgers instead of pork belly. Groups over 8, or 7 in Tønsberg.'),
+     '/assets/img/hero-julebord.jpg',
+     ('Spisesalen på Kverneriet Tønsberg', 'The dining room at Kverneriet Tønsberg')),
+    ('selskap',    'selskap',
+     ('Fra 8 personer', 'From 8 people'),
+     ('Selskap og grupper', 'Parties and groups'),
+     ('Langbord til gjengen, barnemeny til de små. Opptil 30–40 personer.',
+      'A long table for the group, a kids menu for the little ones. Up to 30–40 people.'),
+     '/assets/img/hero-selskap.jpg',
+     ('Gjester ved bordene på uteserveringen', 'Guests at the tables on the terrace')),
+    ('latenight',  'late-night',
+     ('Kjøkken til 22', 'Kitchen until 22'),
+     ('Late night', 'Late night'),
+     ('Etter kino, etter kampen. Drop-in-bord.',
+      'After the cinema, after the match. Walk-in tables.'),
+     '/assets/img/ln-burger.jpg',
+     ('Burger servert sent på kvelden', 'A burger served late in the evening')),
+    ('middag',     'middag',
+     ('Hver kveld', 'Every evening'),
+     ('Middag', 'Dinner'),
+     ('Tre dagers fries, kjøtt vi kverner selv, og god tid.',
+      'Three-day fries, beef we grind ourselves, and time to linger.'),
+     '/assets/img/index-hero.jpg',
+     ('Burger fra Kverneriet på tallerken', 'A Kverneriet burger on the plate')),
     # Take-away og gavekort lå her før, men har fått egne seksjoner rett under
     # karusellen (22.10.2026). To like kort med samme bilde og samme lenke rett
     # over seksjonene de peker til, gir bare to steder å dele klikkene på.
@@ -123,10 +146,10 @@ ANLEDNINGER = [
 def occasions_section():
     """Anledninger – samme karusellkomponent som over (ønske fra Kverneriet 21.10.2026)."""
     items = [{'key': k, 'href': h,
-              'title': {'no': t, 'en': t},
-              'sub': {'no': b, 'en': b},
-              'stikkord': {'no': s, 'en': s},
-              'image': img, 'alt': {'no': alt, 'en': alt},
+              'title': {'no': t[0], 'en': t[1]},
+              'sub': {'no': b[0], 'en': b[1]},
+              'stikkord': {'no': s[0], 'en': s[1]},
+              'image': img, 'alt': {'no': alt[0], 'en': alt[1]},
               'lenketekst': {'no': 'Les mer', 'en': 'Read more'}}
              for k, h, s, t, b, img, alt in ANLEDNINGER]
     G.add('home.occEyebrow', 'Lunsj, kveld og fest', 'Lunch, evening and celebration')

@@ -11,7 +11,7 @@ import os, re, sys, hashlib, subprocess, datetime, functools
 print = functools.partial(print, flush=True)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import kv, chrome, modal, faq, carousel, i18n_gen as G, pages
-import build_venue, build_menu, build_landing, build_blog, images, seo_head
+import build_venue, build_menu, build_landing, build_blog, build_faq, images, seo_head
 import media as MD
 os.chdir(kv.ROOT)
 
@@ -36,7 +36,7 @@ def cta_section():
     # på veggen og en hylle med spritflasker. Tønsberg-interiøret er rent, og passer dessuten
     # til «Det startet i Tønsberg».
     G.add('home.ctaAlt', 'Spisesalen på Kverneriet Tønsberg', 'The dining room at Kverneriet Tønsberg')
-    return f"""  <section class="cta-band">
+    return f"""  <section class="cta-band" id="om">
     <img class="cta-band__img" src="/assets/img/hero-julebord.jpg" alt="{e(G._D['no']['home.ctaAlt'])}" loading="lazy" decoding="async">
     <div class="cta-band__scrim" aria-hidden="true"></div>
     <div class="cta-band__inner wrap">
@@ -98,8 +98,8 @@ def takeaway_section():
       </header>
       <p class="lede" data-i18n="home.taBody">{e(G._D['no']['home.taBody'])}</p>
       <div class="band-cta">
-        <button class="btn btn--primary btn--lg" type="button" data-order-open data-track="cta:ta:order" data-i18n="act.order">Bestill take-away</button>
-        <a class="btn btn--paper btn--lg" href="{kv.url('takeaway')}" data-track="cta:ta:side" data-i18n="act.seeTakeaway">Se take-away-menyen</a>
+        <button class="btn btn--primary btn--lg" type="button" data-order-open data-track="cta:takeaway:forside" data-i18n="act.order">Bestill take-away</button>
+        <a class="btn btn--paper btn--lg" href="{kv.url('takeaway')}" data-track="cta:takeaway:meny" data-i18n="act.seeTakeaway">Se take-away-menyen</a>
       </div>
     </div>
   </section>
@@ -204,6 +204,15 @@ CRAFT_STIKKORD = {
 }
 
 
+# To av håndverkskortene har fått sin egen side. Resten peker fortsatt ingen steder.
+# Samme nøkkel som CRAFT_STIKKORD: tittelen i små bokstaver, hentet fra Sanity.
+CRAFT_LENKE = {
+    'tre dagers fries':  ('fries',      'Les om friesene',  'About the fries'),
+    'soft serve deluxe': ('soft-serve', 'Les om softisen',  'About the soft serve'),
+    'baren':             ('cocktails',  'Se baren',         'See the bar'),
+}
+
+
 def craft_section():
     """«Slik jobber vi» – samme karusell som de to andre på forsiden.
 
@@ -220,8 +229,13 @@ def craft_section():
         kort = {'key': str(i), 'href': None, 'image': it['image'],
                 'alt': {'no': it.get('alt', ''), 'en': it.get('alt', '')},
                 'title': it['title'], 'sub': it['body']}
-        s = CRAFT_STIKKORD.get(it['title']['no'].strip().lower())
+        navn = it['title']['no'].strip().lower()
+        s = CRAFT_STIKKORD.get(navn)
         if s: kort['stikkord'] = {'no': s[0], 'en': s[1]}
+        lenke = CRAFT_LENKE.get(navn)
+        if lenke:
+            kort['href'] = lenke[0]
+            kort['lenketekst'] = {'no': lenke[1], 'en': lenke[2]}
         items.append(kort)
 
     return f'''  <!-- The craft -->
@@ -479,7 +493,7 @@ def cache_bust():
     print(f'css v={h} js v={js}')
 
 if __name__ == '__main__':
-    print('== sider'); build_venue.build(); build_menu.build(); build_landing.build(); build_blog.build(); build_about(); patch_index(); patch_takeaway(); build_404()
+    print('== sider'); build_venue.build(); build_menu.build(); build_landing.build(); build_blog.build(); build_about(); build_faq.build(); patch_index(); patch_takeaway(); build_404()
     print('== presse'); subprocess.run([sys.executable, 'tools/media.py'], check=True); subprocess.run([sys.executable, 'tools/press.py'], check=True)
     print('== bilder'); images.apply_all(images.build_variants())
     print('== oversettelser'); print(G.write(), 'genererte nøkler')

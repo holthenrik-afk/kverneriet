@@ -30,6 +30,14 @@
       var s=d[el.getAttribute('data-i18n-title')];
       if(s!==undefined)el.setAttribute('title',s);
     });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      var s=d[el.getAttribute('data-i18n-ph')];
+      if(s!==undefined)el.setAttribute('placeholder',s);
+    });
+    document.querySelectorAll('[data-i18n-label]').forEach(function(el){
+      var s=d[el.getAttribute('data-i18n-label')];
+      if(s!==undefined)el.setAttribute('aria-label',s);
+    });
     document.querySelectorAll('[data-i18n-html]').forEach(function(el){
       var s=d[el.getAttribute('data-i18n-html')];
       if(s!==undefined)el.innerHTML=s;
@@ -437,6 +445,86 @@
     });
     mark(0);
   });
+
+  /* ---------- Søk i spørsmålene (/sporsmal/) ----------
+     Filtrerer <details>-radene mens gjesten skriver. Søkestrengen i data-sok inneholder
+     spørsmål og svar på begge språk pluss synonymer fra faq.SOKEORD, så «hund», «dog» og
+     «hundevennlig» treffer det samme. Æ, ø og å foldes ned, slik at «apent» finner «åpent».
+     Uten JavaScript står alle spørsmålene åpne for filtrering, som før. */
+  (function(){
+    var rot=document.querySelector('[data-faq-sok]');
+    if(!rot)return;
+    var felt=rot.querySelector('input');
+    var tomKnapp=rot.querySelector('[data-faq-tom]');
+    var status=rot.querySelector('[data-faq-status]');
+    var seksjon=document.getElementById('faq');
+    var tomt=document.querySelector('[data-faq-tomt]');
+    var rader=[].slice.call(document.querySelectorAll('.faq__item[data-sok]'));
+    var grupper=[].slice.call(document.querySelectorAll('.faq-gruppe'));
+    if(!felt||!rader.length)return;
+
+    function flat(s){
+      return String(s).toLowerCase()
+        .replace(/[æä]/g,'ae').replace(/[øö]/g,'o').replace(/å/g,'a')
+        .replace(/[éèê]/g,'e').replace(/[^a-z0-9 ]+/g,' ')
+        .replace(/\s+/g,' ').trim();
+    }
+    function ordliste(s){var o=flat(s);return o?o.split(' '):[];}
+    rader.forEach(function(r){
+      r.kvSterk=ordliste(r.getAttribute('data-sok'));        /* spørsmål + synonymer */
+      r.kvSvak=ordliste(r.getAttribute('data-sok-tekst'));   /* selve svaret */
+    });
+    /* Sterkt lag godtar ordstart, svakt lag krever hele ord. Ellers finner «hund»
+       også «hundrevis», og «bar» finner «barnemeny». */
+    function treffer(r,o){
+      var i;
+      for(i=0;i<r.kvSterk.length;i++)if(r.kvSterk[i].lastIndexOf(o,0)===0)return true;
+      for(i=0;i<r.kvSvak.length;i++)if(r.kvSvak[i]===o)return true;
+      return false;
+    }
+
+    var apnet=[];
+    function lukkApnede(){apnet.forEach(function(r){r.open=false;});apnet=[];}
+
+    function kjor(){
+      var raa=felt.value||'';
+      if(tomKnapp)tomKnapp.hidden=!raa;
+      var q=flat(raa);
+      if(!q){
+        lukkApnede();
+        rader.forEach(function(r){r.hidden=false;});
+        grupper.forEach(function(g){g.hidden=false;});
+        if(seksjon)seksjon.classList.remove('is-sok');
+        if(tomt)tomt.hidden=true;
+        if(status)status.textContent='';
+        return;
+      }
+      var ord=q.split(' ');
+      var treff=0;
+      lukkApnede();
+      rader.forEach(function(r){
+        var ok=ord.every(function(o){return treffer(r,o);});
+        r.hidden=!ok;
+        if(ok){treff++;if(!r.open){r.open=true;apnet.push(r);}}
+      });
+      grupper.forEach(function(g){g.hidden=!g.querySelector('.faq__item:not([hidden])');});
+      if(seksjon)seksjon.classList.add('is-sok');
+      if(tomt)tomt.hidden=treff>0;
+      if(status){
+        var mal=(window.KVT&&window.KVT('faq.sokTreff'))||'';
+        status.textContent=treff&&mal?mal.split('{n}').join(treff).split('{m}').join(rader.length):'';
+      }
+    }
+
+    var timer=null;
+    felt.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(kjor,120);});
+    felt.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){felt.value='';kjor();}
+      else if(e.key==='Enter')e.preventDefault();
+    });
+    if(tomKnapp)tomKnapp.addEventListener('click',function(){felt.value='';kjor();felt.focus();});
+    document.addEventListener('kv:lang',function(){if(felt.value)kjor();});
+  })();
 
   /* Apply the stored language once the DOM is in place */
   applyLang(LANG);

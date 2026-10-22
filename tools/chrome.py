@@ -35,6 +35,8 @@ def header(active=None, menu_href='/meny/'):
       <p class="mobile-panel__gruppe" data-i18n="nav.venues">Restauranter</p>
 {panel}      <p class="mobile-panel__gruppe" data-i18n="nav.eat">Mat og drikke</p>
       <a href="{menu_href}" data-i18n="act.menu">Meny</a>
+      <a href="/fries/" data-i18n="lp.fries">Fries</a>
+      <a href="/soft-serve/" data-i18n="lp.softserve">Soft serve</a>
       <a href="/lunsj/" data-i18n="lp.lunch">Lunsj</a>
       <a href="/middag/" data-i18n="lp.dinner">Middag</a>
       <a href="/cocktails/" data-i18n="lp.cocktails">Cocktails</a>
@@ -44,6 +46,8 @@ def header(active=None, menu_href='/meny/'):
       <a href="/selskap/" data-i18n="lp.groups">Selskap og grupper</a>
       <a href="/late-night/" data-i18n="lp.late">Late night</a>
       <p class="mobile-panel__gruppe" data-i18n="nav.more">Mer</p>
+      <a href="/om/" data-i18n="nav.about">Om Kverneriet</a>
+      <a href="/sporsmal/" data-i18n="nav.faq">Spørsmål og svar</a>
       <a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
 {blog_link('      <a href="/blogg/" data-i18n="blog.title">Blogg</a>')}      <a href="https://join.kverneriet.com/" data-i18n="act.work">Jobb hos oss</a>
     </nav>
@@ -72,13 +76,17 @@ def footer(menu_href='/meny/'):
     <span class="kv-eyebrow">Kverneriet &copy; 2026</span>
     <span class="pipe" aria-hidden="true">|</span><a href="{menu_href}" data-i18n="act.menu">Meny</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/takeaway/" data-i18n="act.takeaway">Take-away</a>
+    <span class="pipe" aria-hidden="true">|</span><a href="/fries/" data-i18n="lp.fries">Fries</a>
+    <span class="pipe" aria-hidden="true">|</span><a href="/soft-serve/" data-i18n="lp.softserve">Soft serve</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/lunsj/" data-i18n="lp.lunch">Lunsj</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/middag/" data-i18n="lp.dinner">Middag</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/cocktails/" data-i18n="lp.cocktails">Cocktails</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/julebord/" data-i18n="lp.xmas">Julebord</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/selskap/" data-i18n="lp.groups">Selskap og grupper</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/late-night/" data-i18n="lp.late">Late night</a>
-{blog_link('    <span class="pipe" aria-hidden="true">|</span><a href="/blogg/" data-i18n="blog.title">Blogg</a>')}    <span class="pipe" aria-hidden="true">|</span><a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
+{blog_link('    <span class="pipe" aria-hidden="true">|</span><a href="/blogg/" data-i18n="blog.title">Blogg</a>')}    <span class="pipe" aria-hidden="true">|</span><a href="/om/" data-i18n="nav.about">Om Kverneriet</a>
+    <span class="pipe" aria-hidden="true">|</span><a href="/sporsmal/" data-i18n="nav.faq">Spørsmål og svar</a>
+    <span class="pipe" aria-hidden="true">|</span><a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
     <span class="pipe" aria-hidden="true">|</span><a href="https://join.kverneriet.com/" data-i18n="foot.work">Jobb hos oss</a>
     <span class="pipe" aria-hidden="true">|</span><a href="{ORG['sameAs'][0]}" rel="noopener" target="_blank">Facebook</a>
     <span class="pipe" aria-hidden="true">|</span><button type="button" class="link-btn" data-consent-open data-i18n="consent.title">Informasjonskapsler</button>
@@ -90,8 +98,10 @@ G.add('nav.venues', 'Restauranter', 'Restaurants')
 G.add('nav.eat', 'Mat og drikke', 'Food and drink')
 G.add('nav.occasions', 'Anledninger', 'Occasions')
 G.add('nav.more', 'Mer', 'More')
+G.add('nav.about', 'Om Kverneriet', 'About Kverneriet')
+G.add('nav.faq', 'Spørsmål og svar', 'Questions and answers')
 
-SECTIONS = [('about', 'v.about', 'Om'), ('gallery', 'v.gallery', 'Galleri'), ('booking', 'v.booking', 'Booking'),
+SECTIONS = [('about', 'v.about', 'Om'), ('bar', 'v.barEyebrow', 'Baren'), ('gallery', 'v.gallery', 'Galleri'), ('booking', 'v.booking', 'Booking'),
             ('practical', 'v.practical', 'Praktisk info'), ('faq', 'v.faq', 'Spørsmål')]
 
 def venue_nav(slug, on_menu=False):

@@ -172,7 +172,7 @@ def ld_for(slug, html):
         ld.append(crumbs(("Kverneriet", DOMAIN), ("Blogg", kv.abs_url('blogg')), (p['title'], kv.abs_url(slug))))
     else:
         ld.append(webpage(slug))
-        name = {'takeaway': 'Take-away', 'lunsj': 'Lunsj', 'middag': 'Middag', 'julebord': 'Julebord', 'selskap': 'Selskap og grupper', 'cocktails': 'Cocktails', 'late-night': 'Late night', 'om': 'Om Kverneriet'}.get(slug, slug.replace('-', ' ').capitalize())
+        name = {'takeaway': 'Take-away', 'lunsj': 'Lunsj', 'middag': 'Middag', 'julebord': 'Julebord', 'selskap': 'Selskap og grupper', 'cocktails': 'Cocktails', 'late-night': 'Late night', 'om': 'Om Kverneriet', 'fries': 'Fries', 'soft-serve': 'Soft serve', 'sporsmal': 'Spørsmål og svar'}.get(slug, slug.replace('-', ' ').capitalize())
         ld.append(crumbs(("Kverneriet", DOMAIN), (name, kv.abs_url(slug))))
     pairs = faq.from_html(html)
     if pairs: ld.append(faq.ld(pairs))

@@ -12,10 +12,39 @@ V = kv.venues(); ORG = V['org']; PK = ORG['packages']
 e = kv.esc
 def vv(slug): return kv.venue(slug)
 
+def bar_cards():
+    """Ett kort per restaurant på /cocktails/. Tekst, bilder og åpningstider hentes fra
+    build_venue.BAR, så barseksjonen på restaurantsiden og kortet her aldri spriker."""
+    import build_venue as BV
+    G.add('lp.barsEyebrow', 'Baren, sted for sted', 'The bar, place by place')
+    G.add('lp.barCta', 'Se restauranten', 'See the restaurant')
+    cells = ''
+    for v in V['venues']:
+        s = v['slug']; b = BV.BAR[s]; hn, he = BV.bar_hours(v)
+        G.add(f'{s}.barH2', *b['h2']); G.add(f'{s}.bar1', *b['p1'])
+        G.add(f'{s}.barHours', f'Åpent {hn}', f'Open {he}')
+        cells += (f'        <article class="bar-kort">\n'
+                  f'          <figure class="photo" style="aspect-ratio:4/3"><img src="{b["img"]}" alt="{e(b["alt"][0])}" loading="lazy"></figure>\n'
+                  f'          <h3 class="display-4" style="margin-top:var(--space-4)" data-i18n="{s}.barH2">{e(b["h2"][0])}</h3>\n'
+                  f'          <p style="margin-top:var(--space-3)" data-i18n="{s}.bar1">{e(b["p1"][0])}</p>\n'
+                  f'          <p class="caption" style="margin-top:var(--space-3)" data-i18n="{s}.barHours">Åpent {e(hn)}</p>\n'
+                  f'          <a class="btn btn--outline btn--sm" href="{kv.url(s)}#bar" data-i18n="lp.barCta">Se restauranten</a>\n'
+                  f'        </article>\n')
+    return f"""
+  <section class="section section--flush-top" id="barene">
+    <div class="wrap">
+      <div class="divider"><span data-i18n="lp.barsEyebrow">Baren, sted for sted</span></div>
+      <div class="grid-3" style="margin-top:var(--space-6)">
+{cells}      </div>
+    </div>
+  </section>
+"""
+
+
 def page(p):
     slug = p['slug']; meta = pages.PAGES[slug]
-    gallery = ''
-    if p.get('gallery'):
+    gallery = bar_cards() if p.get('bars') else ''
+    if p.get('gallery') and not p.get('bars'):
         cells = ''.join(f'<figure class="photo" style="aspect-ratio:{g[2] if len(g) > 2 else "1/1"}"><img src="{g[0]}" alt="{e(g[1])}" loading="lazy"></figure>' for g in p['gallery'])
         gallery = f'''
   <section class="section section--flush-top">

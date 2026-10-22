@@ -50,6 +50,81 @@ def hours_block(v):
           <p class="caption" data-i18n="{v['slug']}.lunch">Lunsj serveres {e(v['lunch'])}. Hele menyen fra åpning.</p>
         </div>'''
 
+# Baren, sted for sted. Bildene er rombilder, ikke produktbilder: alkoholloven §9-2
+# forbyr reklame for alkohol, og Tønsberg har fått advarsel før. Teksten handler om
+# rommet og åpningstiden, og det eneste vi nevner i glasset er det alkoholfrie.
+BAR = {
+    'majorstua': dict(
+        img='/assets/img/bar-majorstua.jpg',
+        alt=('Den blå baren på Kverneriet Majorstua, med barkrakker og grønne fløyelsbenker',
+             'The blue bar at Kverneriet Majorstua, with bar stools and green velvet benches'),
+        h2=('Baren på Majorstua', 'The bar at Majorstua'),
+        p1=('Baren ligger innerst i lokalet, bak de grønne fløyelsbenkene: blått panel, marmorplate '
+            'og noen få krakker. Det er like mye et sted å vente på bordet som et sted å bli sittende etter maten.',
+            'The bar sits at the far end of the room, behind the green velvet benches: blue panelling, a marble '
+            'top and a handful of stools. It works just as well for waiting for your table as for staying on after dinner.')),
+    'solli': dict(
+        img='/assets/img/bar-solli.jpg',
+        alt=('Bartender bak marmorbaren på Kverneriet Solli, med Solli plass utenfor vinduet',
+             'A bartender behind the marble bar at Kverneriet Solli, with Solli plass outside the window'),
+        h2=('Baren på Solli', 'The bar at Solli'),
+        p1=('Baren på Solli går langs vinduet ut mot plassen, med marmorplate og utsikt til trafikken. '
+            'Her er det like greit å sette seg alene med telefonen som å vente på resten av gjengen.',
+            'The bar at Solli runs along the window facing the square, with a marble top and a view of the traffic. '
+            'Just as good for sitting down alone with your phone as for waiting for the rest of your party.')),
+    'tonsberg': dict(
+        img='/assets/img/bar-tonsberg.jpg',
+        alt=('Bartender bak baren på Kverneriet Tønsberg, under lyslenkene',
+             'A bartender behind the bar at Kverneriet Tønsberg, under the string lights'),
+        h2=('Baren i Tønsberg', 'The bar in Tønsberg'),
+        p1=('Baren ligger rett innenfor terrassen mot kanalen. Om sommeren går det meste ut på brygga, '
+            'om vinteren blir folk sittende her inne under lyslenkene.',
+            'The bar is just inside the terrace facing the canal. In summer most of it moves out onto the quay; '
+            'in winter people stay inside under the string lights.')),
+}
+
+
+def bar_hours(v):
+    """Åpningstidene for baren, som én linje. Samme kilde som praktisk-seksjonen."""
+    no = ', '.join(f'{kv.day_range(h["days"])} til {kv.hhmm(h["closes"])}' for h in v['hours']['bar'])
+    en = ', '.join(f'{kv.day_range(h["days"], "en")} until {kv.hhmm(h["closes"])}' for h in v['hours']['bar'])
+    return no, en
+
+
+def bar_section(v):
+    s = v['slug']; b = BAR[s]
+    hn, he = bar_hours(v)
+    G.add('v.barEyebrow', 'Baren', 'The bar')
+    G.add(f'{s}.barH2', *b['h2'])
+    G.add(f'{s}.bar1', *b['p1'])
+    G.add(f'{s}.bar2', f'Du trenger ikke spise for å sitte her. Baren holder åpent {hn}, og vi har et stort '
+                       'alkoholfritt utvalg, så det finnes alltid noe ordentlig i glasset.',
+          f'You do not have to eat to sit here. The bar is open {he}, and we keep a large alcohol-free selection, '
+          'so there is always something proper in the glass.')
+    G.add('v.barCta', 'Mer om baren', 'More about the bar')
+    return f"""  <!-- Baren -->
+  <section class="section section--flush-top" id="bar">
+    <div class="wrap grid-2 grid-2--start">
+      <figure class="photo" style="aspect-ratio:4/3"><img src="{b['img']}" alt="{e(b['alt'][0])}" loading="lazy"></figure>
+      <div>
+        <header class="sec-head">
+          <div class="sec-head__rule"></div>
+          <span class="kv-eyebrow" data-i18n="v.barEyebrow">Baren</span>
+          <h2 class="display-3" data-i18n="{s}.barH2">{e(b['h2'][0])}</h2>
+        </header>
+        <p class="lede" style="margin-top:var(--space-5)" data-i18n="{s}.bar1">{e(b['p1'][0])}</p>
+        <p style="margin-top:var(--space-4)" data-i18n="{s}.bar2">{e(G._D['no'][f'{s}.bar2'])}</p>
+        <div style="margin-top:var(--space-6);display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn--outline btn--md" href="/cocktails/" data-i18n="v.barCta">Mer om baren</a>
+          <a class="btn btn--ghost btn--md" href="/late-night/" data-i18n="lp.late">Late night</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+"""
+
+
 def page(v):
     s = v['slug']; c = copy_of(v); a = v['address']; p = pages.PAGES[s]
     G.add(f'{s}.heroSub', *c['heroSub']); G.add(f'{s}.slogan', *c['slogan'])
@@ -124,7 +199,7 @@ def page(v):
     </div>
   </section>
 
-  <!-- Galleri -->
+{bar_section(v)}  <!-- Galleri -->
   <section class="section section--flush-top" id="gallery">
     <div class="wrap">
       <div class="divider"><span data-i18n="v.gallery">Galleri</span></div>

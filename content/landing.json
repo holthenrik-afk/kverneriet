@@ -517,8 +517,8 @@
   "slug": "cocktails",
   "crumb": "Cocktails",
   "cta": "book",
-  "img": "/assets/img/ln-cocktail.jpg",
-  "imgAlt": "Rød cocktail på marmorbaren hos Kverneriet",
+  "img": "/assets/img/hero-cocktails.jpg",
+  "imgAlt": "Bartender sikter krydder over en drink med mynte og tørket sitrus",
   "eyebrow": "Bar på alle tre restaurantene",
   "h1": "Cocktails hos Kverneriet",
   "sub": "Vi tar cocktails like seriøst som vi tar burgerne våre. Du trenger ikke komme for å spise – stikk gjerne innom bare for et glass.",
@@ -568,23 +568,6 @@
     "style": "normal"
    }
   ],
-  "gallery": [
-   [
-    "/assets/img/ln-cocktail.jpg",
-    "Rød cocktail på marmorbaren",
-    "4/5"
-   ],
-   [
-    "/assets/img/ln-beer.jpg",
-    "Øl tappes fra tappekrana i baren",
-    "4/5"
-   ],
-   [
-    "/assets/img/ln-hero.jpg",
-    "Gjester som skåler i baren på Kverneriet",
-    "4/5"
-   ]
-  ],
   "facts_title": "Baren",
   "facts": [
    [
@@ -633,7 +616,9 @@
     "Lunsj"
    ]
   ],
-  "cta2": "menu"
+  "cta2": "menu",
+  "bars": true,
+  "pos": "center 60%"
  },
  {
   "slug": "late-night",
@@ -808,5 +793,178 @@
   "seoTitle": "Late night burger i Oslo – kjøkken til 22 | Kverneriet",
   "seoDescription": "Spise sent i Oslo? Kjøkkenet på Majorstua og Solli serverer burgere til 22, baren holder åpent til 23 tir–lør. Milkshake med sprit, øl fra tappen. Drop-in.",
   "img": "https://cdn.sanity.io/images/u0hod2sg/production/28b41d48b45671881998741503d43c235374103d-2000x2994.jpg"
+ },
+ {
+  "slug": "fries",
+  "crumb": "Fries",
+  "cta": "book",
+  "cta2": "takeaway",
+  "img": "/assets/img/craft-fries.jpg",
+  "imgAlt": "Trippelkokte fries med parmesan og persille",
+  "eyebrow": "Tre dager fra potet til tallerken",
+  "h1": "Friesene tar tre dager",
+  "sub": "Vi lager dem fra rå potet på alle tre restaurantene. De er naturlig glutenfrie, og vi mener du smaker arbeidet.",
+  "sec_eyebrow": "Håndverket",
+  "h2": "Derfor bruker vi tre dager på en pommes frites",
+  "body": [
+   "De fleste steder kommer friesene i en frossen pose. Våre gjør ikke det. Potetene kuttes her, og så går de gjennom tre runder over tre dager: først koking, så kjøling, og til slutt frityr i det øyeblikket du bestiller. Det er den siste runden som gir skallet som knaser, og de to første som gjør at innmaten fortsatt smaker potet.",
+   "Hvorfor så mye arbeid for noe som ligger ved siden av burgeren? Fordi det ligger der hver eneste gang. Månedsburgeren skifter, menyen endrer seg litt, men friesene er alltid på tallerkenen. Da synes vi de fortjener den samme oppmerksomheten som kjøttet vi kverner selv.",
+   "American Fries er tynt kuttet og står på menyen alle tre stedene. Du kan ta dem som de er med en av dipsene, eller toppe dem med trøffel og persille, parmesan og persille, eller Fully Loaded. Til selskap setter vi både tynne og tykke på bordet, så alle får prøve begge deler."
+  ],
+  "gallery": [
+   [
+    "/assets/img/ta-press-fries.jpg",
+    "Nærbilde av tykt kuttede, håndlagde fries",
+    "4/3"
+   ],
+   [
+    "/assets/img/g-fries-herb.jpg",
+    "Tynt kuttede fries med parmesan og persille",
+    "4/3"
+   ]
+  ],
+  "media": [
+   "db_2017",
+   "fa_2026"
+  ],
+  "facts_title": "Godt å vite",
+  "facts": [
+   [
+    "Tre dager",
+    "Kokes, kjøles og frityrstekes – siste runde når du bestiller"
+   ],
+   [
+    "Glutenfritt",
+    "Friesene er naturlig glutenfrie"
+   ],
+   [
+    "American Fries",
+    "Tynt kuttet og sprø, standarden på alle tre menyene",
+    "/meny/"
+   ],
+   [
+    "Trøffel og persille",
+    "Sammen med parmesan og persille den mest bestilte toppingen"
+   ],
+   [
+    "Fully Loaded",
+    "Ostesaus, pico de gallo, syltet løk, jalapeño og barbacoa. Majorstua og Tønsberg"
+   ],
+   [
+    "Take-away",
+    "Esken har lufting, så de holder seg sprø på veien hjem",
+    "/takeaway/"
+   ]
+  ],
+  "facts_note": "Prisene står i menyen for hver restaurant.",
+  "others": [
+   [
+    "middag",
+    "dinner",
+    "Middag"
+   ],
+   [
+    "soft-serve",
+    "softserve",
+    "Soft serve"
+   ],
+   [
+    "lunsj",
+    "lunch",
+    "Lunsj"
+   ]
+  ]
+ },
+ {
+  "slug": "soft-serve",
+  "crumb": "Soft serve",
+  "cta": "book",
+  "cta2": "menu",
+  "img": "/assets/img/hero-softserve.jpg",
+  "imgAlt": "Soft Serve Deluxe med sjokoladesaus og smuler i stålskål",
+  "eyebrow": "100 % Jersey-melk",
+  "h1": "Soft serve, laget ordentlig",
+  "sub": "Softisen vår lages på melk og fløte fra Jerseymeieriet. Den er rikere og mer kremet enn vanlig softis, og den er grunnen til at folk bestiller dessert selv om de er mette.",
+  "sec_eyebrow": "Desserten",
+  "h2": "Hvorfor softisen vår smaker annerledes",
+  "body": [
+   "Soft Serve Deluxe lages på 100 % melk fra jerseykyr, levert av Jerseymeieriet. Jerseymelk har mer fett og protein enn vanlig helmelk, og det merkes med en gang: softisen blir tyngre, rikere og mer kremet enn den du får fra et vanlig softisapparat. Ingrediensene er i hovedsak melk og fløte, og ikke stort mer.",
+   "Toppingene lager vi selv, og de er ikke de samme alle steder. Majorstua har Blueberry Cheesecake og Chocolate Deluxe, Solli har Lemon and Crumble og Choco-nuts, og i Tønsberg finner du Pistachio Twist. Oreo-smuler får du overalt.",
+   "Vil du heller ha den i glass, lager vi milkshake av den samme melken: Oreo, sjokolade eller jordbær. Softis og milkshake står på menyen hele året på alle tre restaurantene, og du trenger ikke spise burger først. De fleste gjør det likevel."
+  ],
+  "gallery": [
+   [
+    "/assets/img/g-softserve-oreo.jpg",
+    "Soft serve med Oreo-smuler i stålskål",
+    "4/5"
+   ],
+   [
+    "/assets/img/g-softserve.jpg",
+    "Soft serve med karamell og smuler",
+    "4/5"
+   ],
+   [
+    "/assets/img/g-milkshake.jpg",
+    "Milkshake med krem og sjokolade",
+    "4/5"
+   ]
+  ],
+  "media": [
+   "tb_2020",
+   "db_2023"
+  ],
+  "facts_title": "Godt å vite",
+  "facts": [
+   [
+    "100 % Jersey",
+    "Melk og fløte fra Jerseymeieriet, ikke vanlig helmelk"
+   ],
+   [
+    "Soft Serve Deluxe",
+    "Står på dessertmenyen alle tre stedene",
+    "/meny/"
+   ],
+   [
+    "Oreo-smuler",
+    "Den eneste toppingen du finner på alle tre menyene"
+   ],
+   [
+    "Milkshake",
+    "Oreo, sjokolade eller jordbær, laget på den samme melken"
+   ],
+   [
+    "Majorstua",
+    "Blueberry Cheesecake og Chocolate Deluxe",
+    "/majorstua/menu/"
+   ],
+   [
+    "Solli",
+    "Lemon and Crumble og Choco-nuts",
+    "/solli/menu/"
+   ],
+   [
+    "Tønsberg",
+    "Pistachio Twist og Choco-nuts",
+    "/tonsberg/menu/"
+   ]
+  ],
+  "facts_note": "Prisene står i menyen for hver restaurant.",
+  "others": [
+   [
+    "fries",
+    "fries",
+    "Fries"
+   ],
+   [
+    "middag",
+    "dinner",
+    "Middag"
+   ],
+   [
+    "lunsj",
+    "lunch",
+    "Lunsj"
+   ]
+  ]
  }
 ]

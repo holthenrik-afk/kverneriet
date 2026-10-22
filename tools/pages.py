@@ -44,6 +44,10 @@ PAGES = {
     # Ikke majorstua-about.jpg: den har Aperol- og Fernet-Branca-plakater i bildet,
     # og dette blir og:image når siden deles.
     img='/assets/img/hero-julebord.jpg'),
+ 'sporsmal': dict(
+    title='Spørsmål og svar | Kverneriet',
+    desc='Booking, grupper, allergier, glutenfritt, hunder, uteservering og take-away. Svar på det gjestene spør oss om på Majorstua, Solli og i Tønsberg.',
+    img='/assets/img/trio-majorstua.jpg'),
  'lunsj': dict(
     title='Burgerlunsj på Majorstuen, Solli og i Tønsberg – Kverneriet',
     desc='Lunsj med burger: kjøkkenet åpner 11 på Majorstua, 11.30 på Solli og 12 tor–søn i Tønsberg. Kjøtt vi kverner selv, fries som tar tre dager. Book bord.',
@@ -63,7 +67,15 @@ PAGES = {
  'cocktails': dict(
     title='Cocktails i Oslo – bar på Majorstua og Solli | Kverneriet',
     desc='Cocktails laget med samme detaljfokus som burgerne. Bar på alle tre restaurantene, stort vinkart, øl fra tappen og et bredt alkoholfritt utvalg.',
-    img='/assets/img/ln-cocktail.jpg'),
+    img='/assets/img/hero-cocktails.jpg'),
+ 'fries': dict(
+    title='Tre dagers fries – håndlagde pommes frites | Kverneriet',
+    desc='Friesene våre tar tre dager: kokes, kjøles og frityrstekes når du bestiller. Naturlig glutenfrie. Majorstua, Solli plass og Tønsberg.',
+    img='/assets/img/craft-fries.jpg'),
+ 'soft-serve': dict(
+    title='Soft serve av Jersey-melk – dessert | Kverneriet',
+    desc='Soft Serve Deluxe lages på 100 % Jersey-melk fra Jerseymeieriet. Rikere og mer kremet enn vanlig softis. Også som milkshake. Oslo og Tønsberg.',
+    img='/assets/img/hero-softserve.jpg'),
  'late-night': dict(
     title='Late night burger i Oslo – kjøkken til 22 | Kverneriet',
     desc='Spise sent i Oslo? Kjøkkenet på Majorstua og Solli serverer burgere til 22, baren holder åpent til 23 tir–lør. Milkshake med sprit, øl fra tappen. Drop-in.',

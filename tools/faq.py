@@ -175,8 +175,8 @@ def _landing_faq(slug):
              'How big does the group need to be?', 'Groups larger than 8 (7 in Tønsberg) book as a party and choose a food package for the table. Smaller groups book online as usual, or just drop in – we keep plenty of walk-in tables.'),
             ('faq.sel.packages', 'Hva inneholder matpakkene?', ' '.join(f'{p["name"]} ({p["price"]} kr): {p["desc"]}' for p in PK['items']),
              'What is in the food packages?', 'Burger Package (NOK 429): a 150 g burger of your choice for everyone, the table shares thin- and thick-cut fries (original, truffle & parsley, parmesan & parsley) and a selection of dips. Dinner Package (NOK 579): truffled tater tots and hot wings to share, then a burger of your choice with fries and dips. Full Package (NOK 779): chili cheese balls, truffled tater tots, hot wings and romaine salad to share, a burger of your choice with fries and dips, and the chef’s dessert.'),
-            ('faq.sel.kids', 'Kan barn være med?', f'Selvfølgelig. Barnemeny til {PK["kids"]} kr for gjester under 12 – hamburger, chicken tenders eller toast med fries.',
-             'Can children come?', f'Of course. Kids menu at NOK {PK["kids"]} for guests under 12 – hamburger, chicken tenders or a toastie with fries.'),
+            ('faq.sel.kids', 'Kan barn være med?', f'Selvfølgelig. Barnemeny til {PK["kids"]} kr for gjester under 12 – hamburger med fries, chicken tenders med fries eller ostetoast.',
+             'Can children come?', f'Of course. Kids menu at NOK {PK["kids"]} for guests under 12 – a hamburger with fries, chicken tenders with fries, or a ham and cheese toastie.'),
             ('faq.sel.how', 'Hvordan booker vi?', 'Trykk «Send gruppeforespørsel», velg restaurant og fyll inn antall, dato og tidsrom. Vi svarer på e-post, og bordet er bekreftet når du har fått bekreftelsen.',
              'How do we book?', 'Press “Send group request”, choose a restaurant and fill in headcount, date and time window. We reply by e-mail, and the table is confirmed once you have our confirmation.'),
         ],
@@ -195,6 +195,26 @@ def _landing_faq(slug):
              'Do you have alcohol-free cocktails?', 'Yes, we have a large alcohol-free selection of cocktails, beer and wine – made to be a real alternative, not a compromise.'),
             ('faq.cock.late', 'Hvor lenge er baren åpen?', 'Baren holder åpent til kl. 23 tirsdag–lørdag og til 22 søndag og mandag, på alle tre restaurantene.',
              'How late is the bar open?', 'The bar is open until 23.00 Tuesday–Saturday and until 22.00 Sunday and Monday, at all three restaurants.'),
+        ],
+        'fries': [
+            ('faq.fries.why', 'Hvorfor tar friesene tre dager?', 'Fordi de går gjennom tre runder: først koking, så kjøling, og til slutt frityr når du bestiller. De to første rundene gjør innmaten myk og potetaktig, den siste gir skallet som knaser.',
+             'Why do the fries take three days?', 'Because they go through three rounds: first boiling, then chilling, and finally the fryer when you order. The first two make the inside soft and potatoey, the last gives the crisp shell.'),
+            ('faq.fries.gluten', 'Er friesene glutenfrie?', 'Ja, de er naturlig glutenfrie. Si fra til kelneren om du har cøliaki, så tar kjøkkenet forholdsregler i frityren.',
+             'Are the fries gluten free?', 'Yes, they are naturally gluten free. Tell your server if you are coeliac so the kitchen can take precautions in the fryer.'),
+            ('faq.fries.topping', 'Hva kan jeg ha på friesene?', 'Trøffel og persille, parmesan og persille, eller Fully Loaded med ostesaus, pico de gallo, syltet løk, jalapeño og barbacoa. Fully Loaded står på menyen på Majorstua og i Tønsberg.',
+             'What can I put on the fries?', 'Truffle and parsley, parmesan and parsley, or Fully Loaded with cheese sauce, pico de gallo, pickled onions, jalapeños and barbacoa. Fully Loaded is on the menu at Majorstua and in Tønsberg.'),
+            ('faq.fries.takeaway', 'Blir friesene sprø på veien hjem?', 'Take-away-esken har lufting, så dampen slipper ut i stedet for å bli sittende. Henter du selv, får du dem rett fra frityren.',
+             'Do the fries stay crisp on the way home?', 'The take-away box is vented, so the steam escapes instead of being trapped. If you pick up yourself, they come straight from the fryer.'),
+        ],
+        'soft-serve': [
+            ('faq.ss.jersey', 'Hva er Jersey-melk?', 'Melk fra jerseykyr. Den har mer fett og protein enn vanlig helmelk, og det er derfor softisen vår blir tyngre og mer kremet. Vi får melken fra Jerseymeieriet.',
+             'What is Jersey milk?', 'Milk from Jersey cattle. It has more fat and protein than ordinary whole milk, which is why our soft serve is richer and creamier. We get it from Jerseymeieriet.'),
+            ('faq.ss.topping', 'Er toppingene like på alle restaurantene?', 'Nei. Oreo-smuler får du overalt, men resten er forskjellig: Blueberry Cheesecake og Chocolate Deluxe på Majorstua, Lemon and Crumble og Choco-nuts på Solli, Pistachio Twist og Choco-nuts i Tønsberg.',
+             'Are the toppings the same at every restaurant?', 'No. Oreo crumbs are everywhere, but the rest differ: Blueberry Cheesecake and Chocolate Deluxe at Majorstua, Lemon and Crumble and Choco-nuts at Solli, Pistachio Twist and Choco-nuts in Tønsberg.'),
+            ('faq.ss.shake', 'Er milkshaken laget på den samme softisen?', 'Ja, på den samme Jersey-melken. Du velger mellom Oreo, sjokolade og jordbær.',
+             'Is the milkshake made from the same dairy?', 'Yes, the same Jersey dairy. Choose between Oreo, chocolate and strawberry.'),
+            ('faq.ss.only', 'Kan jeg komme bare for dessert?', 'Ja. Softis og milkshake står på menyen hele åpningstiden, og du trenger ikke bestille mat først.',
+             'Can I come just for dessert?', 'Yes. Soft serve and milkshakes are on the menu all opening hours, and you do not have to order food first.'),
         ],
         'late-night': [
             ('faq.ln.late', 'Hvor sent kan jeg spise burger hos Kverneriet?', 'Kjøkkenet på Majorstua og Solli serverer hele menyen til kl. 22 tirsdag–lørdag (21 søndag og mandag). I Tønsberg til 22 tirsdag–lørdag. Baren holder åpent en time lenger.',
@@ -217,18 +237,44 @@ def extra(page):
 
 def strip(s): return re.sub(r'<[^>]+>', '', s).replace('&nbsp;', ' ')
 
+def _ord(*deler):
+    return ' '.join(' '.join(d.replace('&nbsp;', ' ').split()) for d in deler).lower()
+
+def sokeindeks(key, qn, an, qe, ae):
+    """To lag, fordi ett lag gir falske treff.
+
+    Sterkt lag er spørsmålet selv og synonymene i SOKEORD. Her holder det at et ord
+    begynner på det gjesten har skrevet, så «uteser» finner «uteservering».
+    Svakt lag er svarteksten. Her kreves hele ord, ellers ville «hund» truffet
+    «hundrevis» i svaret om utdrikningslag."""
+    return _ord(qn, qe, SOKEORD.get(key, '')), _ord(strip(an), strip(ae))
+
+def rows(items, sok=False):
+    """Selve <details>-radene. Formen må stå urørt: from_html() leser den tilbake for FAQPage-markup."""
+    out = ''
+    for key, qn, an, qe, ae in items:
+        G.add(key + '.q', qn, qe); G.add(key + '.a', an, ae)
+        attr = ''
+        if sok:
+            sterk, svak = sokeindeks(key, qn, an, qe, ae)
+            attr = f' data-sok="{kv.esc(sterk)}" data-sok-tekst="{kv.esc(svak)}"'
+        out += (f'<details class="faq__item"{attr}><summary><h3 class="faq__q" data-i18n="{key}.q">{kv.esc(qn)}</h3></summary>'
+                f'<div class="faq__a"><p data-i18n-html="{key}.a">{an}</p></div></details>')
+    return out
+
 def section(items, title='Ofte stilte spørsmål', eyebrow='Godt å vite', sec_id='faq', flush=True):
     """Registrerer oversettelsene og returnerer seksjonen. items = (key, q_no, a_no, q_en, a_en)."""
     if not items: return ''
-    rows = ''
-    for key, qn, an, qe, ae in items:
-        G.add(key + '.q', qn, qe); G.add(key + '.a', an, ae)
-        rows += (f'<details class="faq__item"><summary><h3 class="faq__q" data-i18n="{key}.q">{kv.esc(qn)}</h3></summary>'
-                 f'<div class="faq__a"><p data-i18n-html="{key}.a">{an}</p></div></details>')
+    rows_html = rows(items)
     G.add('faq.title', 'Ofte stilte spørsmål', 'Frequently asked questions'); G.add('faq.eyebrow', 'Godt å vite', 'Good to know')
+    G.add('faq.allLink', 'Se alle spørsmål og svar', 'See all questions and answers')
+    # Siden har sine egne spørsmål, men resten ligger samlet på /sporsmal/.
+    alle = ('' if sec_id != 'faq' else
+            '\n      <p class="caption" style="margin-top:var(--space-5)">'
+            '<a href="/sporsmal/" data-i18n="faq.allLink">Se alle spørsmål og svar</a></p>')
     return (f'  <section class="section{" section--flush-top" if flush else ""}" id="{sec_id}">\n    <div class="wrap wrap--narrow">\n'
             f'      <header class="sec-head"><div class="sec-head__rule"></div><span class="kv-eyebrow" data-i18n="faq.eyebrow">{kv.esc(eyebrow)}</span><h2 class="display-2" data-i18n="faq.title">{kv.esc(title)}</h2></header>\n'
-            f'      <div class="faq" style="margin-top:var(--space-5)">{rows}</div>\n    </div>\n  </section>\n')
+            f'      <div class="faq" style="margin-top:var(--space-5)">{rows_html}</div>{alle}\n    </div>\n  </section>\n')
 
 def from_html(html):
     """Leser Q/A tilbake fra en side (så FAQPage alltid speiler det som vises)."""
@@ -240,3 +286,163 @@ def from_html(html):
 def ld(pairs):
     return {"@context": "https://schema.org", "@type": "FAQPage",
             "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in pairs]}
+
+
+# ---------------------------------------------------------------------------
+# /sporsmal/ – den samlede spørsmålssiden.
+#
+# Svarene her kommer fra lista Viktor sendte (content/faq-viktor.txt), skrevet om
+# til Henriks stemme og faktasjekket mot content/venues.json og content/menus.js.
+# Åpningstider, adresser, gruppeterskler og priser regnes ut, så de aldri blir
+# stående igjen når noe endres i Sanity.
+#
+# Alkoholloven §9-2 forbyr reklame for alkohol, og Tønsberg har fått advarsel før.
+# Viktors svar om «vårt store utvalg av vin, øl og håndlagde cocktails» er derfor
+# skrevet om til å handle om baren som sted og om det alkoholfrie utvalget.
+# ---------------------------------------------------------------------------
+
+def _steder_no():
+    return ', '.join(f'{v["name"]} i {v["address"]["street"]} ({v["area"]})' for v in V['venues'])
+
+def _steder_en():
+    return ', '.join(f'{v["name"]} at {v["address"]["street"]} ({AREA_EN[v["slug"]]})' for v in V['venues'])
+
+def _tider_no():
+    return ' '.join(f'{v["name"]}: {kitchen_text(v)}.' for v in V['venues'])
+
+def _tider_en():
+    return ' '.join(f'{v["name"]}: {kitchen_text(v, "en")}.' for v in V['venues'])
+
+def _bar_no():
+    """Barens åpningstid. Er den lik alle tre steder, skrives den én gang."""
+    t = {bar_text(v) for v in V['venues']}
+    return t.pop() if len(t) == 1 else ' '.join(f'{v["name"]}: {bar_text(v)}.' for v in V['venues'])
+
+def _bar_en():
+    t = {bar_text(v, 'en') for v in V['venues']}
+    return t.pop() if len(t) == 1 else ' '.join(f'{v["name"]}: {bar_text(v, "en")}.' for v in V['venues'])
+
+def _levering():
+    """Byene som faktisk har Wolt eller Foodora i content/venues.json."""
+    return [v['name'] for v in V['venues'] if v['channels'].get('wolt') or v['channels'].get('foodora')]
+
+
+
+# Ekstra søkeord per spørsmål på /sporsmal/. Nøkkelen er den samme som i GRUPPER().
+# Dette er ord gjesten skriver, men som ikke nødvendigvis står i spørsmålet eller svaret:
+# synonymer, hverdagsord og de engelske variantene. Uten disse finner et søk på «hund»
+# ingenting før gjesten tilfeldigvis skriver «hunder».
+SOKEORD = {
+    'faq.s.walkin':     'drop-in dropin reservasjon reservere bestille bord plass kø walk-in walk in table reservation',
+    'faq.s.size':       'selskap bursdag jubileum firmafest langbord mange stort bord 30 40 gruppe group party birthday',
+    'faq.s.bachelor':   'utdrikningslag polterabend bachelor bachelorette hen stag party jentekveld gutterkveld',
+    'faq.s.business':   'møte møterom business jobb konferanse firma lukket avdeling meeting conference work',
+    'faq.s.gluten':     'glutenfri gluten cøliaki celiaki melkefri laktose laktosefri eggefri brød bolle bun coeliac dairy free lactose egg',
+    'faq.s.allergy':    'allergi allergener intoleranse nøtter nøtteallergi skalldyr laktose soya allergy allergen intolerance nuts shellfish',
+    'faq.s.veg':        'vegetar vegetarianer vegansk vegan plantebasert kjøttfri veggie meat free plant based',
+    'faq.s.kids':       'barn unger barnemeny barnestol høystol familie baby kids children child high chair family',
+    'faq.s.craft':      'håndverk kvernet ferskt brød bakt råvarer kvalitet hjemmelaget craft fresh quality homemade',
+    'faq.s.dogs':       'hund hunder bikkje dyr kjæledyr hundevennlig dog dogs pet pets dog friendly',
+    'faq.s.outside':    'uteservering ute terrasse utendørs sol solen brygge balkong outdoor outdoors terrace patio sun',
+    'faq.s.wheelchair': 'rullestol tilgjengelig tilgjengelighet universell utforming handikap bevegelseshemmet trinnfri wheelchair accessible access step free',
+    'faq.s.pram':       'barnevogn vogn trille sportsvogn vognplass baby spedbarn plass pram stroller buggy pushchair',
+    'faq.s.drink':      'bar drink drikke glass alkoholfri alkoholfritt uten mat bare drikke baren drinks alcohol free',
+    'faq.s.hours':      'åpent åpningstid åpningstider stenger stenge åpner klokka klokken når søndag mandag helg hours open opening closing sunday monday',
+    'faq.s.where':      'hvor adresse ligger finne veibeskrivelse kart retning t-bane buss trikk kollektivt address directions map metro bus',
+    'faq.s.ta':         'takeaway take-away take away hente henting levering hjemlevering wolt foodora orderx bestille delivery pick up',
+    'faq.s.tabox':      'emballasje eske pose sprø sprøtt varm kald hjem transport veien packaging box crisp warm',
+    'faq.s.gift':       'gavekort gave presang julegave bursdagsgave verdikort gift card voucher present',
+}
+
+def GRUPPER():
+    """[(nøkkel, tittel-no, tittel-en, [(nøkkel, q-no, a-no, q-en, a-en), ...]), ...]"""
+    thr = V['venues'][0]['groupThreshold']
+    tbg = next(v['groupThreshold'] for v in V['venues'] if v['slug'] == 'tonsberg')
+    fra = PK['items'][0]['price']
+    lev = _levering()
+    return [
+        ('book', 'Booking og grupper', 'Booking and groups', [
+            ('faq.s.walkin', 'Må jeg booke bord?',
+             'Nei. Vi holder av mange bord til drop-in på alle tre restaurantene, så du kan godt bare komme innom. Vil du være sikker på plass, særlig fredag og lørdag, booker du online og får bekreftelse med en gang.',
+             'Do I need to book a table?',
+             'No. We keep plenty of walk-in tables at all three restaurants, so you are welcome to just turn up. To be sure of a table, especially on Friday and Saturday, book online and get instant confirmation.'),
+            ('faq.s.size', 'Hvor store grupper tar dere imot?',
+             f'Opptil 30–40 personer, avhengig av dag og tidspunkt. Grupper over {thr} ({tbg} i Tønsberg) booker som selskap og velger én matpakke for hele bordet, fra {fra} kr per person. <a href="/selskap/">Send en forespørsel</a>, så svarer vi på e-post.',
+             'How big a group can you take?',
+             f'Up to 30–40 people, depending on the day and time. Groups larger than {thr} ({tbg} in Tønsberg) book as a party and choose one food package for the whole table, from NOK {fra} per person. <a href="/selskap/">Send a request</a> and we reply by e-mail.'),
+            ('faq.s.bachelor', 'Passer dere for utdrikningslag?',
+             'Ja. Vi har tatt imot hundrevis av dem gjennom årene og liker å være med på feiringen. Send en forespørsel med antall og dato, så finner vi en løsning som passer gjengen.',
+             'Do you take bachelor and bachelorette parties?',
+             'Yes. We have hosted hundreds of them over the years and enjoy being part of the celebration. Send a request with headcount and date and we will find something that suits the group.'),
+            ('faq.s.business', 'Kan vi ha møte hos dere?',
+             'Ja. Vi har flere områder og lukkede avdelinger som passer til både korte og lengre møter. Enten dere vil ha kaffe og noe enkelt, småretter underveis eller en full lunsj, tilpasser vi opplegget.',
+             'Can we hold a meeting at your place?',
+             'Yes. We have several areas and separate rooms that work for both short and long meetings. Whether you want coffee and something simple, small plates along the way or a full lunch, we adapt to what you need.'),
+        ]),
+        ('mat', 'Mat, allergier og barn', 'Food, allergies and children', [
+            ('faq.s.gluten', 'Har dere glutenfrie alternativer?',
+             'Ja. Vi har et burgerbrød uten gluten, melk og egg som alternativ til vårt eget nybakte brød (+15 kr), og de fleste burgerne kan lages glutenfrie. Friesene er naturlig glutenfrie, og alle retter er merket med allergener i menyen. Si fra til servitøren, så tar kjøkkenet forholdsregler.',
+             'Do you have gluten-free options?',
+             'Yes. We have a bun without gluten, milk or egg as an alternative to our own freshly baked one (+NOK 15), and most of the burgers can be made gluten free. The fries are naturally gluten free, and every dish is labelled with allergens on the menu. Tell your server so the kitchen can take precautions.'),
+            ('faq.s.allergy', 'Kan dere ta hensyn til allergier?',
+             'Ja. Alle retter er merket med allergener i menyen. Gi beskjed når du booker og si fra til servitøren når du kommer, så finner vi noe som passer.',
+             'Can you accommodate allergies?',
+             'Yes. Every dish is labelled with allergens on the menu. Let us know when you book and tell your server when you arrive, and we will find something that works.'),
+            ('faq.s.veg', 'Har dere vegetarretter?',
+             'Ja, vi har vegetaralternativer på menyen, og flere retter kan tilpasses. Spør servitøren, så hjelper vi deg å finne noe som passer.',
+             'Do you have vegetarian dishes?',
+             'Yes, there are vegetarian options on the menu and several dishes can be adapted. Ask your server and we will help you find something.'),
+            ('faq.s.kids', 'Er det barnevennlig?',
+             'Ja. Barnemenyen har hamburger med fries, chicken tenders med fries, ostetoast eller bare fries, fra 89 til 169 kr, og den kommer med tegninger og oppgaver mens de venter på maten. På Majorstua og i Tønsberg står den på menyen, på Solli får dere den ved selskapsbooking.',
+             'Is it child friendly?',
+             'Yes. The kids menu has a hamburger with fries, chicken tenders with fries, a ham and cheese toastie, or just fries, from NOK 89 to 169, and it comes with drawings and puzzles while they wait. It is on the menu at Majorstua and in Tønsberg; at Solli it comes with a party booking.'),
+            ('faq.s.craft', 'Hva gjør maten deres spesiell?',
+             'Vi lager det meste selv, litt om gangen, så råvarene holder seg ferske. Vi baker burgerbrødene, kverner kjøttet her og bruker <a href="/fries/">tre dager på friesene</a>. Samtidig liker vi å utfordre hva en burger kan være, og henter smaker fra hele verden.',
+             'What makes your food different?',
+             'We make most of it ourselves, in small batches, so the ingredients stay fresh. We bake the buns, grind the beef here and spend <a href="/fries/">three days on the fries</a>. At the same time we like to push what a burger can be, and take flavours from all over the world.'),
+        ]),
+        ('sted', 'I restauranten', 'At the restaurant', [
+            ('faq.s.dogs', 'Er hunder velkomne?',
+             'Ja, på alle tre restaurantene. Vi ber bare om at hunden holdes i bånd og ikke forstyrrer andre gjester.',
+             'Are dogs welcome?',
+             'Yes, at all three restaurants. We only ask that the dog is kept on a lead and does not disturb other guests.'),
+            ('faq.s.outside', 'Har dere uteservering?',
+             'Solli plass og Tønsberg har store uteserveringer. Ute tar vi ikke reservasjoner, så der gjelder drop-in. Majorstua har ikke egen uteservering, men på varme dager åpner vi de store vinduene.',
+             'Do you have outdoor seating?',
+             'Solli plass and Tønsberg both have large terraces. We do not take reservations outside, so it is walk-in only there. Majorstua has no terrace of its own, but on warm days we open the big windows.'),
+            ('faq.s.wheelchair', 'Er det tilrettelagt for rullestol?',
+             'Ja. Si gjerne fra når du booker, så setter vi av god plass til bordet.',
+             'Is it wheelchair accessible?',
+             'Yes. Do mention it when you book so we can set aside enough room at the table.'),
+            ('faq.s.pram', 'Er det plass til barnevogn?',
+             'Ja, alle tre restaurantene får plass til barnevogn. Si fra når du booker, så setter vi av plass ved bordet.',
+             'Is there room for a pram?',
+             'Yes, all three restaurants can make room for a pram. Let us know when you book and we will set aside space at the table.'),
+            ('faq.s.drink', 'Kan jeg komme innom bare for noe å drikke?',
+             'Ja. Alle tre har egen bar, og du kan like godt sette deg ved et vanlig bord uten å spise. Vi har et stort alkoholfritt utvalg, så det finnes alltid noe ordentlig i glasset. <a href="/cocktails/">Mer om baren</a>.',
+             'Can I drop in just for a drink?',
+             'Yes. All three have their own bar, and you are just as welcome at an ordinary table without eating. We keep a large alcohol-free selection, so there is always something proper in the glass. <a href="/cocktails/">More about the bar</a>.'),
+            ('faq.s.hours', 'Når har dere åpent?',
+             f'Kjøkkenet: {_tider_no()} Baren holder åpent {_bar_no()}. Åpningstidene for hver restaurant står på restaurantsidene.',
+             'What are your opening hours?',
+             f'The kitchen: {_tider_en()} The bar stays open {_bar_en()}. Hours for each restaurant are on its own page.'),
+            ('faq.s.where', 'Hvor ligger restaurantene?',
+             f'{_steder_no()}. Kart og veibeskrivelse ligger på hver restaurantside.',
+             'Where are the restaurants?',
+             f'{_steder_en()}. Maps and directions are on each restaurant page.'),
+        ]),
+        ('ta', 'Take-away og gavekort', 'Take-away and gift cards', [
+            ('faq.s.ta', 'Har dere take-away?',
+             f'Ja. Du kan forhåndsbestille og hente selv på alle tre restaurantene. Fra {" og ".join(lev)} kan du også få maten levert med Wolt og Foodora. Hjemlevering koster {ORG.get("deliveryMarkup", "15–20 %")} mer enn å hente selv. <a href="/takeaway/">Bestill take-away</a>.',
+             'Do you do take-away?',
+             f'Yes. You can pre-order and pick up at all three restaurants. From {" and ".join(lev)} you can also have it delivered by Wolt and Foodora. Home delivery costs {ORG.get("deliveryMarkup", "15–20 %").replace(" %", "%")} more than picking it up yourself. <a href="/takeaway/">Order take-away</a>.'),
+            ('faq.s.tabox', 'Holder maten seg på veien hjem?',
+             'Esken har lufting, så dampen slipper ut og friesene holder seg sprø. Henter du selv, kommer maten rett fra kjøkkenet.',
+             'Does the food survive the trip home?',
+             'The box is vented, so the steam escapes and the fries stay crisp. If you pick up yourself, the food comes straight from the kitchen.'),
+            ('faq.s.gift', 'Kan jeg kjøpe gavekort?',
+             f'Ja. Gavekortet kjøper du i <a href="{ORG["giftcard"]}" rel="noopener" target="_blank">nettbutikken vår</a>, og det kan brukes på alle tre restaurantene.',
+             'Can I buy a gift card?',
+             f'Yes. You buy it in <a href="{ORG["giftcard"]}" rel="noopener" target="_blank">our online shop</a>, and it works at all three restaurants.'),
+        ]),
+    ]

@@ -308,7 +308,7 @@ html{scroll-behavior:smooth}
 .site-header__actions{display:flex;gap:10px;align-items:center;margin-left:auto}
 .icon-btn{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid transparent;border-radius:var(--radius-1);color:var(--text-muted);font-family:var(--font-body);font-size:18px;cursor:pointer;transition:color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
 .icon-btn:hover{color:var(--text-strong);background:var(--action-wash)}
-.nav-burger{display:none;width:40px;height:40px}
+.nav-burger{display:inline-flex;width:40px;height:40px}
 .nav-burger .icon-close{display:none}
 .nav-burger.is-open .icon-menu{display:none}
 .nav-burger.is-open .icon-close{display:block}
@@ -603,6 +603,34 @@ html{scroll-behavior:smooth}
 .press-row--flip .press-row__quotes{order:1}
 .press-row__quotes{display:grid;gap:var(--space-4)}
 
+/* Spørsmålssiden: gruppene skal leses som egne bolker, ikke som én lang liste. */
+.faq-gruppe + .faq-gruppe{margin-top:var(--space-8);padding-top:var(--space-7);border-top:1px solid var(--line-hairline)}
+/* Under søk skjules grupper. Da ville streken over fortsatt tegnet seg mot en skjult
+   nabo, så skillene slås av mens det filtreres. */
+#faq.is-sok .faq-gruppe + .faq-gruppe{padding-top:0;border-top:0}
+[hidden]{display:none !important}
+
+/* Søkefeltet øverst på spørsmålssiden. */
+.faq-sok{display:grid;gap:8px;margin-top:var(--space-6);max-width:34rem}
+.faq-sok__felt{position:relative;display:flex;align-items:center}
+.faq-sok__ikon{position:absolute;left:14px;color:var(--text-faint);pointer-events:none}
+.faq-sok input{width:100%;font-family:var(--font-body);font-size:16px;color:var(--text-body);
+  background:var(--surface-card);border:1px solid var(--line-hairline);border-radius:var(--radius-pill);
+  padding:12px 44px;appearance:none;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.faq-sok input:focus{border-color:var(--coral-500);box-shadow:var(--glow-focus);outline:none}
+.faq-sok input::-webkit-search-cancel-button{display:none}
+.faq-sok__tom{position:absolute;right:8px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;
+  background:transparent;border:0;border-radius:50%;color:var(--text-muted);font-size:22px;line-height:1;cursor:pointer}
+.faq-sok__tom:hover{background:var(--action-wash);color:var(--text-strong)}
+.faq-sok [role="status"]{min-height:1.4em;margin:0}
+.faq-tomt{padding-top:var(--space-6)}
+
+/* Barkortene på /cocktails/: knappen skal stå på samme linje i alle tre, uansett
+   hvor lang teksten er, så raden ikke ser slarvete ut. */
+.bar-kort{display:flex;flex-direction:column}
+.bar-kort .btn{margin-top:auto;align-self:start}
+.bar-kort .caption{margin-bottom:var(--space-4)}
+
 /* ---------- Venue page grids ---------- */
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .booking-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:var(--space-8);align-items:start}
@@ -612,7 +640,6 @@ html{scroll-behavior:smooth}
 @media (max-width:1024px){
   .venue-nav{display:none}
   .site-header__inner--grid{display:flex;justify-content:space-between}
-  .nav-burger{display:inline-flex}
 }
 @media (max-width:1020px){
   .grid-3{grid-template-columns:1fr;gap:var(--space-6)}
