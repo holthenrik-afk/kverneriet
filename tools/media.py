@@ -70,8 +70,15 @@ SEEN_IN_ORDER = ['dagbladet', 'finansavisen', 'vg', 'aftenposten', 'dn', 'nettav
 def seen_in():
     """«Omtalt i»: etiketten som en divider (samme komponent som «Galleri»/«Se også»), logoene i én rolig, énfarget rad."""
     present = [k for k in SEEN_IN_ORDER if any(m['outlet'] == k for m in MEDIA) or k == 'dagbladet']
+    # Logoene ruller. Settet skrives to ganger: når det første er rullet helt ut,
+    # står det andre nøyaktig der det første startet, og løkka blir sømløs.
+    # Kopi nummer to er aria-hidden, så en skjermleser ikke leser listen dobbelt.
+    rad = ''.join(logo(k) for k in present)
     return ('      <div class="seen-in"><div class="divider"><span data-i18n="media.seenIn">Omtalt i</span></div>'
-            '<div class="seen-in__logos">' + ''.join(logo(k) for k in present) + '</div></div>')
+            '<div class="seen-in__maske"><div class="seen-in__spor">'
+            f'<div class="seen-in__logos">{rad}</div>'
+            f'<div class="seen-in__logos" aria-hidden="true">{rad}</div>'
+            '</div></div></div>')
 
 def proof():
     """Tillitsraden under heroen: to like bevis (terning + påstand + kilde), begge lenket til omtalen."""

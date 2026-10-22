@@ -219,6 +219,7 @@ html{scroll-behavior:smooth}
    media-spørringen lenger ned overstyrer flushen.) */
 .section--tint + .section--flush-top,
 .section--accent + .section--flush-top,
+.hero-trust + .section--flush-top,
 .cta-band + .section--flush-top{padding-top:var(--section-y)}
 .section--tint{background:var(--surface-tint);border-top:1px solid var(--line-hairline);border-bottom:1px solid var(--line-hairline)}
 .section--accent{background:var(--surface-accent);border-top:1px solid var(--line-hairline);border-bottom:1px solid var(--line-hairline)}
@@ -445,12 +446,16 @@ html{scroll-behavior:smooth}
 
 /* «Sett i»-stripe under heroen */
 .seen-in{margin-top:var(--space-7)}
-/* Rutenett og ikke flex-wrap: med åtte logoer i ulike bredder brøt flexen
-   6 + 2, som ser skjevt ut. Rutenettet gir fire og fire uansett bredde. */
-.seen-in__logos{display:grid;grid-template-columns:repeat(4,1fr);place-items:center;
-  gap:var(--space-6) var(--space-5);margin-top:var(--space-5)}
-@media (max-width:719px){
-  .seen-in__logos{grid-template-columns:repeat(2,1fr)}
+/* Logoene ruller i én uendelig rad. Settet ligger to ganger i sporet, og når
+   sporet har flyttet seg halve bredden står kopi to der kopi én startet –
+   derfor blir løkka sømløs uansett hvor mange logoer det er. */
+.seen-in__maske{overflow:hidden;margin-top:var(--space-5)}
+.seen-in__spor{display:flex;width:max-content;animation:kv-logorull 38s linear infinite}
+.seen-in__logos{display:flex;align-items:center;gap:var(--space-8);padding-right:var(--space-8)}
+@keyframes kv-logorull{to{transform:translateX(-50%)}}
+.seen-in__maske:hover .seen-in__spor{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){
+  .seen-in__spor{animation:none}
 }
 /* Logoene er masker med contain, så både bredde og høyde må opp for at de skal
    bli større – bare høyde gjør ingenting når bredden er det trange målet.
@@ -730,9 +735,11 @@ html{scroll-behavior:smooth}
 /* Outline-knappen forsvinner mot et lyst bilde – den trenger egen flate her. */
 .hero-home--video .btn--outline{border-color:rgba(250,248,245,.72);color:var(--paper-50);background:rgba(0,0,0,.28);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .hero-home--video .btn--outline:hover{background:rgba(0,0,0,.5);border-color:var(--paper-50)}
-/* Presse-stripen står i en lyserosa boks. Karusellen under er flush-top, så
-   luften mot logorekka må komme herfra. */
-.hero-trust{padding-block:var(--space-8);text-align:center}
+/* Presse-stripen står i et rolig felt, samme farge som bunnlinja. Karusellen
+   under er flush-top, så luften mot logorekka må komme herfra. */
+.hero-trust{padding-block:var(--space-8);text-align:center;
+  background:var(--surface-inset);
+  border-top:1px solid var(--line-hairline);border-bottom:1px solid var(--line-hairline)}
 .hero-trust .seen-in{margin-top:0}
 /* Ingen streker rundt etiketten her – boksen avgrenser den allerede. */
 .hero-trust .divider{justify-content:center}
