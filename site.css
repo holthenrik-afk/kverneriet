@@ -578,8 +578,9 @@ html{scroll-behavior:smooth}
 /* ---------- Heldekkende CTA-bånd ---------- */
 .cta-band{position:relative;isolation:isolate;overflow:hidden;background:var(--teal-900)}
 .cta-band__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-.cta-band__scrim{position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(to bottom,rgba(4,30,26,.74) 0%,rgba(4,30,26,.62) 50%,rgba(4,30,26,.80) 100%)}
+/* Svart 65 %. På 35 % falt hvit tekst til 2,4:1 på de lyseste flekkene i
+   bildene – kravet er 4,5:1 – og bildene byttes, så verstefallet gjelder. */
+.cta-band__scrim{position:absolute;inset:0;z-index:-1;background:rgba(0,0,0,.65)}
 .cta-band__inner{padding-block:clamp(var(--space-8),9vw,var(--space-10));
   display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-6)}
 .cta-band__inner .lede{color:var(--paper-50);max-width:58ch;margin:0}
@@ -598,17 +599,25 @@ html{scroll-behavior:smooth}
    en tom ramme, uansett når animasjonen starter eller et bilde er treigt. */
 /* Rundetiden står ett sted. Hvert bilde får en tredel, og forskyvningen
    regnes ut fra den, så det er nok å endre --kv-runde. */
-.cta-band--skifte{--kv-runde:3s}
-.cta-band__img--fade{opacity:0;animation:kv-skifte var(--kv-runde) linear infinite;
-  animation-delay:calc((var(--kv-fade) - 1) * var(--kv-runde) / 3)}
+.cta-band--skifte{--kv-runde:18s}
+/* Alle tre bildene puster: 2 % opp og ned igjen over to runder. Båndet har
+   overflow:hidden, så det som vokser utenfor kanten klippes bort. */
+.cta-band--skifte .cta-band__img{
+  animation:kv-vokst calc(var(--kv-runde) * 2) ease-in-out infinite alternate}
+.cta-band__img--fade{opacity:0;
+  animation:kv-vokst calc(var(--kv-runde) * 2) ease-in-out infinite alternate,
+            kv-skifte var(--kv-runde) linear infinite;
+  animation-delay:0s,calc((var(--kv-fade) - 1) * var(--kv-runde) / 3)}
 @keyframes kv-skifte{
   0%,28.6%   {opacity:0}
   33.3%,61.9%{opacity:1}
   66.7%,100% {opacity:0}
 }
+@keyframes kv-vokst{from{transform:scale(1)}to{transform:scale(1.02)}}
 /* Har gjesten bedt om mindre bevegelse, står båndet stille på det første bildet. */
 @media (prefers-reduced-motion:reduce){
-  .cta-band__img--fade{animation:none;opacity:0}
+  .cta-band--skifte .cta-band__img{animation:none;transform:none}
+  .cta-band__img--fade{opacity:0}
 }
 @media (max-width:719px){
   /* Hver knapp på egen linje. align-items:stretch jevner bare ut bredden, så
