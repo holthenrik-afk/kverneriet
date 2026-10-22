@@ -498,8 +498,9 @@ html{scroll-behavior:smooth}
    bevegelse. Fram til da står posterbildet, og teksten er lesbar uansett. */
 .hero-home--video{position:relative;isolation:isolate;background:var(--teal-900);overflow:hidden}
 .hero-home--video .hero-home__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-.hero-home--video .hero-home__scrim{position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(to bottom,rgba(4,30,26,.70) 0%,rgba(4,30,26,.46) 38%,rgba(4,30,26,.58) 72%,rgba(4,30,26,.86) 100%)}
+/* Svart, ikke grønt – samme som båndene lenger nede. Det grønne la seg som et
+   filter over hele bildet; svart demper uten å farge maten. */
+.hero-home--video .hero-home__scrim{position:absolute;inset:0;z-index:-1;background:rgba(0,0,0,.55)}
 .hero-home__inner{padding-block:clamp(var(--space-8),11vh,var(--space-10));
   display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-2);
   min-height:min(72vh,620px);justify-content:center}
@@ -508,8 +509,8 @@ html{scroll-behavior:smooth}
 .hero-home--video .hero-home__sub{color:var(--paper-50);opacity:.92}
 .hero-home--video .hero-home__cta{margin-top:var(--space-5);justify-content:center}
 /* Outline-knappen forsvinner mot et lyst bilde – den trenger egen flate her. */
-.hero-home--video .btn--outline{border-color:rgba(250,248,245,.72);color:var(--paper-50);background:rgba(4,30,26,.28);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
-.hero-home--video .btn--outline:hover{background:rgba(4,30,26,.5);border-color:var(--paper-50)}
+.hero-home--video .btn--outline{border-color:rgba(250,248,245,.72);color:var(--paper-50);background:rgba(0,0,0,.28);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.hero-home--video .btn--outline:hover{background:rgba(0,0,0,.5);border-color:var(--paper-50)}
 /* Karusellen under starter med section--flush-top, så luften mot presselogoene
    må komme herfra. Uten den legger seksjonsoverskriften seg oppå logorekka. */
 .hero-trust{padding-top:var(--space-7);padding-bottom:var(--space-8)}
@@ -578,9 +579,9 @@ html{scroll-behavior:smooth}
 /* ---------- Heldekkende CTA-bånd ---------- */
 .cta-band{position:relative;isolation:isolate;overflow:hidden;background:var(--teal-900)}
 .cta-band__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-/* Svart 65 %. På 35 % falt hvit tekst til 2,4:1 på de lyseste flekkene i
+/* Svart 55 %. På 35 % falt hvit tekst til 2,4:1 på de lyseste flekkene i
    bildene – kravet er 4,5:1 – og bildene byttes, så verstefallet gjelder. */
-.cta-band__scrim{position:absolute;inset:0;z-index:-1;background:rgba(0,0,0,.65)}
+.cta-band__scrim{position:absolute;inset:0;z-index:-1;background:rgba(0,0,0,.55)}
 .cta-band__inner{padding-block:clamp(var(--space-8),9vw,var(--space-10));
   display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-6)}
 .cta-band__inner .lede{color:var(--paper-50);max-width:58ch;margin:0}
