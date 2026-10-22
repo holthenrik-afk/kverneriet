@@ -642,17 +642,17 @@ html{scroll-behavior:smooth}
 /* Rundetiden står ett sted. Hvert bilde får en tredel, og forskyvningen
    regnes ut fra den, så det er nok å endre --kv-runde. */
 .cta-band--skifte{--kv-runde:18s}
-/* Alle tre bildene puster: 6 % ut over én runde, og like rolig tilbake over
-   den neste. Båndet har overflow:hidden, så det som vokser utenfor klippes bort.
+/* Alle tre bildene puster: 12 % ut over én runde, og like rolig tilbake over
+   den neste. Lineær, så farten er den samme hele veien. Båndet har overflow:hidden, så det som vokser utenfor klippes bort.
    Mengden står i --kv-vekst. 2 % over to runder var under det øyet fanger opp. */
 .cta-band--skifte{--kv-vekst:1.12}
 .cta-band--skifte .cta-band__img{
-  animation:kv-vokst var(--kv-runde) ease-in-out infinite alternate}
+  animation:kv-vokst var(--kv-runde) linear infinite alternate}
 /* Må ha samme spesifisitet som regelen over, ellers vinner den og slår ut
    hele animation-egenskapen her – da blir krysstoningen borte og båndet står
    fast på det første bildet. */
 .cta-band--skifte .cta-band__img--fade{opacity:0;
-  animation:kv-vokst var(--kv-runde) ease-in-out infinite alternate,
+  animation:kv-vokst var(--kv-runde) linear infinite alternate,
             kv-skifte var(--kv-runde) linear infinite;
   animation-delay:0s,calc((var(--kv-fade) - 1) * var(--kv-runde) / 3)}
 @keyframes kv-skifte{
