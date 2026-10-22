@@ -835,7 +835,7 @@ html{scroll-behavior:smooth}
 /* Alle tre bildene puster: 6 % ut over én runde, og like rolig tilbake over
    den neste. Båndet har overflow:hidden, så det som vokser utenfor klippes bort.
    Mengden står i --kv-vekst. 2 % over to runder var under det øyet fanger opp. */
-.cta-band--skifte{--kv-vekst:1.06}
+.cta-band--skifte{--kv-vekst:1.12}
 .cta-band--skifte .cta-band__img{
   animation:kv-vokst var(--kv-runde) ease-in-out infinite alternate}
 /* Må ha samme spesifisitet som regelen over, ellers vinner den og slår ut
