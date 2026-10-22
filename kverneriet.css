@@ -211,6 +211,15 @@ html{scroll-behavior:smooth}
 .wrap--wide{max-width:var(--page-wide)}
 .section{padding-block:var(--section-y)}
 .section--flush-top{padding-top:0}
+/* flush-top betyr «seksjonen over har samme farge og har allerede luft under».
+   Har den over en egen bakgrunn, holder ikke det: da legger streken i
+   seksjonshodet seg inntil fargekanten. Listen må dekke alle seksjonsklasser
+   med egen bakgrunn – i dag --tint, --accent og cta-band.
+   (På smal skjerm skjulte feilen seg, fordi .section{padding-block} i
+   media-spørringen lenger ned overstyrer flushen.) */
+.section--tint + .section--flush-top,
+.section--accent + .section--flush-top,
+.cta-band + .section--flush-top{padding-top:var(--section-y)}
 .section--tint{background:var(--surface-tint);border-top:1px solid var(--line-hairline);border-bottom:1px solid var(--line-hairline)}
 .section--accent{background:var(--surface-accent);border-top:1px solid var(--line-hairline);border-bottom:1px solid var(--line-hairline)}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center}
@@ -597,7 +606,11 @@ html{scroll-behavior:smooth}
   .form-grid-2{grid-template-columns:1fr}
   .site-header__inner{gap:var(--space-4);padding:12px var(--gutter)}
   .site-header__logo img{height:22px}
-  .section{padding-block:var(--space-8)}
+  /* Setter både variabelen og paddingen. Variabelen, så regelen som gir
+     flush-top luften tilbake under et farget felt havner på 64 og ikke 96.
+     Paddingen, fordi den har stått her og nøytralisert flush-top på smal
+     skjerm – der har seksjonene alltid hatt luft, og det skal de fortsatt ha. */
+  .section{--section-y:var(--space-8);padding-block:var(--section-y)}
   .hero-dark__content{min-height:440px}
   .menu-item__row h3{font-size:22px}
   .menu-item__price{font-size:var(--type-price)}
