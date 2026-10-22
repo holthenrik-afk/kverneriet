@@ -75,24 +75,31 @@ def takeaway_section():
     G.add('home.taAlt', 'Person med take-away-pose fra Kverneriet på gaten',
           'Someone carrying a Kverneriet take-away bag down the street')
     G.add('act.seeTakeaway', 'Se take-away-menyen', 'See the take-away menu')
-    # To spalter, ikke heldekkende bånd: tonelaget på båndet ligger på 62–80 %, og da
-    # forsvinner personen med posen – som er hele poenget med bildet. Her står det usløret.
-    return f"""  <section class="section" id="takeaway">
-    <div class="wrap">
-      <div class="grid-2 grid-2--start sidestilt sidestilt--omvendt">
-        <div>
-          <header class="sec-head">
-            <div class="sec-head__rule"></div>
-            <span class="kv-eyebrow" data-i18n="home.taEyebrow">Take-away på ordentlig</span>
-            <h2 class="display-2" data-i18n="home.taTitle">Ta Kverneriet med hjem</h2>
-          </header>
-          <p class="lede" style="margin-top:var(--space-5)" data-i18n="home.taBody">{e(G._D['no']['home.taBody'])}</p>
-          <div class="band-cta">
-            <button class="btn btn--solid btn--lg" type="button" data-order-open data-track="cta:ta:order" data-i18n="act.order">Bestill take-away</button>
-            <a class="btn btn--outline btn--lg" href="{kv.url('takeaway')}" data-track="cta:ta:side" data-i18n="act.seeTakeaway">Se take-away-menyen</a>
-          </div>
-        </div>
-        <figure class="photo sidestilt__bilde" style="aspect-ratio:4/3"><img src="/assets/img/hero-takeaway.jpg" alt="{e(G._D['no']['home.taAlt'])}" loading="lazy" decoding="async"></figure>
+    # Tre bilder som krysstoner bak tonelaget. Bare det første har alt-tekst – de to
+    # andre er dekorasjon av samme budskap, og tre like alt-tekster ville bare blitt
+    # støy i en skjermleser. Krysstoningen står stille for den som har bedt om mindre
+    # bevegelse i systemet (prefers-reduced-motion), og da vises det første bildet.
+    bilder = [('ta-gate.jpg', G._D['no']['home.taAlt']),
+              ('ta-pakking.jpg', ''),
+              ('ta-emballasje.jpg', '')]
+    lag = '\n    '.join(
+        f'<img class="cta-band__img{" cta-band__img--fade" if i else ""}" style="--kv-fade:{i}"'
+        f' src="/assets/img/{f}" alt="{e(a)}"{"" if a else " aria-hidden=\"true\""}'
+        f' loading="lazy" decoding="async">'
+        for i, (f, a) in enumerate(bilder))
+    return f"""  <section class="cta-band cta-band--skifte">
+    {lag}
+    <div class="cta-band__scrim" aria-hidden="true"></div>
+    <div class="cta-band__inner wrap">
+      <header class="sec-head sec-head--invert sec-head--center">
+        <div class="sec-head__rule"></div>
+        <span class="kv-eyebrow" data-i18n="home.taEyebrow">Take-away på ordentlig</span>
+        <h2 class="display-2" data-i18n="home.taTitle">Ta Kverneriet med hjem</h2>
+      </header>
+      <p class="lede" data-i18n="home.taBody">{e(G._D['no']['home.taBody'])}</p>
+      <div class="band-cta">
+        <button class="btn btn--primary btn--lg" type="button" data-order-open data-track="cta:ta:order" data-i18n="act.order">Bestill take-away</button>
+        <a class="btn btn--paper btn--lg" href="{kv.url('takeaway')}" data-track="cta:ta:side" data-i18n="act.seeTakeaway">Se take-away-menyen</a>
       </div>
     </div>
   </section>

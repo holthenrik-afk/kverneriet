@@ -779,14 +779,23 @@ html{scroll-behavior:smooth}
 .cta-band__inner .sec-head{margin-bottom:var(--space-5)}
 /* Knapperad under et bånd eller en seksjon. Brytes til egen linje på mobil. */
 .band-cta{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-6)}
-/* Bilde og tekst side om side: take-away og gavekort. Bildet er budskapet i begge,
-   så det skal stå usløret – ikke bak tonelaget på et heldekkende bånd. */
+/* Bilde og tekst side om side – gavekortseksjonen. */
 .sidestilt{gap:var(--space-8);align-items:center}
 .sidestilt__bilde{margin:0}
-/* Annenhver seksjon speiles, så de to ikke blir to like rader under hverandre.
-   På mobil kollapser grid-2 og rekkefølgen i DOM-en gjelder, derfor order:0. */
-@media (min-width:901px){
-  .sidestilt--omvendt .sidestilt__bilde{order:2}
+
+/* Take-away-båndet skifter mellom tre bilder bak tonelaget. Det første ligger
+   i bunn og vises alltid; de to andre toner inn oppå i tur. Da blir det aldri
+   en tom ramme, uansett når animasjonen starter eller et bilde er treigt. */
+.cta-band__img--fade{opacity:0;animation:kv-skifte 21s linear infinite;
+  animation-delay:calc((var(--kv-fade) - 1) * 7s)}
+@keyframes kv-skifte{
+  0%,28.6%   {opacity:0}
+  33.3%,61.9%{opacity:1}
+  66.7%,100% {opacity:0}
+}
+/* Har gjesten bedt om mindre bevegelse, står båndet stille på det første bildet. */
+@media (prefers-reduced-motion:reduce){
+  .cta-band__img--fade{animation:none;opacity:0}
 }
 @media (max-width:719px){
   /* Hver knapp på egen linje. align-items:stretch jevner bare ut bredden, så
