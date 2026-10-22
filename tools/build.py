@@ -19,17 +19,110 @@ V = kv.venues(); ORG = V['org']
 e = kv.esc
 
 def cta_section():
-    """Heldekkende bånd: stemningsbilde, ingressen og Book bord (ønske fra Kverneriet 21.10.2026)."""
+    """Heldekkende bånd: «Om Kverneriet – Det startet i Tønsberg».
+
+    Båndet hadde ingen overskrift, bare en ingress og en knapp, så det sa ikke
+    hva det handlet om (ønske fra Kverneriet 22.10.2026). Tittelen kommer fra
+    aboutTitle i Sanity, og «Les mer» går til /om/.
+    """
     sc = kv.site_copy()
     hl = sc.get('heroLede') or {}
     if hl.get('no'): G.add('home.lede', hl['no'], hl.get('en') or hl['no'])
-    G.add('home.ctaAlt', 'Spisesalen på Kverneriet Majorstua', 'The dining room at Kverneriet Majorstua')
+    t = sc.get('aboutTitle') or {'no': 'Det startet i Tønsberg', 'en': 'It started in Tønsberg'}
+    G.add('home.aboutEyebrow', 'Om Kverneriet', 'About Kverneriet')
+    G.add('home.aboutTitle', t['no'], t.get('en') or t['no'])
+    G.add('act.aboutMore', 'Les mer om Kverneriet', 'More about Kverneriet')
+    # majorstua-about.jpg kan ikke brukes: den har lesbare Aperol- og Fernet-Branca-plakater
+    # på veggen og en hylle med spritflasker. Tønsberg-interiøret er rent, og passer dessuten
+    # til «Det startet i Tønsberg».
+    G.add('home.ctaAlt', 'Spisesalen på Kverneriet Tønsberg', 'The dining room at Kverneriet Tønsberg')
     return f"""  <section class="cta-band">
-    <img class="cta-band__img" src="/assets/img/majorstua-about.jpg" alt="{e(G._D['no']['home.ctaAlt'])}" loading="lazy" decoding="async">
+    <img class="cta-band__img" src="/assets/img/hero-julebord.jpg" alt="{e(G._D['no']['home.ctaAlt'])}" loading="lazy" decoding="async">
     <div class="cta-band__scrim" aria-hidden="true"></div>
     <div class="cta-band__inner wrap">
+      <header class="sec-head sec-head--invert sec-head--center">
+        <div class="sec-head__rule"></div>
+        <span class="kv-eyebrow" data-i18n="home.aboutEyebrow">Om Kverneriet</span>
+        <h2 class="display-2" data-i18n="home.aboutTitle">{e(t['no'])}</h2>
+      </header>
       <p class="lede" data-i18n="home.lede">{e(G._D['no']['home.lede'])}</p>
-      <button class="btn btn--primary btn--lg" type="button" data-book-open data-track="cta:band:book" data-i18n="act.book">Book bord</button>
+      <div class="band-cta">
+        <button class="btn btn--primary btn--lg" type="button" data-book-open data-track="cta:band:book" data-i18n="act.book">Book bord</button>
+        <a class="btn btn--paper btn--lg" href="{kv.url('om')}" data-track="cta:band:om" data-i18n="act.aboutMore">Les mer om Kverneriet</a>
+      </div>
+    </div>
+  </section>
+"""
+
+
+def takeaway_section():
+    """«Ta Kverneriet med hjem» – take-away hadde ingen plass på forsiden i det hele tatt.
+
+    Egen seksjon, ikke bare et kort i karusellen, fordi det er en egen inntektskanal
+    (ønske fra Kverneriet 22.10.2026).
+    """
+    G.add('home.taEyebrow', 'Take-away på ordentlig', 'Take-away done properly')
+    G.add('home.taTitle', 'Ta Kverneriet med hjem', 'Take Kverneriet home')
+    G.add('home.taBody',
+          'Samme burgere og samme tre dagers fries som i restauranten. Hent selv på '
+          'Majorstua, Solli eller i Tønsberg, eller få levert med Wolt og Foodora i Oslo. '
+          'Emballasjen har vi designet fra bunnen av, så maten kommer fram slik den '
+          'forlot kjøkkenet.',
+          'The same burgers and the same three-day fries as in the restaurant. Pick up at '
+          'Majorstua, Solli or Tønsberg, or get it delivered with Wolt and Foodora in Oslo. '
+          'We designed the packaging from scratch, so the food arrives the way it left the kitchen.')
+    # ta-band.jpg er stående 2:3 og blir hardt beskåret i et bredt bånd; hero-takeaway er 16:9.
+    G.add('home.taAlt', 'Person med take-away-pose fra Kverneriet på gaten',
+          'Someone carrying a Kverneriet take-away bag down the street')
+    G.add('act.seeTakeaway', 'Se take-away-menyen', 'See the take-away menu')
+    return f"""  <section class="cta-band">
+    <img class="cta-band__img" src="/assets/img/hero-takeaway.jpg" alt="{e(G._D['no']['home.taAlt'])}" loading="lazy" decoding="async">
+    <div class="cta-band__scrim" aria-hidden="true"></div>
+    <div class="cta-band__inner wrap">
+      <header class="sec-head sec-head--invert sec-head--center">
+        <div class="sec-head__rule"></div>
+        <span class="kv-eyebrow" data-i18n="home.taEyebrow">Take-away på ordentlig</span>
+        <h2 class="display-2" data-i18n="home.taTitle">Ta Kverneriet med hjem</h2>
+      </header>
+      <p class="lede" data-i18n="home.taBody">{e(G._D['no']['home.taBody'])}</p>
+      <div class="band-cta">
+        <button class="btn btn--paper btn--lg" type="button" data-order-open data-track="cta:ta:order" data-i18n="act.order">Bestill take-away</button>
+        <a class="btn btn--paper btn--lg" href="{kv.url('takeaway')}" data-track="cta:ta:side" data-i18n="act.seeTakeaway">Se take-away-menyen</a>
+      </div>
+    </div>
+  </section>
+"""
+
+
+def giftcard_section():
+    """Gavekort – den kampanjen som har solgt best, men som ikke sto på forsiden."""
+    ORG = kv.venues()['org']
+    G.add('home.gcEyebrow', 'Hele året', 'All year round')
+    G.add('home.gcTitle', 'Gavekort', 'Gift cards')
+    G.add('home.gcBody',
+          'Et måltid noen faktisk gleder seg til. Gavekortet gjelder på alle tre '
+          'restaurantene, og kommer på e-post med en gang det er kjøpt.',
+          'A meal someone actually looks forward to. The gift card works at all three '
+          'restaurants and arrives by email as soon as it is bought.')
+    G.add('home.gcAlt', 'Kverneriets emballasje i naturmaterialer',
+          "Kverneriet's packaging in natural materials")
+    G.add('act.buyGiftcard', 'Kjøp gavekort', 'Buy a gift card')
+    return f"""  <section class="section section--accent" id="gavekort">
+    <div class="wrap">
+      <div class="grid-2 grid-2--start gavekort">
+        <figure class="photo gavekort__bilde" style="aspect-ratio:4/3"><img src="/assets/img/craft-pack.jpg" alt="{e(G._D['no']['home.gcAlt'])}" loading="lazy" decoding="async"></figure>
+        <div>
+          <header class="sec-head">
+            <div class="sec-head__rule"></div>
+            <span class="kv-eyebrow" data-i18n="home.gcEyebrow">Hele året</span>
+            <h2 class="display-2" data-i18n="home.gcTitle">Gavekort</h2>
+          </header>
+          <p class="lede" style="margin-top:var(--space-5)" data-i18n="home.gcBody">{e(G._D['no']['home.gcBody'])}</p>
+          <div class="band-cta">
+            <a class="btn btn--solid btn--lg" href="{ORG['giftcard']}?utm_source=kverneriet.no&amp;utm_medium=forside&amp;utm_campaign=gavekort" target="_blank" rel="noopener" data-track="cta:gavekort" data-i18n="act.buyGiftcard">Kjøp gavekort</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 """
@@ -81,29 +174,6 @@ TRIO_HTML = """      <div class="venue-trio" style="margin-top:var(--space-7)">
 """
 
 
-def about_section():
-    """«Det startet i Tønsberg» – tittel og avsnitt fra content/site-copy.json (redigeres i Sanity)."""
-    sc = kv.site_copy()
-    t = sc.get('aboutTitle') or {'no': 'Det startet i Tønsberg', 'en': 'It started in Tønsberg'}
-    paras = sc.get('aboutParagraphs') or []
-    G.add('home.aboutEyebrow', 'Om Kverneriet', 'About Kverneriet'); G.add('home.aboutTitle', t['no'], t.get('en') or t['no'])
-    body = ''
-    for i, para in enumerate(paras):
-        G.add(f'home.about{i + 1}', para['no'], para.get('en') or para['no'])
-        cls = ' class="lede"' if i == 0 else ''
-        style = '' if i == 0 else ' style="margin-top:var(--space-4);color:var(--text-muted)"'
-        body += f'          <p{cls}{style} data-i18n="home.about{i + 1}">{e(para["no"])}</p>\n'
-    return f'''      <!-- om:start -->
-      <div class="grid-2 grid-2--start">
-        <header class="sec-head">
-          <div class="sec-head__rule"></div>
-          <span class="kv-eyebrow" data-i18n="home.aboutEyebrow">Om Kverneriet</span>
-          <h2 class="display-2" data-i18n="home.aboutTitle">{e(t['no'])}</h2>
-        </header>
-        <div>
-{body}        </div>
-      </div>
-      <!-- om:end -->'''
 
 # Stikkordene til «Slik jobber vi» ligger her og ikke i site-copy.json, fordi
 # fetch_sanity.py bygger craftItems på nytt ved hver henting og bare kjenner
@@ -193,6 +263,10 @@ def patch_index():
     if n != 1: raise SystemExit('build: fant ikke locations-markørene')
     s, n = re.subn(r'  <!-- anledninger:start -->.*?  <!-- anledninger:end -->', lambda m: '  <!-- anledninger:start -->\n' + carousel.occasions_section().rstrip('\n') + '\n  <!-- anledninger:end -->', s, count=1, flags=re.S)
     if n != 1: raise SystemExit('build: fant ikke anledninger-markørene')
+    s, n = re.subn(r'  <!-- takeaway:start -->.*?  <!-- takeaway:end -->', lambda m: '  <!-- takeaway:start -->\n' + takeaway_section().rstrip('\n') + '\n  <!-- takeaway:end -->', s, count=1, flags=re.S)
+    if n != 1: raise SystemExit('build: fant ikke takeaway-markørene')
+    s, n = re.subn(r'  <!-- gavekort:start -->.*?  <!-- gavekort:end -->', lambda m: '  <!-- gavekort:start -->\n' + giftcard_section().rstrip('\n') + '\n  <!-- gavekort:end -->', s, count=1, flags=re.S)
+    if n != 1: raise SystemExit('build: fant ikke gavekort-markørene')
     s = re.sub(r'  <!-- The craft -->\n  <section class="section">.*?\n  </section>\n\n', lambda m: craft_section(), s, count=1, flags=re.S)
     s = re.sub(r'  <section class="section[^"]*" id="faq">.*?\n  </section>\n', '', s, count=1, flags=re.S)
     s = s.replace('\n</main>', '\n' + faq.section(faq.general_faq()) + '</main>', 1)
@@ -266,6 +340,105 @@ def build_404():
 '''
     open('404.html', 'w', encoding='utf-8').write(html); print('404.html ok')
 
+def build_about():
+    """/om/ – historien bak «Les mer om Kverneriet» i CTA-båndet.
+
+    Teksten er de samme avsnittene som ligger i Sanity (aboutParagraphs), så
+    Kverneriet redigerer den selv. Siden fantes ikke før knappen ble lagt til.
+    """
+    sc = kv.site_copy()
+    meta = pages.PAGES['om']
+    t = sc.get('aboutTitle') or {'no': 'Det startet i Tønsberg', 'en': 'It started in Tønsberg'}
+    paras = sc.get('aboutParagraphs') or []
+    G.add('om.eyebrow', 'Om Kverneriet', 'About Kverneriet')
+    G.add('om.title', t['no'], t.get('en') or t['no'])
+
+    # Alkoholreklame er forbudt i Norge, og Tønsberg har fått advarsler. Avsnittet som
+    # markedsfører «cocktails vi er stolte av, et stort vinkart og et bredt utvalg øl»
+    # slippes derfor ikke ut på denne siden. Teksten ligger i Sanity og må rettes der –
+    # til da sier bygget fra om hva som ble holdt tilbake.
+    SPERRE = ('cocktails vi er stolte av', 'stort vinkart', 'bredt utvalg øl')
+    holdt = [p['no'] for p in paras if any(s in p['no'].lower() for s in SPERRE)]
+    paras = [p for p in paras if not any(s in p['no'].lower() for s in SPERRE)]
+    for h in holdt:
+        print(f'  /om/: holdt tilbake avsnitt med alkoholreklame – «{h[:60]}…» (rett i Sanity)')
+    if not paras:
+        raise SystemExit('build: /om/ har ingen avsnitt å vise – sjekk aboutParagraphs')
+
+    body = ''
+    for i, para in enumerate(paras):
+        G.add(f'om.p{i + 1}', para['no'], para.get('en') or para['no'])
+        cls = ' class="lede"' if i == 0 else ''
+        style = '' if i == 0 else ' style="margin-top:var(--space-5);color:var(--text-muted)"'
+        body += f'          <p{cls}{style} data-i18n="om.p{i + 1}">{e(para["no"])}</p>\n'
+
+    venues = ''.join(
+        f'<a class="btn btn--outline btn--md" href="{kv.url(v["slug"])}">{e(v["fullName"])}</a>'
+        for v in V['venues'])
+
+    html = f'''<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{e(meta['title'])}</title>
+<meta name="description" content="{e(meta['desc'])}">
+<!-- seo:start -->
+<!-- seo:end -->
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/site.css">
+<script src="/content/i18n.js" defer></script>
+<script src="/content/i18n-gen.js" defer></script>
+<script src="/site.js" defer></script>
+</head>
+<body>
+
+{chrome.header()}
+
+<main id="main">
+  <section class="section">
+    <div class="wrap wrap--narrow">
+      <nav class="crumbs" aria-label="Brødsmuler"><ol><li><a href="/">Kverneriet</a></li><li><span aria-current="page">Om Kverneriet</span></li></ol></nav>
+      <header class="sec-head">
+        <div class="sec-head__rule"></div>
+        <span class="kv-eyebrow" data-i18n="om.eyebrow">Om Kverneriet</span>
+        <h1 class="display-1" data-i18n="om.title">{e(t['no'])}</h1>
+      </header>
+      <div style="margin-top:var(--space-6)">
+{body}      </div>
+    </div>
+  </section>
+
+  <section class="section section--flush-top">
+    <div class="wrap">
+      <figure class="photo" style="aspect-ratio:16/9"><img src="/assets/img/hero-julebord.jpg" alt="Spisesalen på Kverneriet Tønsberg" loading="lazy" decoding="async"></figure>
+    </div>
+  </section>
+
+  <section class="section section--flush-top">
+    <div class="wrap wrap--narrow">
+      <header class="sec-head">
+        <div class="sec-head__rule"></div>
+        <span class="kv-eyebrow">Tre steder</span>
+        <h2 class="display-2">Besøk oss</h2>
+      </header>
+      <div class="band-cta" style="margin-top:var(--space-5)">{venues}</div>
+      <div class="band-cta" style="margin-top:var(--space-6)">
+        <button class="btn btn--primary btn--lg" type="button" data-book-open data-track="lp:om:book" data-i18n="act.book">Book bord</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+{chrome.footer()}
+{modal.MODAL}
+</body>
+</html>
+'''
+    kv.write('om', html)
+    print(kv.path('om'), 'ok')
+
+
 def build_css():
     """Én CSS-fil (tokens + site.css) i stedet for en @import-kjede; Google Fonts lastes fra <head>."""
     css = ''
@@ -291,7 +464,7 @@ def cache_bust():
     print(f'css v={h} js v={js}')
 
 if __name__ == '__main__':
-    print('== sider'); build_venue.build(); build_menu.build(); build_landing.build(); build_blog.build(); patch_index(); patch_takeaway(); build_404()
+    print('== sider'); build_venue.build(); build_menu.build(); build_landing.build(); build_blog.build(); build_about(); patch_index(); patch_takeaway(); build_404()
     print('== presse'); subprocess.run([sys.executable, 'tools/media.py'], check=True); subprocess.run([sys.executable, 'tools/press.py'], check=True)
     print('== bilder'); images.apply_all(images.build_variants())
     print('== oversettelser'); print(G.write(), 'genererte nøkler')

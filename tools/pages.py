@@ -38,6 +38,12 @@ PAGES = {
     title='Take-away burger i Oslo og Tønsberg – Kverneriet',
     desc='Oslos beste take-away-burger ifølge Finansavisen, 6 av 6 i Dagbladet. Hent selv på Majorstua, Solli eller i Tønsberg, eller få levert med Wolt og Foodora.',
     img='/assets/img/ta-hero.jpg'),
+ 'om': dict(
+    title='Om Kverneriet – burger fra Tønsberg siden 2013',
+    desc='Kverneriet startet i Tønsberg i 2013. Vi kverner kjøttet selv, baker brødene ferske og bruker tre dager på friesene. Tre restauranter i Oslo og Tønsberg.',
+    # Ikke majorstua-about.jpg: den har Aperol- og Fernet-Branca-plakater i bildet,
+    # og dette blir og:image når siden deles.
+    img='/assets/img/hero-julebord.jpg'),
  'lunsj': dict(
     title='Burgerlunsj på Majorstuen, Solli og i Tønsberg – Kverneriet',
     desc='Lunsj med burger: kjøkkenet åpner 11 på Majorstua, 11.30 på Solli og 12 tor–søn i Tønsberg. Kjøtt vi kverner selv, fries som tar tre dager. Book bord.',

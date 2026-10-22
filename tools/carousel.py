@@ -114,12 +114,9 @@ ANLEDNINGER = [
     ('middag',     'middag',     'Hver kveld',        'Middag',
      'Tre dagers fries, kjøtt vi kverner selv, og god tid.',
      '/assets/img/index-hero.jpg',    'Burger fra Kverneriet på tallerken'),
-    ('takeaway',   '#order',     'Hent eller levert', 'Take-away',
-     'Hent selv via OrderX, eller få levert med Wolt og Foodora i Oslo.',
-     '/assets/img/hero-takeaway.jpg', 'Person med take-away-pose fra Kverneriet på gaten'),
-    ('gavekort',   'giftcard',   'Hele året',         'Gavekort',
-     'Et måltid noen faktisk gleder seg til.',
-     '/assets/img/craft-pack.jpg',    'Kverneriets emballasje i naturmaterialer'),
+    # Take-away og gavekort lå her før, men har fått egne seksjoner rett under
+    # karusellen (22.10.2026). To like kort med samme bilde og samme lenke rett
+    # over seksjonene de peker til, gir bare to steder å dele klikkene på.
 ]
 
 

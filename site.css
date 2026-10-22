@@ -583,3 +583,18 @@ html{scroll-behavior:smooth}
 .cta-band__inner{padding-block:clamp(var(--space-8),9vw,var(--space-10));
   display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-6)}
 .cta-band__inner .lede{color:var(--paper-50);max-width:58ch;margin:0}
+/* Seksjonshode på mørkt bånd: samme oppsett som ellers, lyse farger. */
+.sec-head--invert .kv-eyebrow{color:var(--cream-100)}
+.sec-head--invert .display-2,.sec-head--invert h2{color:var(--paper-0)}
+.cta-band__inner .sec-head{margin-bottom:var(--space-5)}
+/* Knapperad under et bånd eller en seksjon. Brytes til egen linje på mobil. */
+.band-cta{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-6)}
+.gavekort{gap:var(--space-8);align-items:center}
+.gavekort__bilde{margin:0}
+@media (max-width:719px){
+  /* Hver knapp på egen linje. align-items:stretch slutter da å jevne ut høyden,
+     så <button> og <a> må settes like høye selv. */
+  .band-cta{flex-direction:column;align-items:stretch}
+  .band-cta .btn{width:100%}
+  .gavekort{gap:var(--space-6)}
+}

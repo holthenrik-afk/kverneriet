@@ -153,23 +153,23 @@
   },
   {
    "key": "kveld",
-   "image": "/assets/img/hero-kveld.jpg",
+   "image": "/assets/img/ln-burger.jpg",
    "alt": {
-    "no": "Bartender som lager en drink bak baren",
-    "en": "A bartender making a drink behind the bar"
+    "no": "Burger servert sent på kvelden",
+    "en": "A burger served late in the evening"
    },
    "title": {
-    "no": "Handcrafted cocktails og god stemning hele kvelden.",
-    "en": "Handcrafted cocktails and a good mood all evening."
+    "no": "Kvelden hos oss",
+    "en": "Your evening with us"
    },
    "sub": {
-    "no": "Kjøkkenet er åpent til 22, baren til 23.",
-    "en": "The kitchen is open until 22, the bar until 23."
+    "no": "Kjøkkenet er åpent til 22.",
+    "en": "The kitchen is open until 22."
    },
-   "href": "cocktails",
+   "href": "middag",
    "lenketekst": {
-    "no": "Oppdag cocktailene våre",
-    "en": "Discover our cocktails"
+    "no": "Se kveldsmenyen",
+    "en": "See the evening menu"
    },
    "stikkord": {
     "no": "Kjøkken til 22",

@@ -19,6 +19,7 @@ PAGES = {
     'solli-menu':     ('solli/menu/index.html',     '/solli/menu/'),
     'tonsberg-menu':  ('tonsberg/menu/index.html',  '/tonsberg/menu/'),
     'takeaway':   ('takeaway/index.html',       '/takeaway/'),
+    'om':         ('om/index.html',             '/om/'),
     'lunsj':      ('lunsj/index.html',          '/lunsj/'),
     'julebord':   ('julebord/index.html',       '/julebord/'),
     'selskap':    ('selskap/index.html',        '/selskap/'),
