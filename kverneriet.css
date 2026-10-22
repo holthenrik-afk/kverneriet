@@ -779,12 +779,20 @@ html{scroll-behavior:smooth}
 .cta-band__inner .sec-head{margin-bottom:var(--space-5)}
 /* Knapperad under et bånd eller en seksjon. Brytes til egen linje på mobil. */
 .band-cta{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-6)}
-.gavekort{gap:var(--space-8);align-items:center}
-.gavekort__bilde{margin:0}
+/* Bilde og tekst side om side: take-away og gavekort. Bildet er budskapet i begge,
+   så det skal stå usløret – ikke bak tonelaget på et heldekkende bånd. */
+.sidestilt{gap:var(--space-8);align-items:center}
+.sidestilt__bilde{margin:0}
+/* Annenhver seksjon speiles, så de to ikke blir to like rader under hverandre.
+   På mobil kollapser grid-2 og rekkefølgen i DOM-en gjelder, derfor order:0. */
+@media (min-width:901px){
+  .sidestilt--omvendt .sidestilt__bilde{order:2}
+}
 @media (max-width:719px){
-  /* Hver knapp på egen linje. align-items:stretch slutter da å jevne ut høyden,
-     så <button> og <a> må settes like høye selv. */
+  /* Hver knapp på egen linje. align-items:stretch jevner bare ut bredden, så
+     høyden må settes selv: <a> arver --leading-body, <button> bruker «normal»,
+     og det ga 60px mot 53px. */
   .band-cta{flex-direction:column;align-items:stretch}
-  .band-cta .btn{width:100%}
-  .gavekort{gap:var(--space-6)}
+  .band-cta .btn{width:100%;line-height:1.2}
+  .sidestilt{gap:var(--space-6)}
 }

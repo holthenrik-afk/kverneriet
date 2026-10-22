@@ -75,19 +75,24 @@ def takeaway_section():
     G.add('home.taAlt', 'Person med take-away-pose fra Kverneriet på gaten',
           'Someone carrying a Kverneriet take-away bag down the street')
     G.add('act.seeTakeaway', 'Se take-away-menyen', 'See the take-away menu')
-    return f"""  <section class="cta-band">
-    <img class="cta-band__img" src="/assets/img/hero-takeaway.jpg" alt="{e(G._D['no']['home.taAlt'])}" loading="lazy" decoding="async">
-    <div class="cta-band__scrim" aria-hidden="true"></div>
-    <div class="cta-band__inner wrap">
-      <header class="sec-head sec-head--invert sec-head--center">
-        <div class="sec-head__rule"></div>
-        <span class="kv-eyebrow" data-i18n="home.taEyebrow">Take-away på ordentlig</span>
-        <h2 class="display-2" data-i18n="home.taTitle">Ta Kverneriet med hjem</h2>
-      </header>
-      <p class="lede" data-i18n="home.taBody">{e(G._D['no']['home.taBody'])}</p>
-      <div class="band-cta">
-        <button class="btn btn--paper btn--lg" type="button" data-order-open data-track="cta:ta:order" data-i18n="act.order">Bestill take-away</button>
-        <a class="btn btn--paper btn--lg" href="{kv.url('takeaway')}" data-track="cta:ta:side" data-i18n="act.seeTakeaway">Se take-away-menyen</a>
+    # To spalter, ikke heldekkende bånd: tonelaget på båndet ligger på 62–80 %, og da
+    # forsvinner personen med posen – som er hele poenget med bildet. Her står det usløret.
+    return f"""  <section class="section" id="takeaway">
+    <div class="wrap">
+      <div class="grid-2 grid-2--start sidestilt sidestilt--omvendt">
+        <div>
+          <header class="sec-head">
+            <div class="sec-head__rule"></div>
+            <span class="kv-eyebrow" data-i18n="home.taEyebrow">Take-away på ordentlig</span>
+            <h2 class="display-2" data-i18n="home.taTitle">Ta Kverneriet med hjem</h2>
+          </header>
+          <p class="lede" style="margin-top:var(--space-5)" data-i18n="home.taBody">{e(G._D['no']['home.taBody'])}</p>
+          <div class="band-cta">
+            <button class="btn btn--solid btn--lg" type="button" data-order-open data-track="cta:ta:order" data-i18n="act.order">Bestill take-away</button>
+            <a class="btn btn--outline btn--lg" href="{kv.url('takeaway')}" data-track="cta:ta:side" data-i18n="act.seeTakeaway">Se take-away-menyen</a>
+          </div>
+        </div>
+        <figure class="photo sidestilt__bilde" style="aspect-ratio:4/3"><img src="/assets/img/hero-takeaway.jpg" alt="{e(G._D['no']['home.taAlt'])}" loading="lazy" decoding="async"></figure>
       </div>
     </div>
   </section>
@@ -104,13 +109,15 @@ def giftcard_section():
           'restaurantene, og kommer på e-post med en gang det er kjøpt.',
           'A meal someone actually looks forward to. The gift card works at all three '
           'restaurants and arrives by email as soon as it is bought.')
-    G.add('home.gcAlt', 'Kverneriets emballasje i naturmaterialer',
-          "Kverneriet's packaging in natural materials")
+    # Emballasjebildet lå her før, men det viser take-away – og sto rett under
+    # take-away-båndet. Et gavekort selges på måltidet, ikke på esken.
+    G.add('home.gcAlt', 'To burgere på tallerken, båret ut i restauranten',
+          'Two burgers on plates, carried out into the restaurant')
     G.add('act.buyGiftcard', 'Kjøp gavekort', 'Buy a gift card')
     return f"""  <section class="section section--accent" id="gavekort">
     <div class="wrap">
-      <div class="grid-2 grid-2--start gavekort">
-        <figure class="photo gavekort__bilde" style="aspect-ratio:4/3"><img src="/assets/img/craft-pack.jpg" alt="{e(G._D['no']['home.gcAlt'])}" loading="lazy" decoding="async"></figure>
+      <div class="grid-2 grid-2--start sidestilt">
+        <figure class="photo sidestilt__bilde" style="aspect-ratio:4/3"><img src="/assets/img/g-burger.jpg" alt="{e(G._D['no']['home.gcAlt'])}" loading="lazy" decoding="async"></figure>
         <div>
           <header class="sec-head">
             <div class="sec-head__rule"></div>
