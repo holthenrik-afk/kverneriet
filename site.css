@@ -124,6 +124,13 @@ html{scroll-behavior:smooth}
 .nav-burger.is-open .icon-close{display:block}
 .mobile-panel{position:absolute;top:calc(100% + 8px);right:var(--gutter);background:var(--surface-card);border:1px solid var(--line-hairline);border-radius:var(--radius-1);box-shadow:var(--shadow-2);display:none;padding:10px;min-width:240px}
 .mobile-panel{opacity:0;transform:translateY(-4px);transition:opacity 120ms var(--ease-out),transform 120ms var(--ease-out),display 120ms allow-discrete}
+/* Menyen er 18 lenker lang og ble høyere enn skjermen på telefon. Panelet ligger
+   absolutt plassert i en sticky header, så sidescrollen flyttet headeren og panelet
+   sammen: de nederste punktene var ikke mulig å nå. Panelet scroller nå selv.
+   dvh følger adressefeltet som skyves inn og ut på mobil; vh er reserven. */
+.mobile-panel{max-height:calc(100vh - var(--stick-top, 65px) - 24px);
+  max-height:calc(100dvh - var(--stick-top, 65px) - 24px);
+  overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .mobile-panel.is-open{display:grid;gap:2px;opacity:1;transform:none;transition-duration:160ms}
 @starting-style{.mobile-panel.is-open{opacity:0;transform:translateY(-4px)}}
 .mobile-panel__gruppe{font-family:var(--font-cond);font-weight:700;font-size:11px;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-faint);margin:10px 0 2px;padding:8px 12px 0;border-top:1px solid var(--line-hairline)}
