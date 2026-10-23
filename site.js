@@ -61,10 +61,25 @@
      tools/chrome.py) og som et kv:track-event. OrderX-lenkene bærer i tillegg UTM-parametre. */
   window.dataLayer=window.dataLayer||[];
   var VENUE_RE=/^(majorstua|solli|tonsberg)$/;
-  function ga(name,params){if(typeof window.gtag==='function')window.gtag('event',name,params);}
+  function ga(name,params){if(typeof window.gtag==='function')window.gtag('event',name,params);meta(name,params);}
+  /* De samme hendelsene går til Meta-pikselen. fbq finnes bare når gjesten har sagt ja til
+     informasjonskapsler. Schedule, Lead og Contact er Metas standardhendelser, resten er egne.
+     BookingStarted sendes én gang per side. */
+  var META={booking_created:'Schedule',group_request:'Lead',click_call:'Contact',open_booking:'OpenBooking',
+    open_group_booking:'OpenGroupBooking',zc_choose_pax:'BookingStarted',zc_choose_date:'BookingStarted',
+    zc_choose_slot:'BookingSlotChosen',click_takeaway:'TakeawayClick',click_giftcard:'GiftcardClick'};
+  var META_STD={Schedule:1,Lead:1,Contact:1},metaOnce={};
+  function meta(name,params){
+    var ev=META[name];if(!ev||typeof window.fbq!=='function')return;
+    if(ev==='BookingStarted'){if(metaOnce[ev])return;metaOnce[ev]=1;}
+    var d={content_name:(params&&params.kv_venue)||pageVenue()};
+    if(params&&params.guests!=null)d.num_guests=params.guests;
+    window.fbq(META_STD[ev]?'track':'trackCustom',ev,d);
+  }
   function gaName(parts){
     var s=parts.join(':');
     if(parts[0]==='order')return 'click_takeaway';
+    if(parts[0]==='booking'&&parts[2]==='group')return 'group_request';
     if(/:group$/.test(s))return 'open_group_booking';
     if(/(^|:)book(:|$)/.test(s))return 'open_booking';
     if(/(^|:)takeaway(:|$)/.test(s))return 'open_takeaway';
@@ -106,7 +121,6 @@
     for(var k in ZC_FIELDS){var v=d[k];if(typeof v==='number'||(typeof v==='string'&&v.length<=20))p[ZC_FIELDS[k]]=v;}
     window.dataLayer.push({event:name,kv_venue:p.kv_venue});
     ga(name,p);
-    if(name==='booking_created'&&typeof window.fbq==='function')window.fbq('track','Schedule',{content_name:p.kv_venue});
   });
 
   /* Samtykke: banneret vises til gjesten har valgt. Valget lagres i localStorage («kv-consent») og
