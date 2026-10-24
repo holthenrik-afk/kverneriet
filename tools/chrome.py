@@ -94,6 +94,45 @@ def footer(menu_href='/meny/'):
 </footer>
 '''
 
+
+# Googles kildevelger kjente ikke kverneriet.no 23.10.2026. Nettstedet er nytt, og
+# Google skriver at kilder som ikke oppdateres jevnlig kan mangle i velgeren.
+# Knappen er derfor ferdig bygget, men skrudd av: en knapp som sender gjesten til
+# Google og ikke finner Kverneriet, er verre enn ingen knapp.
+#
+# SLIK SKRUR DU DEN PÅ: åpne https://www.google.com/preferences/source?q=kverneriet.no
+# mens du er logget inn på Google og søk opp kverneriet.no. Dukker den opp som et valg,
+# setter du linja under til True og bygger på nytt. Ingenting annet trengs.
+PREFERRED_SOURCE_PA = False
+
+
+def preferred_source():
+    """Googles «foretrukne kilder» – knappen som lar leseren velge Kverneriet i Google.
+
+    Google dokumenterer to måter: et JavaScript fra news.google.com som rendrer en
+    ferdig knapp, og en ren lenke. Vi bruker lenken. Skriptet er på 140 kB, det er en
+    tredjepart som kan sette informasjonskapsler før gjesten har svart på
+    samtykkebanneret, og knappen ville kommet i Googles utseende midt i vårt eget.
+    Lenken går til nøyaktig samme sted.
+
+    Ordlyden på knappen er den Google selv bruker i sin norske knappegrafikk, så
+    gjesten kjenner igjen det hun møter på den andre siden.
+    Kilde: https://developers.google.com/search/docs/appearance/preferred-sources
+    """
+    if not PREFERRED_SOURCE_PA:
+        return ''
+    domene = kv.DOMAIN.split('//', 1)[-1].strip('/')
+    G.add('pref.body',
+          f'Velger du {ORG["name"]} som foretrukket kilde i Google, viser Google oss oftere når vi har skrevet noe nytt.',
+          f'Choose {ORG["name"]} as a preferred source in Google and we show up more often when we have written something new.')
+    G.add('pref.cta', 'Legg til som foretrukket kilde på Google', 'Add as a preferred source on Google')
+    return (f'    <aside class="pref-kilde">\n'
+            f'      <p class="caption" data-i18n="pref.body">{kv.esc(G._D["no"]["pref.body"])}</p>\n'
+            f'      <a class="btn btn--outline btn--sm" href="https://www.google.com/preferences/source?q={domene}"'
+            f' target="_blank" rel="noopener" data-track="cta:preferred:google" data-i18n="pref.cta">'
+            f'Legg til som foretrukket kilde på Google</a>\n'
+            f'    </aside>\n')
+
 G.add('nav.venues', 'Restauranter', 'Restaurants')
 G.add('nav.eat', 'Mat og drikke', 'Food and drink')
 G.add('nav.occasions', 'Anledninger', 'Occasions')

@@ -65,7 +65,7 @@ def venue_faq(v):
          'Do I need to book, or can I just turn up?',
          'You are welcome to drop by – we keep plenty of walk-in tables. To be sure of a table, especially on Friday and Saturday, book online in a few seconds.'),
     ]
-    if False and rng:
+    if rng:
         q.append((f'faq.{slug}.price', 'Hva koster en burger hos Kverneriet?',
                   f'Burgerne på {name} koster fra {rng[0]} til {rng[1]} kr, med 150 g patty av kjøtt vi kverner selv. Fries kommer i tillegg (fra {fries_from() or 84} kr). <a href="{kv.url(slug + "-menu")}">Se hele menyen med priser</a>.',
                   'How much is a burger at Kverneriet?',
@@ -341,6 +341,7 @@ SOKEORD = {
     'faq.s.allergy':    'allergi allergener intoleranse nøtter nøtteallergi skalldyr laktose soya allergy allergen intolerance nuts shellfish',
     'faq.s.veg':        'vegetar vegetarianer vegansk vegan plantebasert kjøttfri veggie meat free plant based',
     'faq.s.kids':       'barn unger barnemeny barnestol høystol familie baby kids children child high chair family',
+    'faq.s.pris':       'pris priser koster kost hva koster billig dyrt kroner penger price cost how much cheap',
     'faq.s.craft':      'håndverk kvernet ferskt brød bakt råvarer kvalitet hjemmelaget craft fresh quality homemade',
     'faq.s.dogs':       'hund hunder bikkje dyr kjæledyr hundevennlig dog dogs pet pets dog friendly',
     'faq.s.outside':    'uteservering ute terrasse utendørs sol solen brygge balkong outdoor outdoors terrace patio sun',
@@ -396,6 +397,10 @@ def GRUPPER():
              'Ja. Barnemenyen finnes på alle tre restaurantene og har hamburger med fries, chicken tenders med fries, ostetoast eller bare fries, fra 89 til 169 kr. Den kommer med tegninger og oppgaver mens de venter på maten.',
              'Is it child friendly?',
              'Yes. The kids menu is available at all three restaurants and has a hamburger with fries, chicken tenders with fries, a ham and cheese toastie, or just fries, from NOK 89 to 169. It comes with drawings and puzzles while they wait.'),
+            ('faq.s.pris', 'Hva koster en burger?',
+             f'Burgerne koster fra {burger_range("majorstua")[0]} til {burger_range("majorstua")[1]} kr, med 150 g patty av kjøtt vi kverner selv. Fries kommer i tillegg, fra {fries_from() or 84} kr. <a href="/meny/">Se hele menyen med priser</a>.',
+             'What does a burger cost?',
+             f'Burgers are NOK {burger_range("majorstua")[0]}–{burger_range("majorstua")[1]}, with a 150 g patty of beef we grind ourselves. Fries are extra, from NOK {fries_from() or 84}. <a href="/meny/">See the full menu with prices</a>.'),
             ('faq.s.craft', 'Hva gjør maten deres spesiell?',
              'Vi lager det meste selv, litt om gangen, så råvarene holder seg ferske. Vi baker burgerbrødene, kverner kjøttet her og bruker <a href="/fries/">tre dager på friesene</a>. Samtidig liker vi å utfordre hva en burger kan være, og henter smaker fra hele verden.',
              'What makes your food different?',

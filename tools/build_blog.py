@@ -79,7 +79,7 @@ def index_page():
         <p class="sec-head__intro" data-i18n="blog.intro">{e(G._D["no"]["blog.intro"])}</p>
       </header>
       <div style="margin-top:var(--space-7)">{body}</div>
-    </div>
+{chrome.preferred_source()}    </div>
   </section>
 
   <section class="section section--tint">
@@ -121,7 +121,7 @@ def post_page(p):
     <div class="post__body">
 {PT.to_html(p.get('body'))}
     </div>
-    <div style="margin-top:var(--space-8);display:flex;gap:10px;flex-wrap:wrap">
+{chrome.preferred_source()}    <div style="margin-top:var(--space-8);display:flex;gap:10px;flex-wrap:wrap">
       <a class="btn btn--outline btn--md" href="/blogg/"><span class="btn__glyph" aria-hidden="true">«</span> <span data-i18n="blog.all">Alle innlegg</span></a>
       <a class="btn btn--primary btn--md" href="/majorstua/#booking" data-book-open data-i18n="act.book">Book bord</a>
     </div>

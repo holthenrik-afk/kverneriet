@@ -11,8 +11,11 @@
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy"
   },
-  "keywords": ["sanity"],
+  "keywords": [
+    "sanity"
+  ],
   "dependencies": {
+    "@sanity/ui": "^4.4.10",
     "@sanity/vision": "^6",
     "react": "^19",
     "react-dom": "^19",
@@ -26,5 +29,10 @@
     "prettier": "^3",
     "typescript": "^5"
   },
-  "prettier": {"semi": false, "printWidth": 100, "bracketSpacing": false, "singleQuote": true}
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "bracketSpacing": false,
+    "singleQuote": true
+  }
 }

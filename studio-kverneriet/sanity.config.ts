@@ -2,6 +2,7 @@ import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
+import {PostPreview} from './preview/PostPreview'
 
 // Studio for kverneriet.com. Innholdet her bygges til statiske sider av tools/fetch_sanity.py + tools/build.py.
 export default defineConfig({
@@ -11,6 +12,12 @@ export default defineConfig({
   dataset: 'production',
   plugins: [
     structureTool({
+      // Blogginnlegg får en «Forhåndsvisning»-fane ved siden av skjemaet. Nettsiden er statisk
+      // og kan ikke vise utkast, så Studioet tegner innlegget selv. Se preview/postHtml.ts.
+      defaultDocumentNode: (S, {schemaType}) =>
+        schemaType === 'post'
+          ? S.document().views([S.view.form().title('Rediger'), S.view.component(PostPreview).title('Forhåndsvisning')])
+          : S.document(),
       structure: (S) =>
         S.list()
           .title('Innhold')

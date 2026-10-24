@@ -610,6 +610,13 @@ html{scroll-behavior:smooth}
 .press-row--flip .press-row__quotes{order:1}
 .press-row__quotes{display:grid;gap:var(--space-4)}
 
+/* Googles «foretrukne kilder». Diskré blokk, ikke en kampanje: den skal kunne
+   stå på bloggen uten å konkurrere med «Book bord». */
+.pref-kilde{margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--line-hairline);
+  display:flex;gap:var(--space-5);align-items:center;flex-wrap:wrap}
+.pref-kilde p{margin:0;max-width:46ch}
+.pref-kilde .btn{flex:0 0 auto}
+
 /* Spørsmålssiden: gruppene skal leses som egne bolker, ikke som én lang liste. */
 .faq-gruppe + .faq-gruppe{margin-top:var(--space-8);padding-top:var(--space-7);border-top:1px solid var(--line-hairline)}
 /* Under søk skjules grupper. Da ville streken over fortsatt tegnet seg mot en skjult
