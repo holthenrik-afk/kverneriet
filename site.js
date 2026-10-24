@@ -398,31 +398,109 @@
     });
   }
 
-  /* Hero-video: ren dekor. Lastes bare der den gir noe – ikke på smale skjermer, ikke for
-     dem som har slått av bevegelse, og ikke i strømsparemodus der autoplay uansett nektes. */
+  /* Bakgrunnsvideo: forsiden, Majorstua, Solli og take-away (chrome.bg_video i Python).
+     Ren dekor, så den lastes bare der den gir noe:
+     – ikke for dem som har slått av bevegelse, eller som er i datasparemodus eller på 2G
+       der nettleseren forteller det (Chrome/Android). Safari og Firefox oppgir ingenting
+       om dette, så «Lav datamodus» på iPhone kan ikke oppdages fra en nettside.
+     – ikke før resten av siden er lastet, så den ikke stjeler båndbredde fra innholdet
+     – ikke før feltet er i nærheten av skjermen, og den pauses når det forsvinner
+     Er feltet høyere enn 4:5 – en telefon på høykant – hentes mobilfila, som er beskåret
+     til midten og bare en firedel så stor. Det er feltets form som avgjør, ikke
+     skjermbredden, så et nettbrett på høykant får mobilfila og en telefon på tvers ikke.
+     Pauseknappen kreves av WCAG 2.2.2, og valget huskes på tvers av sidene. */
   (function(){
-    var v=document.querySelector('[data-hero-video]');
-    if(!v)return;
-    var still=window.matchMedia('(prefers-reduced-motion: reduce)');
-    var bred=window.matchMedia('(min-width: 760px)');
-    var startet=false;
-    function start(){
-      if(startet||still.matches||!bred.matches)return;
-      startet=true;
-      ['/assets/video/hero.webm|video/webm','/assets/video/hero.mp4|video/mp4'].forEach(function(d){
-        var p=d.split('|'),s=document.createElement('source');
-        s.src=p[0];s.type=p[1];v.appendChild(s);
+    var vids=[].slice.call(document.querySelectorAll('video[data-bg-video]'));
+    if(!vids.length||!('IntersectionObserver' in window))return;
+    var nett=navigator.connection||{};
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||nett.saveData||/(^|-)2g$/.test(nett.effectiveType||''))return;
+    var pauset=false;try{pauset=localStorage.getItem('kv-video')==='pause';}catch(e){}
+    // Videoen ligger absolutt i seksjonen sin. Let etter knappen og mål formen derfra,
+    // ikke fra nærmeste forelder, som kan være et <picture> rundt bildet.
+    function felt(v){return v.closest('section')||v.parentElement;}
+    function knapp(v){return felt(v).querySelector('[data-bg-video-knapp]');}
+    function merk(){
+      vids.forEach(function(v){
+        var b=knapp(v);if(!b)return;
+        var k=pauset?'video.play':'video.pause';
+        b.setAttribute('aria-label',(window.KVT&&window.KVT(k))||(pauset?'Spill av bakgrunnsvideoen':'Sett bakgrunnsvideoen på pause'));
+        b.classList.toggle('er-pauset',pauset);
       });
-      v.load();
-      var spill=v.play();
-      if(spill&&spill.catch)spill.catch(function(){});
     }
-    if('requestIdleCallback' in window)requestIdleCallback(start,{timeout:1800});
-    else window.setTimeout(start,900);
-    document.addEventListener('visibilitychange',function(){
-      if(!startet)return;
-      document.hidden?v.pause():v.play().catch(function(){});
+    function last(v){
+      if(v.kvLastet)return;
+      v.kvLastet=true;
+      var r=felt(v).getBoundingClientRect();
+      var mobil=v.getAttribute('data-src-mobil');
+      v.kvMobil=Boolean(mobil&&r.width/r.height<=0.8);
+      v.src=v.kvMobil?mobil:v.getAttribute('data-src');
+      v.addEventListener('playing',function(){
+        v.classList.add('spiller');
+        var b=knapp(v);if(b)b.hidden=false;
+      },{once:true});
+    }
+    function spill(v){
+      if(pauset||document.hidden||!v.kvSynlig)return;
+      last(v);
+      var p=v.play();if(p&&p.catch)p.catch(function(){});
+    }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var v=e.target;v.kvSynlig=e.isIntersecting;
+        if(e.isIntersecting)spill(v);else if(v.kvLastet)v.pause();
+      });
+    },{rootMargin:'200px 0px'});
+    function begynn(){
+      vids.forEach(function(v){
+        // Har gjesten satt videoen på pause tidligere, vises knappen med en gang, så den kan startes igjen.
+        if(pauset){var b=knapp(v);if(b)b.hidden=false;}
+        io.observe(v);
+      });
+      merk();
+    }
+    // Ikke requestIdleCallback: i en travel fane kan den vente i et kvarter. Etter load er
+    // det viktige på siden ferdig, så en kort, fast pause er nok.
+    function etterpa(){window.setTimeout(begynn,250);}
+    if(document.readyState==='complete')etterpa();else window.addEventListener('load',etterpa);
+    document.addEventListener('click',function(e){
+      var b=e.target.closest('[data-bg-video-knapp]');if(!b)return;
+      pauset=!pauset;
+      try{localStorage.setItem('kv-video',pauset?'pause':'spill');}catch(x){}
+      vids.forEach(function(v){if(pauset)v.pause();else spill(v);});
+      merk();
     });
+    function lesValg(){
+      try{pauset=localStorage.getItem('kv-video')==='pause';}catch(e){}
+      vids.forEach(function(v){
+        if(pauset){v.pause();var b=knapp(v);if(b)b.hidden=false;}
+      });
+      merk();
+    }
+    document.addEventListener('visibilitychange',function(){
+      if(!document.hidden)lesValg();
+      vids.forEach(function(v){if(document.hidden)v.pause();else spill(v);});
+    });
+    window.addEventListener('pageshow',function(e){
+      if(!e.persisted)return;
+      lesValg();vids.forEach(spill);
+    });
+    var vent;
+    window.addEventListener('resize',function(){
+      window.clearTimeout(vent);
+      vent=window.setTimeout(function(){
+        vids.forEach(function(v){
+          if(!v.kvLastet||!v.kvMobil)return;
+          var r=felt(v).getBoundingClientRect();
+          if(r.width/r.height<=0.8)return;
+          var t=v.currentTime;
+          v.kvMobil=false;
+          v.src=v.getAttribute('data-src');
+          v.addEventListener('loadedmetadata',function(){try{v.currentTime=t;}catch(e){}},{once:true});
+          spill(v);
+        });
+      },300);
+    });
+    document.addEventListener('kv:lang',merk);
   })();
 
   /* Karusellene: piler, prikker og tastatur. Sporet scroller allerede uten JS. */

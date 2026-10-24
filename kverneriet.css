@@ -770,6 +770,25 @@ html{scroll-behavior:smooth}
 /* ---------- Hero med video ----------
    Videoen er dekor: den lastes først når skjermen er bred nok og gjesten ikke har slått av
    bevegelse. Fram til da står posterbildet, og teksten er lesbar uansett. */
+/* Bakgrunnsvideo (chrome.bg_video). Ligger mellom bildet og tonelaget. Med --toning er den
+   usynlig til den faktisk spiller, så bildet under står der til da – og alltid for dem som
+   har slått av bevegelse, er i datasparemodus, eller der nettleseren nekter autoavspilling. */
+.bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.bg-video--toning{opacity:0;transition:opacity .9s var(--ease-out)}
+.bg-video--toning.spiller{opacity:1}
+.cta-band .bg-video{z-index:-2}
+/* Krysstoningen under trenger ikke gå mens videoen dekker den. */
+.cta-band--skifte:has(.bg-video.spiller) .cta-band__img{animation-play-state:paused}
+.bg-video__knapp{position:absolute;z-index:2;right:max(var(--gutter),env(safe-area-inset-right,0px));bottom:var(--space-4);
+  width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;
+  background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.4);color:#fff;cursor:pointer;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);transition:background var(--dur-fast) var(--ease-out)}
+.hero-dark--short:has(.bg-video) .hero-dark__content{padding-bottom:calc(var(--space-4) + 40px + var(--space-3))}
+.bg-video__knapp:hover{background:rgba(0,0,0,.68)}
+.bg-video__knapp:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.bg-video__knapp .ikon-spill,.bg-video__knapp.er-pauset .ikon-pause{display:none}
+.bg-video__knapp.er-pauset .ikon-spill{display:block}
+
 .hero-home--video{position:relative;isolation:isolate;background:var(--teal-900);overflow:hidden}
 .hero-home--video .hero-home__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 /* Svart, ikke grønt – samme som båndene lenger nede. Det grønne la seg som et

@@ -87,8 +87,12 @@ def takeaway_section():
         f' src="/assets/img/{f}" alt="{e(a)}"{"" if a else " aria-hidden=\"true\""}'
         f' loading="lazy" decoding="async">'
         for i, (f, a) in enumerate(bilder))
+    # Videoen legger seg over krysstoningen når den spiller. Bildene står under som
+    # reserve, og er det eneste den ser som har slått av bevegelse.
+    video, knapp = chrome.bg_video('takeaway')
     return f"""  <section class="cta-band cta-band--skifte">
     {lag}
+    {video}
     <div class="cta-band__scrim" aria-hidden="true"></div>
     <div class="cta-band__inner wrap">
       <header class="sec-head sec-head--invert sec-head--center">
@@ -102,6 +106,7 @@ def takeaway_section():
         <a class="btn btn--paper btn--lg" href="{kv.url('takeaway')}" data-track="cta:takeaway:meny" data-i18n="act.seeTakeaway">Se take-away-menyen</a>
       </div>
     </div>
+    {knapp}
   </section>
 """
 
@@ -260,6 +265,12 @@ def patch_index():
     s = chrome.apply(s)
     s = modal.apply(s)
     s = s.replace('<main>', '<main id="main">', 1)
+    # Bakgrunnsvideoen i toppen. Plakaten er første bilde i videoen, og er det eneste
+    # bildet heroen har, så videoen toner ikke inn som de andre. Den gamle plassholderen
+    # (data-hero-video, bare PC) fjernes første gang.
+    s = re.sub(r'[ \t]*<video class="hero-home__video"[^>]*data-hero-video[^>]*></video>\n?', '', s)
+    video, knapp = chrome.bg_video('forside', toning=False, plakat='/assets/video/forside-plakat.jpg', cls='hero-home__video')
+    s = _sett_inn_video(s, 'forside', '<section class="hero-home', r'<section class="hero-home[^"]*">', video, knapp, 'index.html')
     # H1 beholder merkevarelinjen, men får en synlig undertekst med sted og produkt
     sc = kv.site_copy()
     hs = sc.get('heroSub') or {'no': 'Burgerrestaurant i Oslo og Tønsberg siden 2013.', 'en': 'Burger restaurant in Oslo and Tønsberg since 2013.'}
@@ -307,6 +318,18 @@ def patch_index():
                '<span class="kv-eyebrow" data-i18n="ta.eyebrow">Ta Kverneriet med hjem</span>', s)
     open('index.html', 'w', encoding='utf-8').write(s); print('index.html ok')
 
+
+def _sett_inn_video(s, navn, seksjon, etter, video, knapp, fil):
+    """Legger <video> rett etter mønsteret `etter` og knappen sist i seksjonen som
+    starter med `seksjon`. Tåler å kjøres på sin egen utdata."""
+    s = re.sub(r'<video class="[^"]*"[^>]*data-src="/assets/video/%s\.mp4"[^>]*></video>' % re.escape(navn), '', s)
+    s = re.sub(r'\n?[ \t]*<button class="bg-video__knapp"[^>]*data-bg-video-knapp="%s".*?</button>' % re.escape(navn), '', s, flags=re.S)
+    s, n = re.subn(etter, lambda m: m.group(0) + video, s, count=1)
+    if n != 1:
+        raise SystemExit(f'build: fant ikke plassen til bakgrunnsvideoen «{navn}» i {fil}')
+    i = s.index(seksjon); j = s.index('</section>', i)
+    return s[:j] + '  ' + knapp + '\n  ' + s[j:]
+
 def patch_takeaway():
     s = open('takeaway/index.html', encoding='utf-8').read()
     s = chrome.apply(s); s = modal.apply(s)
@@ -314,6 +337,8 @@ def patch_takeaway():
     s = s.replace('<span class="badge">Best take-away burger</span>', '<span class="badge" lang="en">Best take-away burger</span>')
     s = re.sub(r'<h1 class="hero-title"([^>]*)>Take-?away</h1>', r'<h1 class="hero-title"\1>Take-away burger i Oslo og Tønsberg</h1>', s)
     s = s.replace('style="object-position:center 68%"><div class="hero-dark__scrim"', 'style="object-position:center 68%" fetchpriority="high" decoding="async"><div class="hero-dark__scrim"', 1)
+    video, knapp = chrome.bg_video('takeaway')
+    s = _sett_inn_video(s, 'takeaway', '<section class="hero-dark', r'<img class="hero-dark__img"[^>]*>(?:</picture>)?', video, knapp, 'takeaway/index.html')
     # Bestillingskanalene fra venues.json (nb-Wolt, rel=noopener)
     s = re.sub(r'        <div class="stack-5">\n          <div class="order-group" id="majorstua">.*?\n          <p class="caption" data-i18n="modal.note">',
                lambda m: '        <div class="stack-5">\n          ' + '\n          '.join(modal.order_group(v['slug']).replace('<div class="order-group" data-venue=', '<div class="order-group" id="%s" data-venue=' % v['slug']) for v in V['venues']) + '\n          <p class="caption" data-i18n="modal.note">', s, count=1, flags=re.S)

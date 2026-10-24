@@ -84,6 +84,11 @@ BAR = {
 }
 
 
+# Bakgrunnsvideo i toppen, der det finnes. Filene ligger i assets/video (se chrome.bg_video).
+# Tønsberg har ingen ennå og beholder bildet alene.
+VIDEO = {'majorstua': 'majorstua', 'solli': 'solli'}
+
+
 def bar_hours(v):
     """Åpningstidene for baren, som én linje. Samme kilde som praktisk-seksjonen."""
     no = ', '.join(f'{kv.day_range(h["days"])} til {kv.hhmm(h["closes"])}' for h in v['hours']['bar'])
@@ -139,6 +144,7 @@ def page(v):
     book_intro = G._D['no']['book.venueIntro'].replace('{n}', str(v['groupThreshold']))
     facebook = f'          <a class="btn btn--ghost btn--sm btn--block" href="{v["facebook"]}" target="_blank" rel="noopener">Facebook{(" – " + e(v["fullName"])) if v["facebook"] not in ORG["sameAs"][:1] else ""}</a>\n' if v.get('facebook') else ''
     since_key = G.add(f'{s}.since', f'{e(v["area"])}, {e(v["city"])} · siden {v["since"]}', f'{faq.AREA_EN[s]}, {e(v["city"])} · since {v["since"]}')
+    hero_video, hero_knapp = chrome.bg_video(VIDEO[s]) if s in VIDEO else ('', '')
     html = f'''<!DOCTYPE html>
 <html lang="nb">
 <head>
@@ -164,7 +170,7 @@ def page(v):
 
   <!-- Hero — den ene mørke seksjonen på siden -->
   <section class="hero-dark hero-dark--venue">
-    <img class="hero-dark__img" src="{c['heroImg']}" alt="{e(c['heroAlt'])}" fetchpriority="high" decoding="async"><div class="hero-dark__scrim" aria-hidden="true"></div>
+    <img class="hero-dark__img" src="{c['heroImg']}" alt="{e(c['heroAlt'])}" fetchpriority="high" decoding="async">{hero_video}<div class="hero-dark__scrim" aria-hidden="true"></div>
     <div class="hero-dark__content">
       <span class="kv-eyebrow" data-i18n="{since_key}">{e(v['area'])}, {e(v['city'])} · siden {v['since']}</span>
       <h1 class="hero-title" style="margin-top:var(--space-3);max-width:14ch">{e(v['fullName'])}</h1>
@@ -176,6 +182,7 @@ def page(v):
         <button class="btn btn--ghost btn--lg" type="button" data-order-open data-track="cta:takeaway:{s}" data-i18n="act.order">Bestill take-away</button>
       </div>
     </div>
+    {hero_knapp}
   </section>
 
   <!-- Om -->

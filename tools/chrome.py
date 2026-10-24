@@ -133,6 +133,47 @@ def preferred_source():
             f'Legg til som foretrukket kilde på Google</a>\n'
             f'    </aside>\n')
 
+
+# ---------------------------------------------------------------------------
+# Bakgrunnsvideo. Én byggekloss for forsiden, Majorstua, Solli og take-away.
+#
+# Hver video finnes i to utgaver i assets/video: <navn>.mp4 i 960×540 til PC, og
+# <navn>-mobil.mp4 beskåret til midten i 432×540. En telefon viser bare midten av
+# en bred video uansett, så mobilfila gir samme bilde for en firedel av datamengden.
+# site.js velger fil ut fra feltets form, ikke skjermbredden, så et nettbrett på
+# høykant får mobilfila og en telefon på tvers får PC-fila.
+#
+# Begge er uten lydspor (videoen er alltid dempet) og har moov først, så de
+# begynner å spille før hele fila er lastet ned.
+# ---------------------------------------------------------------------------
+G.add('video.pause', 'Sett bakgrunnsvideoen på pause', 'Pause the background video')
+G.add('video.play', 'Spill av bakgrunnsvideoen', 'Play the background video')
+
+_IKON_PAUSE = ('<svg class="ikon-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">'
+               '<rect x="3" y="2" width="3" height="10" rx="1" fill="currentColor"/>'
+               '<rect x="8" y="2" width="3" height="10" rx="1" fill="currentColor"/></svg>')
+_IKON_SPILL = ('<svg class="ikon-spill" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">'
+               '<path d="M4 2.5v9a.5.5 0 0 0 .76.43l7.2-4.5a.5.5 0 0 0 0-.86l-7.2-4.5A.5.5 0 0 0 4 2.5z" fill="currentColor"/></svg>')
+
+
+def bg_video(navn, toning=True, plakat=None, cls=''):
+    """Returnerer (video, knapp). Videoen legges rett etter bildet og før tonelaget,
+    knappen sist i seksjonen så den ligger over teksten.
+
+    toning=True: videoen er usynlig til den faktisk spiller, og bildet under står der
+    til da. Det er det gjesten ser hvis videoen ikke spiller i det hele tatt.
+    toning=False: brukes på forsiden, der plakaten er det eneste bildet.
+
+    Pauseknappen kreves av WCAG 2.2.2 for bevegelse som starter av seg selv og varer
+    over fem sekunder. Den er skjult til videoen spiller."""
+    klasser = ' '.join(x for x in ('bg-video', 'bg-video--toning' if toning else '', cls) if x)
+    pl = f' poster="{plakat}"' if plakat else ''
+    video = (f'<video class="{klasser}"{pl} muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"'
+             f' data-bg-video data-src="/assets/video/{navn}.mp4" data-src-mobil="/assets/video/{navn}-mobil.mp4"></video>')
+    knapp = (f'<button class="bg-video__knapp" type="button" hidden data-bg-video-knapp="{navn}"'
+             f' aria-label="Sett bakgrunnsvideoen på pause">{_IKON_PAUSE}{_IKON_SPILL}</button>')
+    return video, knapp
+
 G.add('nav.venues', 'Restauranter', 'Restaurants')
 G.add('nav.eat', 'Mat og drikke', 'Food and drink')
 G.add('nav.occasions', 'Anledninger', 'Occasions')
