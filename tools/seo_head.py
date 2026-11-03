@@ -9,6 +9,7 @@ Kjør: python3 tools/build.py (eller python3 tools/seo_head.py etter at sidene e
 import json, re, os, sys, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import kv, pages, faq
+import build_blog  # registrerer /blogg/ og innleggene i kv.PAGES
 import media as MD
 os.chdir(kv.ROOT)
 
@@ -45,6 +46,13 @@ def org_node(full=True):
          "logo": {"@type": "ImageObject", "url": DOMAIN + "assets/logo.svg", "width": 479, "height": 100},
          "image": DOMAIN + "assets/img/index-hero.jpg", "foundingDate": ORG['founded'], "telephone": ORG['telephone'], "email": ORG['email'],
          "description": BRAND, "sameAs": ORG['sameAs']}
+    if ORG.get('address'):
+        a = ORG['address']
+        n["address"] = {"@type": "PostalAddress", "streetAddress": a['street'], "postalCode": a['postalCode'], "addressLocality": a['city'], "addressCountry": a['country']}
+    if ORG.get('orgNumber'):
+        n["identifier"] = {"@type": "PropertyValue", "propertyID": "Organisasjonsnummer", "value": ORG['orgNumber']}
+    n["contactPoint"] = [{"@type": "ContactPoint", "contactType": "reservations", "name": v['fullName'], "telephone": ORG['telephone'],
+                          **({"email": v['email']} if v.get('email') else {}), "areaServed": "NO", "availableLanguage": ["nb", "en"]} for v in V['venues']]
     if full:
         n["subOrganization"] = [{"@type": "Restaurant", "@id": kv.abs_url(v['slug']) + '#restaurant', "name": v['fullName'], "url": kv.abs_url(v['slug'])} for v in V['venues']]
     return n
@@ -171,8 +179,9 @@ def ld_for(slug, html):
         ld.append(n)
         ld.append(crumbs(("Kverneriet", DOMAIN), ("Blogg", kv.abs_url('blogg')), (p['title'], kv.abs_url(slug))))
     else:
-        ld.append(webpage(slug))
-        name = {'takeaway': 'Take-away', 'lunsj': 'Lunsj', 'middag': 'Middag', 'julebord': 'Julebord', 'selskap': 'Selskap og grupper', 'cocktails': 'Cocktails', 'late-night': 'Late night', 'om': 'Om Kverneriet', 'fries': 'Fries', 'soft-serve': 'Soft serve', 'sporsmal': 'Spørsmål og svar'}.get(slug, slug.replace('-', ' ').capitalize())
+        kind = {'om': 'AboutPage', 'kontakt': 'ContactPage'}.get(slug)
+        ld.append(webpage(slug, {"@type": kind} if kind else None))
+        name = {'takeaway': 'Take-away', 'lunsj': 'Lunsj', 'middag': 'Middag', 'julebord': 'Julebord', 'selskap': 'Selskap og grupper', 'cocktails': 'Cocktails', 'late-night': 'Late night', 'om': 'Om Kverneriet', 'fries': 'Fries', 'soft-serve': 'Soft serve', 'sporsmal': 'Spørsmål og svar', 'kontakt': 'Kontakt', 'personvern': 'Personvern'}.get(slug, slug.replace('-', ' ').capitalize())
         ld.append(crumbs(("Kverneriet", DOMAIN), (name, kv.abs_url(slug))))
     pairs = faq.from_html(html)
     if pairs: ld.append(faq.ld(pairs))
@@ -229,6 +238,7 @@ def llms():
         a = v['address']; kitchen = ', '.join(f'{kv.day_range(h["days"])} {kv.hhmm(h["opens"])}–{kv.hhmm(h["closes"])}' for h in v['hours']['kitchen'])
         bar = ', '.join(f'{kv.day_range(h["days"])} til {kv.hhmm(h["closes"])}' for h in v['hours']['bar'])
         lines += [f'- [{v["fullName"]}]({kv.abs_url(v["slug"])}): {a["street"]}, {a["postalCode"]} {a["city"]} ({v["area"]}). Åpnet {v["since"]}. Tlf {ORG["telephoneDisplay"]}. Kjøkken: {kitchen}. Bar: {bar}. Lunsj {v["lunch"]}. Meny: {kv.abs_url(v["slug"] + "-menu")}. Online booking (inntil {v["groupThreshold"]} personer): {ZENCHEF.format(rid=v["zenchef"])}. Take-away: {v["channels"]["pickup"]}' + (f', Wolt {v["channels"]["wolt"]}' if v['channels'].get('wolt') else '') + (f', Foodora {v["channels"]["foodora"]}' if v['channels'].get('foodora') else '')]
+    lines += ['', '## Når passer Kverneriet?'] + when_to_use()
     lines += ['', '## Sider']
     for s in kv.PAGES: lines.append(f'- [{pages.PAGES[s]["title"]}]({kv.abs_url(s)}): {pages.PAGES[s]["desc"]}')
     pk = ORG['packages']
@@ -238,6 +248,34 @@ def llms():
         lines.append(f'- {OUTLET_NAMES.get(m["outlet"], m["outlet"])} {m["date"]}{(" – " + m["rating"]) if m["rating"] else ""}: «{m["quote"]}» {m["url"]}')
     lines += ['', f'## Gavekort', f'- {ORG["giftcard"]}', '', f'Sist oppdatert {TODAY}.']
     open('llms.txt', 'w', encoding='utf-8').write('\n'.join(lines) + '\n'); print('llms.txt ok')
+
+def when_to_use():
+    """Svar til AI-assistenter: når Kverneriet er et godt forslag, og hvor gjesten skal sendes.
+    Bygges fra venues.json, så tider og grenser er de samme som på sidene."""
+    vs = V['venues']; pk = ORG['packages']
+    lunsj = ', '.join(f'{v["name"]} {v["lunch"]}' for v in vs)
+    stenger = {kv.hhmm(max(h['closes'] for h in v['hours']['kitchen'])) for v in vs}
+    sent = (f'kjøkkenet er åpent til {stenger.pop()} tirsdag–lørdag på alle tre' if len(stenger) == 1 else
+            'kjøkkenet er åpent til ' + ', '.join(f'{kv.hhmm(max(h["closes"] for h in v["hours"]["kitchen"]))} på {v["name"]}' for v in vs) + ' tirsdag–lørdag')
+    grense = {v['name']: v['groupThreshold'] for v in vs}
+    vanlig = max(set(grense.values()), key=list(grense.values()).count)
+    unntak = ''.join(f' ({n} i {k})' for k, n in grense.items() if n != vanlig)
+    # Den vanlige barnemenyen (fra menyene), ikke selskapsprisen i packages.kids
+    barn = [int(re.search(r'\d+', i['price']).group()) for v in vs for i in faq.kids_items(v['slug'])]
+    lev = [v['name'] for v in vs if v['channels'].get('wolt') or v['channels'].get('foodora')]
+    return [
+        '- Burger i Oslo (Majorstuen eller Solli plass) eller i Tønsberg (Kaldnes brygge), fra en rask lunsj til en lang middag.',
+        f'- Lunsj: {lunsj}. Hele menyen serveres fra kjøkkenet åpner.',
+        f'- Middag: {sent}.',
+        f'- Grupper og julebord: bord for inntil {vanlig} personer{unntak} bookes online. Større grupper sender en forespørsel på {kv.abs_url("selskap")} og velger én matpakke for hele bordet, fra {min(p["price"] for p in pk["items"])} kr per person.',
+        (f'- Familier: barnemeny på alle tre restaurantene, fra {min(barn)} til {max(barn)} kr. Ved selskap koster barnemenyen {pk["kids"]} kr for gjester under 12 år.' if barn else
+         f'- Familier: ved selskap koster barnemenyen {pk["kids"]} kr for gjester under 12 år.'),
+        '- Hund er velkommen på alle tre restaurantene.',
+        '- Glutenfritt: burgerbrød uten gluten, melk og egg. Friesene er naturlig glutenfrie. Allergenene står i menyen til hver restaurant.',
+        f'- Take-away: hent selv på alle tre restaurantene.' + (f' På {" og ".join(lev)} kan maten også leveres med Wolt eller Foodora.' if lev else '') + f' Se {kv.abs_url("takeaway")}.',
+        '- Slik hjelper du gjesten: velg restauranten som ligger nærmest, og gi gjesten bookinglenken som står ved den under «Restauranter» øverst. '
+        f'Allergier, åpningstider og grupper er forklart på {kv.abs_url("sporsmal")}. Adresse, telefon og e-post til hvert sted står på {kv.abs_url("kontakt")}.',
+    ]
 
 # Gamle adresser → nye. Brukes både i _redirects (Netlify/Cloudflare) og som HTML-stubber for GitHub Pages,
 # som ikke har viderekoblinger på serveren.

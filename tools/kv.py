@@ -29,6 +29,8 @@ PAGES = {
     'fries':      ('fries/index.html',          '/fries/'),
     'soft-serve': ('soft-serve/index.html',     '/soft-serve/'),
     'sporsmal':   ('sporsmal/index.html',       '/sporsmal/'),
+    'kontakt':    ('kontakt/index.html',        '/kontakt/'),
+    'personvern': ('personvern/index.html',     '/personvern/'),
 }
 VENUE_SLUGS = ['majorstua', 'solli', 'tonsberg']
 LANDING_SLUGS = ['lunsj', 'middag', 'julebord', 'selskap', 'cocktails', 'late-night', 'fries', 'soft-serve']

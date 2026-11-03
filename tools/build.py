@@ -11,7 +11,7 @@ import os, re, sys, hashlib, subprocess, datetime, functools
 print = functools.partial(print, flush=True)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import kv, chrome, modal, faq, carousel, i18n_gen as G, pages
-import build_venue, build_menu, build_landing, build_blog, build_faq, images, seo_head
+import build_venue, build_menu, build_landing, build_blog, build_faq, build_info, images, seo_head
 import media as MD
 os.chdir(kv.ROOT)
 
@@ -518,7 +518,7 @@ def cache_bust():
     print(f'css v={h} js v={js}')
 
 if __name__ == '__main__':
-    print('== sider'); build_venue.build(); build_menu.build(); build_landing.build(); build_blog.build(); build_about(); build_faq.build(); patch_index(); patch_takeaway(); build_404()
+    print('== sider'); build_venue.build(); build_menu.build(); build_landing.build(); build_blog.build(); build_about(); build_faq.build(); build_info.build(); patch_index(); patch_takeaway(); build_404()
     print('== presse'); subprocess.run([sys.executable, 'tools/media.py'], check=True); subprocess.run([sys.executable, 'tools/press.py'], check=True)
     print('== bilder'); images.apply_all(images.build_variants())
     print('== oversettelser'); print(G.write(), 'genererte nøkler')

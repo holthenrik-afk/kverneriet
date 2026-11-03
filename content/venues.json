@@ -37,7 +37,29 @@
       "kids": 169,
       "kidsNote": "Barnemeny 169 kr for gjester under 12 ved selskapsbooking (fra kverneriet.com sitt bookingskjema)."
     },
-    "deliveryMarkup": "15–20 %"
+    "deliveryMarkup": "15–20 %",
+    "orgNumber": "999523609",
+    "address": {
+      "street": "Rambergveien 15",
+      "postalCode": "3115",
+      "city": "Tønsberg",
+      "country": "NO"
+    },
+    "companies": {
+      "majorstua": {
+        "name": "Kverneriet & Friends AS",
+        "orgNumber": "914631734"
+      },
+      "solli": {
+        "name": "Kverneriet & Family AS",
+        "orgNumber": "818359152"
+      },
+      "tonsberg": {
+        "name": "Kverneriet AS",
+        "orgNumber": "999523609"
+      }
+    },
+    "privacyEmail": "book.tbg@kverneriet.com"
   },
   "venues": [
     {

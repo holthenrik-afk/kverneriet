@@ -48,6 +48,7 @@ def header(active=None, menu_href='/meny/'):
       <p class="mobile-panel__gruppe" data-i18n="nav.more">Mer</p>
       <a href="/om/" data-i18n="nav.about">Om Kverneriet</a>
       <a href="/sporsmal/" data-i18n="nav.faq">Spørsmål og svar</a>
+      <a href="/kontakt/" data-i18n="nav.contact">Kontakt</a>
       <a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
 {blog_link('      <a href="/blogg/" data-i18n="blog.title">Blogg</a>')}      <a href="https://join.kverneriet.com/" data-i18n="act.work">Jobb hos oss</a>
     </nav>
@@ -86,9 +87,11 @@ def footer(menu_href='/meny/'):
     <span class="pipe" aria-hidden="true">|</span><a href="/late-night/" data-i18n="lp.late">Late night</a>
 {blog_link('    <span class="pipe" aria-hidden="true">|</span><a href="/blogg/" data-i18n="blog.title">Blogg</a>')}    <span class="pipe" aria-hidden="true">|</span><a href="/om/" data-i18n="nav.about">Om Kverneriet</a>
     <span class="pipe" aria-hidden="true">|</span><a href="/sporsmal/" data-i18n="nav.faq">Spørsmål og svar</a>
+    <span class="pipe" aria-hidden="true">|</span><a href="/kontakt/" data-i18n="nav.contact">Kontakt</a>
     <span class="pipe" aria-hidden="true">|</span><a href="{ORG['giftcard']}" data-i18n="act.giftcards">Gavekort</a>
     <span class="pipe" aria-hidden="true">|</span><a href="https://join.kverneriet.com/" data-i18n="foot.work">Jobb hos oss</a>
     <span class="pipe" aria-hidden="true">|</span><a href="{ORG['sameAs'][0]}" rel="noopener" target="_blank">Facebook</a>
+    <span class="pipe" aria-hidden="true">|</span><a href="/personvern/" data-i18n="nav.privacy">Personvern</a>
     <span class="pipe" aria-hidden="true">|</span><button type="button" class="link-btn" data-consent-open data-i18n="consent.title">Informasjonskapsler</button>
   </div>
 </footer>
@@ -180,6 +183,8 @@ G.add('nav.occasions', 'Anledninger', 'Occasions')
 G.add('nav.more', 'Mer', 'More')
 G.add('nav.about', 'Om Kverneriet', 'About Kverneriet')
 G.add('nav.faq', 'Spørsmål og svar', 'Questions and answers')
+G.add('nav.contact', 'Kontakt', 'Contact')
+G.add('nav.privacy', 'Personvern', 'Privacy')
 
 SECTIONS = [('about', 'v.about', 'Om'), ('bar', 'v.barEyebrow', 'Baren'), ('gallery', 'v.gallery', 'Galleri'), ('booking', 'v.booking', 'Booking'),
             ('practical', 'v.practical', 'Praktisk info'), ('faq', 'v.faq', 'Spørsmål')]
@@ -230,7 +235,7 @@ gtag('js',new Date());gtag('config','{GA4}');gtag('config','{ADS}');
 CONSENT = '''<!-- samtykke:start -->
 <div class="consent" role="dialog" aria-labelledby="consent-title" hidden>
   <p class="consent__title kv-eyebrow" id="consent-title" data-i18n="consent.title">Informasjonskapsler</p>
-  <p class="consent__text" data-i18n="consent.text">Vi bruker informasjonskapsler fra Google og Meta for å se hvordan siden brukes og om annonsene våre virker. Du velger selv, og kan endre valget nederst på siden.</p>
+  <p class="consent__text"><span data-i18n="consent.text">Vi bruker informasjonskapsler fra Google og Meta for å se hvordan siden brukes, om annonsene våre virker og for å vise annonsene våre til folk som har vært innom. Du velger selv, og kan endre valget nederst på siden.</span> <a href="/personvern/" data-i18n="consent.more">Les mer</a></p>
   <div class="consent__actions">
     <button type="button" class="btn btn--outline btn--md" data-consent="denied" data-i18n="consent.deny">Bare nødvendige</button>
     <button type="button" class="btn btn--solid btn--md" data-consent="granted" data-i18n="consent.accept">Godta</button>
@@ -239,8 +244,9 @@ CONSENT = '''<!-- samtykke:start -->
 <!-- samtykke:end -->
 '''
 G.add('consent.title', 'Informasjonskapsler', 'Cookies')
-G.add('consent.text', 'Vi bruker informasjonskapsler fra Google og Meta for å se hvordan siden brukes og om annonsene våre virker. Du velger selv, og kan endre valget nederst på siden.',
-      'We use cookies from Google and Meta to see how the site is used and whether our ads work. It is your choice, and you can change it at the bottom of the page.')
+G.add('consent.text', 'Vi bruker informasjonskapsler fra Google og Meta for å se hvordan siden brukes, om annonsene våre virker og for å vise annonsene våre til folk som har vært innom. Du velger selv, og kan endre valget nederst på siden.',
+      'We use cookies from Google and Meta to see how the site is used, whether our ads work and to show our ads to people who have visited. It is your choice, and you can change it at the bottom of the page.')
+G.add('consent.more', 'Les mer', 'Read more')
 G.add('consent.deny', 'Bare nødvendige', 'Only necessary')
 G.add('consent.accept', 'Godta', 'Accept')
 

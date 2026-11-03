@@ -48,6 +48,14 @@ PAGES = {
     title='Spørsmål og svar | Kverneriet',
     desc='Booking, grupper, allergier, glutenfritt, hunder, uteservering og take-away. Svar på det gjestene spør oss om på Majorstua, Solli og i Tønsberg.',
     img='/assets/img/trio-majorstua.jpg'),
+ 'kontakt': dict(
+    title='Kontakt Kverneriet – Majorstua, Solli og Tønsberg',
+    desc='Adresse, telefon og e-post til Kverneriet Majorstua, Solli og Tønsberg. Book bord online, send forespørsel om selskap eller julebord, eller ring oss.',
+    img='/assets/img/trio-majorstua.jpg'),
+ 'personvern': dict(
+    title='Personvern og informasjonskapsler | Kverneriet',
+    desc='Hvilke opplysninger Kverneriet samler inn på nettsiden, ved booking og i nyhetsbrevet, hvilke informasjonskapsler vi bruker og hvilke rettigheter du har.',
+    img='/assets/img/trio-majorstua.jpg'),
  'lunsj': dict(
     title='Burgerlunsj på Majorstuen, Solli og i Tønsberg – Kverneriet',
     desc='Lunsj med burger: kjøkkenet åpner 11 på Majorstua, 11.30 på Solli og 12 tor–søn i Tønsberg. Kjøtt vi kverner selv, fries som tar tre dager. Book bord.',
