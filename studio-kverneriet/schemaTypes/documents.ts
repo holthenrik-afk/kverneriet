@@ -268,3 +268,55 @@ export const landingPage = defineType({
   ],
   preview: {select: {title: 'h1', subtitle: 'slug'}},
 })
+
+// Områdene i «Tekster på nettsiden». tools/sanity_tekster.py bruker de samme navnene.
+export const SITE_TEXT_AREAS = [
+  'Forsiden', 'Meny og bunnlinje', 'Knapper', 'Booking og skjema', 'Restaurantsidene', 'Menysiden',
+  'Take-away', 'Landingssider', 'Om og kontakt', 'Blogg', 'Spørsmål og svar', 'Personvern', 'Annet',
+]
+
+// {n} og {name} fylles inn av nettsiden, så de må bli stående i teksten.
+const beholdPlassholdere = (standard: 'standardNo' | 'standardEn') => (verdi: string | undefined, ctx: {document?: Record<string, unknown>}) => {
+  if (!verdi) return true
+  const mangler = (String(ctx.document?.[standard] || '').match(/\{\w+\}/g) || []).filter((p) => !verdi.includes(p))
+  return mangler.length ? `Må inneholde ${mangler.join(' og ')}` : true
+}
+
+// Ett dokument per tekst, så Studio-søket finner teksten slik den står på siden.
+// Dokumentene lages av tools/sanity_tekster.py. Tomt felt betyr at standardteksten brukes.
+export const siteText = defineType({
+  name: 'siteText',
+  title: 'Tekst på nettsiden',
+  type: 'document',
+  fields: [
+    defineField({name: 'hvor', title: 'Hvor teksten står', type: 'string', readOnly: true}),
+    defineField({name: 'merknad', title: 'Merknad', type: 'string', readOnly: true, hidden: ({document}) => !document?.merknad}),
+    defineField({name: 'standardNo', title: 'Teksten i dag', type: 'text', rows: 2, readOnly: true}),
+    defineField({
+      name: 'no',
+      title: 'Ny tekst',
+      type: 'text',
+      rows: 3,
+      description: 'Skriv den nye teksten og trykk Publish. Siden oppdateres innen ti minutter. Tøm feltet for å gå tilbake til teksten over.',
+      validation: (r) => r.custom(beholdPlassholdere('standardNo')),
+    }),
+    defineField({name: 'standardEn', title: 'Engelsk i dag', type: 'text', rows: 2, readOnly: true, hidden: ({document}) => Boolean(document?.fast)}),
+    defineField({
+      name: 'en',
+      title: 'Ny engelsk tekst',
+      type: 'text',
+      rows: 3,
+      description: 'Valgfritt. Står feltet tomt, beholdes den engelske teksten over.',
+      hidden: ({document}) => Boolean(document?.fast),
+      validation: (r) => r.custom(beholdPlassholdere('standardEn')),
+    }),
+    defineField({name: 'omrade', title: 'Område', type: 'string', readOnly: true, options: {list: SITE_TEXT_AREAS}, hidden: true}),
+    defineField({name: 'rekkefolge', title: 'Rekkefølge', type: 'number', readOnly: true, hidden: true}),
+    defineField({name: 'fast', title: 'Likt på norsk og engelsk', type: 'boolean', readOnly: true, hidden: true}),
+    defineField({name: 'key', title: 'Teknisk nøkkel', type: 'string', readOnly: true, validation: (r) => r.required()}),
+  ],
+  preview: {
+    select: {no: 'no', en: 'en', standardNo: 'standardNo', hvor: 'hvor'},
+    prepare: ({no, en, standardNo, hvor}) => ({title: no || standardNo, subtitle: no || en ? `Endret · ${hvor}` : hvor}),
+  },
+})

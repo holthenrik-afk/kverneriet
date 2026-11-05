@@ -2,6 +2,7 @@ import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
+import {SITE_TEXT_AREAS} from './schemaTypes/documents'
 import {PostPreview} from './preview/PostPreview'
 
 // Studio for kverneriet.com. Innholdet her bygges til statiske sider av tools/fetch_sanity.py + tools/build.py.
@@ -22,6 +23,27 @@ export default defineConfig({
         S.list()
           .title('Innhold')
           .items([
+            S.listItem().title('Tekster på nettsiden').child(
+              S.list()
+                .title('Tekster på nettsiden')
+                .items([
+                  S.listItem().title('Endrede tekster').child(
+                    S.documentTypeList('siteText').title('Endrede tekster').filter('_type == "siteText" && (defined(no) || defined(en))').initialValueTemplates([]),
+                  ),
+                  S.divider(),
+                  ...SITE_TEXT_AREAS.map((omrade) =>
+                    S.listItem().title(omrade).child(
+                      S.documentTypeList('siteText')
+                        .title(omrade)
+                        .filter('_type == "siteText" && omrade == $omrade')
+                        .params({omrade})
+                        .defaultOrdering([{field: 'rekkefolge', direction: 'asc'}])
+                        .initialValueTemplates([]),
+                    ),
+                  ),
+                ]),
+            ),
+            S.divider(),
             S.listItem().title('Restauranter').child(S.documentTypeList('venue').title('Restauranter')),
             S.listItem().title('Menyer').child(S.documentTypeList('menu').title('Menyer')),
             S.divider(),
@@ -37,9 +59,9 @@ export default defineConfig({
   ],
   schema: {
     types: schemaTypes,
-    templates: (prev) => prev.filter((t) => !['siteSettings'].includes(t.schemaType)),
+    templates: (prev) => prev.filter((t) => !['siteSettings', 'siteText'].includes(t.schemaType)),
   },
   document: {
-    actions: (prev, {schemaType}) => (schemaType === 'siteSettings' ? prev.filter((a) => !['unpublish', 'delete', 'duplicate'].includes(a.action || '')) : prev),
+    actions: (prev, {schemaType}) => (['siteSettings', 'siteText'].includes(schemaType) ? prev.filter((a) => !['unpublish', 'delete', 'duplicate'].includes(a.action || '')) : prev),
   },
 })
