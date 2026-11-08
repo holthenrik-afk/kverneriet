@@ -40,7 +40,7 @@
     "style": "normal"
    }
   ],
-  "facts_title": "Lunsj og kjøkkentider",
+  "facts_title": "Praktisk info",
   "facts": [
    [
     "Grupper fra kontoret",
@@ -616,7 +616,7 @@
   ],
   "eyebrow": "Åpent sent · tirsdag–lørdag",
   "h1": "Late night burger i Oslo",
-  "sub": "Spise sent? Kjøkkenet serverer hele menyen utover kvelden, og baren holder åpent lenger. Du trenger ikke booke.",
+  "sub": "Spise sent? Kjøkkenet serverer hele menyen utover kvelden, og baren er åpen etter at kjøkkenet stenger. Du trenger ikke booke.",
   "cta": "book",
   "sec_eyebrow": "Majorstua · Solli · Tønsberg",
   "h2": "Åpent til sent",
@@ -629,7 +629,7 @@
       "_key": "s43",
       "_type": "span",
       "marks": [],
-      "text": "Etter kino, etter kampen, etter en lang dag på jobb. Kjøkkenet på "
+      "text": "Etter kino, etter kampen, etter en lang dag på jobb. På "
      },
      {
       "_key": "s45",
@@ -657,7 +657,7 @@
       "_key": "s49",
       "_type": "span",
       "marks": [],
-      "text": " serverer hele menyen utover kvelden, og baren holder åpent lenger. Vi har mange drop-in-bord, så du trenger ikke booke for å spise sent i Oslo."
+      "text": " får du hele menyen til kjøkkenet stenger, og etterpå kan du bli sittende i baren. Vi har mange drop-in-bord, så du kan godt komme uten å booke."
      }
     ],
     "markDefs": [
@@ -709,11 +709,11 @@
     "style": "normal"
    }
   ],
-  "facts_title": "Sene åpningstider",
+  "facts_title": "Sent på kvelden",
   "facts": [
    [
     "Baren",
-    "Majorstua og Tønsberg til 23 tirsdag–lørdag. Solli til 23 tirsdag–torsdag og 24 fredag og lørdag. Alle til 22 søndag og mandag."
+    "Åpen etter at kjøkkenet stenger. Tidene står under."
    ],
    [
     "Make it grown-up",

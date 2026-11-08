@@ -271,15 +271,38 @@ export const landingPage = defineType({
 
 // Områdene i «Tekster på nettsiden». tools/sanity_tekster.py bruker de samme navnene.
 export const SITE_TEXT_AREAS = [
-  'Forsiden', 'Meny og bunnlinje', 'Knapper', 'Booking og skjema', 'Restaurantsidene', 'Menysiden',
+  'Forsiden', 'Maten', 'Meny og bunnlinje', 'Knapper', 'Booking og skjema', 'Restaurantsidene', 'Menysiden',
   'Take-away', 'Landingssider', 'Om og kontakt', 'Blogg', 'Spørsmål og svar', 'Personvern', 'Annet',
 ]
 
 // {n} og {name} fylles inn av nettsiden, så de må bli stående i teksten.
+// Samme regler som html_feil() i tools/site_texts.py. Bygget hopper over en tekst med feil HTML,
+// så det er bedre å si fra her, før Viktor trykker Publish.
+const TILLATTE = ['a', 'b', 'strong', 'em', 'i', 'br']
+const htmlFeil = (verdi: string): string | null => {
+  if (!verdi.includes('<')) return null
+  const apne: string[] = []
+  for (const m of verdi.matchAll(/<(\/?)([a-zA-Z0-9]+)([^<>]*)>/g)) {
+    const [, slutt, navn, attr] = m
+    const tag = navn.toLowerCase()
+    if (!TILLATTE.includes(tag)) return `Taggen <${tag}> er ikke tillatt. Bruk bare lenker, fet og kursiv.`
+    if (tag === 'br') continue
+    if (slutt) {
+      if (apne.pop() !== tag) return `</${tag}> står feil`
+      continue
+    }
+    if (tag === 'a' && !/href="(\/|https?:\/\/|mailto:|tel:|#)/.test(attr)) return 'Lenken må begynne med /, https://, mailto: eller tel:'
+    apne.push(tag)
+  }
+  if (verdi.replace(/<[^<>]*>/g, '').includes('<')) return 'En tagg er ikke lukket'
+  return apne.length ? `<${apne[apne.length - 1]}> er ikke lukket` : null
+}
+
 const beholdPlassholdere = (standard: 'standardNo' | 'standardEn') => (verdi: string | undefined, ctx: {document?: Record<string, unknown>}) => {
   if (!verdi) return true
   const mangler = (String(ctx.document?.[standard] || '').match(/\{\w+\}/g) || []).filter((p) => !verdi.includes(p))
-  return mangler.length ? `Må inneholde ${mangler.join(' og ')}` : true
+  if (mangler.length) return `Må inneholde ${mangler.join(' og ')}`
+  return htmlFeil(verdi) || true
 }
 
 // Ett dokument per tekst, så Studio-søket finner teksten slik den står på siden.
@@ -297,7 +320,7 @@ export const siteText = defineType({
       title: 'Ny tekst',
       type: 'text',
       rows: 3,
-      description: 'Skriv den nye teksten og trykk Publish. Siden oppdateres innen ti minutter. Tøm feltet for å gå tilbake til teksten over.',
+      description: 'Skriv den nye teksten og trykk Publish. Nettsiden oppdateres automatisk etterpå. Tøm feltet for å gå tilbake til teksten over.',
       validation: (r) => r.custom(beholdPlassholdere('standardNo')),
     }),
     defineField({name: 'standardEn', title: 'Engelsk i dag', type: 'text', rows: 2, readOnly: true, hidden: ({document}) => Boolean(document?.fast)}),

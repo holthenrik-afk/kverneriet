@@ -503,14 +503,26 @@
     document.addEventListener('kv:lang',merk);
   })();
 
-  /* Dagen hos Kverneriet: stegene går av seg selv med en linje som fylles. Stopper når gjesten
-     klikker, holder musen over eller seksjonen er utenfor skjermen. Står stille for den som
-     har bedt om mindre bevegelse. */
+  /* Dagen hos Kverneriet: stegene går av seg selv med en linje som fylles. Stopper for godt når
+     gjesten klikker et steg, går inn med tastaturet eller trykker på pauseknappen (WCAG 2.2.2), og
+     tar pause når musen er over eller seksjonen er utenfor skjermen. Står stille for den som har
+     bedt om mindre bevegelse. */
   Array.prototype.forEach.call(document.querySelectorAll('[data-dognet]'),function(rot){
     var steg=Array.prototype.slice.call(rot.querySelectorAll('[data-dognet-steg]'));
     if(steg.length<2)return;
     var varighet=6000,cur=0,brukt=0,sist=0,synlig=false,over=false;
     var stoppet=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var pause=rot.querySelector('[data-dognet-pause]');
+    function stopp(ja){
+      stoppet=ja;
+      if(!pause)return;
+      pause.classList.toggle('er-pauset',ja);
+      var k=ja?'dag.play':'dag.pause',t=typeof window.KVT==='function'?window.KVT(k):'';
+      if(t)pause.setAttribute('aria-label',t);
+      pause.setAttribute('data-i18n-label',k);
+    }
+    stopp(stoppet);
+    if(pause)pause.addEventListener('click',function(){stopp(!stoppet);});
     function vis(i){
       cur=i;brukt=0;
       steg.forEach(function(s,j){
@@ -528,15 +540,17 @@
       }
       sist=t;window.requestAnimationFrame(rute);
     }
+    /* Hele panelet kan klikkes, ikke bare stripen øverst. Lenker og bookingknappen inne i panelet
+       får gjøre jobben sin. Knappen øverst beholdes for tastatur og skjermleser. */
     steg.forEach(function(s,i){
-      s.querySelector('[data-dognet-knapp]').addEventListener('click',function(){
-        stoppet=true;vis(i);s.style.setProperty('--fremdrift','1');
+      s.addEventListener('click',function(e){
+        if(e.target.closest('a,[data-book-open]'))return;
+        stopp(true);vis(i);s.style.setProperty('--fremdrift','1');
       });
     });
     rot.addEventListener('mouseenter',function(){over=true;});
     rot.addEventListener('mouseleave',function(){over=false;});
-    rot.addEventListener('focusin',function(){over=true;});
-    rot.addEventListener('focusout',function(){over=false;});
+    rot.addEventListener('focusin',function(e){if(!e.target.closest('[data-dognet-pause]'))stopp(true);});
     if('IntersectionObserver' in window){
       new IntersectionObserver(function(es){synlig=es[0].isIntersecting;},{threshold:.35}).observe(rot);
     }else{synlig=true;}
@@ -603,8 +617,10 @@
     }
     function ordliste(s){var o=flat(s);return o?o.split(' '):[];}
     rader.forEach(function(r){
-      r.kvSterk=ordliste(r.getAttribute('data-sok'));        /* spørsmål + synonymer */
-      r.kvSvak=ordliste(r.getAttribute('data-sok-tekst'));   /* selve svaret */
+      /* Den synlige teksten tas med, så søket finner det Kverneriet har skrevet om i Sanity */
+      var q=r.querySelector('.faq__q'),a=r.querySelector('.faq__a');
+      r.kvSterk=ordliste((r.getAttribute('data-sok')||'')+' '+(q?q.textContent:''));        /* spørsmål + synonymer */
+      r.kvSvak=ordliste((r.getAttribute('data-sok-tekst')||'')+' '+(a?a.textContent:''));   /* selve svaret */
     });
     /* Sterkt lag godtar ordstart, svakt lag krever hele ord. Ellers finner «hund»
        også «hundrevis», og «bar» finner «barnemeny». */

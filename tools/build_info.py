@@ -9,7 +9,7 @@ Personvernsiden beskriver det nettsiden faktisk gjør. Endrer du sporing, samtyk
 bookingsystem i tools/chrome.py, site.js eller tools/modal.py, må teksten her endres likt.
 Selskapene og organisasjonsnumrene er slått opp i Enhetsregisteret 03.11.2026.
 Kjør: python3 tools/build.py"""
-import os, sys
+import os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import kv, chrome, modal, pages, i18n_gen as G
 os.chdir(kv.ROOT)
@@ -396,25 +396,28 @@ def build_maten():
     G.add('maten.lede', 'Vi gjør kanskje ting litt mer komplisert enn nødvendig. Her er det vi ikke vil gi slipp på.',
           'We probably make things more complicated than necessary. Here is what we refuse to give up.')
     rader = ''
-    for i, it in enumerate(sc.get('craftItems') or []):
+    for it in sc.get('craftItems') or []:
         t, b = it['title'], it['body']
         navn = t['no'].strip().lower()
-        G.add(f'maten.{i}.title', t['no'], t.get('en') or t['no'])
-        G.add(f'maten.{i}.body', b['no'], b.get('en') or b['no'])
+        # Nøklene følger kortets navn, ikke plassen i listen, så en overstyring i «Tekster på nettsiden»
+        # blir på riktig kort om rekkefølgen endres. Tittel og fakta deler nøkkel med forsiden.
+        n = re.sub(r'[^a-zæøå]', '', navn)
+        G.add(f'home.craft.{n}', t['no'], t.get('en') or t['no'])
+        G.add(f'maten.{n}.body', b['no'], b.get('en') or b['no'])
         lenke = ''
         if navn in CRAFT_LENKE:
             side_, no, en = CRAFT_LENKE[navn]
-            G.add(f'maten.{i}.cta', no, en)
-            lenke = f'<a class="dognet__lenke" href="{kv.url(side_)}" data-i18n="maten.{i}.cta">{e(no)}</a>'
+            G.add(f'maten.{n}.cta', no, en)
+            lenke = f'<a class="dognet__lenke" href="{kv.url(side_)}" data-i18n="maten.{n}.cta">{e(no)}</a>'
         s = CRAFT_STIKKORD.get(navn)
         pille = ''
         if s:
-            G.add(f'maten.{i}.pille', s[0], s[1])
-            pille = f'<span class="kv-eyebrow" data-i18n="maten.{i}.pille">{e(s[0])}</span>'
+            G.add(f'home.craft.{n}.f', s[0], s[1])
+            pille = f'<span class="kv-eyebrow" data-i18n="home.craft.{n}.f">{e(s[0])}</span>'
         rader += (f'      <article class="matrad">\n'
                   f'        <figure class="matrad__bilde"><img src="{it["image"]}" alt="{e(it.get("alt", ""))}" loading="lazy" decoding="async"></figure>\n'
-                  f'        <div class="matrad__tekst">{pille}<h2 class="display-3" data-i18n="maten.{i}.title">{e(t["no"])}</h2>'
-                  f'<p data-i18n="maten.{i}.body">{e(b["no"])}</p>{lenke}</div>\n'
+                  f'        <div class="matrad__tekst">{pille}<h2 class="display-3" data-i18n="home.craft.{n}">{e(t["no"])}</h2>'
+                  f'<p data-i18n="maten.{n}.body">{e(b["no"])}</p>{lenke}</div>\n'
                   f'      </article>\n')
     body = f'''      <header class="sec-head">
         <div class="sec-head__rule"></div>

@@ -2,9 +2,9 @@
 """Lager ett siteText-dokument per tekst, så Kverneriet kan endre dem i Studio («Tekster på nettsiden»).
 
 Kjør etter tools/build.py: python3 tools/sanity_tekster.py
-Skriver sanity-tekster.ndjson. Ingenting sendes til Sanity herfra. Importen gjøres for hånd:
-  cd studio-kverneriet && npx sanity dataset import ../sanity-tekster.ndjson production --missing
---missing lar dokumenter som finnes stå urørt, så endringene Kverneriet har gjort, overlever nye kjøringer.
+Skriver sanity-tekster.ndjson. Ingenting sendes til Sanity herfra. Synkroniseringen gjøres med
+  cd studio-kverneriet && npx sanity exec scripts/sync-tekster.ts --with-user-token
+som oppdaterer standardtekst og plassering, men aldri det Kverneriet har skrevet.
 
 Tekster som allerede kan endres et annet sted i Sanity, tas ikke med, ellers ville de hatt to hjem.
 Det samme gjelder tekster som bygges rett fra åpningstidene, og nøkler som ikke vises noe sted."""
@@ -18,7 +18,7 @@ UT = 'sanity-tekster.ndjson'
 
 # Første del av nøkkelen avgjør området. Navnene må stå likt i SITE_TEXT_AREAS i studio-kverneriet.
 OMRADE = {
-    'home': 'Forsiden', 'story': 'Forsiden', 'occ': 'Forsiden', 'craft': 'Forsiden', 'kar': 'Forsiden', 'media': 'Forsiden', 'press': 'Forsiden',
+    'home': 'Forsiden', 'dag': 'Forsiden', 'maten': 'Maten', 'story': 'Forsiden', 'occ': 'Forsiden', 'craft': 'Forsiden', 'kar': 'Forsiden', 'media': 'Forsiden', 'press': 'Forsiden',
     'nav': 'Meny og bunnlinje', 'foot': 'Meny og bunnlinje', 'consent': 'Meny og bunnlinje', 'a11y': 'Meny og bunnlinje', 'video': 'Meny og bunnlinje', 'nf': 'Meny og bunnlinje',
     'act': 'Knapper',
     'book': 'Booking og skjema', 'f': 'Booking og skjema', 'modal': 'Booking og skjema',
@@ -27,7 +27,7 @@ OMRADE = {
     'menu': 'Menysiden', 'ta': 'Take-away', 'lp': 'Landingssider', 'om': 'Om og kontakt', 'kontakt': 'Om og kontakt', 'blog': 'Blogg', 'faq': 'Spørsmål og svar', 'pv': 'Personvern',
 }
 # Bygges fra åpningstidene eller er ukedager, eller redigeres allerede i Innstillinger, Restauranter og Landingssider.
-UTELATES = re.compile(r'^(d\.|.*\.barHours$|.*\.lunch$|.*\.since$|kontakt\.\w+\.kitchen$'
+UTELATES = re.compile(r'^(dr?\.|maten\.[^.]+\.body$|home\.craft\.[^.]+$|.*\.barHours$|.*\.lunch$|.*\.since$|kontakt\.\w+\.kitchen$'
                       r'|home\.(heroSub|lede|aboutTitle|craftEyebrow|craftTitle)$|om\.(title|p\d+)$|craft\.\d+\.(title|sub)$|faq\.x\.'
                       r'|(majorstua|solli|tonsberg)\.(heroSub|slogan|about1|about2)$)')
 TIDER = re.compile(r'\d{1,2}[.:]\d{2}|\d+\s*kr\b|\bkr\s*\d+', re.I)

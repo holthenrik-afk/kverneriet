@@ -56,7 +56,7 @@ Slik henger det sammen:
 
 **Gi kunden tilgang:** sanity.io/manage → prosjektet → Members → inviter e-post med rollen Editor. De logger inn på kverneriet.sanity.studio med Google eller e-post.
 
-**Tekster på nettsiden.** Knapper, titler og annet som ikke har eget felt i Sanity, endres under «Tekster på nettsiden» i Studio. Ett dokument per tekst, og tomt felt betyr standardteksten fra koden. `fetch_sanity.py` skriver endringene til `content/site-texts.json`, og `tools/site_texts.py` legger dem oppå sist i bygget. Har det kommet nye tekster: `python3 tools/sanity_tekster.py`, deretter `npx sanity dataset import ../sanity-tekster.ndjson production --missing` fra `studio-kverneriet/`. `--missing` lar dokumentene Kverneriet har endret, stå urørt.
+**Tekster på nettsiden.** Knapper, titler og annet som ikke har eget felt i Sanity, endres under «Tekster på nettsiden» i Studio. Ett dokument per tekst, og tomt felt betyr standardteksten fra koden. `fetch_sanity.py` skriver endringene til `content/site-texts.json`, og `tools/site_texts.py` legger dem oppå sist i bygget. Har det kommet nye eller endrede tekster: `python3 tools/sanity_tekster.py`, deretter `npx sanity exec scripts/sync-tekster.ts --with-user-token` fra `studio-kverneriet/` (prøv først med `TORR=1` foran). Skriptet oppdaterer «Teksten i dag» og plasseringen, rører aldri det Kverneriet har skrevet, og rydder bort tekster som ikke lenger brukes.
 
 **Endret tekst lokalt?** `python3 tools/sanity_push.py` skyver tekstfeltene i `content/site-copy.json` og `content/venues.json` opp til Sanity uten å røre bildene. Motsatt vei går `tools/fetch_sanity.py`. Sanity er kilden, så push før du henter.
 

@@ -11,7 +11,7 @@ Klokkeslettene er ment som en pekepinn for dagen. De nøyaktige tidene per sted 
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import kv, i18n_gen as G
+import kv, chrome, i18n_gen as G
 
 e = kv.esc
 
@@ -28,16 +28,16 @@ STEG = [
     ('middag', 'middag',
      ('Fra kl. 16', 'From 16.00'),
      ('Middag', 'Dinner'),
-     ('Spontant på en tirsdag eller hele vennegjengen på en lørdag.',
-      'On a whim on a Tuesday, or all your friends on a Saturday.'),
+     ('En spontan burger på en tirsdag eller hele vennegjengen på en lørdag.',
+      'A spontaneous burger on a Tuesday or the whole gang on a Saturday.'),
      ('Les om middag', 'About dinner'),
      '/assets/img/hero-grupper.jpg',
      ('Servitør på vei til et fullt bord med drikke på brettet', 'A waiter bringing drinks to a full table')),
     ('latenight', 'late-night',
      ('Til sent', 'Until late'),
      ('Late night', 'Late night'),
-     ('Etter kino, etter kampen, eller bare fordi kvelden ikke er over.',
-      'After the cinema, after the match, or just because the night is not over.'),
+     ('Når kvelden ikke er over ennå og du vil ha et ordentlig måltid før du går hjem.',
+      "When the night isn't over yet and you want a proper meal before heading home."),
      ('Les om late night', 'About late night'),
      '/assets/img/ln-hero.jpg',
      ('Gjester skåler rundt et bord om kvelden', 'Guests raising a toast around a table in the evening')),
@@ -47,6 +47,7 @@ STEG = [
 def section():
     G.add('home.dagEyebrow', 'Fra lunsj til langt på kveld', 'From lunch until late')
     G.add('home.dagTitle', 'Dagen hos Kverneriet', 'A day at Kverneriet')
+    G.add('dag.pause', 'Stopp bildene', 'Stop the images'); G.add('dag.play', 'Spill av bildene', 'Play the images')
     rader = ''
     for i, (k, side, tid, tit, tekst, lenke, bilde, alt) in enumerate(STEG):
         p = f'dag.{k}'
@@ -73,5 +74,7 @@ def section():
             '      <header class="sec-head"><div class="sec-head__rule"></div>'
             '<span class="kv-eyebrow" data-i18n="home.dagEyebrow">Fra lunsj til langt på kveld</span>'
             '<h2 class="display-2" data-i18n="home.dagTitle">Dagen hos Kverneriet</h2></header>\n'
-            f'      <div class="dognet__spor">\n{rader}      </div>\n'
+            f'      <div class="dognet__spor">\n{rader}'
+            f'        <button class="bg-video__knapp dognet__pause" type="button" data-dognet-pause data-i18n-label="dag.pause" aria-label="Stopp bildene">'
+            f'{chrome._IKON_PAUSE}{chrome._IKON_SPILL}</button>\n      </div>\n'
             '    </div>\n  </section>\n')

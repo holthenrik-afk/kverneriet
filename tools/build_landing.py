@@ -62,13 +62,14 @@ def hours_section():
 def page(p):
     slug = p['slug']; meta = pages.PAGES[slug]
     gallery = bar_cards() if p.get('bars') else ''
-    if p.get('hours'): gallery = hours_section() + gallery
     if p.get('gallery') and not p.get('bars'):
         cells = ''.join(f'<figure class="photo" style="aspect-ratio:{g[2] if len(g) > 2 else "1/1"}"><img src="{g[0]}" alt="{e(g[1])}" loading="lazy"></figure>' for g in p['gallery'])
         gallery = f'''
   <section class="section section--flush-top">
     <div class="wrap"><div class="gallery-grid" style="grid-template-columns:repeat({len(p['gallery'])},1fr)">{cells}</div></div>
   </section>'''
+    # Åpningstidene kommer foran bildene. Galleri-blokken over setter gallery på nytt, så linjen må stå etter den.
+    if p.get('hours'): gallery = hours_section() + gallery
     press = ('\n' + MD.section(MD.by_key(*p['media']))) if p.get('media') else ''
     facts = ''.join(
         f'<div class="upgrade-row"><span class="upgrade-row__glyph" aria-hidden="true">➼</span><span class="upgrade-row__body">'

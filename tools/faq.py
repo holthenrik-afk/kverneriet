@@ -147,14 +147,17 @@ def landing_faq(slug):
 
 def _landing_faq(slug):
     vs = V['venues']
-    lunch_no = '; '.join(f'{v["name"]} {v["lunch"]}' for v in vs)
-    lunch_en = '; '.join(f'{v["name"]} {LUNCH_EN[v["slug"]]}' for v in vs)
+    # «på Majorstua tirsdag–fredag fra 11.00, på Solli … og i Tønsberg …»
+    def _liste(deler, og):
+        return deler[0] if len(deler) == 1 else ', '.join(deler[:-1]) + f' {og} ' + deler[-1]
+    lunch_no = _liste([f'{"i" if v["slug"] == "tonsberg" else "på"} {v["name"]} {v["lunch"]}' for v in vs], 'og')
+    lunch_en = _liste([f'{"in" if v["slug"] == "tonsberg" else "at"} {v["name"]} {LUNCH_EN[v["slug"]]}' for v in vs], 'and')
     pk_no = ', '.join(f'{p["name"]} {p["price"]} kr' for p in PK['items'])
     pk_en = ', '.join(f'{p["name"]} NOK {p["price"]}' for p in PK['items'])
     return {
         'lunsj': [
-            ('faq.lunsj.when', 'Når serverer Kverneriet lunsj?', f'Kjøkkenet åpner {lunch_no}. Hele menyen serveres fra åpning, så du får den samme burgeren til lunsj som om kvelden.',
-             'When does Kverneriet serve lunch?', f'The kitchen opens {lunch_en}. The full menu is served from opening, so you get the same burger at lunch as in the evening.'),
+            ('faq.lunsj.when', 'Når serverer Kverneriet lunsj?', f'Lunsj serveres {lunch_no}. Hele menyen serveres fra åpning, så du får den samme burgeren til lunsj som om kvelden.',
+             'When does Kverneriet serve lunch?', f'Lunch is served {lunch_en}. The full menu is served from opening, so you get the same burger at lunch as in the evening.'),
             ('faq.lunsj.book', 'Kan vi booke bord til lunsj?', 'Ja. Book online for inntil 8 personer (7 i Tønsberg), eller send forespørsel for større grupper fra kontoret, så står bordet klart når dere kommer.',
              'Can we book a table for lunch?', 'Yes. Book online for up to 8 people (7 in Tønsberg), or send a request for larger office groups, and the table is ready when you arrive.'),
             ('faq.lunsj.fast', 'Rekker jeg en burger på en times lunsjpause?', 'Ja. Burgerne stekes på bestilling og kommer raskt, og friesene er ferdig forberedt gjennom tre dager. Har du dårlig tid, kan du forhåndsbestille take-away og hente selv.',
@@ -193,8 +196,8 @@ def _landing_faq(slug):
              'Do I have to eat to sit at the bar?', 'No. You are just as welcome for a cocktail, a glass of wine or a beer as for a full dinner. All three restaurants have a bar.'),
             ('faq.cock.free', 'Har dere alkoholfrie cocktails?', 'Ja, vi har et stort alkoholfritt utvalg med cocktails, øl og vin – laget for å være et ordentlig alternativ, ikke et kompromiss.',
              'Do you have alcohol-free cocktails?', 'Yes, we have a large alcohol-free selection of cocktails, beer and wine – made to be a real alternative, not a compromise.'),
-            ('faq.cock.late', 'Hvor lenge er baren åpen?', 'Det varierer litt fra sted til sted. Se åpningstidene for <a href="/majorstua/#practical">Majorstua</a>, <a href="/solli/#practical">Solli</a> og <a href="/tonsberg/#practical">Tønsberg</a>.',
-             'How late is the bar open?', 'It varies a little from place to place. See the opening hours for <a href="/majorstua/#practical">Majorstua</a>, <a href="/solli/#practical">Solli</a> and <a href="/tonsberg/#practical">Tønsberg</a>.'),
+            ('faq.cock.late', 'Hvor lenge er baren åpen?', ' '.join(f'{v["name"]}: {bar_text(v)}.' for v in vs),
+             'How late is the bar open?', ' '.join(f'{v["name"]}: {bar_text(v, "en")}.' for v in vs)),
         ],
         'fries': [
             ('faq.fries.why', 'Hvorfor tar friesene tre dager?', 'Fordi de går gjennom tre runder: først koking, så kjøling, og til slutt frityr når du bestiller. De to første rundene gjør innmaten myk og potetaktig, den siste gir skallet som knaser.',
@@ -428,9 +431,9 @@ def GRUPPER():
              'Can I drop in just for a drink?',
              'Yes. All three have their own bar, and you are just as welcome at an ordinary table without eating. We keep a large alcohol-free selection, so there is always something proper in the glass. <a href="/cocktails/">More about the bar</a>.'),
             ('faq.s.hours', 'Når har dere åpent?',
-             f'Kjøkkenet: {_tider_no()} Baren holder åpent {_bar_no()}. Åpningstidene for hver restaurant står på restaurantsidene.',
+             f'Kjøkkenet: {_tider_no()} Baren: {_bar_no().rstrip(".")}. Åpningstidene for hver restaurant står på restaurantsidene.',
              'What are your opening hours?',
-             f'The kitchen: {_tider_en()} The bar stays open {_bar_en()}. Hours for each restaurant are on its own page.'),
+             f'Kitchen: {_tider_en()} Bar: {_bar_en().rstrip(".")}. Hours for each restaurant are on its own page.'),
             ('faq.s.where', 'Hvor ligger restaurantene?',
              f'{_steder_no()}. Kart og veibeskrivelse ligger på hver restaurantside.',
              'Where are the restaurants?',

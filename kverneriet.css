@@ -968,20 +968,25 @@ html{scroll-behavior:smooth}
 .dognet__lenke{font-weight:600;color:inherit;text-underline-offset:3px}
 
 /* Tre bilder side om side, det aktive vokser (Henrik valgte variant C 08.11.2026) */
-.dognet .dognet__spor{display:flex;gap:var(--space-3);height:clamp(420px,44vw,600px)}
+.dognet .dognet__spor{position:relative;display:flex;gap:var(--space-3);height:clamp(420px,44vw,600px)}
 .dognet .dognet__steg{position:relative;flex:1 1 0;min-width:0;overflow:hidden;transition:flex-grow .6s ease;color:var(--paper-50);background:var(--teal-900)}
 .dognet .dognet__steg[data-aktiv]{flex-grow:2.8}
 .dognet .dognet__bilde{position:absolute;inset:0;opacity:.55}
 .dognet [data-aktiv] .dognet__bilde{opacity:1}
-.dognet .dognet__knapp{position:absolute;inset:0 0 auto;z-index:1;padding:var(--space-4);background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,0))}
+.dognet .dognet__knapp{position:absolute;inset:0 0 auto;z-index:1;padding:var(--space-4);background:linear-gradient(to bottom,rgba(0,0,0,.7) 0,rgba(0,0,0,.5) 70%,rgba(0,0,0,0) 100%)}
+/* Fokusringen tegnes på panelet, fordi panelet klipper alt som stikker utenfor (overflow:hidden) */
+.dognet .dognet__knapp:focus-visible{outline:none}
+.dognet .dognet__steg:has(.dognet__knapp:focus-visible){outline:2px solid var(--focus-ring);outline-offset:3px}
+.dognet .dognet__steg:not([data-aktiv]){cursor:pointer}
+.dognet__pause{top:var(--space-4);right:var(--space-4);bottom:auto}
 .dognet .dognet__linje{background:rgba(255,255,255,.3)}
 .dognet .dognet__nr,.dognet .dognet__tid,.dognet .dognet__navn{color:var(--paper-50)}
-.dognet .dognet__tekst{position:absolute;inset:auto 0 0;z-index:1;padding:var(--space-7) var(--space-5) var(--space-5);background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,0))}
+.dognet .dognet__tekst{position:absolute;inset:auto 0 0;z-index:1;padding:var(--space-9) var(--space-5) var(--space-5);background:linear-gradient(to top,rgba(0,0,0,.78) 0,rgba(0,0,0,.62) 65%,rgba(0,0,0,0) 100%)}
 .dognet .dognet__lenke{color:var(--paper-50)}
 
 @media (max-width:760px){
   .dognet .dognet__spor{flex-direction:column;height:auto}
-  .dognet .dognet__steg{flex:none;height:84px;transition:height .5s ease}
+  .dognet .dognet__steg{flex:none;height:96px;transition:height .5s ease}
   .dognet .dognet__steg[data-aktiv]{height:340px}
   .dognet__knapp{column-gap:var(--space-2);padding-bottom:var(--space-3)}
   .dognet__nr{font-size:28px}
@@ -990,12 +995,13 @@ html{scroll-behavior:smooth}
 }
 
 /* Lenkene under overskriften i toppen */
-.hero-home__sub--lenker a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
-.hero-home__sub--lenker a:hover{border-bottom-color:currentColor}
+/* Understreket også uten mus, og høye nok til å treffe med tommelen */
+.hero-home__sub--lenker a{color:inherit;text-decoration:underline;text-decoration-color:rgba(250,248,245,.5);text-underline-offset:4px;border:0;display:inline-block;padding-block:8px}
+.hero-home__sub--lenker a:hover{text-decoration-color:currentColor}
 
 /* «Slik jobber vi» på forsiden, og /maten/ */
 .matbaand{display:grid;grid-template-columns:6fr 5fr;gap:var(--space-7);align-items:center}
-.matbaand__bilde{display:block;aspect-ratio:5/4;overflow:hidden}
+.matbaand__bilde{display:block;border:0;aspect-ratio:5/4;overflow:hidden}
 .matbaand__bilde img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%}
 .matbaand__tekst .lede{margin:var(--space-4) 0 0}
 .matbaand__tekst .btn{margin-top:var(--space-5)}

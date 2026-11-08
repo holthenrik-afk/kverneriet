@@ -126,7 +126,11 @@ def _sett_attr(side, data, attr, over):
 def _sett_faste(sider, over):
     for nokkel, fil, monster in FASTE:
         if nokkel not in over or fil not in sider: continue
-        ny, n = re.subn(monster, lambda m: m.group(1) + kv.esc(over[nokkel]) + m.group(3), sider[fil], count=1, flags=re.S)
+        def bytt(m):
+            # En egen overskrift er som regel norsk. Da skal den ikke stå merket som engelsk.
+            start = re.sub(r'\s+lang="en"', '', m.group(1)) if nokkel.endswith('h1') else m.group(1)
+            return start + kv.esc(over[nokkel]) + m.group(3)
+        ny, n = re.subn(monster, bytt, sider[fil], count=1, flags=re.S)
         if n: sider[fil] = ny
         else: print(f'  tekster: fant ikke {nokkel} i {fil}')
 

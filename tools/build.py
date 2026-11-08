@@ -219,7 +219,7 @@ def craft_section():
   <section class="section section--teal">
     <div class="wrap">
       <div class="matbaand">
-        <a class="matbaand__bilde" href="{kv.url('maten')}" data-track="cta:maten:bilde"><img src="/assets/img/folk-kokk.jpg" alt="{e(G._D['no']['home.craftAlt'])}" loading="lazy" decoding="async"></a>
+        <a class="matbaand__bilde" href="{kv.url('maten')}" data-track="cta:maten:bilde" aria-hidden="true" tabindex="-1"><img src="/assets/img/folk-kokk.jpg" alt="{e(G._D['no']['home.craftAlt'])}" loading="lazy" decoding="async"></a>
         <div class="matbaand__tekst">
           <header class="sec-head">
             <div class="sec-head__rule"></div>
@@ -327,8 +327,10 @@ def patch_takeaway():
     s = open('takeaway/index.html', encoding='utf-8').read()
     s = chrome.apply(s); s = modal.apply(s)
     s = s.replace('<main>', '<main id="main">', 1)
-    s = s.replace('<span class="badge">Best take-away burger</span>', '<span class="badge" lang="en">Best take-away burger</span>')
-    s = re.sub(r'<h1 class="hero-title"([^>]*)>Take-?away</h1>', r'<h1 class="hero-title"\1>Take-away burger i Oslo og Tønsberg</h1>', s)
+    # Standardteksten settes alltid. En overstyring fra «Tekster på nettsiden» legges oppå til slutt i bygget,
+    # og skal forsvinne igjen når feltet tømmes i Studio, også om en lokal bygging er committet.
+    s = re.sub(r'<span class="badge"(?: lang="en")?>[^<]*</span>', '<span class="badge" lang="en">Best take-away burger</span>', s, count=1)
+    s = re.sub(r'<h1 class="hero-title"([^>]*)>[^<]*</h1>', r'<h1 class="hero-title"\1>Take-away burger i Oslo og Tønsberg</h1>', s, count=1)
     s = s.replace('style="object-position:center 68%"><div class="hero-dark__scrim"', 'style="object-position:center 68%" fetchpriority="high" decoding="async"><div class="hero-dark__scrim"', 1)
     video, knapp = chrome.bg_video('takeaway')
     s = _sett_inn_video(s, 'takeaway', '<section class="hero-dark', r'<img class="hero-dark__img"[^>]*>(?:</picture>)?', video, knapp, 'takeaway/index.html')
