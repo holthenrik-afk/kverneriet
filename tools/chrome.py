@@ -158,8 +158,9 @@ def preferred_source():
 # Bakgrunnsvideo. Én byggekloss for forsiden, Majorstua, Solli og take-away.
 #
 # Hver video finnes i to utgaver i assets/video: <navn>.mp4 i 960×540 til PC, og
-# <navn>-mobil.mp4 beskåret til midten i 432×540. En telefon viser bare midten av
-# en bred video uansett, så mobilfila gir samme bilde for en firedel av datamengden.
+# <navn>-mobil.mp4 beskåret til 432×540. En telefon viser bare en smal stripe av en
+# bred video uansett, så mobilfila gir samme bilde for en firedel av datamengden.
+# Begge lages med tools/video.py, som også styrer hvor utsnittet ligger i hvert klipp.
 # site.js velger fil ut fra feltets form, ikke skjermbredden, så et nettbrett på
 # høykant får mobilfila og en telefon på tvers får PC-fila.
 #
