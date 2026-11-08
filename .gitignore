@@ -2,3 +2,4 @@
 __pycache__/
 *.pyc
 sanity-seed.ndjson
+sanity-tekster.ndjson

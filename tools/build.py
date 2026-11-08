@@ -11,7 +11,7 @@ import os, re, sys, hashlib, subprocess, datetime, functools
 print = functools.partial(print, flush=True)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import kv, chrome, modal, faq, carousel, i18n_gen as G, pages
-import build_venue, build_menu, build_landing, build_blog, build_faq, build_info, images, seo_head, dognet
+import build_venue, build_menu, build_landing, build_blog, build_faq, build_info, images, seo_head, dognet, site_texts
 import media as MD
 os.chdir(kv.ROOT)
 
@@ -397,6 +397,7 @@ def build_about():
     t = sc.get('aboutTitle') or {'no': 'Det startet i Tønsberg', 'en': 'It started in Tønsberg'}
     paras = sc.get('aboutParagraphs') or []
     G.add('om.eyebrow', 'Om Kverneriet', 'About Kverneriet')
+    G.add('om.visitTitle', 'Besøk oss', 'Visit us')
     G.add('om.title', t['no'], t.get('en') or t['no'])
 
     # Alkoholreklame er forbudt i Norge, og Tønsberg har fått advarsler. Avsnittet som
@@ -465,8 +466,8 @@ def build_about():
     <div class="wrap wrap--narrow">
       <header class="sec-head">
         <div class="sec-head__rule"></div>
-        <span class="kv-eyebrow">Tre steder</span>
-        <h2 class="display-2">Besøk oss</h2>
+        <span class="kv-eyebrow" data-i18n="home.locEyebrow">Tre steder</span>
+        <h2 class="display-2" data-i18n="om.visitTitle">Besøk oss</h2>
       </header>
       <div class="band-cta" style="margin-top:var(--space-5)">{venues}</div>
       <div class="band-cta" style="margin-top:var(--space-6)">
@@ -514,6 +515,7 @@ if __name__ == '__main__':
     print('== sider'); build_venue.build(); build_menu.build(); build_landing.build(); build_blog.build(); build_about(); build_faq.build(); build_info.build(); patch_index(); patch_takeaway(); build_404()
     print('== presse'); subprocess.run([sys.executable, 'tools/media.py'], check=True); subprocess.run([sys.executable, 'tools/press.py'], check=True)
     print('== bilder'); images.apply_all(images.build_variants())
+    print('== tekster fra Sanity'); site_texts.apply()
     print('== oversettelser'); print(G.write(), 'genererte nøkler')
     print('== head'); seo_head.apply_all(); seo_head.sitemap(); seo_head.llms(); seo_head.redirects(); seo_head.redirect_pages(); seo_head.robots(); seo_head.manifest()
     print('== css/js'); cache_bust()

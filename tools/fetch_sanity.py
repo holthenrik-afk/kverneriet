@@ -119,7 +119,12 @@ def main():
     sc['faqExtra'] = faqs
     json.dump(sc, open('content/site-copy.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     json.dump(posts, open('content/blog.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
-    print(f'fetch_sanity: {len(venues)} restauranter, {len(menus)} menyer, {len(press)} omtaler, {len(landing)} landingssider, {len(posts)} innlegg, {len(faqs)} ekstra FAQ')
+
+    # --- site-texts.json: bare tekstene Kverneriet har endret. Tomt felt betyr standardteksten, se tools/site_texts.py.
+    tekster = q('*[_type == "siteText" && (defined(no) || defined(en))] | order(key asc) { key, no, en }')
+    json.dump({t['key']: {k: t[k] for k in ('no', 'en') if (t.get(k) or '').strip()} for t in tekster if t.get('key')},
+              open('content/site-texts.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    print(f'fetch_sanity: {len(venues)} restauranter, {len(menus)} menyer, {len(press)} omtaler, {len(landing)} landingssider, {len(posts)} innlegg, {len(faqs)} ekstra FAQ, {len(tekster)} endrede tekster')
 
 if __name__ == '__main__':
     main()
