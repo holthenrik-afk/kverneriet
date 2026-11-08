@@ -503,6 +503,46 @@
     document.addEventListener('kv:lang',merk);
   })();
 
+  /* Dagen hos Kverneriet: stegene går av seg selv med en linje som fylles. Stopper når gjesten
+     klikker, holder musen over eller seksjonen er utenfor skjermen. Står stille for den som
+     har bedt om mindre bevegelse. */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-dognet]'),function(rot){
+    var steg=Array.prototype.slice.call(rot.querySelectorAll('[data-dognet-steg]'));
+    if(steg.length<2)return;
+    var varighet=6000,cur=0,brukt=0,sist=0,synlig=false,over=false;
+    var stoppet=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    function vis(i){
+      cur=i;brukt=0;
+      steg.forEach(function(s,j){
+        if(j===i)s.setAttribute('data-aktiv','');else s.removeAttribute('data-aktiv');
+        s.querySelector('[data-dognet-knapp]').setAttribute('aria-expanded',j===i?'true':'false');
+        s.style.setProperty('--fremdrift',j<i?'1':'0');
+      });
+    }
+    function rute(t){
+      if(synlig&&!over&&!stoppet&&!document.hidden){
+        brukt+=Math.min(t-sist,100);
+        var p=brukt/varighet;
+        steg[cur].style.setProperty('--fremdrift',String(Math.min(p,1)));
+        if(p>=1)vis((cur+1)%steg.length);
+      }
+      sist=t;window.requestAnimationFrame(rute);
+    }
+    steg.forEach(function(s,i){
+      s.querySelector('[data-dognet-knapp]').addEventListener('click',function(){
+        stoppet=true;vis(i);s.style.setProperty('--fremdrift','1');
+      });
+    });
+    rot.addEventListener('mouseenter',function(){over=true;});
+    rot.addEventListener('mouseleave',function(){over=false;});
+    rot.addEventListener('focusin',function(){over=true;});
+    rot.addEventListener('focusout',function(){over=false;});
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){synlig=es[0].isIntersecting;},{threshold:.35}).observe(rot);
+    }else{synlig=true;}
+    window.requestAnimationFrame(rute);
+  });
+
   /* Karusellene: piler, prikker og tastatur. Sporet scroller allerede uten JS. */
   Array.prototype.forEach.call(document.querySelectorAll('[data-kar]'),function(rot){
     var spor=rot.querySelector('.kar__spor');

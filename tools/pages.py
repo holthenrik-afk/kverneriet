@@ -48,6 +48,10 @@ PAGES = {
     title='Spørsmål og svar | Kverneriet',
     desc='Booking, grupper, allergier, glutenfritt, hunder, uteservering og take-away. Svar på det gjestene spør oss om på Majorstua, Solli og i Tønsberg.',
     img='/assets/img/trio-majorstua.jpg'),
+ 'maten': dict(
+    title='Maten hos Kverneriet – slik lager vi burgerne',
+    desc='Vi kverner kjøttet selv, bruker tre dager på friesene og lager softisen av Jersey-melk. Slik jobber vi på kjøkkenet på Majorstua, Solli og i Tønsberg.',
+    img='/assets/img/folk-kokk.jpg'),
  'kontakt': dict(
     title='Kontakt Kverneriet – Majorstua, Solli og Tønsberg',
     desc='Adresse, telefon og e-post til Kverneriet Majorstua, Solli og Tønsberg. Book bord online, send forespørsel om selskap eller julebord, eller ring oss.',
@@ -85,8 +89,8 @@ PAGES = {
     desc='Soft Serve Deluxe lages på 100 % Jersey-melk fra Jerseymeieriet. Rikere og mer kremet enn vanlig softis. Også som milkshake. Oslo og Tønsberg.',
     img='/assets/img/hero-softserve.jpg'),
  'late-night': dict(
-    title='Late night burger i Oslo – kjøkken til 22 | Kverneriet',
-    desc='Spise sent i Oslo? Kjøkkenet på Majorstua og Solli serverer burgere til 22, baren holder åpent til 23 tir–lør. Milkshake med sprit, øl fra tappen. Drop-in.',
+    title='Late night burger i Oslo – åpent til sent | Kverneriet',
+    desc='Spise sent i Oslo? Kjøkkenet på Majorstua og Solli serverer hele menyen utover kvelden, og baren holder åpent lenger. Drop-in.',
     img='/assets/img/ln-hero.jpg'),
 }
 

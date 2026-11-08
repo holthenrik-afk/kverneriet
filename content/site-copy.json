@@ -36,8 +36,8 @@
   }
  ],
  "heroSub": {
-  "en": "Burger restaurant in Oslo and Tønsberg since 2013.",
-  "no": "Burgerrestaurant i Oslo og Tønsberg siden 2013."
+  "no": "Burgerrestaurant i Oslo og Tønsberg",
+  "en": "Burger restaurant in Oslo and Tønsberg"
  },
  "heroLede": {
   "en": "We probably make things more complicated than necessary. We grind the beef ourselves, spend three days on the fries and make as much as we can from scratch. We think it is worth it. At Kverneriet you can drop in for lunch, dinner or stay into the evening with seriously good cocktails. Handcrafted burgers, good drinks and people who genuinely care that you have a good time.",
@@ -128,14 +128,14 @@
  "storyCards": [
   {
    "key": "burgere",
-   "image": "/assets/img/index-hero.jpg",
+   "image": "/assets/img/g-burger.jpg",
    "alt": {
     "no": "Burger fra Kverneriet på tallerken",
     "en": "A Kverneriet burger on a plate"
    },
    "title": {
-    "no": "Handcrafted burgers siden 2013.",
-    "en": "Handcrafted burgers since 2013."
+    "no": "Handcrafted burgers",
+    "en": "Handcrafted burgers"
    },
    "sub": {
     "no": "Kom sulten. Bli litt lenger.",
@@ -153,18 +153,18 @@
   },
   {
    "key": "kveld",
-   "image": "/assets/img/ln-burger.jpg",
+   "image": "/assets/img/hero-kveld.jpg",
    "alt": {
-    "no": "Burger servert sent på kvelden",
-    "en": "A burger served late in the evening"
+    "no": "Bartender lager en drink og smiler",
+    "en": "A bartender smiling while mixing a drink"
    },
    "title": {
     "no": "Kvelden hos oss",
     "en": "Your evening with us"
    },
    "sub": {
-    "no": "Kjøkkenet er åpent til 22.",
-    "en": "The kitchen is open until 22."
+    "no": "Baren er åpen til sent.",
+    "en": "The bar stays open late."
    },
    "href": "middag",
    "lenketekst": {
@@ -172,8 +172,8 @@
     "en": "See the evening menu"
    },
    "stikkord": {
-    "no": "Kjøkken til 22",
-    "en": "Kitchen until 22"
+    "no": "Til sent",
+    "en": "Until late"
    }
   },
   {
@@ -184,8 +184,8 @@
     "en": "Guests on the terrace on a bright afternoon"
    },
    "title": {
-    "no": "Jobblunsj, vennelunsj eller bare noe skikkelig godt å spise.",
-    "en": "A working lunch, a lunch with friends, or just something really good to eat."
+    "no": "Bedriftslunsj, vennelunsj eller bare noe skikkelig godt å spise.",
+    "en": "A company lunch, a lunch with friends, or just something really good to eat."
    },
    "sub": {
     "no": "Fra kl. 11 i Oslo, 12 i Tønsberg.",

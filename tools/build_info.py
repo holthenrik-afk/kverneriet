@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""/kontakt/ og /personvern/.
+"""/kontakt/, /personvern/ og /maten/.
 
 Kontaktsiden samler adresse, telefon, e-post og åpningstider for hver restaurant, og
 hvilket selskap som driver hvert sted. Alt hentes fra content/venues.json, så siden
@@ -24,6 +24,30 @@ BOOKING = ('Zenchef', 'Frankrike', 'France')
 
 # Datoen teksten sist ble gjennomgått. Oppdateres når innholdet endres, ikke ved hvert bygg.
 OPPDATERT = ('3. november 2026', '3 November 2026')
+
+
+# Stikkordene til «Slik jobber vi» ligger her og ikke i site-copy.json, fordi
+# fetch_sanity.py bygger craftItems på nytt ved hver henting og bare kjenner
+# image, alt, title og body. Et felt lagt i JSON-en ville vært slettet innen
+# ti minutter. Nøkkelen er tittelen i små bokstaver: endrer Kverneriet tittelen
+# i Sanity, forsvinner pillen i stedet for å vise feil faktum.
+CRAFT_STIKKORD = {
+    'kjøttet':           ('Kvernes her',     'Ground here'),
+    'tre dagers fries':  ('Tre dager',       'Three days'),
+    'soft serve deluxe': ('100 % Jersey',    '100% Jersey'),
+    'baren':             ('Egen bar',        'Our own bar'),
+    'folkene':           ('Siden 2013',      'Since 2013'),
+    'emballasjen':       ('Naturmaterialer', 'Natural materials'),
+}
+
+
+# To av håndverkskortene har fått sin egen side. Resten peker fortsatt ingen steder.
+# Samme nøkkel som CRAFT_STIKKORD: tittelen i små bokstaver, hentet fra Sanity.
+CRAFT_LENKE = {
+    'tre dagers fries':  ('fries',      'Les om friesene',  'About the fries'),
+    'soft serve deluxe': ('soft-serve', 'Les om softisen',  'About the soft serve'),
+    'baren':             ('cocktails',  'Se baren',         'See the bar'),
+}
 
 
 def orgnr(n):
@@ -369,8 +393,57 @@ def build_personvern():
     print(kv.path('personvern'), 'ok')
 
 
+def build_maten():
+    """Historien om maten. Kortene fra «Slik jobber vi» bodde i en karusell på forsiden. Nå står de
+    her, og forsiden har ett bilde og en lenke (Viktor 05.11.2026). Tekst og bilder redigeres i Sanity."""
+    sc = kv.site_copy()
+    G.add('nav.food', 'Maten', 'The food')
+    G.add('maten.eyebrow', 'Håndverk, ingen snarveier', 'Craft, not shortcuts')
+    G.add('maten.title', 'Maten hos Kverneriet', 'The food at Kverneriet')
+    G.add('maten.lede', 'Vi gjør kanskje ting litt mer komplisert enn nødvendig. Her er det vi ikke vil gi slipp på.',
+          'We probably make things more complicated than necessary. Here is what we refuse to give up.')
+    rader = ''
+    for i, it in enumerate(sc.get('craftItems') or []):
+        t, b = it['title'], it['body']
+        navn = t['no'].strip().lower()
+        G.add(f'maten.{i}.title', t['no'], t.get('en') or t['no'])
+        G.add(f'maten.{i}.body', b['no'], b.get('en') or b['no'])
+        lenke = ''
+        if navn in CRAFT_LENKE:
+            side_, no, en = CRAFT_LENKE[navn]
+            G.add(f'maten.{i}.cta', no, en)
+            lenke = f'<a class="dognet__lenke" href="{kv.url(side_)}" data-i18n="maten.{i}.cta">{e(no)}</a>'
+        s = CRAFT_STIKKORD.get(navn)
+        pille = ''
+        if s:
+            G.add(f'maten.{i}.pille', s[0], s[1])
+            pille = f'<span class="kv-eyebrow" data-i18n="maten.{i}.pille">{e(s[0])}</span>'
+        rader += (f'      <article class="matrad">\n'
+                  f'        <figure class="matrad__bilde"><img src="{it["image"]}" alt="{e(it.get("alt", ""))}" loading="lazy" decoding="async"></figure>\n'
+                  f'        <div class="matrad__tekst">{pille}<h2 class="display-3" data-i18n="maten.{i}.title">{e(t["no"])}</h2>'
+                  f'<p data-i18n="maten.{i}.body">{e(b["no"])}</p>{lenke}</div>\n'
+                  f'      </article>\n')
+    body = f'''      <header class="sec-head">
+        <div class="sec-head__rule"></div>
+        <span class="kv-eyebrow" data-i18n="maten.eyebrow">Håndverk, ingen snarveier</span>
+        <h1 class="display-1" data-i18n="maten.title">Maten hos Kverneriet</h1>
+      </header>
+      <p class="lede" style="margin-top:var(--space-5)" data-i18n="maten.lede">{e(G._D['no']['maten.lede'])}</p>
+    </div>
+  </section>
+
+  <section class="section section--flush-top">
+    <div class="wrap">
+{rader}      <div style="margin-top:var(--space-7)"><button class="btn btn--primary btn--lg" type="button" data-book-open data-track="lp:maten:book" data-i18n="act.book">Book bord</button></div>
+    </div>
+  </section>
+'''
+    kv.write('maten', side('maten', 'nav.food', 'Maten', body))
+    print(kv.path('maten'), 'ok')
+
+
 def build():
-    build_kontakt(); build_personvern()
+    build_kontakt(); build_personvern(); build_maten()
 
 
 if __name__ == '__main__':

@@ -180,7 +180,7 @@
     "Barnemeny fra 99 kr"
    ]
   ],
-  "facts_note": "Baren holder åpent til 23 tirsdag–lørdag, så dere kan bli sittende etter maten.",
+  "facts_note": "Baren holder åpent etter at kjøkkenet stenger, så dere kan bli sittende etter maten.",
   "media": [
    "db_2023",
    "fa_2026",
@@ -266,7 +266,7 @@
       "_key": "s20",
       "_type": "span",
       "marks": [],
-      "text": ", i et lokale med bar som holder åpent til 23 tirsdag–lørdag."
+      "text": ", i et lokale med bar som holder åpent utover kvelden."
      }
     ],
     "markDefs": [
@@ -327,7 +327,7 @@
    ],
    [
     "Baren",
-    "Åpen til 23 tirsdag–lørdag, 22 søndag og mandag"
+    "Åpen etter at kjøkkenet stenger. Se åpningstidene per restaurant."
    ]
   ],
   "facts_note": "Pakkene gjelder hele bordet. Allergier og spesialbehov løser vi når vi får beskjed på forhånd.",
@@ -577,7 +577,7 @@
    ],
    [
     "Baren, Solli",
-    "mandag til 22.00, tirsdag–lørdag til 23.00, søndag til 22.00",
+    "mandag til 22.00, tirsdag–torsdag til 23.00, fredag–lørdag til 24.00, søndag til 22.00",
     "/solli/"
    ],
    [
@@ -644,10 +644,10 @@
   ],
   "eyebrow": "Åpent sent · tirsdag–lørdag",
   "h1": "Late night burger i Oslo",
-  "sub": "Spise sent? Kjøkkenet på Majorstua og Solli serverer hele menyen til kl. 22, og baren holder åpent til 23 tirsdag til lørdag. Ingen booking nødvendig.",
+  "sub": "Spise sent? Kjøkkenet serverer hele menyen utover kvelden, og baren holder åpent lenger. Du trenger ikke booke.",
   "cta": "book",
   "sec_eyebrow": "Majorstua · Solli · Tønsberg",
-  "h2": "Åpent sent: kjøkkenet til 22, baren til 23",
+  "h2": "Åpent til sent",
   "body": [
    {
     "_key": "b50",
@@ -685,7 +685,7 @@
       "_key": "s49",
       "_type": "span",
       "marks": [],
-      "text": " serverer hele menyen til kl. 22 fra tirsdag til lørdag (21 søndag og mandag), og baren holder åpent en time til. Vi har mange drop-in-bord, så du trenger ikke booke for å spise sent i Oslo."
+      "text": " serverer hele menyen utover kvelden, og baren holder åpent lenger. Vi har mange drop-in-bord, så du trenger ikke booke for å spise sent i Oslo."
      }
     ],
     "markDefs": [
@@ -724,7 +724,7 @@
       "_key": "s54",
       "_type": "span",
       "marks": [],
-      "text": " holder kjøkkenet åpent til 22 tirsdag–lørdag og baren til 23."
+      "text": " er kjøkkenet og baren også åpne utover kvelden."
      }
     ],
     "markDefs": [
@@ -756,7 +756,7 @@
    ],
    [
     "Baren",
-    "Til 23 tirsdag–lørdag, til 22 søndag og mandag (alle tre)"
+    "Majorstua og Tønsberg til 23 tirsdag–lørdag. Solli til 23 tirsdag–torsdag og 24 fredag og lørdag. Alle til 22 søndag og mandag."
    ],
    [
     "Make it grown-up",
@@ -790,8 +790,8 @@
     "Julebord"
    ]
   ],
-  "seoTitle": "Late night burger i Oslo – kjøkken til 22 | Kverneriet",
-  "seoDescription": "Spise sent i Oslo? Kjøkkenet på Majorstua og Solli serverer burgere til 22, baren holder åpent til 23 tir–lør. Milkshake med sprit, øl fra tappen. Drop-in.",
+  "seoTitle": "Late night burger i Oslo – åpent til sent | Kverneriet",
+  "seoDescription": "Spise sent i Oslo? Kjøkkenet på Majorstua og Solli serverer hele menyen utover kvelden, og baren holder åpent lenger. Drop-in.",
   "img": "https://cdn.sanity.io/images/u0hod2sg/production/28b41d48b45671881998741503d43c235374103d-2000x2994.jpg"
  },
  {

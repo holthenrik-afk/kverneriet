@@ -124,7 +124,7 @@ ANLEDNINGER = [
      '/assets/img/hero-selskap.jpg',
      ('Gjester ved bordene på uteserveringen', 'Guests at the tables on the terrace')),
     ('latenight',  'late-night',
-     ('Kjøkken til 22', 'Kitchen until 22'),
+     ('Til sent', 'Until late'),
      ('Late night', 'Late night'),
      ('Etter kino, etter kampen. Drop-in-bord.',
       'After the cinema, after the match. Walk-in tables.'),

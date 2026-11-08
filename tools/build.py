@@ -11,7 +11,7 @@ import os, re, sys, hashlib, subprocess, datetime, functools
 print = functools.partial(print, flush=True)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import kv, chrome, modal, faq, carousel, i18n_gen as G, pages
-import build_venue, build_menu, build_landing, build_blog, build_faq, build_info, images, seo_head
+import build_venue, build_menu, build_landing, build_blog, build_faq, build_info, images, seo_head, dognet
 import media as MD
 os.chdir(kv.ROOT)
 
@@ -194,64 +194,43 @@ TRIO_HTML = """      <div class="venue-trio" style="margin-top:var(--space-7)">
 
 
 
-# Stikkordene til «Slik jobber vi» ligger her og ikke i site-copy.json, fordi
-# fetch_sanity.py bygger craftItems på nytt ved hver henting og bare kjenner
-# image, alt, title og body. Et felt lagt i JSON-en ville vært slettet innen
-# ti minutter. Nøkkelen er tittelen i små bokstaver: endrer Kverneriet tittelen
-# i Sanity, forsvinner pillen i stedet for å vise feil faktum.
-CRAFT_STIKKORD = {
-    'kjøttet':           ('Kvernes her',     'Ground here'),
-    'tre dagers fries':  ('Tre dager',       'Three days'),
-    'soft serve deluxe': ('100 % Jersey',    '100% Jersey'),
-    'baren':             ('Egen bar',        'Our own bar'),
-    'folkene':           ('Siden 2013',      'Since 2013'),
-    'emballasjen':       ('Naturmaterialer', 'Natural materials'),
-}
-
-
-# To av håndverkskortene har fått sin egen side. Resten peker fortsatt ingen steder.
-# Samme nøkkel som CRAFT_STIKKORD: tittelen i små bokstaver, hentet fra Sanity.
-CRAFT_LENKE = {
-    'tre dagers fries':  ('fries',      'Les om friesene',  'About the fries'),
-    'soft serve deluxe': ('soft-serve', 'Les om softisen',  'About the soft serve'),
-    'baren':             ('cocktails',  'Se baren',         'See the bar'),
-}
-
-
 def craft_section():
-    """«Slik jobber vi» – samme karusell som de to andre på forsiden.
-
-    Kortene peker ingen steder ennå (href=None), så de rendres som vanlige kort
-    uten «Les mer». Innholdet redigeres fortsatt i Sanity.
-    """
+    """«Slik jobber vi» var den tredje like karusellen på rad (Viktor 05.11.2026). Her er det nå
+    et bilde fra kjøkkenet og tre fakta, og kortene har fått sin egen side, /maten/."""
     sc = kv.site_copy()
     eb = sc.get('craftEyebrow') or {'no': 'Håndverk, ingen snarveier', 'en': 'Craft, not shortcuts'}
     ti = sc.get('craftTitle') or {'no': 'Slik jobber vi', 'en': 'The way we work'}
     G.add('home.craftEyebrow', eb['no'], eb.get('en') or eb['no']); G.add('home.craftTitle', ti['no'], ti.get('en') or ti['no'])
-
-    items = []
-    for i, it in enumerate(sc.get('craftItems') or []):
-        kort = {'key': str(i), 'href': None, 'image': it['image'],
-                'alt': {'no': it.get('alt', ''), 'en': it.get('alt', '')},
-                'title': it['title'], 'sub': it['body']}
+    G.add('home.craftLede', 'Vi kverner kjøttet selv, bruker tre dager på friesene og lager softisen av Jersey-melk. Det tar lenger tid, men du smaker forskjellen.',
+          'We grind the beef ourselves, spend three days on the fries and make our soft serve from Jersey milk. It takes longer, but you can taste the difference.')
+    G.add('home.craftCta', 'Les om maten', 'About the food')
+    G.add('home.craftAlt', 'Kokk på Kverneriet ler på kjøkkenet', 'A Kverneriet chef laughing in the kitchen')
+    fakta = ''
+    for it in (sc.get('craftItems') or [])[:3]:
         navn = it['title']['no'].strip().lower()
-        s = CRAFT_STIKKORD.get(navn)
-        if s: kort['stikkord'] = {'no': s[0], 'en': s[1]}
-        lenke = CRAFT_LENKE.get(navn)
-        if lenke:
-            kort['href'] = lenke[0]
-            kort['lenketekst'] = {'no': lenke[1], 'en': lenke[2]}
-        items.append(kort)
-
+        s = build_info.CRAFT_STIKKORD.get(navn)
+        if not s: continue
+        n = re.sub(r'[^a-zæøå]', '', navn)
+        G.add(f'home.craft.{n}', it['title']['no'], it['title'].get('en') or it['title']['no'])
+        G.add(f'home.craft.{n}.f', s[0], s[1])
+        fakta += (f'<li><span class="matbaand__tall" data-i18n="home.craft.{n}.f">{e(s[0])}</span>'
+                  f'<span data-i18n="home.craft.{n}">{e(it["title"]["no"])}</span></li>')
     return f'''  <!-- The craft -->
   <section class="section">
     <div class="wrap">
-      <header class="sec-head">
-        <div class="sec-head__rule"></div>
-        <span class="kv-eyebrow" data-i18n="home.craftEyebrow">{e(eb['no'])}</span>
-        <h2 class="display-2" data-i18n="home.craftTitle">{e(ti['no'])}</h2>
-      </header>
-      {carousel.track(items, 'craft', 'Slik jobber vi')}
+      <div class="matbaand">
+        <a class="matbaand__bilde" href="{kv.url('maten')}" data-track="cta:maten:bilde"><img src="/assets/img/folk-kokk.jpg" alt="{e(G._D['no']['home.craftAlt'])}" loading="lazy" decoding="async"></a>
+        <div class="matbaand__tekst">
+          <header class="sec-head">
+            <div class="sec-head__rule"></div>
+            <span class="kv-eyebrow" data-i18n="home.craftEyebrow">{e(eb['no'])}</span>
+            <h2 class="display-2" data-i18n="home.craftTitle">{e(ti['no'])}</h2>
+          </header>
+          <p class="lede" data-i18n="home.craftLede">{e(G._D['no']['home.craftLede'])}</p>
+          <ul class="matbaand__fakta">{fakta}</ul>
+          <a class="btn btn--primary btn--md" href="{kv.url('maten')}" data-track="cta:maten" data-i18n="home.craftCta">Les om maten</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -271,17 +250,28 @@ def patch_index():
     s = re.sub(r'[ \t]*<video class="hero-home__video"[^>]*data-hero-video[^>]*></video>\n?', '', s)
     video, knapp = chrome.bg_video('forside', toning=False, plakat='/assets/video/forside-plakat.jpg', cls='hero-home__video')
     s = _sett_inn_video(s, 'forside', '<section class="hero-home', r'<section class="hero-home[^"]*">', video, knapp, 'index.html')
-    # H1 beholder merkevarelinjen, men får en synlig undertekst med sted og produkt
+    # H1 beholder merkevarelinjen. Sted og kategori står i den lille linjen over overskriften, så
+    # Google fortsatt leser dem først uten at det er det første gjesten ser, og under overskriften
+    # står det gjesten kan komme for (Viktor 05.11.2026). Tittel-taggen er uendret.
     sc = kv.site_copy()
-    hs = sc.get('heroSub') or {'no': 'Burgerrestaurant i Oslo og Tønsberg siden 2013.', 'en': 'Burger restaurant in Oslo and Tønsberg since 2013.'}
+    hs = sc.get('heroSub') or {'no': 'Burgerrestaurant i Oslo og Tønsberg', 'en': 'Burger restaurant in Oslo and Tønsberg'}
     hl = sc.get('heroLede') or {}
     G.add('home.heroSub', hs['no'], hs.get('en') or hs['no'])
     if hl.get('no'): G.add('home.lede', hl['no'], hl.get('en') or hl['no'])
     G.add('home.hoursNote', 'Åpningstider, meny og booking på hver restaurantside.', 'Opening hours, menu and booking on each restaurant page.')
+    s, n = re.subn(r'(<div class="hero-home__inner wrap">\n *)<span class="kv-eyebrow"[^\n]*\n',
+                   lambda m: f'{m.group(1)}<span class="kv-eyebrow"><span class="glyph" aria-hidden="true">⋮</span> <span data-i18n="home.heroSub">{e(hs["no"])}</span></span>\n',
+                   s, count=1)
+    if n != 1: raise SystemExit('build: fant ikke den lille linjen i heroen')
+    lenker = []
+    for slug, no, en in (('lunsj', 'Lunsj', 'Lunch'), ('middag', 'Middag', 'Dinner'), ('cocktails', 'Cocktails', 'Cocktails'), ('late-night', 'Late night', 'Late night')):
+        nk = 'home.hero.' + slug.replace('-', '')
+        G.add(nk, no, en)
+        lenker.append(f'<a href="{kv.url(slug)}" data-track="hero:{slug}" data-i18n="{nk}">{no}</a>')
     # Innrykket varierer med hvordan heroen er bygget, så regexen tar vare på det den fant.
-    s, n = re.subn(r'( *)<h1( lang="en")?>[^<]*</h1>\n(?:[ \t]*<p class="hero-home__sub"[^\n]*\n)?',
+    s, n = re.subn(r'( *)<h1( lang="en")?>[^<]*</h1>\n(?:[ \t]*<p class="hero-home__sub[^\n]*\n)?',
                lambda m: f'{m.group(1)}<h1 lang="en">Handcrafted burgers</h1>\n'
-                         f'{m.group(1)}<p class="hero-home__sub" data-i18n="home.heroSub">{e(hs["no"])}</p>\n',
+                         f'{m.group(1)}<p class="hero-home__sub hero-home__sub--lenker">{" <span aria-hidden=\"true\">·</span> ".join(lenker)}</p>\n',
                s, count=1)
     if n != 1: raise SystemExit('build: fant ikke h1 i heroen')
     s = re.sub(r'<p class="lede" data-i18n(?:-html)?="home\.lede(?:\.html)?">.*?</p>',
@@ -296,6 +286,11 @@ def patch_index():
     # Om-teksten inn i restaurant-seksjonen (#om), FAQ før gavekort
     s, n = re.subn(r'  <!-- story:start -->.*?  <!-- story:end -->', lambda m: '  <!-- story:start -->\n' + carousel.story_section().rstrip('\n') + '\n  <!-- story:end -->', s, count=1, flags=re.S)
     if n != 1: raise SystemExit('build: fant ikke story-markørene')
+    # Dagen hos Kverneriet rett under presselogoene, over oversiktskarusellen (Viktor 05.11.2026)
+    if '<!-- dognet:start -->' not in s:
+        s = s.replace('  <!-- story:start -->', '  <!-- dognet:start -->\n  <!-- dognet:end -->\n\n  <!-- story:start -->', 1)
+    s, n = re.subn(r'  <!-- dognet:start -->.*?  <!-- dognet:end -->', lambda m: '  <!-- dognet:start -->\n' + dognet.section().rstrip('\n') + '\n  <!-- dognet:end -->', s, count=1, flags=re.S)
+    if n != 1: raise SystemExit('build: fant ikke dognet-markørene')
     s, n = re.subn(r'  <!-- cta:start -->.*?  <!-- cta:end -->', lambda m: '  <!-- cta:start -->\n' + cta_section().rstrip('\n') + '\n  <!-- cta:end -->', s, count=1, flags=re.S)
     if n != 1: raise SystemExit('build: fant ikke cta-markørene')
     s, n = re.subn(r'  <!-- locations:start -->.*?  <!-- locations:end -->', lambda m: '  <!-- locations:start -->\n' + locations_section().rstrip('\n') + '\n  <!-- locations:end -->', s, count=1, flags=re.S)
@@ -311,8 +306,6 @@ def patch_index():
     s = s.replace('\n</main>', '\n' + faq.section(faq.general_faq()) + '</main>', 1)
     s = s.replace('<html lang="no">', '<html lang="nb">')
     s = add_gen_script(s)
-    s = re.sub(r'<span class="kv-eyebrow"( lang="en")?><span class="glyph" aria-hidden="true">⋮</span> Awesome food for awesome people[^<]*</span>',
-               '<span class="kv-eyebrow" lang="en"><span class="glyph" aria-hidden="true">⋮</span> Awesome food for awesome people</span>', s, count=1)
     # «Stay safe - eat home» er en korona-linje som ikke hører hjemme i tonefallet lenger (ønske fra Kverneriet 06.10.2026)
     s = re.sub(r'<span class="kv-eyebrow"(?: lang="en")?>Stay safe - eat home</span>',
                '<span class="kv-eyebrow" data-i18n="ta.eyebrow">Ta Kverneriet med hjem</span>', s)

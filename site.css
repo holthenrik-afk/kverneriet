@@ -743,3 +743,98 @@ html{scroll-behavior:smooth}
   .band-cta .btn{width:100%;line-height:1.2}
   .sidestilt{gap:var(--space-6)}
 }
+
+/* ---------- Dagen hos Kverneriet: lunsj, middag og late night som 1-2-3 (Viktor 05.11.2026) ---------- */
+.dognet__spor{margin-top:var(--space-6)}
+.dognet__knapp{all:unset;box-sizing:border-box;display:grid;grid-template-columns:auto 1fr;column-gap:var(--space-3);align-items:baseline;cursor:pointer;padding-bottom:var(--space-4)}
+.dognet__knapp:focus-visible{outline:2px solid var(--line-accent);outline-offset:4px}
+.dognet__linje{grid-column:1/-1;display:block;height:3px;background:var(--line-hairline);margin-bottom:var(--space-3);overflow:hidden}
+.dognet__fyll{display:block;height:100%;background:var(--text-accent);transform:scaleX(var(--fremdrift,0));transform-origin:left}
+[data-aktiv] .dognet__fyll{background:var(--text-accent)}
+.dognet__nr{grid-row:2/4;font-family:var(--font-display);font-size:clamp(34px,4vw,52px);line-height:1;color:var(--text-muted)}
+[data-aktiv] .dognet__nr{color:var(--text-accent)}
+.dognet__tid{font-family:var(--font-cond);font-size:var(--type-eyebrow);font-weight:var(--weight-bold);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted)}
+.dognet__navn{grid-column:2;font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);line-height:1.1;text-transform:uppercase;color:var(--text-strong)}
+.dognet__bilde{margin:0;overflow:hidden;background:var(--paper-200);opacity:0;transition:opacity .6s ease}
+.dognet__bilde img{display:block;width:100%;height:100%;object-fit:cover}
+[data-aktiv] .dognet__bilde{opacity:1}
+.dognet__tekst{visibility:hidden;opacity:0;transition:opacity .4s ease}
+[data-aktiv] .dognet__tekst{visibility:visible;opacity:1}
+.dognet__tekst p{margin:0;max-width:44ch}
+.dognet__handling{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-4);margin-top:var(--space-4)}
+.dognet__lenke{font-weight:600;color:inherit;text-underline-offset:3px}
+
+/* A: linje over, bildet under. Slik Henrik beskrev det i møtet. */
+.dognet--a .dognet__spor{display:grid;grid-template-columns:repeat(3,1fr);column-gap:var(--space-5)}
+.dognet--a .dognet__steg{display:contents}
+.dognet--a .dognet__knapp{grid-row:1}
+.dognet--a .dognet__bilde{grid-row:2;grid-column:1/-1;aspect-ratio:5/2}
+.dognet--a .dognet__tekst{grid-row:2;grid-column:1/-1;align-self:end;z-index:1;padding:var(--space-7) var(--space-6) var(--space-5);color:var(--paper-50);background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,0))}
+.dognet--a .dognet__lenke{color:var(--paper-50)}
+
+/* B: stegene til venstre, stort bilde til høyre */
+.dognet--b .dognet__spor{display:grid}
+.dognet--b .dognet__steg{display:contents}
+@media (min-width:761px){
+  .dognet--b .dognet__spor{grid-template-columns:minmax(300px,5fr) 7fr;grid-template-rows:repeat(5,auto) 1fr;column-gap:var(--space-7)}
+  .dognet--b .dognet__knapp,.dognet--b .dognet__tekst{grid-column:1}
+  .dognet--b .dognet__steg:nth-child(1) .dognet__knapp{grid-row:1}
+  .dognet--b .dognet__steg:nth-child(1) .dognet__tekst{grid-row:2}
+  .dognet--b .dognet__steg:nth-child(2) .dognet__knapp{grid-row:3}
+  .dognet--b .dognet__steg:nth-child(2) .dognet__tekst{grid-row:4}
+  .dognet--b .dognet__steg:nth-child(3) .dognet__knapp{grid-row:5}
+  .dognet--b .dognet__steg:nth-child(3) .dognet__tekst{grid-row:6}
+  .dognet--b .dognet__tekst{display:none;padding-bottom:var(--space-5)}
+  .dognet--b [data-aktiv] .dognet__tekst{display:block}
+  .dognet--b .dognet__bilde{grid-column:2;grid-row:1/-1;aspect-ratio:4/3;align-self:start}
+}
+
+/* C: tre bilder side om side, det aktive vokser */
+.dognet--c .dognet__spor{display:flex;gap:var(--space-3);height:clamp(420px,44vw,600px)}
+.dognet--c .dognet__steg{position:relative;flex:1 1 0;min-width:0;overflow:hidden;transition:flex-grow .6s ease;color:var(--paper-50);background:var(--teal-900)}
+.dognet--c .dognet__steg[data-aktiv]{flex-grow:2.8}
+.dognet--c .dognet__bilde{position:absolute;inset:0;opacity:.55}
+.dognet--c [data-aktiv] .dognet__bilde{opacity:1}
+.dognet--c .dognet__knapp{position:absolute;inset:0 0 auto;z-index:1;padding:var(--space-4);background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,0))}
+.dognet--c .dognet__linje{background:rgba(255,255,255,.3)}
+.dognet--c .dognet__nr,.dognet--c .dognet__tid,.dognet--c .dognet__navn{color:var(--paper-50)}
+.dognet--c .dognet__tekst{position:absolute;inset:auto 0 0;z-index:1;padding:var(--space-7) var(--space-5) var(--space-5);background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,0))}
+.dognet--c .dognet__lenke{color:var(--paper-50)}
+
+@media (max-width:760px){
+  .dognet--a .dognet__spor,.dognet--b .dognet__spor{grid-template-columns:repeat(3,1fr);column-gap:var(--space-3)}
+  .dognet--a .dognet__knapp,.dognet--b .dognet__knapp{grid-row:1}
+  .dognet--a .dognet__bilde,.dognet--b .dognet__bilde{grid-row:2;grid-column:1/-1;aspect-ratio:4/3}
+  .dognet--a .dognet__tekst,.dognet--b .dognet__tekst{grid-row:3;grid-column:1/-1;padding:var(--space-4) 0 0;background:none;color:inherit}
+  .dognet--a .dognet__lenke{color:inherit}
+  .dognet--c .dognet__spor{flex-direction:column;height:auto}
+  .dognet--c .dognet__steg{flex:none;height:84px;transition:height .5s ease}
+  .dognet--c .dognet__steg[data-aktiv]{height:340px}
+  .dognet__knapp{column-gap:var(--space-2);padding-bottom:var(--space-3)}
+  .dognet__nr{font-size:28px}
+  .dognet__navn{font-size:15px;white-space:nowrap}
+  .dognet__tid{font-size:11px;letter-spacing:.06em}
+}
+
+/* Lenkene under overskriften i toppen */
+.hero-home__sub--lenker a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+.hero-home__sub--lenker a:hover{border-bottom-color:currentColor}
+
+/* «Slik jobber vi» på forsiden, og /maten/ */
+.matbaand{display:grid;grid-template-columns:6fr 5fr;gap:var(--space-7);align-items:center}
+.matbaand__bilde{display:block;aspect-ratio:5/4;overflow:hidden}
+.matbaand__bilde img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.matbaand__tekst .lede{margin:var(--space-4) 0 0}
+.matbaand__tekst .btn{margin-top:var(--space-5)}
+.matbaand__fakta{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin:var(--space-5) 0 0;padding:0}
+.matbaand__fakta li{display:flex;flex-direction:column;gap:2px;font-size:var(--type-caption);color:var(--text-muted)}
+.matbaand__tall{font-family:var(--font-display);font-size:clamp(18px,1.8vw,24px);line-height:1.1;text-transform:uppercase;color:var(--text-strong)}
+.matrad{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-7);align-items:center;margin-top:var(--space-8)}
+.matrad:nth-child(even) .matrad__bilde{order:2}
+.matrad__bilde{margin:0;aspect-ratio:4/3;overflow:hidden}
+.matrad__bilde img{display:block;width:100%;height:100%;object-fit:cover}
+.matrad__tekst p{margin:var(--space-3) 0 var(--space-3)}
+@media (max-width:760px){
+  .matbaand,.matrad{grid-template-columns:1fr;gap:var(--space-5)}
+  .matrad:nth-child(even) .matrad__bilde{order:0}
+}

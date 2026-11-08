@@ -30,6 +30,7 @@ PAGES = {
     'soft-serve': ('soft-serve/index.html',     '/soft-serve/'),
     'sporsmal':   ('sporsmal/index.html',       '/sporsmal/'),
     'kontakt':    ('kontakt/index.html',        '/kontakt/'),
+    'maten':      ('maten/index.html',          '/maten/'),
     'personvern': ('personvern/index.html',     '/personvern/'),
 }
 VENUE_SLUGS = ['majorstua', 'solli', 'tonsberg']
