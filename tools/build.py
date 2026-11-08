@@ -215,8 +215,9 @@ def craft_section():
         G.add(f'home.craft.{n}.f', s[0], s[1])
         fakta += (f'<li><span class="matbaand__tall" data-i18n="home.craft.{n}.f">{e(s[0])}</span>'
                   f'<span data-i18n="home.craft.{n}">{e(it["title"]["no"])}</span></li>')
+    # Rosa bakgrunn, så båndet skiller seg fra karusellene rundt (Henrik 08.11.2026)
     return f'''  <!-- The craft -->
-  <section class="section section--teal">
+  <section class="section section--tint">
     <div class="wrap">
       <div class="matbaand">
         <a class="matbaand__bilde" href="{kv.url('maten')}" data-track="cta:maten:bilde" aria-hidden="true" tabindex="-1"><img src="/assets/img/folk-kokk.jpg" alt="{e(G._D['no']['home.craftAlt'])}" loading="lazy" decoding="async"></a>
@@ -301,7 +302,7 @@ def patch_index():
     if n != 1: raise SystemExit('build: fant ikke takeaway-markørene')
     s, n = re.subn(r'  <!-- gavekort:start -->.*?  <!-- gavekort:end -->', lambda m: '  <!-- gavekort:start -->\n' + giftcard_section().rstrip('\n') + '\n  <!-- gavekort:end -->', s, count=1, flags=re.S)
     if n != 1: raise SystemExit('build: fant ikke gavekort-markørene')
-    s = re.sub(r'  <!-- The craft -->\n  <section class="section(?: section--teal)?">.*?\n  </section>\n\n', lambda m: craft_section(), s, count=1, flags=re.S)
+    s = re.sub(r'  <!-- The craft -->\n  <section class="section(?: section--\w+)?">.*?\n  </section>\n\n', lambda m: craft_section(), s, count=1, flags=re.S)
     s = re.sub(r'  <section class="section[^"]*" id="faq">.*?\n  </section>\n', '', s, count=1, flags=re.S)
     s = s.replace('\n</main>', '\n' + faq.section(faq.general_faq()) + '</main>', 1)
     s = s.replace('<html lang="no">', '<html lang="nb">')

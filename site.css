@@ -24,18 +24,15 @@ html{scroll-behavior:smooth}
 /* flush-top betyr «seksjonen over har samme farge og har allerede luft under».
    Har den over en egen bakgrunn, holder ikke det: da legger streken i
    seksjonshodet seg inntil fargekanten. Listen må dekke alle seksjonsklasser
-   med egen bakgrunn – i dag --tint, --accent, --teal og cta-band.
+   med egen bakgrunn – i dag --tint, --accent og cta-band.
    (På smal skjerm skjulte feilen seg, fordi .section{padding-block} i
    media-spørringen lenger ned overstyrer flushen.) */
 .section--tint + .section--flush-top,
 .section--accent + .section--flush-top,
-.section--teal + .section--flush-top,
 .hero-trust + .section--flush-top,
 .cta-band + .section--flush-top{padding-top:var(--section-y)}
 .section--tint{background:var(--surface-tint);border-top:1px solid var(--line-hairline);border-bottom:1px solid var(--line-hairline)}
 .section--accent{background:var(--surface-accent);border-top:1px solid var(--line-hairline);border-bottom:1px solid var(--line-hairline)}
-/* Kjøkkenbåndet på forsiden («Håndverk, ingen snarveier») skiller seg fra karusellene rundt (Henrik 08.11.2026) */
-.section--teal{background:var(--teal-100);border-top:1px solid var(--line-hairline);border-bottom:1px solid var(--line-hairline)}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center}
 .grid-2--start{align-items:start}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-7)}
