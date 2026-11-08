@@ -97,16 +97,11 @@ def build_kontakt():
           'Call us or e-mail the restaurant you want to reach. Booking a table is quickest online.')
     G.add('kontakt.phone', 'Telefon', 'Phone')
     G.add('kontakt.email', 'E-post', 'E-mail')
-    G.add('kontakt.kitchen', 'Kjøkkenet', 'Kitchen')
     G.add('kontakt.directions', 'Veibeskrivelse', 'Directions')
-    G.add('kontakt.hours', 'Alle åpningstider', 'All opening hours')
 
     kort = ''
     for v in V['venues']:
         s, a = v['slug'], v['address']
-        kn = ', '.join(f'{kv.day_range(h["days"])} {kv.hhmm(h["opens"])}–{kv.hhmm(h["closes"])}' for h in v['hours']['kitchen'])
-        ke = ', '.join(f'{kv.day_range(h["days"], "en")} {kv.hhmm(h["opens"])}–{kv.hhmm(h["closes"])}' for h in v['hours']['kitchen'])
-        G.add(f'kontakt.{s}.kitchen', kn, ke)
         mail = (f'          <p style="margin-top:var(--space-2)"><span data-i18n="kontakt.email">E-post</span>: '
                 f'<a href="mailto:{v["email"]}">{e(v["email"])}</a></p>\n') if v.get('email') else ''
         kort += (f'        <article class="card bar-kort">\n'
@@ -116,9 +111,7 @@ def build_kontakt():
                  f'          <p style="margin-top:var(--space-2)"><span data-i18n="kontakt.phone">Telefon</span>: '
                  f'<a href="tel:{ORG["telephone"]}">{ORG["telephoneDisplay"]}</a></p>\n'
                  f'{mail}'
-                 f'          <p class="caption" style="margin-top:var(--space-3)"><span data-i18n="kontakt.kitchen">Kjøkkenet</span>: '
-                 f'<span data-i18n="kontakt.{s}.kitchen">{e(kn)}</span>. '
-                 f'<a href="{kv.url(s)}#practical" data-i18n="kontakt.hours">Alle åpningstider</a></p>\n'
+                 f'          <div style="margin-top:var(--space-4)">{chrome.hours_table(v)}</div>\n'
                  f'          <button class="btn btn--primary btn--sm" type="button" style="margin-top:var(--space-5)" data-book-open data-book-venue="{s}" '
                  f'data-track="lp:kontakt:book:{s}" data-i18n="act.book">Book bord</button>\n'
                  f'        </article>\n')

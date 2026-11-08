@@ -32,7 +32,8 @@ UTELATES = re.compile(r'^(d\.|.*\.barHours$|.*\.lunch$|.*\.since$|kontakt\.\w+\.
                       r'|(majorstua|solli|tonsberg)\.(heroSub|slogan|about1|about2)$)')
 TIDER = re.compile(r'\d{1,2}[.:]\d{2}|\d+\s*kr\b|\bkr\s*\d+', re.I)
 SIDENAVN = {'index.html': 'Forsiden'}
-FASTE_STANDARD = {'home.h1': 'Overskriften øverst på forsiden', 'home.brandLine': 'Den lille linjen over overskriften på forsiden',
+# Den lille linjen over overskriften er feltet heroSub under Innstillinger, ikke en egen tekst her.
+FASTE_STANDARD = {'home.h1': 'Overskriften øverst på forsiden',
                   'ta.badge': 'Merket øverst på take-away-siden', 'ta.h1': 'Overskriften på take-away-siden'}
 
 

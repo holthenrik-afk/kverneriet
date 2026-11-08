@@ -25,28 +25,10 @@ def day_label(days):
     return G.add(key, no[0].upper() + no[1:] + ':', en + ':'), no[0].upper() + no[1:] + ':'
 
 def hours_block(v):
-    rows = ''
-    for h in v['hours']['kitchen']:
-        key, lab = day_label(h['days'])
-        rows += f'              <dt data-i18n="{key}">{lab}</dt><dd>{kv.hhmm(h["opens"])}–{kv.hhmm(h["closes"])}</dd>\n'
-    bar = ''
-    for h in v['hours']['bar']:
-        key, lab = day_label(h['days'])
-        bar += f'              <dt data-i18n="{key}">{lab}</dt><dd><span data-i18n="hours.until">til</span> {kv.hhmm(h["closes"])}</dd>\n'
-    G.add('hours.until', 'til', 'until')
     lunch_en = faq.LUNCH_EN[v['slug']]
     G.add(f'{v["slug"]}.lunch', f'Lunsj serveres {v["lunch"]}. Hele menyen fra åpning.', f'Lunch is served {lunch_en}. Full menu from opening.')
     return f'''        <div class="stack-6" style="margin-top:var(--space-5)">
-          <div class="hours">
-            <div class="kv-eyebrow" style="margin-bottom:var(--space-3)" data-i18n="hours.kitchen">Kjøkkenet</div>
-            <dl>
-{rows}            </dl>
-          </div>
-          <div class="hours">
-            <div class="kv-eyebrow" style="margin-bottom:var(--space-3)" data-i18n="hours.bar">Baren</div>
-            <dl>
-{bar}            </dl>
-          </div>
+          {chrome.hours_table(v)}
           <p class="caption" data-i18n="{v['slug']}.lunch">Lunsj serveres {e(v['lunch'])}. Hele menyen fra åpning.</p>
         </div>'''
 
@@ -98,13 +80,13 @@ def bar_hours(v):
 
 def bar_section(v):
     s = v['slug']; b = BAR[s]
-    hn, he = bar_hours(v)
     G.add('v.barEyebrow', 'Baren', 'The bar')
     G.add(f'{s}.barH2', *b['h2'])
     G.add(f'{s}.bar1', *b['p1'])
-    G.add(f'{s}.bar2', f'Du trenger ikke spise for å sitte her. Baren holder åpent {hn}, og vi har et stort '
+    # Klokkeslettene står i åpningstidene lenger ned på siden, ikke i teksten (Viktor 05.11.2026)
+    G.add(f'{s}.bar2', 'Du trenger ikke spise for å sitte her. Baren holder åpent etter at kjøkkenet stenger, og vi har et stort '
                        'alkoholfritt utvalg, så det finnes alltid noe ordentlig i glasset.',
-          f'You do not have to eat to sit here. The bar is open {he}, and we keep a large alcohol-free selection, '
+          'You do not have to eat to sit here. The bar stays open after the kitchen closes, and we keep a large alcohol-free selection, '
           'so there is always something proper in the glass.')
     G.add('v.barCta', 'Mer om baren', 'More about the bar')
     return f"""  <!-- Baren -->

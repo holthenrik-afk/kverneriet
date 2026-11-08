@@ -24,7 +24,6 @@ import kv, i18n_gen as G
 # fordi build.py leser disse linjene tilbake med mønstre som krever at taggen står urørt.
 FASTE = [
     ('home.h1',        'index.html',          r'(<section class="hero-home.*?<h1\b[^>]*>)([^<]*)(</h1>)'),
-    ('home.brandLine', 'index.html',          r'(<section class="hero-home.*?<span class="kv-eyebrow"[^>]*><span class="glyph"[^>]*>⋮</span> )([^<]*)(</span>)'),
     ('ta.badge',       'takeaway/index.html', r'(<span class="badge"[^>]*>)([^<]*)(</span>)'),
     ('ta.h1',          'takeaway/index.html', r'(<h1 class="hero-title"[^>]*>)([^<]*)(</h1>)'),
 ]

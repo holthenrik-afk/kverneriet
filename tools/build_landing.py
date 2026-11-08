@@ -41,9 +41,28 @@ def bar_cards():
 """
 
 
+def hours_section():
+    """Åpningstidene for alle tre stedene, på sidene der tid er det gjesten lurer på
+    ("hours": true i landing.json). Samme tabell som på restaurantsidene."""
+    G.add('lp.hoursEyebrow', 'Åpningstider', 'Opening hours')
+    cells = ''.join(
+        f'        <div>\n          <h3 class="display-4"><a href="{kv.url(v["slug"])}">{e(v["fullName"])}</a></h3>\n'
+        f'          <div style="margin-top:var(--space-3)">{chrome.hours_table(v)}</div>\n        </div>\n'
+        for v in V['venues'])
+    return f"""
+  <section class="section section--flush-top" id="apningstider">
+    <div class="wrap">
+      <div class="divider"><span data-i18n="lp.hoursEyebrow">Åpningstider</span></div>
+      <div class="grid-3" style="margin-top:var(--space-6)">
+{cells}      </div>
+    </div>
+  </section>"""
+
+
 def page(p):
     slug = p['slug']; meta = pages.PAGES[slug]
     gallery = bar_cards() if p.get('bars') else ''
+    if p.get('hours'): gallery = hours_section() + gallery
     if p.get('gallery') and not p.get('bars'):
         cells = ''.join(f'<figure class="photo" style="aspect-ratio:{g[2] if len(g) > 2 else "1/1"}"><img src="{g[0]}" alt="{e(g[1])}" loading="lazy"></figure>' for g in p['gallery'])
         gallery = f'''

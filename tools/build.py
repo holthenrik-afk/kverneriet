@@ -216,7 +216,7 @@ def craft_section():
         fakta += (f'<li><span class="matbaand__tall" data-i18n="home.craft.{n}.f">{e(s[0])}</span>'
                   f'<span data-i18n="home.craft.{n}">{e(it["title"]["no"])}</span></li>')
     return f'''  <!-- The craft -->
-  <section class="section">
+  <section class="section section--teal">
     <div class="wrap">
       <div class="matbaand">
         <a class="matbaand__bilde" href="{kv.url('maten')}" data-track="cta:maten:bilde"><img src="/assets/img/folk-kokk.jpg" alt="{e(G._D['no']['home.craftAlt'])}" loading="lazy" decoding="async"></a>
@@ -301,7 +301,7 @@ def patch_index():
     if n != 1: raise SystemExit('build: fant ikke takeaway-markørene')
     s, n = re.subn(r'  <!-- gavekort:start -->.*?  <!-- gavekort:end -->', lambda m: '  <!-- gavekort:start -->\n' + giftcard_section().rstrip('\n') + '\n  <!-- gavekort:end -->', s, count=1, flags=re.S)
     if n != 1: raise SystemExit('build: fant ikke gavekort-markørene')
-    s = re.sub(r'  <!-- The craft -->\n  <section class="section">.*?\n  </section>\n\n', lambda m: craft_section(), s, count=1, flags=re.S)
+    s = re.sub(r'  <!-- The craft -->\n  <section class="section(?: section--teal)?">.*?\n  </section>\n\n', lambda m: craft_section(), s, count=1, flags=re.S)
     s = re.sub(r'  <section class="section[^"]*" id="faq">.*?\n  </section>\n', '', s, count=1, flags=re.S)
     s = s.replace('\n</main>', '\n' + faq.section(faq.general_faq()) + '</main>', 1)
     s = s.replace('<html lang="no">', '<html lang="nb">')
@@ -400,15 +400,8 @@ def build_about():
     G.add('om.visitTitle', 'Besøk oss', 'Visit us')
     G.add('om.title', t['no'], t.get('en') or t['no'])
 
-    # Alkoholreklame er forbudt i Norge, og Tønsberg har fått advarsler. Avsnittet som
-    # markedsfører «cocktails vi er stolte av, et stort vinkart og et bredt utvalg øl»
-    # slippes derfor ikke ut på denne siden. Teksten ligger i Sanity og må rettes der –
-    # til da sier bygget fra om hva som ble holdt tilbake.
-    SPERRE = ('cocktails vi er stolte av', 'stort vinkart', 'bredt utvalg øl')
-    holdt = [p['no'] for p in paras if any(s in p['no'].lower() for s in SPERRE)]
-    paras = [p for p in paras if not any(s in p['no'].lower() for s in SPERRE)]
-    for h in holdt:
-        print(f'  /om/: holdt tilbake avsnitt med alkoholreklame – «{h[:60]}…» (rett i Sanity)')
+    # Alle avsnittene fra Sanity vises. Tidligere holdt bygget tilbake avsnittet om baren, men Viktor
+    # bestemte 05.11.2026 at cocktail-fokuset på nettsiden skal beholdes, og han redigerer teksten selv.
     if not paras:
         raise SystemExit('build: /om/ har ingen avsnitt å vise – sjekk aboutParagraphs')
 

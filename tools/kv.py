@@ -75,11 +75,33 @@ DAYS_NO = {'Monday': 'mandag', 'Tuesday': 'tirsdag', 'Wednesday': 'onsdag', 'Thu
 DAYS_EN = {'Monday': 'Monday', 'Tuesday': 'Tuesday', 'Wednesday': 'Wednesday', 'Thursday': 'Thursday',
            'Friday': 'Friday', 'Saturday': 'Saturday', 'Sunday': 'Sunday'}
 
+WEEK = list(DAYS_EN)
+
 def day_range(days, lang='no'):
-    """['Tuesday','Wednesday','Thursday','Friday'] -> 'tirsdag–fredag'"""
+    """['Tuesday','Wednesday','Thursday','Friday'] -> 'tirsdag–fredag'. Dager som ikke henger
+    sammen, får «og» eller komma: ['Monday','Sunday'] -> 'mandag og søndag'."""
     names = DAYS_NO if lang == 'no' else DAYS_EN
-    if len(days) == 1: return names[days[0]]
-    return f'{names[days[0]]}–{names[days[-1]]}'
+    og = ' og ' if lang == 'no' else ' and '
+    ds = sorted(days, key=WEEK.index)
+    if len(ds) == 1: return names[ds[0]]
+    idx = [WEEK.index(d) for d in ds]
+    if idx == list(range(idx[0], idx[-1] + 1)): return f'{names[ds[0]]}–{names[ds[-1]]}'
+    return ', '.join(names[d] for d in ds[:-1]) + og + names[ds[-1]]
+
+def hours_rows(v):
+    """Kjøkken og bar for samme dag på én rad. Dager som følger etter hverandre og har like tider,
+    slås sammen: [(dager, åpner, kjøkkenet stenger, baren stenger), ...] i ukedagsrekkefølge."""
+    k = {d: (h['opens'], h['closes']) for h in v['hours']['kitchen'] for d in h['days']}
+    b = {d: h['closes'] for h in v['hours']['bar'] for d in h['days']}
+    rows = []
+    for d in WEEK:
+        if d not in k: continue
+        t = (k[d][0], k[d][1], b.get(d))
+        if rows and rows[-1][1:] == t and WEEK.index(rows[-1][0][-1]) == WEEK.index(d) - 1:
+            rows[-1][0].append(d)
+        else:
+            rows.append(([d], *t))
+    return rows
 
 def hhmm(t): return t.replace(':', '.')
 

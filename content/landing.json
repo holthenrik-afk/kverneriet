@@ -33,7 +33,7 @@
       "_key": "s3",
       "_type": "span",
       "marks": [],
-      "text": "Vi liker lunsjer der praten får gå litt lenger enn planlagt. Et møte kan bli til en burger, en burger kan bli til kaffe, og noen ganger er det akkurat sånn en god arbeidsdag bør se ut. Kjøkkenet åpner kl. 11 på &lt;a href=\"/majorstua/\"&gt;Majorstua&lt;/a&gt;, 11.30 på &lt;a href=\"/solli/\"&gt;Solli&lt;/a&gt; og 12 torsdag til søndag i &lt;a href=\"/tonsberg/\"&gt;Tønsberg&lt;/a&gt;."
+      "text": "Vi liker lunsjer der praten får gå litt lenger enn planlagt. Et møte kan bli til en burger, en burger kan bli til kaffe, og noen ganger er det akkurat sånn en god arbeidsdag bør se ut. Kjøkkenet åpner til lunsj på Majorstua, Solli og i Tønsberg, og tidene for hver restaurant står under."
      }
     ],
     "markDefs": [],
@@ -43,21 +43,6 @@
   "facts_title": "Lunsj og kjøkkentider",
   "facts": [
    [
-    "Majorstua",
-    "Lunsj tirsdag–fredag fra 11.00 · kjøkken mandag 16.00–21.00, tirsdag–fredag 11.00–22.00, lørdag 12.00–22.00, søndag 12.00–21.00",
-    "/majorstua/"
-   ],
-   [
-    "Solli",
-    "Lunsj tirsdag–fredag fra 11.30 · kjøkken mandag 16.00–21.00, tirsdag–fredag 11.30–22.00, lørdag 14.00–22.00, søndag 14.00–21.00",
-    "/solli/"
-   ],
-   [
-    "Tønsberg",
-    "Lunsj torsdag–søndag fra 12.00 · kjøkken mandag 16.00–21.00, tirsdag–onsdag 16.00–22.00, torsdag–lørdag 12.00–22.00, søndag 12.00–21.00",
-    "/tonsberg/"
-   ],
-   [
     "Grupper fra kontoret",
     "Book bord, så slipper dere å vente"
    ],
@@ -66,7 +51,7 @@
     "Forhåndsbestill og hent selv på alle tre"
    ]
   ],
-  "facts_note": "Hele menyen serveres fra kjøkkenet åpner. Baren holder åpent lenger – se restaurantsidene.",
+  "facts_note": "Hele menyen serveres fra kjøkkenet åpner. Se åpningstidene per restaurant under.",
   "media": [
    "fa_2024",
    "dn_2016",
@@ -91,7 +76,8 @@
   ],
   "seoTitle": "Burgerlunsj på Majorstuen, Solli og i Tønsberg – Kverneriet",
   "seoDescription": "Lunsj med burger: kjøkkenet åpner 11 på Majorstua, 11.30 på Solli og 12 tor–søn i Tønsberg. Kjøtt vi kverner selv, fries som tar tre dager. Book bord.",
-  "img": "https://cdn.sanity.io/images/u0hod2sg/production/6c08d4be13c6c634743b0c10ecb96d9cec44346e-1400x2100.jpg"
+  "img": "https://cdn.sanity.io/images/u0hod2sg/production/6c08d4be13c6c634743b0c10ecb96d9cec44346e-1400x2100.jpg",
+  "hours": true
  },
  {
   "slug": "middag",
@@ -142,7 +128,7 @@
       "_key": "s9",
       "_type": "span",
       "marks": [],
-      "text": "Enten dere er to eller tjue, ønsker vi at Kverneriet skal være et sted hvor det er enkelt å samles – og lett å bli sittende litt lenger enn man hadde tenkt. Book bord på &lt;a href=\"/majorstua/\"&gt;Majorstua&lt;/a&gt;, &lt;a href=\"/solli/\"&gt;Solli plass&lt;/a&gt; eller i &lt;a href=\"/tonsberg/\"&gt;Tønsberg&lt;/a&gt;."
+      "text": "Enten dere er to eller tjue, ønsker vi at Kverneriet skal være et sted hvor det er enkelt å samles – og lett å bli sittende litt lenger enn man hadde tenkt. Book bord på Majorstua, Solli plass eller i Tønsberg."
      }
     ],
     "markDefs": [],
@@ -151,21 +137,6 @@
   ],
   "facts_title": "Godt å vite",
   "facts": [
-   [
-    "Majorstua",
-    "Kjøkken mandag 16.00–21.00, tirsdag–fredag 11.00–22.00, lørdag 12.00–22.00, søndag 12.00–21.00",
-    "/majorstua/"
-   ],
-   [
-    "Solli",
-    "Kjøkken mandag 16.00–21.00, tirsdag–fredag 11.30–22.00, lørdag 14.00–22.00, søndag 14.00–21.00",
-    "/solli/"
-   ],
-   [
-    "Tønsberg",
-    "Kjøkken mandag 16.00–21.00, tirsdag–onsdag 16.00–22.00, torsdag–lørdag 12.00–22.00, søndag 12.00–21.00",
-    "/tonsberg/"
-   ],
    [
     "Drop-in",
     "Vi har mange bord uten booking"
@@ -203,7 +174,8 @@
     "Selskap og grupper"
    ]
   ],
-  "cta2": "menu"
+  "cta2": "menu",
+  "hours": true
  },
  {
   "slug": "julebord",
@@ -740,21 +712,6 @@
   "facts_title": "Sene åpningstider",
   "facts": [
    [
-    "Majorstua – kjøkken",
-    "mandag 16.00–21.00, tirsdag–fredag 11.00–22.00, lørdag 12.00–22.00, søndag 12.00–21.00",
-    "/majorstua/"
-   ],
-   [
-    "Solli – kjøkken",
-    "mandag 16.00–21.00, tirsdag–fredag 11.30–22.00, lørdag 14.00–22.00, søndag 14.00–21.00",
-    "/solli/"
-   ],
-   [
-    "Tønsberg – kjøkken",
-    "mandag 16.00–21.00, tirsdag–onsdag 16.00–22.00, torsdag–lørdag 12.00–22.00, søndag 12.00–21.00",
-    "/tonsberg/"
-   ],
-   [
     "Baren",
     "Majorstua og Tønsberg til 23 tirsdag–lørdag. Solli til 23 tirsdag–torsdag og 24 fredag og lørdag. Alle til 22 søndag og mandag."
    ],
@@ -767,7 +724,7 @@
     "Mange bord uten booking"
    ]
   ],
-  "facts_note": "Kjøkkentider per restaurant. Baren holder åpent etter at kjøkkenet stenger.",
+  "facts_note": "Alle tidene per restaurant står i åpningstidene under.",
   "media": [
    "fa_2025",
    "db_2020",
@@ -792,7 +749,8 @@
   ],
   "seoTitle": "Late night burger i Oslo – åpent til sent | Kverneriet",
   "seoDescription": "Spise sent i Oslo? Kjøkkenet på Majorstua og Solli serverer hele menyen utover kvelden, og baren holder åpent lenger. Drop-in.",
-  "img": "https://cdn.sanity.io/images/u0hod2sg/production/28b41d48b45671881998741503d43c235374103d-2000x2994.jpg"
+  "img": "https://cdn.sanity.io/images/u0hod2sg/production/28b41d48b45671881998741503d43c235374103d-2000x2994.jpg",
+  "hours": true
  },
  {
   "slug": "fries",

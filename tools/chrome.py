@@ -56,6 +56,23 @@ def header(active=None, menu_href='/meny/'):
 </header>
 '''
 
+def hours_table(v):
+    """Åpningstidene for ett sted som én tabell: dag, kjøkken og bar på samme rad (Viktor 05.11.2026).
+    Brukes på restaurantsidene og på /kontakt/, så tidene står likt overalt."""
+    G.add('hours.day', 'Dag', 'Day'); G.add('hours.kitchen', 'Kjøkkenet', 'Kitchen'); G.add('hours.bar', 'Baren', 'Bar')
+    G.add('hours.until', 'til', 'until')
+    rows = ''
+    for days, opens, kc, bc in kv.hours_rows(v):
+        key = 'dr.' + '-'.join(d[:3].lower() for d in days)
+        no = kv.day_range(days, 'no'); en = kv.day_range(days, 'en')
+        G.add(key, no[0].upper() + no[1:], en)
+        bar = f'<span data-i18n="hours.until">til</span> {kv.hhmm(bc)}' if bc else '–'
+        rows += (f'<tr><th scope="row" data-i18n="{key}">{kv.esc(no[0].upper() + no[1:])}</th>'
+                 f'<td>{kv.hhmm(opens)}–{kv.hhmm(kc)}</td><td>{bar}</td></tr>')
+    return ('<table class="timer"><thead><tr><th scope="col" data-i18n="hours.day">Dag</th>'
+            '<th scope="col" data-i18n="hours.kitchen">Kjøkkenet</th><th scope="col" data-i18n="hours.bar">Baren</th></tr></thead>'
+            f'<tbody>{rows}</tbody></table>')
+
 def hours_summary(v):
     """Kort åpningstid-linje til footeren: 'Kjøkken man 16–21, tir–fre 11–22, lør 12–22, søn 12–21'."""
     parts = [f'{kv.day_range(h["days"])} {kv.hhmm(h["opens"])}–{kv.hhmm(h["closes"])}' for h in v['hours']['kitchen']]

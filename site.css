@@ -24,15 +24,18 @@ html{scroll-behavior:smooth}
 /* flush-top betyr «seksjonen over har samme farge og har allerede luft under».
    Har den over en egen bakgrunn, holder ikke det: da legger streken i
    seksjonshodet seg inntil fargekanten. Listen må dekke alle seksjonsklasser
-   med egen bakgrunn – i dag --tint, --accent og cta-band.
+   med egen bakgrunn – i dag --tint, --accent, --teal og cta-band.
    (På smal skjerm skjulte feilen seg, fordi .section{padding-block} i
    media-spørringen lenger ned overstyrer flushen.) */
 .section--tint + .section--flush-top,
 .section--accent + .section--flush-top,
+.section--teal + .section--flush-top,
 .hero-trust + .section--flush-top,
 .cta-band + .section--flush-top{padding-top:var(--section-y)}
 .section--tint{background:var(--surface-tint);border-top:1px solid var(--line-hairline);border-bottom:1px solid var(--line-hairline)}
 .section--accent{background:var(--surface-accent);border-top:1px solid var(--line-hairline);border-bottom:1px solid var(--line-hairline)}
+/* Kjøkkenbåndet på forsiden («Håndverk, ingen snarveier») skiller seg fra karusellene rundt (Henrik 08.11.2026) */
+.section--teal{background:var(--teal-100);border-top:1px solid var(--line-hairline);border-bottom:1px solid var(--line-hairline)}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center}
 .grid-2--start{align-items:start}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-7)}
@@ -198,6 +201,14 @@ html{scroll-behavior:smooth}
 
 /* ---------- Hours (DS HoursList) ---------- */
 .hours dl{margin:0;display:grid;grid-template-columns:auto 1fr;row-gap:8px;column-gap:var(--space-5)}
+/* Åpningstider per sted: dag, kjøkken og bar på samme rad (chrome.hours_table) */
+.timer{width:100%;border-collapse:collapse;font-family:var(--font-cond);font-weight:700;font-size:18px;font-variant-numeric:tabular-nums}
+.timer th,.timer td{padding:8px 0;text-align:left;border-bottom:1px solid var(--line-hairline);vertical-align:baseline}
+.timer td{color:var(--text-strong);padding-left:var(--space-4);white-space:nowrap}
+.timer tbody th{text-transform:uppercase;letter-spacing:.04em;color:var(--text-muted);font-weight:700}
+.timer thead th{font-size:var(--type-eyebrow);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted);padding-top:0}
+.timer thead th+th{padding-left:var(--space-4)}
+.card .timer{font-size:15px}
 .hours dt{font-family:var(--font-cond);font-weight:700;font-size:20px;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted)}
 .hours dd{margin:0;font-family:var(--font-cond);font-weight:700;font-size:20px;color:var(--text-strong);text-align:right}
 
@@ -482,6 +493,8 @@ html{scroll-behavior:smooth}
   .venue-trio{grid-template-columns:1fr;gap:var(--space-6)}
   .form-grid-3{grid-template-columns:1fr}
   .hours dt,.hours dd{font-size:18px}
+  .timer{font-size:15px}
+  .timer td,.timer thead th+th{padding-left:var(--space-3)}
 }
 @media (max-width:640px){
   .form-grid-2{grid-template-columns:1fr}
@@ -764,52 +777,22 @@ html{scroll-behavior:smooth}
 .dognet__handling{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-4);margin-top:var(--space-4)}
 .dognet__lenke{font-weight:600;color:inherit;text-underline-offset:3px}
 
-/* A: linje over, bildet under. Slik Henrik beskrev det i møtet. */
-.dognet--a .dognet__spor{display:grid;grid-template-columns:repeat(3,1fr);column-gap:var(--space-5)}
-.dognet--a .dognet__steg{display:contents}
-.dognet--a .dognet__knapp{grid-row:1}
-.dognet--a .dognet__bilde{grid-row:2;grid-column:1/-1;aspect-ratio:5/2}
-.dognet--a .dognet__tekst{grid-row:2;grid-column:1/-1;align-self:end;z-index:1;padding:var(--space-7) var(--space-6) var(--space-5);color:var(--paper-50);background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,0))}
-.dognet--a .dognet__lenke{color:var(--paper-50)}
-
-/* B: stegene til venstre, stort bilde til høyre */
-.dognet--b .dognet__spor{display:grid}
-.dognet--b .dognet__steg{display:contents}
-@media (min-width:761px){
-  .dognet--b .dognet__spor{grid-template-columns:minmax(300px,5fr) 7fr;grid-template-rows:repeat(5,auto) 1fr;column-gap:var(--space-7)}
-  .dognet--b .dognet__knapp,.dognet--b .dognet__tekst{grid-column:1}
-  .dognet--b .dognet__steg:nth-child(1) .dognet__knapp{grid-row:1}
-  .dognet--b .dognet__steg:nth-child(1) .dognet__tekst{grid-row:2}
-  .dognet--b .dognet__steg:nth-child(2) .dognet__knapp{grid-row:3}
-  .dognet--b .dognet__steg:nth-child(2) .dognet__tekst{grid-row:4}
-  .dognet--b .dognet__steg:nth-child(3) .dognet__knapp{grid-row:5}
-  .dognet--b .dognet__steg:nth-child(3) .dognet__tekst{grid-row:6}
-  .dognet--b .dognet__tekst{display:none;padding-bottom:var(--space-5)}
-  .dognet--b [data-aktiv] .dognet__tekst{display:block}
-  .dognet--b .dognet__bilde{grid-column:2;grid-row:1/-1;aspect-ratio:4/3;align-self:start}
-}
-
-/* C: tre bilder side om side, det aktive vokser */
-.dognet--c .dognet__spor{display:flex;gap:var(--space-3);height:clamp(420px,44vw,600px)}
-.dognet--c .dognet__steg{position:relative;flex:1 1 0;min-width:0;overflow:hidden;transition:flex-grow .6s ease;color:var(--paper-50);background:var(--teal-900)}
-.dognet--c .dognet__steg[data-aktiv]{flex-grow:2.8}
-.dognet--c .dognet__bilde{position:absolute;inset:0;opacity:.55}
-.dognet--c [data-aktiv] .dognet__bilde{opacity:1}
-.dognet--c .dognet__knapp{position:absolute;inset:0 0 auto;z-index:1;padding:var(--space-4);background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,0))}
-.dognet--c .dognet__linje{background:rgba(255,255,255,.3)}
-.dognet--c .dognet__nr,.dognet--c .dognet__tid,.dognet--c .dognet__navn{color:var(--paper-50)}
-.dognet--c .dognet__tekst{position:absolute;inset:auto 0 0;z-index:1;padding:var(--space-7) var(--space-5) var(--space-5);background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,0))}
-.dognet--c .dognet__lenke{color:var(--paper-50)}
+/* Tre bilder side om side, det aktive vokser (Henrik valgte variant C 08.11.2026) */
+.dognet .dognet__spor{display:flex;gap:var(--space-3);height:clamp(420px,44vw,600px)}
+.dognet .dognet__steg{position:relative;flex:1 1 0;min-width:0;overflow:hidden;transition:flex-grow .6s ease;color:var(--paper-50);background:var(--teal-900)}
+.dognet .dognet__steg[data-aktiv]{flex-grow:2.8}
+.dognet .dognet__bilde{position:absolute;inset:0;opacity:.55}
+.dognet [data-aktiv] .dognet__bilde{opacity:1}
+.dognet .dognet__knapp{position:absolute;inset:0 0 auto;z-index:1;padding:var(--space-4);background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,0))}
+.dognet .dognet__linje{background:rgba(255,255,255,.3)}
+.dognet .dognet__nr,.dognet .dognet__tid,.dognet .dognet__navn{color:var(--paper-50)}
+.dognet .dognet__tekst{position:absolute;inset:auto 0 0;z-index:1;padding:var(--space-7) var(--space-5) var(--space-5);background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,0))}
+.dognet .dognet__lenke{color:var(--paper-50)}
 
 @media (max-width:760px){
-  .dognet--a .dognet__spor,.dognet--b .dognet__spor{grid-template-columns:repeat(3,1fr);column-gap:var(--space-3)}
-  .dognet--a .dognet__knapp,.dognet--b .dognet__knapp{grid-row:1}
-  .dognet--a .dognet__bilde,.dognet--b .dognet__bilde{grid-row:2;grid-column:1/-1;aspect-ratio:4/3}
-  .dognet--a .dognet__tekst,.dognet--b .dognet__tekst{grid-row:3;grid-column:1/-1;padding:var(--space-4) 0 0;background:none;color:inherit}
-  .dognet--a .dognet__lenke{color:inherit}
-  .dognet--c .dognet__spor{flex-direction:column;height:auto}
-  .dognet--c .dognet__steg{flex:none;height:84px;transition:height .5s ease}
-  .dognet--c .dognet__steg[data-aktiv]{height:340px}
+  .dognet .dognet__spor{flex-direction:column;height:auto}
+  .dognet .dognet__steg{flex:none;height:84px;transition:height .5s ease}
+  .dognet .dognet__steg[data-aktiv]{height:340px}
   .dognet__knapp{column-gap:var(--space-2);padding-bottom:var(--space-3)}
   .dognet__nr{font-size:28px}
   .dognet__navn{font-size:15px;white-space:nowrap}

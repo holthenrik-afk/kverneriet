@@ -44,7 +44,7 @@ STEG = [
 ]
 
 
-def section(variant='a'):
+def section():
     G.add('home.dagEyebrow', 'Fra lunsj til langt på kveld', 'From lunch until late')
     G.add('home.dagTitle', 'Dagen hos Kverneriet', 'A day at Kverneriet')
     rader = ''
@@ -68,7 +68,7 @@ def section(variant='a'):
                   f'<a class="dognet__lenke" href="{kv.url(side)}" data-i18n="{p}.lenke">{e(lenke[0])}</a></div>\n'
                   f'          </div>\n'
                   f'        </div>\n')
-    return (f'  <section class="section section--flush-top dognet dognet--{variant}" id="dagen" data-dognet>\n'
+    return ('  <section class="section section--flush-top dognet" id="dagen" data-dognet>\n'
             '    <div class="wrap">\n'
             '      <header class="sec-head"><div class="sec-head__rule"></div>'
             '<span class="kv-eyebrow" data-i18n="home.dagEyebrow">Fra lunsj til langt på kveld</span>'
