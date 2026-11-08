@@ -63,7 +63,7 @@ def opening_hours(v):
     for h in v['hours']['kitchen']:
         for d in h['days']: opens[d] = h['opens']
     for h in v['hours']['bar']:
-        for d in h['days']: closes[d] = '00:00' if h['closes'] == '24:00' else h['closes']
+        for d in h['days']: closes[d] = '23:59' if h['closes'] == '24:00' else h['closes']  # midnatt: 23:59 tolkes entydig som samme dag
     out = []
     for d in DAYS:
         if d in opens:
