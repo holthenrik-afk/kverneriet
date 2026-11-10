@@ -106,6 +106,15 @@ export const venue = defineType({
     defineField({name: 'email', title: 'E-post', type: 'string', group: 'basic'}),
     defineField({name: 'kitchen', title: 'Kjøkkenet', type: 'array', of: [{type: 'kitchenHours'}], group: 'hours'}),
     defineField({name: 'bar', title: 'Baren stenger', type: 'array', of: [{type: 'barHours'}], group: 'hours'}),
+    defineField({
+      name: 'specialHours',
+      title: 'Endrede åpningstider (jul, påske og helligdager)',
+      description:
+        'Dager med andre tider enn vanlig. De vises under åpningstidene på nettsiden fra 60 dager før, og forsvinner når dagen er passert. Google-profilen og Facebook må endres for seg.',
+      type: 'array',
+      of: [{type: 'specialHours'}],
+      group: 'hours',
+    }),
     defineField({name: 'lunch', title: 'Lunsj (tekst)', type: 'string', description: 'F.eks. «tirsdag–fredag fra 11.00»', group: 'hours'}),
     defineField({name: 'zenchef', title: 'Zenchef restaurant-id', type: 'string', group: 'booking'}),
     defineField({name: 'groupThreshold', title: 'Online booking for inntil (personer)', type: 'number', group: 'booking'}),

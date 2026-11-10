@@ -27,7 +27,7 @@ OMRADE = {
     'menu': 'Menysiden', 'ta': 'Take-away', 'lp': 'Landingssider', 'om': 'Om og kontakt', 'kontakt': 'Om og kontakt', 'blog': 'Blogg', 'faq': 'Spørsmål og svar', 'pv': 'Personvern',
 }
 # Bygges fra åpningstidene eller er ukedager, eller redigeres allerede i Innstillinger, Restauranter og Landingssider.
-UTELATES = re.compile(r'^(dr?\.|maten\.[^.]+\.body$|home\.craft\.[^.]+$|.*\.barHours$|.*\.lunch$|.*\.since$|kontakt\.\w+\.kitchen$'
+UTELATES = re.compile(r'^(dr?\.|sh\.|maten\.[^.]+\.body$|home\.craft\.[^.]+$|.*\.barHours$|.*\.lunch$|.*\.since$|kontakt\.\w+\.kitchen$'
                       r'|home\.(heroSub|lede|aboutTitle|craftEyebrow|craftTitle)$|om\.(title|p\d+)$|craft\.\d+\.(title|sub)$|faq\.x\.'
                       r'|(majorstua|solli|tonsberg)\.(heroSub|slogan|about1|about2)$)')
 TIDER = re.compile(r'\d{1,2}[.:]\d{2}|\d+\s*kr\b|\bkr\s*\d+', re.I)

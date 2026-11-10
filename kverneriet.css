@@ -396,6 +396,11 @@ html{scroll-behavior:smooth}
 .timer thead th{font-size:var(--type-eyebrow);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted);padding-top:0}
 .timer thead th+th{padding-left:var(--space-4)}
 .card .timer{font-size:15px}
+/* Endrede åpningstider (jul, påske) under tabellen, se chrome.special_hours_block */
+.timer-avvik{margin-top:var(--space-5)}
+.timer-avvik__tittel{font-family:var(--font-cond);font-weight:700;font-size:var(--type-eyebrow);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-strong);margin:0 0 var(--space-2)}
+.timer--avvik th{width:1%;white-space:nowrap}
+.timer--avvik td{white-space:normal}
 .hours dt{font-family:var(--font-cond);font-weight:700;font-size:20px;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted)}
 .hours dd{margin:0;font-family:var(--font-cond);font-weight:700;font-size:20px;color:var(--text-strong);text-align:right}
 

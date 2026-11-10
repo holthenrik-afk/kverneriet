@@ -23,6 +23,18 @@ IMG = '{"url": @.asset->url, "alt": alt, "w": @.asset->metadata.dimensions.width
 def img(field): return f'"{field}": {field}{IMG}'
 def imgs(field): return f'"{field}": {field}[]{IMG}'
 
+def special(v):
+    """Feltet «Endrede åpningstider» (specialHours): jul, påske og helligdager. Halvferdige rader
+    filtreres bort i kv.special_hours(), ikke her, så de fortsatt synes i venues.json."""
+    out = []
+    for h in v.get('specialHours') or []:
+        if not h.get('from'): continue
+        r = {'from': h['from'], 'to': h.get('to') or h['from']}
+        if h.get('closed'): r['closed'] = True
+        else: r.update({k: h[k] for k in ('opens', 'closes', 'barCloses') if h.get(k)})
+        out.append(r)
+    return out
+
 def main():
     try:
         settings = q(f'*[_id == "siteSettings"][0] {{ ..., craftItems[] {{ ..., {img("photo")} }} }}')
@@ -62,7 +74,8 @@ def main():
             'slug': v['slug'], 'name': v['name'], 'fullName': v['fullName'], 'city': v['city'], 'area': v.get('area', ''), 'areaCues': v.get('areaCues') or [], 'since': v.get('since', ''),
             'tagline': v.get('tagline', ''), 'address': v['address'], 'geo': {'lat': v['geo']['lat'], 'lng': v['geo']['lng']} if v.get('geo') else o.get('geo'),
             'maps': v.get('maps') or o.get('maps'), 'facebook': v.get('facebook'), 'email': v.get('email'), 'zenchef': v.get('zenchef'), 'groupThreshold': v.get('groupThreshold') or 8,
-            'hours': {'kitchen': [{'days': h['days'], 'opens': h['opens'], 'closes': h['closes']} for h in v.get('kitchen') or []], 'bar': [{'days': h['days'], 'closes': h['closes']} for h in v.get('bar') or []]},
+            'hours': {'kitchen': [{'days': h['days'], 'opens': h['opens'], 'closes': h['closes']} for h in v.get('kitchen') or []], 'bar': [{'days': h['days'], 'closes': h['closes']} for h in v.get('bar') or []],
+                      'special': special(v)},
             'lunch': v.get('lunch', ''), 'channels': {'pickup': (v.get('channels') or {}).get('pickup'), 'wolt': (v.get('channels') or {}).get('wolt'), 'foodora': (v.get('channels') or {}).get('foodora')},
             'menuPdf': {'drinks': v.get('drinksPdf') or o.get('menuPdf', {}).get('drinks'), 'kids': v.get('kidsPdf') or o.get('menuPdf', {}).get('kids')},
             'copy': c, 'seo': o.get('seo', {}),

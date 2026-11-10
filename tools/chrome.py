@@ -71,7 +71,32 @@ def hours_table(v):
                  f'<td>{kv.hhmm(opens)}–{kv.hhmm(kc)}</td><td>{bar}</td></tr>')
     return ('<table class="timer"><thead><tr><th scope="col" data-i18n="hours.day">Dag</th>'
             '<th scope="col" data-i18n="hours.kitchen">Kjøkkenet</th><th scope="col" data-i18n="hours.bar">Baren</th></tr></thead>'
-            f'<tbody>{rows}</tbody></table>')
+            f'<tbody>{rows}</tbody></table>') + special_hours_block(v)
+
+def special_hours_block(v):
+    """Endrede åpningstider (jul, påske, helligdager) rett under tabellen, fra feltet
+    «Endrede åpningstider» i Sanity. Vises fra 60 dager før og forsvinner når dagen er passert,
+    så siden må bygges jevnlig (det gjør den). Står det bare kjøkkentid, sier vi ikke noe om baren."""
+    rader = kv.special_hours(v, window=kv.SPECIAL_WINDOW_DAYS)
+    if not rader: return ''
+    G.add('hours.xmas', 'Jul og nyttår', 'Christmas and New Year')
+    G.add('hours.special', 'Endrede åpningstider', 'Changed opening hours')
+    G.add('hours.closed', 'Stengt', 'Closed')
+    G.add('hours.barUntil', 'baren til', 'bar until')
+    tk = 'hours.xmas' if kv.is_christmas(rader) else 'hours.special'
+    rows = ''
+    for h in rader:
+        key = f'sh.{h["from"]}' + (f'_{h["to"]}' if h['to'] != h['from'] else '')
+        no = kv.date_range_text(h['from'], h['to'], 'no'); en = kv.date_range_text(h['from'], h['to'], 'en')
+        G.add(key, no, en)
+        if h.get('closed'):
+            tid = '<td data-i18n="hours.closed">Stengt</td>'
+        else:
+            bar = (f', <span data-i18n="hours.barUntil">baren til</span> {kv.hhmm(h["barCloses"])}' if h.get('barCloses') else '')
+            tid = f'<td><span data-i18n="hours.kitchen">Kjøkkenet</span> {kv.hhmm(h["opens"])}–{kv.hhmm(h["closes"])}{bar}</td>'
+        rows += f'<tr><th scope="row" data-i18n="{key}">{kv.esc(no)}</th>{tid}</tr>'
+    return (f'<div class="timer-avvik"><p class="timer-avvik__tittel" id="avvik-{v["slug"]}" data-i18n="{tk}">{kv.esc(G._D["no"][tk])}</p>'
+            f'<table class="timer timer--avvik" aria-labelledby="avvik-{v["slug"]}"><tbody>{rows}</tbody></table></div>')
 
 def hours_summary(v):
     """Kort åpningstid-linje til footeren: 'Kjøkken man 16–21, tir–fre 11–22, lør 12–22, søn 12–21'."""

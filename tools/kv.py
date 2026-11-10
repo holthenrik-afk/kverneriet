@@ -3,7 +3,7 @@
 URL-strukturen følger kverneriet.com slik den var indeksert (kverneriet.com 301-es hit) (/majorstua/, /solli/, /tonsberg/,
 /takeaway/, /<restaurant>/menu/), så ingen rangerte adresser går tapt ved lanseringen.
 Hver side ligger som <mappe>/index.html; forsiden er index.html i roten."""
-import json, os, re
+import datetime, json, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOMAIN = 'https://kverneriet.no/'
@@ -104,5 +104,67 @@ def hours_rows(v):
     return rows
 
 def hhmm(t): return t.replace(':', '.')
+
+# ---------------------------------------------------------------------------
+# Endrede åpningstider (jul, påske, helligdager). Ligger i venues.json som hours.special,
+# hentet fra feltet «Endrede åpningstider» på restauranten i Sanity:
+#   {"from": "2026-12-27", "to": "2026-12-30", "opens": "14:00", "closes": "22:00"}
+#   {"from": "2026-12-31", "to": "2026-12-31", "closed": true}
+# opens/closes er kjøkkenet. barCloses er valgfri.
+# ---------------------------------------------------------------------------
+try:
+    from zoneinfo import ZoneInfo
+    _OSLO = ZoneInfo('Europe/Oslo')
+except Exception:  # uten tidssonedata: bruk maskinens dato
+    _OSLO = None
+
+MONTHS_NO = ['januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember']
+MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+SPECIAL_WINDOW_DAYS = 60   # vises på siden fra 60 dager før første dag
+
+
+def today():
+    """Dagens dato i Oslo. Bygget på GitHub kjører i UTC, og rett over midnatt er det fortsatt «i går» der."""
+    return (datetime.datetime.now(_OSLO) if _OSLO else datetime.datetime.now()).date()
+
+
+def special_hours(v, window=None):
+    """De endrede åpningstidene som ikke er passert ennå, sortert etter dato. Med window
+    tas bare de som begynner innen så mange dager med."""
+    t = today()
+    out = []
+    for h in (v.get('hours') or {}).get('special') or []:
+        try:
+            a = datetime.date.fromisoformat(h['from'])
+            b = datetime.date.fromisoformat(h.get('to') or h['from'])
+        except (KeyError, ValueError):
+            continue
+        if b < a: a, b = b, a
+        if b < t or (window is not None and (a - t).days > window):
+            continue
+        if not h.get('closed') and not (h.get('opens') and h.get('closes')):
+            continue  # halvferdig rad i Sanity: hverken stengt eller tider
+        out.append({**h, 'from': a.isoformat(), 'to': b.isoformat()})
+    return sorted(out, key=lambda h: h['from'])
+
+
+def date_range_text(a, b, lang='no'):
+    """'2026-12-23', '2026-12-26' -> '23.–26. desember' / '23–26 December'.
+    Over månedsskiftet: '30. desember–2. januar' / '30 December–2 January'."""
+    a, b = datetime.date.fromisoformat(a), datetime.date.fromisoformat(b)
+    m = MONTHS_NO if lang == 'no' else MONTHS_EN
+    one = (lambda d: f'{d.day}. {m[d.month - 1]}') if lang == 'no' else (lambda d: f'{d.day} {m[d.month - 1]}')
+    if a == b: return one(a)
+    if (a.year, a.month) == (b.year, b.month):
+        return f'{a.day}.–{one(b)}' if lang == 'no' else f'{a.day}–{one(b)}'
+    return f'{one(a)}–{one(b)}'
+
+
+def is_christmas(entries):
+    """Alle radene ligger mellom 15. desember og 6. januar: da heter blokken «Jul og nyttår»."""
+    def jul(s):
+        d = datetime.date.fromisoformat(s)
+        return (d.month == 12 and d.day >= 15) or (d.month == 1 and d.day <= 6)
+    return bool(entries) and all(jul(h['from']) and jul(h['to']) for h in entries)
 
 def esc(s): return str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')

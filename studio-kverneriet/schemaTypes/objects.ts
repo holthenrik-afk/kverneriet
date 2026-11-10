@@ -47,6 +47,56 @@ export const barHours = defineType({
   },
 })
 
+const DATO = (s?: string) => (s ? s.split('-').reverse().join('.') : '')
+
+// Klokkeslett i en endret åpningstid. Skjules og sjekkes ikke når dagen er krysset av som stengt.
+// Én custom-regel med egne meldinger: .error() på en kjede ville overstyrt meldingen fra custom.
+const tid = (name: string, title: string, paakrevd: boolean, eksempel: string) =>
+  defineField({
+    name,
+    title,
+    type: 'string',
+    hidden: ({parent}) => Boolean((parent as {closed?: boolean})?.closed),
+    validation: (r) =>
+      r.custom((v, ctx) => {
+        if ((ctx.parent as {closed?: boolean})?.closed) return true
+        if (!v) return paakrevd ? `Skriv klokkeslett, for eksempel ${eksempel}, eller kryss av for «Stengt hele dagen»` : true
+        return /^\d{2}:\d{2}$/.test(String(v)) ? true : `Skriv som ${eksempel}`
+      }),
+  })
+
+export const specialHours = defineType({
+  name: 'specialHours',
+  title: 'Endret åpningstid',
+  type: 'object',
+  fields: [
+    defineField({name: 'from', title: 'Fra dato', type: 'date', options: {dateFormat: 'DD.MM.YYYY'}, validation: (r) => r.required().error('Velg dato')}),
+    defineField({
+      name: 'to',
+      title: 'Til og med dato',
+      type: 'date',
+      options: {dateFormat: 'DD.MM.YYYY'},
+      description: 'La stå tom hvis det bare gjelder én dag.',
+      validation: (r) =>
+        r.custom((to, ctx) => {
+          const from = (ctx.parent as {from?: string})?.from
+          return !to || !from || to >= from ? true : 'Til-datoen kan ikke være før fra-datoen'
+        }),
+    }),
+    defineField({name: 'closed', title: 'Stengt hele dagen', type: 'boolean', initialValue: false}),
+    tid('opens', 'Kjøkkenet åpner', true, '14:00'),
+    tid('closes', 'Kjøkkenet stenger', true, '22:00'),
+    {...tid('barCloses', 'Baren stenger (valgfritt)', false, '23:00'), description: 'La stå tom hvis dere ikke vil si noe om baren.'},
+  ],
+  preview: {
+    select: {from: 'from', to: 'to', closed: 'closed', opens: 'opens', closes: 'closes', barCloses: 'barCloses'},
+    prepare: ({from, to, closed, opens, closes, barCloses}) => ({
+      title: to && to !== from ? `${DATO(from)} – ${DATO(to)}` : DATO(from),
+      subtitle: closed ? 'Stengt' : `Kjøkkenet ${opens || '?'}–${closes || '?'}${barCloses ? `, baren til ${barCloses}` : ''}`,
+    }),
+  },
+})
+
 export const localizedText = defineType({
   name: 'localizedText',
   title: 'Tekst (norsk + engelsk)',

@@ -70,6 +70,13 @@ def opening_hours(v):
             same = next((o for o in out if o['opens'] == opens[d] and o['closes'] == closes.get(d, opens[d])), None)
             if same: same['dayOfWeek'].append(d)
             else: out.append({"@type": "OpeningHoursSpecification", "dayOfWeek": [d], "opens": opens[d], "closes": closes.get(d, opens[d])})
+    # Endrede åpningstider (jul, påske): validFrom/validThrough. Stengt skrives 00:00–00:00, slik Google ber om.
+    for h in kv.special_hours(v):
+        if h.get('closed'): o, c = '00:00', '00:00'
+        else:
+            o = h['opens']; c = h.get('barCloses') or h['closes']
+            c = '23:59' if c == '24:00' else c
+        out.append({"@type": "OpeningHoursSpecification", "opens": o, "closes": c, "validFrom": h['from'], "validThrough": h['to']})
     return out
 
 def reviews(slug):
@@ -237,7 +244,9 @@ def llms():
     for v in V['venues']:
         a = v['address']; kitchen = ', '.join(f'{kv.day_range(h["days"])} {kv.hhmm(h["opens"])}–{kv.hhmm(h["closes"])}' for h in v['hours']['kitchen'])
         bar = ', '.join(f'{kv.day_range(h["days"])} til {kv.hhmm(h["closes"])}' for h in v['hours']['bar'])
-        lines += [f'- [{v["fullName"]}]({kv.abs_url(v["slug"])}): {a["street"]}, {a["postalCode"]} {a["city"]} ({v["area"]}). Åpnet {v["since"]}. Tlf {ORG["telephoneDisplay"]}. Kjøkken: {kitchen}. Bar: {bar}. Lunsj {v["lunch"]}. Meny: {kv.abs_url(v["slug"] + "-menu")}. Online booking (inntil {v["groupThreshold"]} personer): {ZENCHEF.format(rid=v["zenchef"])}. Take-away: {v["channels"]["pickup"]}' + (f', Wolt {v["channels"]["wolt"]}' if v['channels'].get('wolt') else '') + (f', Foodora {v["channels"]["foodora"]}' if v['channels'].get('foodora') else '')]
+        sp = kv.special_hours(v)
+        avvik = (' Endrede åpningstider: ' + '; '.join(kv.date_range_text(h['from'], h['to']) + (' stengt' if h.get('closed') else f' kjøkken {kv.hhmm(h["opens"])}–{kv.hhmm(h["closes"])}' + (f', bar til {kv.hhmm(h["barCloses"])}' if h.get('barCloses') else '')) for h in sp) + '.') if sp else ''
+        lines += [f'- [{v["fullName"]}]({kv.abs_url(v["slug"])}): {a["street"]}, {a["postalCode"]} {a["city"]} ({v["area"]}). Åpnet {v["since"]}. Tlf {ORG["telephoneDisplay"]}. Kjøkken: {kitchen}. Bar: {bar}.{avvik} Lunsj {v["lunch"]}. Meny: {kv.abs_url(v["slug"] + "-menu")}. Online booking (inntil {v["groupThreshold"]} personer): {ZENCHEF.format(rid=v["zenchef"])}. Take-away: {v["channels"]["pickup"]}' + (f', Wolt {v["channels"]["wolt"]}' if v['channels'].get('wolt') else '') + (f', Foodora {v["channels"]["foodora"]}' if v['channels'].get('foodora') else '')]
     lines += ['', '## Når passer Kverneriet?'] + when_to_use()
     lines += ['', '## Sider']
     for s in kv.PAGES: lines.append(f'- [{pages.PAGES[s]["title"]}]({kv.abs_url(s)}): {pages.PAGES[s]["desc"]}')
