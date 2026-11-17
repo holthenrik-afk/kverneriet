@@ -39,7 +39,7 @@ Repoet er klart for GitHub Pages: `.nojekyll` (ingen Jekyll-behandling), `CNAME`
 4. **Domene:** i **Settings → Pages → Custom domain** skriv `kverneriet.com`. Hos domeneleverandøren: fire A-poster for `kverneriet.com` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, og en CNAME for `www` → `<bruker>.github.io`. Huk av «Enforce HTTPS» når DNS har slått gjennom.
 5. Etter lansering: meld inn `https://kverneriet.com/sitemap.xml` i Search Console og test en restaurantside på search.google.com/test/rich-results.
 
-Bygg alltid lokalt før push (`python3 tools/build.py`) – Actions bygger ikke, den kopierer bare. Filer over 100 MB avvises av GitHub; de største her er PDF-ene på ~4 MB.
+Bygg og sjekk lokalt før push (`python3 tools/build.py`). Actions henter innholdet fra Sanity og bygger på nytt før publisering. Filer over 100 MB avvises av GitHub; de største her er PDF-ene på ~4 MB.
 
 ## Sanity (kunden redigerer selv)
 
@@ -50,9 +50,28 @@ Slik henger det sammen:
 1. Redaktøren trykker **Publish** i Studio.
 2. `tools/fetch_sanity.py` henter innholdet (offentlig lesetilgang, ingen nøkkel) og skriver `content/venues.json`, `content/menus.js`, `content/press.json`, `content/landing.json`, `content/site-copy.json` og `content/blog.json`.
 3. `tools/build.py` bygger sidene som før. Bilder lastet opp i Sanity serveres fra Sanitys CDN med `srcset` (`?w=…&auto=format`), lokale bilder går gjennom `tools/images.py` som før.
-4. GitHub Actions kjører 2–3 ved push, på fast tid (`schedule` står til hvert 10. minutt, men GitHub kjører den i praksis bare hver 6.–11. time), manuelt (`gh workflow run pages.yml`), og ved webhook fra Sanity (`repository_dispatch`, type `sanity-publish`).
+4. GitHub Actions kjører 2–3 når noe publiseres i Sanity (webhook, se under), ved push til `main` og manuelt (`gh workflow run pages.yml`). Fast tid (`schedule`) er bare en reserve: GitHub kjører den i praksis hver 4.–10. time, ikke hvert 10. minutt som det står.
 
-**Webhook (gir oppdatering innen et par minutter i stedet for etter 6–11 timer; ikke satt opp per 10.11.2026):** i sanity.io/manage → API → Webhooks: URL `https://api.github.com/repos/holthenrik-afk/kverneriet/dispatches`, metode POST, header `Authorization: Bearer <GitHub-token med repo-tilgang>` og `Accept: application/vnd.github+json`, body `{"event_type":"sanity-publish"}`, trigger på create/update/delete.
+**Webhook fra Sanity.** Gjør at endringer Kverneriet publiserer, ligger ute etter 1–2 minutter. Nettleseren kan vise den gamle siden i opptil 10 minutter til (GitHub Pages sender `max-age=600`), så last siden på nytt hvis noe mangler. Uten webhooken venter endringene på reservekjøringen, som kan gå 4–10 timer imellom.
+
+Webhooken starter `workflow_dispatch` på `pages.yml`. Det krever et token som bare kan starte kjøringer og ikke kan endre koden, i motsetning til `repository_dispatch`, som krever skrivetilgang til innholdet i repoet.
+
+1. **Token på GitHub** (fine-grained): https://github.com/settings/personal-access-tokens/new?name=Sanity+webhook+kverneriet&target_name=holthenrik-afk&expires_in=none&actions=write. Under Repository access velger du «Only select repositories» og `holthenrik-afk/kverneriet`. Tilgangen skal være Actions: Read and write (Metadata: Read-only kommer automatisk), og ingenting annet. Tokenet vises bare én gang. Det skal bare inn i Sanity, aldri i filer, kode eller chat.
+2. **Webhook i Sanity:** sanity.io/manage → prosjektet Kverneriet (`u0hod2sg`) → API → Webhooks → Create webhook:
+   - Name: `GitHub-bygg`
+   - URL: `https://api.github.com/repos/holthenrik-afk/kverneriet/actions/workflows/pages.yml/dispatches`
+   - Dataset: `production`
+   - Trigger on: Create, Update og Delete
+   - Filter: `_type in ["siteSettings", "venue", "menu", "pressItem", "landingPage", "post", "faqItem"] || (_type == "siteText" && delta::changedAny((no, en)))`
+   - Projection: `{"ref": "main"}` (blir selve body-en i kallet)
+   - Status: Enabled. HTTP method: POST.
+   - HTTP headers: `Authorization` = `Bearer <tokenet>` og `Accept` = `application/vnd.github+json`
+   - Drafts og Versions: av. Secret: tom. API version: standard.
+3. **Test:** endre en tekst i Studio og trykk Publish. Innen et halvt minutt skal det komme en ny kjøring (`workflow_dispatch`) i Actions, og webhookens «Attempts log» i sanity.io/manage skal vise 204 eller 200.
+
+Filteret har to formål. Bildeopplastinger og systemdokumenter starter ikke bygg. «Tekster på nettsiden» starter bare bygg når `no` eller `en` endres, så `sync-tekster.ts`, som skriver alle de rundt 500 tekstdokumentene, ikke sender hundrevis av kall. Får `fetch_sanity.py` en ny dokumenttype, må den også inn i filteret. Skal du kjøre andre skript som endrer mange dokumenter, bør du skru av webhooken (Status) så lenge.
+
+Sanity prøver ikke på nytt når GitHub svarer med en 4xx-feil. Er tokenet slettet, utløpt eller har feil tilgang (401, 403 eller 404), forsvinner kallene uten varsel, og nettsiden blir oppdatert bare av reservekjøringen. Ser du det i «Attempts log», lager du et nytt token og limer det inn i headeren.
 
 **Gi kunden tilgang:** sanity.io/manage → prosjektet → Members → inviter e-post med rollen Editor. De logger inn på kverneriet.sanity.studio med Google eller e-post.
 

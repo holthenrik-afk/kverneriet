@@ -1,5 +1,6 @@
 # Publiserer nettstedet til GitHub Pages.
-# Kjører ved push til main, når Sanity sender webhook (repository_dispatch «sanity-publish»), hvert 10. minutt, og manuelt.
+# Kjører ved push til main, når noe publiseres i Sanity (webhook som starter workflow_dispatch, se README), og manuelt.
+# repository_dispatch «sanity-publish» virker også. Fast tid er bare en reserve: GitHub kjører den hver 4.–10. time.
 # CI henter innholdet fra Sanity (tools/fetch_sanity.py) og bygger sidene (tools/build.py). Bildevarianter i
 # assets/img/r lages bare lokalt (sips/cwebp); Sanity-bilder går via Sanitys CDN og trenger ingen forbehandling.
 name: Publiser til GitHub Pages
@@ -9,7 +10,8 @@ on:
   repository_dispatch:
     types: [sanity-publish]
   schedule:
-    - cron: '*/10 * * * *'
+    # Ikke på hel time, da er GitHub tregest. Holder datoavhengig innhold oppdatert (endrede åpningstider, blogginnlegg fram i tid).
+    - cron: '3,13,23,33,43,53 * * * *'
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,7 +19,8 @@ permissions:
   id-token: write
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # Ikke avbryt en publisering som er i gang. GitHub holder bare den nyeste ventende kjøringen, så siste endring kommer alltid med.
+  cancel-in-progress: false
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -32,7 +35,9 @@ jobs:
       - name: Hent innhold fra Sanity
         env:
           SANITY_READ_TOKEN: ${{ secrets.SANITY_READ_TOKEN }}
-        run: python3 tools/fetch_sanity.py || echo "Bruker innholdet som ligger i repoet"
+        # Prøver to ganger. Feiler begge, stopper jobben, og forrige versjon av nettsiden blir stående.
+        # (Før publiserte vi da innholdet i repoet, og alle tekstene fra Sanity forsvant uten at noen merket det.)
+        run: python3 tools/fetch_sanity.py || { sleep 20; python3 tools/fetch_sanity.py; }
       - name: Bygg sidene
         run: python3 tools/build.py
       - id: pages
@@ -42,7 +47,7 @@ jobs:
           mkdir -p /tmp/site
           rsync -a --exclude tools --exclude studio-kverneriet --exclude README.md --exclude .github --exclude .gitignore --exclude _redirects --exclude sanity-seed.ndjson ./ /tmp/site/
       # På <bruker>.github.io/<repo>/ må rot-relative lenker få undermappen foran seg.
-      # Med eget domene (kverneriet.com) er base_path tom og ingenting endres.
+      # Med eget domene (kverneriet.no) er base_path tom og ingenting endres.
       - name: Tilpass lenker til base_path
         run: python3 tools/rebase.py "${{ steps.pages.outputs.base_path }}" /tmp/site
       - uses: actions/upload-pages-artifact@v3
