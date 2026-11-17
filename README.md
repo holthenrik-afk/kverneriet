@@ -52,7 +52,7 @@ Slik henger det sammen:
 3. `tools/build.py` bygger sidene som før. Bilder lastet opp i Sanity serveres fra Sanitys CDN med `srcset` (`?w=…&auto=format`), lokale bilder går gjennom `tools/images.py` som før.
 4. GitHub Actions kjører 2–3 når noe publiseres i Sanity (webhook, se under), ved push til `main` og manuelt (`gh workflow run pages.yml`). Fast tid (`schedule`) er bare en reserve: GitHub kjører den i praksis hver 4.–10. time, ikke hvert 10. minutt som det står.
 
-**Webhook fra Sanity.** Gjør at endringer Kverneriet publiserer, ligger ute etter 1–2 minutter. Nettleseren kan vise den gamle siden i opptil 10 minutter til (GitHub Pages sender `max-age=600`), så last siden på nytt hvis noe mangler. Uten webhooken venter endringene på reservekjøringen, som kan gå 4–10 timer imellom.
+**Webhook fra Sanity** (satt opp 17.11.2026 som «GitHub-bygg», testet: bygget starter 2–3 sekunder etter Publish). Gjør at endringer Kverneriet publiserer, ligger ute etter 1–2 minutter. Nettleseren kan vise den gamle siden i opptil 10 minutter til (GitHub Pages sender `max-age=600`), så last siden på nytt hvis noe mangler. Uten webhooken venter endringene på reservekjøringen, som kan gå 4–10 timer imellom.
 
 Webhooken starter `workflow_dispatch` på `pages.yml`. Det krever et token som bare kan starte kjøringer og ikke kan endre koden, i motsetning til `repository_dispatch`, som krever skrivetilgang til innholdet i repoet.
 
